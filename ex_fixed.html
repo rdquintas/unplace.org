@@ -8,122 +8,17 @@
     <script src="js/imagesloaded.pkgd.min.js"></script>
 
     <script type="text/javascript">
-    var _iv_normal = 70; // random percent for NORMAL squares
-    var _iv_tall = 15; // random percent for TALL squares
-    var _iv_wide = 15; // random percent for WIDE squares
-
-    var _projectsList = [];
-
-    // Create a deferred object
-    var _dfd = $.Deferred();
-    _dfd.done(createHTML);
-
     docReady(function() {
-        // readInputValues();
-        prepareData();
-
-
-    });
-
-    function prepareData() {
-        $.get("projectos/lista_dos_projectos.txt", function(data) {
-            _projectsList = data.split(",");
-            for (var i = 0; i < _projectsList.length; i++) {
-                createObject(_projectsList[i]);
-            }
-        });
-    }
-
-    function checkAllDone(projID) {
-        var doResolve = true;
-        for (var i = 0; i < window._projectsList.length; i++) {
-            if (projID === window._projectsList[i]) {
-                window._projectsList[i] = null;
-                break;
-            }
-        }
-
-        for (var ii = 0; ii < window._projectsList.length; ii++) {
-            if (!isNaN(window._projectsList[ii]) && typeof window._projectsList[ii] !== "object") {
-                doResolve = false;
-                break;
-            }
-        }
-
-        if (doResolve) {
-            // Let's party
-            window._dfd.resolve();
-        }
-
-    }
-
-    function createObject(projectID) {
-        $.get("projectos/" + projectID, {}, function(data) {
-            $.get("projectos/" + projectID + "/sumario.json", function(sumario) {
-                sumario.id = this.url.split("/")[1];
-                window._projectsList.push(sumario);
-                checkAllDone(sumario.id);
-            }).fail(function() {
-                var tmpID = this.url.split("/")[1];
-                checkAllDone(tmpID);
-            });
-        }).fail(function() {
-            var tmpID = this.url.split("/")[1];
-            checkAllDone(tmpID);
-        });
-    }
-
-    function createHTML() {
-        createTheDivs();
+        createDIVs();
         // randomizeDIVs();
         // initializePackery();
-    }
+    });
 
-    function createTheDivs() {
-        var mainContainer = $("#mainContainer");
-        mainContainer.css("border", "1px solid black");
-
-        var rnd = Math.floor((Math.random() * 100) + 1);
-        var boxSize = "item-normal";
-
-        if (rnd >= 0 && rnd < this._iv_normal) {
-            boxSize = "item-normal";
-        }
-
-        if (rnd >= this._iv_normal && rnd < this._iv_normal + this._iv_wide) {
-            boxSize = "item-wide";
-        }
-
-        if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
-            boxSize = "item-tall";
-        }
-
-        for (var i = 0; i < window._projectsList.length; i++) {
-            if (window._projectsList[i]) {
-                mainContainer.append(singleDiv(boxSize, window._projectsList[i]));
-            }
-        }
-    }
-
-    function singleDiv(cssClass, obj) {
-        var divBox = $("<div/>", {
-            id: "box_" + obj.id,
-            class: cssClass
-        }).append($("<div/>", {
-            id: "overlay",
-            class: cssClass
-        })).append($("<a/>", {
-            href: "#",
-            class: "textbox"
-        })).append($("<span/>", {
-            text: obj.titulo,
-            class: "titulo"
-        })).append($("<span/>", {
-            text: obj.autor,
-            class: "autor"
-        }));
-
-        return divBox;
+    function createDIVs() {
+        $.get("projectos/lista_dos_projectos.txt", function(data) {
+            // $(".result").html(data);
+            console.log(data)
+        });
     }
 
     function randomizeDIVs() {
@@ -182,14 +77,13 @@
         width: 100%;
         display: block;
     }
-    .box {
-        /*pointer-events: pointer;*/
-        
+    #box_01 {
+        pointer-events: pointer;
         width: 150px;
         height: 150px;
         background: url(http://placehold.it/200x200);
     }
-    .box:hover #overlay {
+    #box_01:hover #overlay {
         pointer-events: pointer;
         opacity: 1;
     }
@@ -221,16 +115,10 @@
     }
     </style>
 
-    <div id="zrq">
-
-    </div>
-
-
-    <div id="mainContainer" class="packery">
-    
-      <!--   <div class="item big"><img src="http://lorempixel.com/150/310/?1" />
+    <div class="packery">
+        <div class="item big"><img src="http://lorempixel.com/150/310/?1" />
         </div>
-        <div id="box_01" class="item box">
+        <div id="box_01" class="item">
             <div id="overlay">
                 <a href="#" class="textbox">
                     <span class="titulo">Observartion and Draw from 000</span>
@@ -323,7 +211,7 @@
         <div class="item"><img src="http://lorempixel.com/200/200/?8" />
         </div>
         <div class="item"><img src="http://lorempixel.com/200/200/?9" />
-        </div> -->
+        </div>
     </div>
 
 
