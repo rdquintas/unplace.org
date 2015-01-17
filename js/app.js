@@ -48,20 +48,21 @@ function checkAllDone(projID) {
 }
 
 function createObject(projectID) {
-    $.get("projectos/" + projectID, {}, function(data) {
-        $.get("projectos/" + projectID + "/sumario.json", function(sumario) {
-            sumario.id = this.url.split("/")[1];
-            sumario.img = sumario.imagens[Math.floor(Math.random() * sumario.imagens.length)];
-            window._projectsList.push(sumario);
-            checkAllDone(sumario.id);
-        }).fail(function() {
-            var tmpID = this.url.split("/")[1];
-            checkAllDone(tmpID);
-        });
+    // $.get("projectos/" + projectID, {}, function(data) {
+    $.get("projectos/" + projectID + "/sumario.json", function(sumario) {
+        sumario.id = this.url.split("/")[1];
+        sumario.img = sumario.imagens[Math.floor(Math.random() * sumario.imagens.length)];
+        window._projectsList.push(sumario);
+        checkAllDone(sumario.id);
     }).fail(function() {
         var tmpID = this.url.split("/")[1];
         checkAllDone(tmpID);
     });
+    // });
+    // .fail(function() {
+    //         var tmpID = this.url.split("/")[1];
+    //         checkAllDone(tmpID);
+    //     });
 }
 
 function createHTML() {
