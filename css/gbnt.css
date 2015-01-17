@@ -5,6 +5,7 @@
 }
 body {
     overflow-y: scroll;
+    margin: 0 auto;
 }
 .packery {
     background: #fff;
@@ -18,30 +19,37 @@ body {
     display: block;
     clear: both;
 }
-.size-normal {
+#preloader {
+    margin-top: 15%;
+    text-align: center;
+}
+.gbnt-hide {
+    display: none;
+}
+.gbnt-size-normal {
     width: 150px;
     height: 150px;
 }
-.size-wide {
+.gbnt-size-wide {
     width: 310px;
     height: 150px;
 }
-.size-tall {
+.gbnt-size-tall {
     width: 150px;
     height: 310px;
 }
-.size-selected {
+.gbnt-size-selected {
     width: 470px;
     height: 470px;
 }
-.item {
+.gbnt-item {
     float: left;
 }
-.item img {
+.gbnt-item img {
     width: 100%;
     display: block;
 }
-.item:hover #overlay {
+.gbnt-item:hover #overlay {
     pointer-events: pointer;
     opacity: 1;
 }

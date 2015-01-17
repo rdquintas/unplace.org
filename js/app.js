@@ -75,7 +75,7 @@ function createTheDivs() {
     var mainContainer = $("#mainContainer");
 
     var rnd = Math.floor((Math.random() * 100) + 1);
-    var boxSize = "size-normal";
+    var boxSize = "gbnt-size-normal";
 
     for (var i = 0; i < window._projectsList.length; i++) {
         if (window._projectsList[i]) {
@@ -83,15 +83,15 @@ function createTheDivs() {
             rnd = Math.floor((Math.random() * 100) + 1);
 
             if (rnd >= 0 && rnd < this._iv_normal) {
-                boxSize = "size-normal";
+                boxSize = "gbnt-size-normal";
             }
 
             if (rnd >= this._iv_normal && rnd < this._iv_normal + this._iv_wide) {
-                boxSize = "size-wide";
+                boxSize = "gbnt-size-wide";
             }
 
             if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
-                boxSize = "size-tall";
+                boxSize = "gbnt-size-tall";
             }
             mainContainer.append(singleDiv(boxSize, window._projectsList[i]));
         }
@@ -102,7 +102,7 @@ function singleDiv(cssClass, obj) {
 
     var divBox = $("<div/>", {
         id: "box_" + obj.id,
-        class: "item " + cssClass
+        class: "gbnt-item " + cssClass
     });
 
 
@@ -111,7 +111,7 @@ function singleDiv(cssClass, obj) {
     //     currentClass: cssClass
     // }, function(e) {
     //     // $(this).removeClass(e.data.currentClass);
-    //     $(this).toggleClass("size-selected");
+    //     $(this).toggleClass("gbnt-size-selected");
     // });
 
     var imgURL = "url(projectos/" + obj.id + "/" + obj.img + ")";
@@ -145,7 +145,7 @@ function singleDiv(cssClass, obj) {
 }
 
 function randomizeDIVs() {
-    var cards = $(".item");
+    var cards = $(".gbnt-item");
     for (var i = 0; i < cards.length; i++) {
         var target = Math.floor(Math.random() * cards.length - 1) + 1;
         var target2 = Math.floor(Math.random() * cards.length - 1) + 1;
@@ -155,12 +155,15 @@ function randomizeDIVs() {
 
 function initializePackery() {
 
+$('#preloader').addClass("gbnt-hide");
+$('#mainContainer').removeClass("gbnt-hide");
+
     var $container = $('.packery').packery();
 
     $container.on('click', '[id^=box]', function(event) {
         var $target = $(event.currentTarget)
-        var isGigante = $target.hasClass('size-selected');
-        $target.toggleClass('size-selected');
+        var isGigante = $target.hasClass('gbnt-size-selected');
+        $target.toggleClass('gbnt-size-selected');
 
         if (isGigante) {
             // if shrinking, just layout
@@ -178,11 +181,9 @@ function initializePackery() {
     var container = document.querySelector('.packery');
     var pckry;
 
-
-
     imagesLoaded(container, function() {
         pckry = new Packery(container, {
-            itemSelector: '.item',
+            itemSelector: '.gbnt-item',
             gutter: 10
         });
     });
