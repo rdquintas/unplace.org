@@ -12,7 +12,9 @@ _dfd.done(createHTML);
 docReady(function() {
     // readInputValues();
     prepareData();
-
+    $('.gbnt-language').on("click", function() {
+        $('.ui.modal').modal('show');
+    });
 });
 
 function prepareData() {
@@ -207,10 +209,22 @@ function createProjectDescriptionDiv(obj) {
         text: "View Project"
     }).appendTo(divProject);
 
-    btnViewProj.on('click', function(event) {
-        var url = $(this).attr('data-gbnt-url');
-        window.open(url, '_blank');
-    });
+    if (obj.id === "26" || obj.id === "6") {
+        btnViewProj.on('click', function(event) {
+            // var url = $(this).attr('data-gbnt-url');
+            // window.open("http://www.yahoo.com", '_blank');
+            $('#gbnt-show-proj').dimmer('show');
+
+        });
+    } else {
+        btnViewProj.on('click', function(event) {
+            var url = $(this).attr('data-gbnt-url');
+            window.open(url, '_blank');
+        });
+    }
+
+
+
 
     var pText = $("<p/>", {
         text: obj.descricao
