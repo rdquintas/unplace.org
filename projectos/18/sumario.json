@@ -1,9 +1,9 @@
 {
-    "titulo": "titulo da obra",
-    "autor": "nome do autor",
-    "autorBio": "bio do autor",
-    "ano": "2014",
-    "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "www": "http://www.google.com",
-    "imagens": ["main.png"]
+    "titulo": "O BRILHARETE – Zona Pictórica Imaterial",
+    "autor": "BEMBOM -studio",
+    "autorBio": "BEM BOM é um estúdio de design multidisciplinar, sediado em Lisboa. Juntos desenvolvemos estratégias de investigação e projecto específicas para cada desafio, profissional ou onírico.",
+    "ano": "2009",
+    "descricao": "O BRIL HARE TE - Zona Pictórica Imaterial – é uma plataforma on-line para a compra e/ou aluguer de espaço imaterial. Um espaço virtual - website - onde cada utilizador poderá adquirir um pedaço de infinito; o vazio ou um conjunto de pontos brilhantes num ecrã. Em cada transação o comprador adquire um documento/certidão de propriedade desse espaço, que não é mais do que a representação pictórica de um conceito. Prentendemos deste modo questionar de uma forma irónica, os limites/ fronteiras da natureza inexistente ou inalcançável no espaço da web.",
+    "www": "http://obrilharete.com/",
+    "imagens": ["main1.jpg", "main2.jpg"]
 }

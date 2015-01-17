@@ -6,6 +6,7 @@
 body {
     overflow-y: scroll;
     margin: 0 auto;
+    background-color: #fff;
 }
 .packery {
     background: #fff;
@@ -23,8 +24,68 @@ body {
     margin-top: 15%;
     text-align: center;
 }
+#header {
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 0;
+}
+#header .gbnt-link:hover {
+    color: #ccc;
+}
+#header .column .right {
+    margin-top: 25px;
+}
+#header .gbnt-language {
+    margin-right: 30px;
+    color: #fff;
+}
+#header .gbnt-language:hover {
+    color: #ccc;
+}
+#header img {
+    float: left;
+    height: 65px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+#mainContainer {
+    top: 90px;
+}
+.gbnt-btn {
+    z-index: -1;
+}
+.gbnt-disabled {
+    background: rgba(0, 0, 0, .80);
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+.gbnt-btn-view-proj {
+    margin: 10px 0 10px 0 !important;
+}
 .gbnt-hide {
     display: none;
+}
+.gbnt-margin-0 {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.gbnt-close {
+    z-index: -1;
+    /*pointer-events: pointer !important;*/
+    
+    float: right;
+    margin-top: 4px !important;
+}
+.gbnt-close:hover {
+    color: #ccc;
+}
+.gbnt-no-bckgr-img {
+    background-image: none !important;
+    border: 1px solid #ccc;
 }
 .gbnt-size-normal {
     width: 150px;
@@ -49,34 +110,52 @@ body {
     width: 100%;
     display: block;
 }
-.gbnt-item:hover #overlay {
+.gbnt-item:hover div[id^=overlay] {
     pointer-events: pointer;
     opacity: 1;
 }
-#overlay {
+div[id^=overlay] {
     background: rgba(0, 0, 0, .75);
     opacity: 0;
     -webkit-transition: opacity.25s ease;
     -moz-transition: opacity.25s ease;
 }
-#overlay .textbox {
+div[id^=overlay] .textbox {
     padding: 10px;
     display: block;
     height: 100%;
     width: 100%;
     text-decoration: none;
 }
-#overlay p {
+div[id^=overlay] p {
     margin: 0;
 }
-#overlay .titulo {
+div[id^=overlay] .titulo {
     color: #fff;
     font-family: Helvetica;
     font-size: 96 px;
 }
-#overlay .autor {
+div[id^=overlay] .autor {
     color: #fff;
     font-family: Helvetica;
     font-weight: 900;
     font-size: 96 px;
+}
+@media all and (max-width: 630px) {
+    .gbnt-size-normal {
+        width: 300px;
+        height: 300px;
+    }
+    .gbnt-size-wide {
+        width: 620px;
+        height: 300px;
+    }
+    .gbnt-size-tall {
+        width: 300px;
+        height: 620px;
+    }
+    .gbnt-size-selected {
+        width: 940px;
+        height: 940px;
+    }
 }

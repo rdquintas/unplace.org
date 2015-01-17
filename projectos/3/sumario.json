@@ -1,9 +1,9 @@
 {
-    "titulo": "titulo da obra",
-    "autor": "nome do autor",
-    "autorBio": "bio do autor",
+    "titulo": "Observation and Draw from (0,0,0)",
+    "autor": "André Sier",
+    "autorBio": "André Sier works as artist-programmer at s373.net/x. Highlights the series 'struct', '747', 'space race', 'k.', 'uunniivveerrssee', 'piantadelmondo', immersive works in abstract spaces, often using site-specifc data from microphones and cameras, or synthesizing experiences with generative and chaotic maths.",
     "ano": "2014",
-    "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "www": "http://www.google.com",
+    "descricao": "Observation and Draw from (0,0,0) is an online interactive abstract drawing and cartography tool. It's basis and leitmotif of the piantadelmondo series of artworks by André Sier which create and map imaginary cities. Moving around and clicking with the mouse one operates and discovers new evanescent uncharted paths inscribed on the surface of a sphere, watching them unfold from the zero center point of the planetoid.",
+    "www": "http://andre-sier.com",
     "imagens": ["main1.jpg", "main2.jpg"]
 }

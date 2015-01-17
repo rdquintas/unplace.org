@@ -1,9 +1,9 @@
 {
-    "titulo": "titulo da obra",
-    "autor": "nome do autor",
-    "autorBio": "bio do autor",
-    "ano": "2014",
-    "descricao": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "www": "http://www.google.com",
+    "titulo": "Minusculas postales del equinoccio // Tiempo de Papayas",
+    "autor": "Gustavo Valerga y Luciana Bedini",
+    "autorBio": "Para comenzar con la obra requerimos entre tres y cinco números telefónicos con la aplicación Whats app de miembros o colaboradores que sean elegidos por Unplace. Como modo de precaución y para que los archivos lleguen correctamente a ustedes, simultáneamente los enviaremos vía telefónica como así también a la dirección de e-mail que ustedes nos habiliten.",
+    "ano": "2011",
+    "descricao": "Tiempo de Papayas es una plataforma de investigación, re-significación y difusión de diferentes manifestaciones poéticas en un determinado tiempo/espacio. Durante este año el proyecto fue creciendo al compartir la experiencia con varios artistas que se sumaron a la plataforma ( poetas, músicos, bailarines, artistas plásticos, performers) con el objetivo de rescatar la “voz”, la “esencia”, el “tono” del contexto en cada uno de los espacios visitados del proyecto, generando nuestros propios “paisajes” dentro de esos paisajes que percibimos (geografías, geometrías, los acentos, hábitos y costumbres, circulaciones y dinámicas de cada región).",
+    "www": "http://www.unplace.org",
     "imagens": ["main.jpg"]
 }
