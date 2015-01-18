@@ -331,8 +331,53 @@ function createProjectDescriptionDiv(obj) {
         });
     }
 
+    var pShare = $("<div/>", {
+        class: "gbnt-buttons"
+    }).appendTo(divProject);
 
+    pShare.append($("<div/>", {
+        text: "Share"
+    }));
 
+    //twitter icon
+    var pHrefIcon = $("<a/>", {
+        href: "#",
+        title: "twitter"
+    }).appendTo(pShare);
+
+    var pIcon = $("<i/>", {
+        class: "circular black twitter icon"
+    }).appendTo(pHrefIcon);
+
+    //email icon
+    pHrefIcon = $("<a/>", {
+        href: "#",
+        title: "email"
+    }).appendTo(pShare);
+
+    pIcon = $("<i/>", {
+        class: "circular black mail icon"
+    }).appendTo(pHrefIcon);
+
+    //facebook icon
+    pHrefIcon = $("<a/>", {
+        href: "#",
+        title: "facebook"
+    }).appendTo(pShare);
+
+    pIcon = $("<i/>", {
+        class: "circular black facebook icon"
+    }).appendTo(pHrefIcon);
+
+    //pinterest icon
+    pHrefIcon = $("<a/>", {
+        href: "#",
+        title: "pinterest"
+    }).appendTo(pShare);
+
+    pIcon = $("<i/>", {
+        class: "circular black pinterest icon"
+    }).appendTo(pHrefIcon);
 
     var pText = $("<p/>", {
         text: obj.descricao

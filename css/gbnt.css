@@ -60,7 +60,7 @@ body {
     margin-left: 10px;
 }
 #mainContainer {
-    top: 55px;
+    top: 90px;
 }
 .gbnt-btn {
     z-index: -1;
@@ -149,6 +149,13 @@ div[id^=overlay] .autor {
     font-family: Helvetica;
     font-weight: 900;
     font-size: 96 px;
+}
+.gbnt-buttons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.gbnt-buttons i:hover {
+    color: #ddd !important;
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /*@media all and (min-width: 610px) {*/
