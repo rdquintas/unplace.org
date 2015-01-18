@@ -210,4 +210,7 @@ div[id^=overlay] .autor {
     #gbnt-list .title {
         font-size: 45px !important;
     }
+    #gbnt-list .author {
+        margin-right: 5px;
+    }
 }
