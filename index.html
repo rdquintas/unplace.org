@@ -14,43 +14,51 @@
     <div id="preloader">
         <img src="img/preloader.gif">
     </div>
-    <div id="header">
-
+    <div id="gbnt-header">
         <div class="ui two column grid">
             <div class="column">
                 <img src="img/logo.jpg">
             </div>
             <div class="column right aligned">
-                <a href="#"><i class="grid layout icon big inverted gbnt-link"></i></a>
-                <a href="#"><i class="content layout icon big inverted gbnt-link"></i></a>
-                <a href="#" class="gbnt-language">pt</a>
-            </div>
-        </div>
-
-
-        <div class="ui modal">
-            <div class="header">
-                Este link ainda nao está activo.
-            </div>
-            <div class="content">
-                <div class="description big">
-                    No futuro, ao clicarmos nos links de idioma, o site será traduzido automaticamente.
+                <div><i class="grid layout icon big inverted gbnt-link selected"></i>
+                </div>
+                <div><a href="grid.html"><i class="content layout icon big inverted gbnt-link"></i></a>
+                </div>
+                <div><a href="#" class="gbnt-language">pt</a>
                 </div>
             </div>
-            <div class="actions">
-                <div class="ui button">OK</div>
-            </div>
         </div>
+    </div>
+    <div <div class="ui modal">
+        <div class="header">
+            <p>Este link ainda nao está activo.</p>
+            <p>No futuro, ao clicarmos nos links de idioma, o site será traduzido automaticamente.</p>
+        </div>
+        <div class="actions">
+            <div class="ui big button">OK</div>
+        </div>
+    </div>
 
-        <div id="gbnt-show-proj" class="ui page dimmer">
-            <div class="content">
-                <div class="center">
+    <div id="gbnt-show-proj" class="ui page dimmer">
+        <div class="content">
+            <div class="ui column centered grid">
+                <div class="one column wide">
                     <div id="btn-prev" class="ui button">Previous</div>
-                    <div>bbb</div>
+                </div>
+                <div class="twelve column wide">
+                    <div id="gbnt-slide"></div>
+                </div>
+                <div class="one column wide">
                     <div id="btn-next" class="ui button">Next</div>
                 </div>
             </div>
         </div>
+
+        <!--  <div class="center">
+                <div id="btn-prev" class="ui button">Previous</div>
+                <div id="gbnt-slide"></div>
+                <div id="btn-next" class="ui button">Next</div>
+            </div> -->
     </div>
     <div id="mainContainer" class="gbnt-hide packery">
     </div>

@@ -1,7 +1,17 @@
-var _iv_normal = 85; // random percent for NORMAL squares
+var _iv_normal = 80; // random percent for NORMAL squares
 var _iv_tall = 10; // random percent for TALL squares
-var _iv_wide = 5; // random percent for WIDE squares
+var _iv_wide = 10; // random percent for WIDE squares
 
+var _slideArray = [{
+    image: "slide01.jpg"
+}, {
+    image: "slide02.jpg"
+}, {
+    video: "123123132"
+}, {
+    image: "slide03.jpg"
+}, ];
+var _currentSlide = 0;
 var _projectsList = [];
 var _currentOpenDiv = null;
 
@@ -12,9 +22,101 @@ _dfd.done(createHTML);
 docReady(function() {
     // readInputValues();
     prepareData();
+
     $('.gbnt-language').on("click", function() {
         $('.ui.modal').modal('show');
     });
+
+    $('#btn-prev').on("click", function() {
+
+        window._currentSlide -= 1;
+        if (window._currentSlide < 0) {
+            window._currentSlide = window._slideArray.length - 1;
+        }
+
+        $.each(window._slideArray[window._currentSlide], function(key, element) {
+            var slide = $('#gbnt-slide');
+            slide.empty();
+
+            if (key === "image") {
+                var img = $("<img/>", {
+                    class: "ui big rounded image centered",
+                    src: "img/slides/" + element
+                }).appendTo(slide);
+            } else {
+                var vid = $("<iframe/>", {
+                    class: "ui centered",
+                    width: "854",
+                    height: "510",
+                    src: "//www.youtube.com/embed/uDuzy-t7GDA",
+                    frameborder: "0"
+                }).appendTo(slide);
+                // var vid = $("<div/>", {
+                //     id: "gbnt-video",
+                //     class: "ui video centered",
+                //     "data-source": "youtube",
+                //     "data-id": "uDuzy-t7GDA",
+                //     "data-image": "/img/slides/slide04.jpg"
+                // }).appendTo(slide);
+
+                // vid.video();
+            }
+        });
+
+
+    });
+
+    $('#btn-next').on("click", function() {
+
+        window._currentSlide += 1;
+        if (window._currentSlide >= window._slideArray.length) {
+            window._currentSlide = 0;
+        }
+
+        $.each(window._slideArray[window._currentSlide], function(key, element) {
+            var slide = $('#gbnt-slide');
+            slide.empty();
+
+            if (key === "image") {
+                var img = $("<img/>", {
+                    class: "ui big rounded image centered",
+                    src: "img/slides/" + element
+                }).appendTo(slide);
+            } else {
+                var vid = $("<iframe/>", {
+                    class: "ui centered",
+                    width: "854",
+                    height: "510",
+                    src: "//www.youtube.com/embed/uDuzy-t7GDA",
+                    frameborder: "0"
+                }).appendTo(slide);
+
+
+
+                // var vid = $("<div/>", {
+                //     class: "ui video centered",
+                //     "data-source": "youtube",
+                //     "data-id": "uDuzy-t7GDA",
+                //     "data-image": "/img/slides/slide04.jpg"
+                // }).appendTo(slide);
+
+                // vid.video();
+
+            }
+        });
+
+    });
+
+    // var slide = $('#gbnt-slide');
+    //          slide.empty();
+    //          window._currentSlide = 0;
+
+    //          var img = $("<img/>", {
+    //              class: "ui medium rounded image centered",
+    //              src: "img/slides/" + window._slideArray[window._currentSlide].image
+    //          }).appendTo(slide);
+
+
 });
 
 function prepareData() {
@@ -181,10 +283,15 @@ function createProjectDescriptionDiv(obj) {
 
     });
 
+    var alink = $("<a/>", {
+        href: "#"
+    }).appendTo(segment);
+    alink.css("color", "black");
+
     var close = $("<i/>", {
         id: "close",
         class: "remove icon big gbnt-close"
-    }).appendTo(segment);
+    }).appendTo(alink);
 
     // DIV para o projecto ==========================
     var divProject = $("<div/>", {
@@ -211,8 +318,15 @@ function createProjectDescriptionDiv(obj) {
 
     if (obj.id === "26" || obj.id === "6") {
         btnViewProj.on('click', function(event) {
-            // var url = $(this).attr('data-gbnt-url');
-            // window.open("http://www.yahoo.com", '_blank');
+            var slide = $('#gbnt-slide');
+            slide.empty();
+            window._currentSlide = 0;
+
+            var img = $("<img/>", {
+                class: "ui big rounded image centered",
+                src: "img/slides/" + window._slideArray[window._currentSlide].image
+            }).appendTo(slide);
+
             $('#gbnt-show-proj').dimmer('show');
 
         });
@@ -313,7 +427,7 @@ function initializePackery() {
             });
         } else {
             $('html, body').animate({
-                scrollTop: $target.position().top + 40
+                scrollTop: $target.position().top - 10
             }, 500);
             $container.packery({
                 gutter: 10
