@@ -306,20 +306,20 @@ function createProjectDescriptionDiv(obj) {
 
     if (obj.id === "26" || obj.id === "6") {
         btnViewProj.on('click', function(event) {
-            // var slide = $('#gbnt-slide');
-            // slide.empty();
-            // window._currentSlide = 0;
+            var slide = $('#gbnt-slide');
+            slide.empty();
+            window._currentSlide = 0;
 
-            // var img = $("<img/>", {
-            //     class: "ui big rounded image centered",
-            //     src: "img/slides/" + window._slideArray[window._currentSlide].image
-            // }).appendTo(slide);
+            var img = $("<img/>", {
+                class: "ui big rounded image centered",
+                src: "img/slides/" + window._slideArray[window._currentSlide].image
+            }).appendTo(slide);
           
-            $('#gbnt-show-proj').dimmer('show');
-              $('.bxslider').bxSlider({
-                mode: 'fade',
-                captions: true
-            });
+            // $('#gbnt-show-proj').dimmer('show');
+            //   $('.bxslider').bxSlider({
+            //     mode: 'fade',
+            //     captions: true
+            // });
 
         });
     } else {
