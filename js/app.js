@@ -44,22 +44,22 @@ docReady(function() {
                     src: "img/slides/" + element
                 }).appendTo(slide);
             } else {
-                var vid = $("<iframe/>", {
-                    class: "ui centered",
-                    width: "854",
-                    height: "510",
-                    src: "//www.youtube.com/embed/uDuzy-t7GDA",
-                    frameborder: "0"
-                }).appendTo(slide);
-                // var vid = $("<div/>", {
-                //     id: "gbnt-video",
-                //     class: "ui video centered",
-                //     "data-source": "youtube",
-                //     "data-id": "uDuzy-t7GDA",
-                //     "data-image": "/img/slides/slide04.jpg"
+                // var vid = $("<iframe/>", {
+                //     class: "ui centered",
+                //     width: "854",
+                //     height: "510",
+                //     src: "//www.youtube.com/embed/uDuzy-t7GDA",
+                //     frameborder: "0"
                 // }).appendTo(slide);
+                var vid = $("<div/>", {
+                    id: "gbnt-video",
+                    class: "ui video centered",
+                    "data-source": "youtube",
+                    "data-id": "uDuzy-t7GDA",
+                    "data-image": "/img/slides/slide04.jpg"
+                }).appendTo(slide);
 
-                // vid.video();
+                vid.video();
             }
         });
 
@@ -83,40 +83,28 @@ docReady(function() {
                     src: "img/slides/" + element
                 }).appendTo(slide);
             } else {
-                var vid = $("<iframe/>", {
-                    class: "ui centered",
-                    width: "854",
-                    height: "510",
-                    src: "//www.youtube.com/embed/uDuzy-t7GDA",
-                    frameborder: "0"
-                }).appendTo(slide);
-
-
-
-                // var vid = $("<div/>", {
-                //     class: "ui video centered",
-                //     "data-source": "youtube",
-                //     "data-id": "uDuzy-t7GDA",
-                //     "data-image": "/img/slides/slide04.jpg"
+                // var vid = $("<iframe/>", {
+                //     class: "ui centered",
+                //     width: "854",
+                //     height: "510",
+                //     src: "//www.youtube.com/embed/uDuzy-t7GDA",
+                //     frameborder: "0"
                 // }).appendTo(slide);
 
-                // vid.video();
+
+
+                var vid = $("<div/>", {
+                    class: "ui video centered",
+                    "data-source": "youtube",
+                    "data-id": "uDuzy-t7GDA",
+                    "data-image": "/img/slides/slide04.jpg"
+                }).appendTo(slide);
+
+                vid.video();
 
             }
         });
-
     });
-
-    // var slide = $('#gbnt-slide');
-    //          slide.empty();
-    //          window._currentSlide = 0;
-
-    //          var img = $("<img/>", {
-    //              class: "ui medium rounded image centered",
-    //              src: "img/slides/" + window._slideArray[window._currentSlide].image
-    //          }).appendTo(slide);
-
-
 });
 
 function prepareData() {
