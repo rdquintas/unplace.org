@@ -149,7 +149,6 @@ div[id^=overlay] .autor {
     font-weight: 900;
     font-size: 96 px;
 }
-
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /*@media all and (min-width: 610px) {*/
     
@@ -204,5 +203,11 @@ div[id^=overlay] .autor {
     }
     .gbnt-link {
         font-size: 75px !important;
+    }
+    #gbnt-list p {
+        font-size: 45px !important;
+    }
+    #gbnt-list .title {
+        font-size: 45px !important;
     }
 }
