@@ -314,8 +314,10 @@ function createProjectDescriptionDiv(obj) {
                 class: "ui big rounded image centered",
                 src: "img/slides/" + window._slideArray[window._currentSlide].image
             }).appendTo(slide);
-          
-            // $('#gbnt-show-proj').dimmer('show');
+
+            //zrq
+
+            $('#gbnt-show-proj').dimmer('show');
             //   $('.bxslider').bxSlider({
             //     mode: 'fade',
             //     captions: true
