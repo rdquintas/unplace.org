@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+<head>
+    <title>ADMIN unplace.org // GBNT</title>
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/semantic.min.js"></script>
+</head>
+
+<body>
+
+    <section id="gbnt-form">
+        <form class="ui form">
+            <div>
+                <input type="file" id="gbnt-input" multiple="multiple" name="file[]" style="visibility:hidden;">
+            </div>
+            <div class="ui stackable two column grid">
+                <!-- ============================= PROJECTO -->
+
+                <div class="column">
+                    <h2 class="ui dividing header">Informação do Projecto</h2>
+                    <div class="field  wide required">
+                        <label>Nome do Projecto</label>
+                        <div class="field">
+                            <input id="titulo" type="text" name="first-name">
+                        </div>
+                    </div>
+
+                    <div class="field"></div>
+
+                    <div class="field  wide required">
+                        <label>Descrição do Projecto</label>
+                        <textarea id="descricao"></textarea>
+                    </div>
+
+                    <div class="field  wide">
+                        <label>URL do Projecto</label>
+                        <div class="field">
+                            <input id="www" type="text" name="first-name" placeholder="http://...">
+                        </div>
+                    </div>
+
+                    <div class="field two wide required">
+                        <label>Ano do Projecto</label>
+                        <div class="field">
+                            <input id="ano" type="text" name="first-name">
+                        </div>
+                    </div>
+
+                    <div id="gbnt-btn-upload" class="ui tiny submit button ">Escolher imagens</div>
+                    <div id="imagens" style="margin-top:15px"></div>
+
+
+                </div>
+
+                <!-- ============================= AUTOR -->
+                <div class="column">
+                    <h2 class="ui dividing header">Informação do Autor</h2>
+                    <div class="field  wide required">
+                        <label>Nome do Autor</label>
+                        <div class="field">
+                            <input id="autor" type="text" name="first-name">
+                        </div>
+                    </div>
+
+                    <div class="field"></div>
+
+                    <div class="field  wide required">
+                        <label>Bio do Autor</label>
+                        <textarea id="autorBio"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="field"></div>
+            <hr>
+            <div id="gbnt-btn-criar" class="ui submit blue button left floated">Criar Ficheiro</div>
+        </form>
+    </section>
+    <link rel=stylesheet href="css/semantic.min.css">
+    <style type="text/css">
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    body {
+        max-width: 100%;
+        overflow-y: scroll;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+    #gbnt-form {
+        margin: 5%;
+    }
+    </style>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        $('#gbnt-btn-criar').click(function() {
+
+            var file = criarFile();
+            var pom = document.createElement('a');
+            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
+            pom.setAttribute('download', "sumario.json");
+            pom.click();
+        });
+
+        $('#gbnt-btn-upload').click(function() {
+            $("#gbnt-input").click();
+            return false;
+        });
+
+        $('input[type=file]').change(function() {
+            var imagens = $('#gbnt-input')[0].files;
+            var listDiv = $("#imagens");
+
+            listDiv.empty();
+
+            for (var i = 0; i < imagens.length; i++) {
+                listDiv.append("<p style='margin:0; padding:0; font-size: 12px; color: red'>" + imagens[i].name + "</p>");
+            }
+        });
+
+    });
+
+    function criarFile() {
+        var obj = {};
+
+        obj.titulo = $("#titulo").val();
+        obj.autor = $("#autor").val();
+        obj.autorBio = $("#autorBio").val();
+        obj.descricao = $("#descricao").val();
+        obj.www = $("#www").val();
+        obj.imagens = [];
+
+        var imgDiv = $("#imagens");
+
+        $.each(imgDiv[0].childNodes, function(key, value) {
+            obj.imagens.push(value.innerHTML);
+        });
+
+        return obj;
+    }
+    </script>
+</body>
+
+</html>
