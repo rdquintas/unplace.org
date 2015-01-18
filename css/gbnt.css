@@ -157,9 +157,23 @@ div[id^=overlay] .autor {
 .gbnt-buttons i:hover {
     color: #ddd !important;
 }
+#gbnt-list {
+    margin-top: 80px;
+}
+#gbnt-list .author {
+    margin-right: 2%;
+    color: #000 !important;
+}
+#gbnt-list .project {
+    color: #000 !important;
+}
+#gbnt-list .title:hover {
+    background-color: #ccc;
+    color: #fff !important;
+}
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    /*@media all and (min-width: 610px) {*/
-    
+
+/*@media all and (min-width: 610px) {*/
     #gbnt-header {
         position: fixed;
         height: 160px;
@@ -223,5 +237,11 @@ div[id^=overlay] .autor {
     }
     #gbnt-list {
         margin-top: 180px;
+    }
+    .gbnt-buttons i {
+        font-size: 45px;
+    }
+    .gbnt-buttons div {
+        font-size: 45px;
     }
 }
