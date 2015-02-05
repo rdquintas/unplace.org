@@ -1,0 +1,247 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    max-width: 100%;
+    overflow-y: scroll;
+    margin: 0 auto;
+    background-color: #fff;
+}
+.packery {
+    background: #fff;
+    /*max-width: 1200px;*/
+    /*margin: 0 auto;*/
+}
+/* clearfix */
+
+.packery:after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+#preloader {
+    margin-top: 15%;
+    text-align: center;
+}
+#gbnt-header {
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+}
+#gbnt-header .gbnt-link:hover {
+    color: #ccc;
+}
+#gbnt-header .column .right {
+    margin-top: 25px;
+}
+#gbnt-header .column .right div {
+    display: inline;
+    margin-right: 20px;
+}
+.selected {
+    color: #414141 !important;
+}
+#gbnt-header .gbnt-language {
+    margin-right: 30px;
+    color: #fff;
+}
+#gbnt-header .gbnt-language:hover {
+    color: #ccc;
+}
+#gbnt-header img {
+    float: left;
+    height: 65px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+#mainContainer {
+    top: 90px;
+}
+.gbnt-btn {
+    z-index: -1;
+}
+.gbnt-disabled {
+    background: rgba(0, 0, 0, .80);
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+.gbnt-btn-view-proj {
+    margin: 10px 0 10px 0 !important;
+}
+.gbnt-hide {
+    display: none;
+}
+.gbnt-margin-0 {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.gbnt-close {
+    z-index: -1;
+    /*pointer-events: pointer !important;*/
+    
+    float: right;
+    margin-top: 4px !important;
+}
+.gbnt-close:hover {
+    color: #ccc;
+}
+.gbnt-no-bckgr-img {
+    background-image: none !important;
+    border: 1px solid #ccc;
+}
+.gbnt-size-normal {
+    width: 150px;
+    height: 150px;
+}
+.gbnt-size-wide {
+    width: 310px;
+    height: 150px;
+}
+.gbnt-size-tall {
+    width: 150px;
+    height: 310px;
+}
+.gbnt-size-selected {
+    width: 470px;
+    height: 470px;
+}
+.gbnt-item {
+    float: left;
+}
+.gbnt-item img {
+    width: 100%;
+    display: block;
+}
+.gbnt-item:hover div[id^=overlay] {
+    pointer-events: pointer;
+    opacity: 1;
+}
+div[id^=overlay] {
+    background: rgba(0, 0, 0, .75);
+    opacity: 0;
+    -webkit-transition: opacity.25s ease;
+    -moz-transition: opacity.25s ease;
+}
+div[id^=overlay] .textbox {
+    padding: 10px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
+div[id^=overlay] p {
+    margin: 0;
+}
+div[id^=overlay] .titulo {
+    color: #fff;
+    font-family: Helvetica;
+    font-size: 96 px;
+}
+div[id^=overlay] .autor {
+    color: #fff;
+    font-family: Helvetica;
+    font-weight: 900;
+    font-size: 96 px;
+}
+.gbnt-buttons {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.gbnt-buttons i:hover {
+    color: #ddd !important;
+}
+#gbnt-list {
+    margin-top: 80px;
+}
+#gbnt-list .author {
+    margin-right: 2%;
+    color: #000 !important;
+}
+#gbnt-list .project {
+    color: #000 !important;
+}
+#gbnt-list .title:hover {
+    background-color: #ccc;
+    color: #fff !important;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+
+/*@media all and (min-width: 610px) {*/
+    #gbnt-header {
+        position: fixed;
+        height: 160px;
+    }
+    #gbnt-header img {
+        height: 120px;
+        margin-top: 10px;
+    }
+    #gbnt-header .column .right {
+        margin-top: 25px;
+    }
+    #gbnt-header .column .right div {
+        margin-right: 60px;
+    }
+    #gbnt-header .column .gbnt-language {
+        margin-top: 25px;
+        font-size: 50px;
+    }
+    #mainContainer {
+        top: 180px;
+    }
+    .gbnt-size-normal {
+        width: 300px;
+        height: 300px;
+    }
+    .gbnt-size-wide {
+        width: 620px;
+        height: 300px;
+    }
+    .gbnt-size-tall {
+        width: 300px;
+        height: 620px;
+    }
+    .gbnt-size-selected {
+        width: 940px;
+        height: 940px;
+    }
+    .ui .header {
+        font-size: 60px !important;
+    }
+    div[id^=desc_box] p {
+        font-size: 45px !important;
+    }
+    div[id^=btn] {
+        font-size: 35px !important;
+    }
+    .gbnt-close {
+        font-size: 75px !important;
+    }
+    .gbnt-link {
+        font-size: 75px !important;
+    }
+    #gbnt-list p {
+        font-size: 45px !important;
+    }
+    #gbnt-list .title {
+        font-size: 45px !important;
+    }
+    #gbnt-list .author {
+        margin-right: 5px;
+    }
+    #gbnt-list {
+        margin-top: 180px;
+    }
+    .gbnt-buttons i {
+        font-size: 45px;
+    }
+    .gbnt-buttons div {
+        font-size: 45px;
+    }
+}

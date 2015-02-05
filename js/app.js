@@ -2,6 +2,10 @@ var _iv_normal = 80; // random percent for NORMAL squares
 var _iv_tall = 10; // random percent for TALL squares
 var _iv_wide = 10; // random percent for WIDE squares
 
+// Handlebar precompiling
+var _source = $("#gbnt-template").html();
+var _template = Handlebars.compile(_source);
+
 var _slideArray = [{
     image: "slide01.jpg"
 }, {
@@ -15,134 +19,57 @@ var _currentSlide = 0;
 var _projectsList = [];
 var _currentOpenDiv = null;
 
-// Create a deferred object
-var _dfd = $.Deferred();
-_dfd.done(createHTML);
 
-docReady(function() {
-    // readInputValues();
+$(document).ready(function() {
     prepareData();
-
-    $('.gbnt-language').on("click", function() {
-        $('.ui.modal').modal('show');
-    });
-
-    $('#btn-prev').on("click", function() {
-
-        window._currentSlide -= 1;
-        if (window._currentSlide < 0) {
-            window._currentSlide = window._slideArray.length - 1;
-        }
-
-        $.each(window._slideArray[window._currentSlide], function(key, element) {
-            var slide = $('#gbnt-slide');
-            slide.empty();
-
-            if (key === "image") {
-                var img = $("<img/>", {
-                    class: "ui big rounded image centered",
-                    src: "img/slides/" + element
-                }).appendTo(slide);
-            } else {
-                // var vid = $("<iframe/>", {
-                //     class: "ui centered",
-                //     width: "854",
-                //     height: "510",
-                //     src: "//www.youtube.com/embed/uDuzy-t7GDA",
-                //     frameborder: "0"
-                // }).appendTo(slide);
-                var vid = $("<div/>", {
-                    id: "gbnt-video",
-                    class: "ui video centered",
-                    "data-source": "youtube",
-                    "data-id": "uDuzy-t7GDA",
-                    "data-image": "/img/slides/slide04.jpg"
-                }).appendTo(slide);
-
-                vid.video();
-            }
-        });
-
-
-    });
-
-    $('#btn-next').on("click", function() {
-
-        window._currentSlide += 1;
-        if (window._currentSlide >= window._slideArray.length) {
-            window._currentSlide = 0;
-        }
-
-        $.each(window._slideArray[window._currentSlide], function(key, element) {
-            var slide = $('#gbnt-slide');
-            slide.empty();
-
-            if (key === "image") {
-                var img = $("<img/>", {
-                    class: "ui big rounded image centered",
-                    src: "img/slides/" + element
-                }).appendTo(slide);
-            } else {
-                // var vid = $("<iframe/>", {
-                //     class: "ui centered",
-                //     width: "854",
-                //     height: "510",
-                //     src: "//www.youtube.com/embed/uDuzy-t7GDA",
-                //     frameborder: "0"
-                // }).appendTo(slide);
-
-
-
-                var vid = $("<div/>", {
-                    class: "ui video centered",
-                    "data-source": "youtube",
-                    "data-id": "uDuzy-t7GDA",
-                    "data-image": "/img/slides/slide04.jpg"
-                }).appendTo(slide);
-
-                vid.video();
-
-            }
-        });
-    });
+    // $('.gbnt-language').on("click", function() {
+    //     $('.ui.modal').modal('show');
+    // });
 });
+
 
 function prepareData() {
     $.get("projectos/lista_dos_projectos.txt", function(data) {
         _projectsList = data.split(",");
+        var counter = 0;
         for (var i = 0; i < _projectsList.length; i++) {
-            createObject(_projectsList[i]);
+            counter += 1;
+            if (counter > 36) {
+                counter = 1;
+            }
+            createObject(_projectsList[i], counter);
         }
     });
 }
 
 function checkAllDone(projID) {
-    var doResolve = true;
+    var yesWeAreReady = true;
     for (var i = 0; i < window._projectsList.length; i++) {
         if (projID === window._projectsList[i]) {
-            window._projectsList[i] = null;
+            window._projectsList.splice(i, 1);
             break;
         }
     }
 
     for (var ii = 0; ii < window._projectsList.length; ii++) {
-        if (!isNaN(window._projectsList[ii]) && typeof window._projectsList[ii] !== "object") {
-            doResolve = false;
+        if (typeof window._projectsList[ii] === "string") {
+            yesWeAreReady = false;
             break;
         }
     }
 
-    if (doResolve) {
+    if (yesWeAreReady) {
         // Let's party
-        window._dfd.resolve();
+        createHTML();
     }
 
 }
 
-function createObject(projectID) {
+function createObject(projectID, coverID) {
     $.get("projectos/" + projectID + "/sumario.json", function(sumario) {
         sumario.id = this.url.split("/")[1];
-        sumario.img = sumario.imagens[Math.floor(Math.random() * sumario.imagens.length)];
+        sumario.img = "projectos/" + sumario.id + "/" + sumario.imagens[Math.floor(Math.random() * sumario.imagens.length)];
+        sumario.img_cover = "img/covers/" + coverID + ".jpg";
         window._projectsList.push(sumario);
         checkAllDone(sumario.id);
     }).fail(function() {
@@ -152,10 +79,17 @@ function createObject(projectID) {
 }
 
 function createHTML() {
-    createTheDivs();
-    randomizeDIVs();
-    initializePackery();
+    var data = {
+        project: window._projectsList
+    };
+
+    $('#gbnt-container').append(window._template(data));
+    // createTheDivs();
+    // randomizeDIVs();
+    // initializePackery();
 }
+
+
 
 function createTheDivs() {
     var mainContainer = $("#mainContainer");

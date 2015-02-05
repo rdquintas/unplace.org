@@ -1,2 +1,2 @@
 # unplace.org
-Prototype for GBNT
+Version 2 - Prototype for GBNT
