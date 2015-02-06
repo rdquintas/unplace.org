@@ -66,12 +66,13 @@ function checkAllDone(projID) {
 }
 
 function createObject(projectID, coverID) {
-    $.get("projectos/" + projectID + "/sumario.json", function(sumario) {
-        sumario.id = this.url.split("/")[1];
-        sumario.img = "projectos/" + sumario.id + "/" + sumario.imagens[Math.floor(Math.random() * sumario.imagens.length)];
-        sumario.img_cover = "img/covers/" + coverID + ".jpg";
-        window._projectsList.push(sumario);
-        checkAllDone(sumario.id);
+    $.get("projectos/" + projectID + "/sumario.json", function(singleProject) {
+        singleProject.id = this.url.split("/")[1];
+        singleProject.img = "projectos/" + singleProject.id + "/" + singleProject.imagens[Math.floor(Math.random() * singleProject.imagens.length)];
+        singleProject.img_cover = "img/covers/" + coverID + ".jpg";
+        singleProject.size_class = getSize();
+        window._projectsList.push(singleProject);
+        checkAllDone(singleProject.id);
     }).fail(function() {
         var tmpID = this.url.split("/")[1];
         checkAllDone(tmpID);
@@ -83,11 +84,32 @@ function createHTML() {
         project: window._projectsList
     };
 
-    $('#gbnt-container').append(window._template(data));
+    $('#mainContainer').append(window._template(data));
     // createTheDivs();
     // randomizeDIVs();
-    // initializePackery();
+    initializePackery();
 }
+
+
+function getSize() {
+    var rnd = Math.floor((Math.random() * 100) + 1);
+    var boxSize = "size-normal";
+
+    if (rnd >= 0 && rnd < this._iv_normal) {
+        boxSize = "size-normal";
+    }
+
+    if (rnd >= this._iv_normal && rnd < this._iv_normal + this._iv_wide) {
+        boxSize = "size-wide";
+    }
+
+    if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
+        boxSize = "size-tall";
+    }
+
+    return boxSize;
+}
+
 
 
 
@@ -350,8 +372,7 @@ function randomizeDIVs() {
 function initializePackery() {
 
     // Remove preloader
-    $('#preloader').addClass("gbnt-hide");
-    $('#mainContainer').removeClass("gbnt-hide");
+    $('.preloader').addClass("gbnt-hide");
 
     var $container = $('.packery').packery();
 

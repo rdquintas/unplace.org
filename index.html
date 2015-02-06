@@ -11,22 +11,25 @@
 
 <body>
 
+
     <script id="gbnt-template" type="text/x-handlebars-template">
         {{#each project}}
-        <div class="entry">
+        <div style="background: url(http://localhost:8080/projectos/{{id}}/main.jpg);">
             <h4>{{autor}} - {{id}}</h4>
         </div>
+
         {{/each}}
     </script>
 
-    <div id="preloader" class=".hide">
-        <img src="./unplace.org    GBNT_files/preloader.gif">
+    <div class="preloader">
+        <img src="img/preloader.gif">
     </div>
 
     <section id="gbnt-header">
 
     </section>
-    <section id="gbnt-container">
+
+    <section id="mainContainer" class="packery">
 
     </section>
 
@@ -36,6 +39,7 @@
     <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
     <script type="text/javascript" src="js/packery.pkgd.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
+
 </body>
 
 </html>

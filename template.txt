@@ -1,0 +1,30 @@
+
+  <div id="box_10" class="gbnt-item gbnt-size-normal" style="background: url(projectos/10
+/main.png);">
+            <div class="gbnt-disabled gbnt-hide"></div>
+            <div id="overlay_10" class="gbnt-size-normal">
+                <a href="http://localhost:8080/#" class="textbox">
+                    <p class="titulo">Standing by Hubbub</p>
+                    <p class="autor">Alper Cugun</p>
+                </a>
+            </div>
+            <div id="desc_box_10" class="gbnt-hide">
+                <div class="ui segment">
+                    <div id="btn-project" class="ui black button gbnt-btn">Project Description</div>
+                    <div id="btn-author" class="ui basic button gbnt-btn">Author</div><a href="http://localhost:8080/#" style="color: black;"><i id="close" class="remove icon big gbnt-close"></i></a>
+                </div>
+                <div id="project" class="ui basic segment">
+                    <p class="gbnt-margin-0">year: 2014</p>
+                    <h1 class="ui header gbnt-margin-0">Standing by Hubbub</h1>
+                    <div id="btn-view-proj" data-gbnt-url="http://www.getstanding.com" class="ui basic button gbnt-btn-view-proj">View Project</div>
+                    <div class="gbnt-buttons">
+                        <div>Share</div><a href="http://localhost:8080/#" title="twitter"><i class="circular black twitter icon"></i></a><a href="http://localhost:8080/#" title="email"><i class="circular black mail icon"></i></a><a href="http://localhost:8080/#" title="facebook"><i class="circular black facebook icon"></i></a><a href="http://localhost:8080/#" title="pinterest"><i class="circular black pinterest icon"></i></a>
+                    </div>
+                    <p>Standing is an app for playful activism. With Standing, you can stand still for a cause of your choosing in whatever place you feel is suitable. The app records how long and where you are standing and shares it live on the accompanying website. Once you have finished, your act is turned into a lasting record, which you can share as proof of your commitment to the cause!</p>
+                </div>
+                <div id="author" class="ui basic segment gbnt-hide">
+                    <h1 class="ui header gbnt-margin-0">Alper Cugun</h1>
+                    <p style="margin-top: 20px;">Hubbub is a playful design studio based in Utrecht and Berlin. Hubbub makes things with which people can have fun, express themselves and gain a better understanding of the world.</p>
+                </div>
+            </div>
+        </div>
