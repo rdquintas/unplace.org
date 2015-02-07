@@ -61,6 +61,8 @@ function checkAllDone(projID) {
     if (yesWeAreReady) {
         // Let's party
         createHTML();
+        randomizeDIVs();
+        initializePackery();
     }
 
 }
@@ -68,7 +70,7 @@ function checkAllDone(projID) {
 function createObject(projectID, coverID) {
     $.get("projectos/" + projectID + "/sumario.json", function(singleProject) {
         singleProject.id = this.url.split("/")[1];
-        singleProject.img = "projectos/" + singleProject.id + "/" + singleProject.imagens[Math.floor(Math.random() * singleProject.imagens.length)];
+        singleProject.img = singleProject.imagens[Math.floor(Math.random() * singleProject.imagens.length)];
         singleProject.img_cover = "img/covers/" + coverID + ".jpg";
         singleProject.size_class = getSize();
         window._projectsList.push(singleProject);
@@ -83,101 +85,43 @@ function createHTML() {
     var data = {
         project: window._projectsList
     };
-
     $('#mainContainer').append(window._template(data));
-    // createTheDivs();
-    // randomizeDIVs();
-    initializePackery();
 }
 
 
 function getSize() {
     var rnd = Math.floor((Math.random() * 100) + 1);
-    var boxSize = "size-normal";
+    var boxSize = "gbnt-size-normal";
 
     if (rnd >= 0 && rnd < this._iv_normal) {
-        boxSize = "size-normal";
+        boxSize = "gbnt-size-normal";
     }
 
     if (rnd >= this._iv_normal && rnd < this._iv_normal + this._iv_wide) {
-        boxSize = "size-wide";
+        boxSize = "gbnt-size-wide";
     }
 
     if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
-        boxSize = "size-tall";
+        boxSize = "gbnt-size-tall";
     }
 
     return boxSize;
 }
 
+// Handlebars.registerHelper('getBackgroundUrl', function(projectID, image) {
+//     var str = "background: url(projectos/" + projectID + "/" + image + ");";
+//     return str;
+// });
 
+Handlebars.registerHelper('getCoverImage', function(img) {
+    var str = "background: url(" + img + ");";
+    return str;
+});
 
-
-function createTheDivs() {
-    var mainContainer = $("#mainContainer");
-
-    var rnd = Math.floor((Math.random() * 100) + 1);
-    var boxSize = "gbnt-size-normal";
-
-    for (var i = 0; i < window._projectsList.length; i++) {
-        if (window._projectsList[i]) {
-
-            rnd = Math.floor((Math.random() * 100) + 1);
-
-            if (rnd >= 0 && rnd < this._iv_normal) {
-                boxSize = "gbnt-size-normal";
-            }
-
-            if (rnd >= this._iv_normal && rnd < this._iv_normal + this._iv_wide) {
-                boxSize = "gbnt-size-wide";
-            }
-
-            if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
-                boxSize = "gbnt-size-tall";
-            }
-            mainContainer.append(singleDiv(boxSize, window._projectsList[i]));
-        }
-    }
-}
-
-function singleDiv(cssClass, obj) {
-
-    var divBox = $("<div/>", {
-        id: "box_" + obj.id,
-        class: "gbnt-item " + cssClass
-    });
-
-    var imgURL = "url(projectos/" + obj.id + "/" + obj.img + ")";
-    divBox.css("background", imgURL);
-
-    var disabled = $("<div/>", {
-        class: "gbnt-disabled gbnt-hide"
-    }).appendTo(divBox);
-
-    var overlay = $("<div/>", {
-        id: "overlay_" + obj.id,
-        class: cssClass
-    }).appendTo(divBox);
-
-    var a = $("<a/>", {
-        href: "#",
-        class: "textbox"
-    }).appendTo(overlay);
-
-    var p1 = $("<p/>", {
-        text: obj.titulo,
-        class: "titulo"
-    }).appendTo(a);
-
-    var p2 = $("<p/>", {
-        text: obj.autor,
-        class: "autor"
-    }).appendTo(a);
-
-    var hiddenDivForProjDescription = createProjectDescriptionDiv(obj);
-    divBox.append(hiddenDivForProjDescription);
-    return divBox;
-}
+Handlebars.registerHelper('getID', function(str, projectID) {
+    var val = str + projectID;
+    return val;
+});
 
 
 function createProjectDescriptionDiv(obj) {
@@ -416,15 +360,12 @@ function initializePackery() {
         // faz o reflow do packery
         if (isGigante) {
             // if shrinking, just layout
-            $container.packery({
-                gutter: 10
-            });
+            $container.packery();
         } else {
             $('html, body').animate({
                 scrollTop: $target.position().top - 10
             }, 500);
             $container.packery({
-                gutter: 10
             }, 'fit', event.currentTarget, 0, 0);
         }
     });
@@ -435,13 +376,77 @@ function initializePackery() {
 
     imagesLoaded(container, function() {
         pckry = new Packery(container, {
-            itemSelector: '.gbnt-item',
-            gutter: 10
+            itemSelector: '.gbnt-item'
         });
     });
 }
 
 
+// function singleDiv(cssClass, obj) {
+
+//     var divBox = $("<div/>", {
+//         id: "box_" + obj.id,
+//         class: "gbnt-item " + cssClass
+//     });
+
+//     var imgURL = "url(projectos/" + obj.id + "/" + obj.img + ")";
+//     divBox.css("background", imgURL);
+
+//     var disabled = $("<div/>", {
+//         class: "gbnt-disabled gbnt-hide"
+//     }).appendTo(divBox);
+
+//     var overlay = $("<div/>", {
+//         id: "overlay_" + obj.id,
+//         class: cssClass
+//     }).appendTo(divBox);
+
+//     var a = $("<a/>", {
+//         href: "#",
+//         class: "textbox"
+//     }).appendTo(overlay);
+
+//     var p1 = $("<p/>", {
+//         text: obj.titulo,
+//         class: "titulo"
+//     }).appendTo(a);
+
+//     var p2 = $("<p/>", {
+//         text: obj.autor,
+//         class: "autor"
+//     }).appendTo(a);
+
+//     var hiddenDivForProjDescription = createProjectDescriptionDiv(obj);
+//     divBox.append(hiddenDivForProjDescription);
+//     return divBox;
+// }
+
+// function createTheDivs() {
+//     var mainContainer = $("#mainContainer");
+
+//     var rnd = Math.floor((Math.random() * 100) + 1);
+//     var boxSize = "gbnt-size-normal";
+
+//     for (var i = 0; i < window._projectsList.length; i++) {
+//         if (window._projectsList[i]) {
+
+//             rnd = Math.floor((Math.random() * 100) + 1);
+
+//             if (rnd >= 0 && rnd < this._iv_normal) {
+//                 boxSize = "gbnt-size-normal";
+//             }
+
+//             if (rnd >= this._iv_normal && rnd < this._iv_normal + this._iv_wide) {
+//                 boxSize = "gbnt-size-wide";
+//             }
+
+//             if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
+//                 boxSize = "gbnt-size-tall";
+//             }
+//             mainContainer.append(singleDiv(boxSize, window._projectsList[i]));
+//         }
+//     }
+// }
 
 // 17-01-2015 16:41:49
 // O codigo para o ESCAPE nao esta a funcionar la muito bem. Tenho que rever isto

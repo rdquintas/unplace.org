@@ -14,10 +14,35 @@
 
     <script id="gbnt-template" type="text/x-handlebars-template">
         {{#each project}}
-        <div style="background: url(http://localhost:8080/projectos/{{id}}/main.jpg);">
-            <h4>{{autor}} - {{id}}</h4>
-        </div>
+        <div id="{{getID 'box_' id}}" class="gbnt-item {{size_class}}" style="{{getCoverImage img_cover}}">
+            <div class="gbnt-disabled gbnt-hide"></div>
 
+            <div id="{{getID 'overlay_' id}}" class="{{size_class}}">
+                <a href="#" class="textbox">
+                    <p class="titulo">Standing by Hubbub</p>
+                    <p class="autor">Alper Cugun</p>
+                </a>
+            </div>
+            <div id="{{getID 'desc_box_' id}}" class="gbnt-hide">
+                <div class="ui segment">
+                    <div id="btn-project" class="ui black button gbnt-btn">Project Description</div>
+                    <div id="btn-author" class="ui basic button gbnt-btn">Author</div><a href="#" style="color: black;"><i id="close" class="remove icon big gbnt-close"></i></a>
+                </div>
+                <div id="project" class="ui basic segment">
+                    <p class="gbnt-margin-0">year: {{ano}}</p>
+                    <h1 class="ui header gbnt-margin-0">{{titulo}}</h1>
+                    <div id="btn-view-proj" data-gbnt-url="http://www.getstanding.com" class="ui basic button gbnt-btn-view-proj">View Project</div>
+                    <div class="gbnt-buttons">
+                        <div>Share</div><a href="#" title="twitter"><i class="circular black twitter icon"></i></a><a href="#" title="email"><i class="circular black mail icon"></i></a><a href="#" title="facebook"><i class="circular black facebook icon"></i></a><a href="#" title="pinterest"><i class="circular black pinterest icon"></i></a>
+                    </div>
+                    <p>{{descricao}}</p>
+                </div>
+                <div id="author" class="ui basic segment gbnt-hide">
+                    <h1 class="ui header gbnt-margin-0">{{autor}}</h1>
+                    <p style="margin-top: 20px;">{{autorBio}}</p>
+                </div>
+            </div>
+        </div>
         {{/each}}
     </script>
 
