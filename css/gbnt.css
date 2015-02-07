@@ -15,9 +15,10 @@ body {
 html {
     padding: 0;
     margin: 0;
-    font-size: 14px;
+    /*    font-size: 14px;
     font-weight: 100;
-    line-height: 1.5;
+    line-height: 1.5;*/
+    
     font-family: "Ubuntu", sans-serif;
 }
 h1, h2, h3, h4, h5, h6, p, ul, ol {
@@ -46,15 +47,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* clearfix */
 
+.btn-project {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #666;
+}
+.btn-project:hover {
+    color: #000;
+    font-weight: 900;
+}
+.btn-author {
+    width: 50px;
+    text-decoration: none;
+    color: #666;
+}
+.btn-author:hover {
+    color: #000;
+    font-weight: 900;
+}
+.btn-selected {
+    color: #000;
+    font-weight: 900;
+    pointer-events: none;
+}
 .packery:after {
     content: ' ';
     display: block;
     clear: both;
 }
-#preloader {
+/*#preloader {
     margin-top: 15%;
     text-align: center;
-}
+}*/
+
 #gbnt-header {
     height: 80px;
     width: 100%;
@@ -89,11 +114,11 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 5px;
     margin-left: 10px;
 }
-#mainContainer {
+#gbnt-container {
     top: 90px;
 }
 .gbnt-btn {
-    z-index: -1;
+    /*z-index: -1;*/
 }
 .gbnt-disabled {
     background: rgba(0, 0, 0, .80);
@@ -113,11 +138,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px !important;
 }
 .gbnt-close {
-    z-index: -1;
-    /*pointer-events: pointer !important;*/
+    /*z-index: -1;    */
     
     float: right;
-    margin-top: 4px !important;
+    color: black;
+    margin-top: -5px;
+    font-size: 25px;
 }
 .gbnt-close:hover {
     color: #ccc;
@@ -153,6 +179,11 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: pointer;
     opacity: 1;
 }
+div[id^=desc_box] .header {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 12px;
+}
 div[id^=overlay] {
     background: rgba(0, 0, 0, .75);
     opacity: 0;
@@ -171,14 +202,10 @@ div[id^=overlay] p {
 }
 div[id^=overlay] .titulo {
     color: #fff;
-    font-family: Helvetica;
-    font-size: 96 px;
 }
 div[id^=overlay] .autor {
     color: #fff;
-    font-family: Helvetica;
     font-weight: 900;
-    font-size: 96 px;
 }
 .gbnt-buttons {
     margin-top: 10px;
@@ -186,20 +213,6 @@ div[id^=overlay] .autor {
 }
 .gbnt-buttons i:hover {
     color: #ddd !important;
-}
-#gbnt-list {
-    margin-top: 80px;
-}
-#gbnt-list .author {
-    margin-right: 2%;
-    color: #000 !important;
-}
-#gbnt-list .project {
-    color: #000 !important;
-}
-#gbnt-list .title:hover {
-    background-color: #ccc;
-    color: #fff !important;
 }
 /* =============================================================================
   MEDIA QUERIES
@@ -210,7 +223,7 @@ div[id^=overlay] .autor {
 
 @media (min-width: 768px) {
     html {
-        font-size: 14px;
+        /*font-size: 14px;*/
     }
 }
 /* 
@@ -219,7 +232,7 @@ div[id^=overlay] .autor {
 
 @media (min-width: 992px) {
     html {
-        font-size: 20px;
+        /*font-size: 20px;*/
     }
 }
 /* 
@@ -228,6 +241,6 @@ div[id^=overlay] .autor {
 
 @media (min-width: 1200px) {
     html {
-        font-size: 24px;
+        /*font-size: 24px;*/
     }
 }

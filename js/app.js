@@ -85,7 +85,7 @@ function createHTML() {
     var data = {
         project: window._projectsList
     };
-    $('#mainContainer').append(window._template(data));
+    $('#gbnt-container').append(window._template(data));
 }
 
 
@@ -422,7 +422,7 @@ function initializePackery() {
 // }
 
 // function createTheDivs() {
-//     var mainContainer = $("#mainContainer");
+//     var gbnt-container = $("#gbnt-container");
 
 //     var rnd = Math.floor((Math.random() * 100) + 1);
 //     var boxSize = "gbnt-size-normal";
@@ -443,7 +443,7 @@ function initializePackery() {
 //             if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
 //                 boxSize = "gbnt-size-tall";
 //             }
-//             mainContainer.append(singleDiv(boxSize, window._projectsList[i]));
+//             gbnt-container.append(singleDiv(boxSize, window._projectsList[i]));
 //         }
 //     }
 // }

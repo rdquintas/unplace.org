@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/gbnt.css" />
+    <link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.min.css" />
     <title>unplace.org // GBNT v2.0</title>
 </head>
 
 <body>
+
 
 
     <script id="gbnt-template" type="text/x-handlebars-template">
@@ -19,15 +21,18 @@
 
             <div id="{{getID 'overlay_' id}}" class="{{size_class}}">
                 <a href="#" class="textbox">
-                    <p class="titulo">Standing by Hubbub</p>
-                    <p class="autor">Alper Cugun</p>
+                    <p class="titulo">{{titulo}}</p>
+                    <p class="autor">{{autor}}</p>
                 </a>
             </div>
             <div id="{{getID 'desc_box_' id}}" class="gbnt-hide">
-                <div class="ui segment">
-                    <div id="btn-project" class="ui black button gbnt-btn">Project Description</div>
-                    <div id="btn-author" class="ui basic button gbnt-btn">Author</div><a href="#" style="color: black;"><i id="close" class="remove icon big gbnt-close"></i></a>
+                <div class="header">
+                    <a href="#" class="btn-project btn-selected">project description</a>
+                    <a href="#" class="btn-author">author</a>
+                    <a href="#" class="gbnt-close"><i class="fa fa-times"></i></a>
                 </div>
+
+                <!-- 
                 <div id="project" class="ui basic segment">
                     <p class="gbnt-margin-0">year: {{ano}}</p>
                     <h1 class="ui header gbnt-margin-0">{{titulo}}</h1>
@@ -41,6 +46,7 @@
                     <h1 class="ui header gbnt-margin-0">{{autor}}</h1>
                     <p style="margin-top: 20px;">{{autorBio}}</p>
                 </div>
+                 -->
             </div>
         </div>
         {{/each}}
@@ -54,7 +60,7 @@
 
     </section>
 
-    <section id="mainContainer" class="packery">
+    <section id="gbnt-container" class="packery">
 
     </section>
 
