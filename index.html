@@ -13,13 +13,16 @@
 <body>
 
 
-
     <script id="gbnt-template" type="text/x-handlebars-template">
         {{#each project}}
-        <div id="{{getID 'box_' id}}" class="gbnt-item {{size_class}}" style="{{getCoverImage img_cover}}">
+
+        <input class="gbnt-hide" type="checkbox" id="{{getID 'checkbox_' id}}">
+
+        <label for="{{getID 'checkbox_' id}}" id="{{getID 'box_' id}}" class="gbnt-item {{size_class}}" data-gbnt-img="{{img}}" style="{{getCoverImage img_cover}}">
+
             <div class="gbnt-disabled gbnt-hide"></div>
 
-            <div id="{{getID 'overlay_' id}}" class="{{size_class}}">
+            <div id="{{getID 'overlay_' id}}" class="{{size_class}}" style="background: url('../projectos/{{id}}/{{img}}');">
                 <a href="#" class="textbox">
                     <p class="titulo">{{titulo}}</p>
                     <p class="autor">{{autor}}</p>
@@ -27,28 +30,26 @@
             </div>
             <div id="{{getID 'desc_box_' id}}" class="gbnt-hide">
                 <div class="header">
-                    <a href="#" class="btn-project btn-selected">project description</a>
-                    <a href="#" class="btn-author">author</a>
-                    <a href="#" class="gbnt-close"><i class="fa fa-times"></i></a>
+                    <a href="#" id="btn-project" class="btn-project btn-selected">project description</a>
+                    <a href="#" id="btn-author" class="btn-author">author</a>
+                    <a href="#" id="btn-close" class="gbnt-close"><i id="btn-close" class="fa fa-times"></i></a>
                 </div>
 
-                <!-- 
-                <div id="project" class="ui basic segment">
-                    <p class="gbnt-margin-0">year: {{ano}}</p>
-                    <h1 class="ui header gbnt-margin-0">{{titulo}}</h1>
-                    <div id="btn-view-proj" data-gbnt-url="http://www.getstanding.com" class="ui basic button gbnt-btn-view-proj">View Project</div>
-                    <div class="gbnt-buttons">
-                        <div>Share</div><a href="#" title="twitter"><i class="circular black twitter icon"></i></a><a href="#" title="email"><i class="circular black mail icon"></i></a><a href="#" title="facebook"><i class="circular black facebook icon"></i></a><a href="#" title="pinterest"><i class="circular black pinterest icon"></i></a>
-                    </div>
-                    <p>{{descricao}}</p>
+                <div id="project">
+                    <p>year: {{ano}}</p>
+                    <h1>{{titulo}}</h1>
+                    <a href="{{www}}" id="btn-www" target="_blank" class="btn-author"><i class="fa fa-eye" style="margin-right:10px"></i>view project</a>
+                    <p style="margin-top:10px">{{descricao}}</p>
                 </div>
-                <div id="author" class="ui basic segment gbnt-hide">
-                    <h1 class="ui header gbnt-margin-0">{{autor}}</h1>
-                    <p style="margin-top: 20px;">{{autorBio}}</p>
+                <div id="author" class="gbnt-hide">
+                    <h1>{{autor}}</h1>
+                    <p style="margin-top:10px;">{{autorBio}}</p>
                 </div>
-                 -->
+
             </div>
-        </div>
+
+        </label>
+
         {{/each}}
     </script>
 
@@ -57,7 +58,15 @@
     </div>
 
     <section id="gbnt-header">
-
+        <div class="col1">
+            <img src="img/logo.jpg">
+            <p>exibition</p>
+        </div>
+        
+        <div class="col2">
+            <a href="#" class="gbnt-language">guided tour</a>
+            <a href="#" class="gbnt-language">pt</a>
+        </div>        
     </section>
 
     <section id="gbnt-container" class="packery">

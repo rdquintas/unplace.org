@@ -19,7 +19,6 @@ var _currentSlide = 0;
 var _projectsList = [];
 var _currentOpenDiv = null;
 
-
 $(document).ready(function() {
     prepareData();
     // $('.gbnt-language').on("click", function() {
@@ -108,11 +107,6 @@ function getSize() {
     return boxSize;
 }
 
-// Handlebars.registerHelper('getBackgroundUrl', function(projectID, image) {
-//     var str = "background: url(projectos/" + projectID + "/" + image + ");";
-//     return str;
-// });
-
 Handlebars.registerHelper('getCoverImage', function(img) {
     var str = "background: url(" + img + ");";
     return str;
@@ -122,187 +116,6 @@ Handlebars.registerHelper('getID', function(str, projectID) {
     var val = str + projectID;
     return val;
 });
-
-
-function createProjectDescriptionDiv(obj) {
-    var hiddenDiv = $("<div/>", {
-        id: "desc_box_" + obj.id,
-        class: "gbnt-hide",
-    });
-
-    var segment = $("<div/>", {
-        class: "ui segment",
-    }).appendTo(hiddenDiv);
-
-    var btnProject = $("<div/>", {
-        id: "btn-project",
-        class: "ui black button gbnt-btn",
-        text: "Project Description"
-    }).appendTo(segment);
-
-    btnProject.on('click', {
-        projID: obj.id
-    }, function(event) {
-        console.log("cenaita");
-        $(this).toggleClass("basic");
-        $(this).toggleClass("black");
-        $("#desc_box_" + arguments[0].data.projID + " #btn-author").toggleClass("black");
-        $("#desc_box_" + arguments[0].data.projID + " #btn-author").toggleClass("basic");
-        $("#desc_box_" + arguments[0].data.projID + " #project").toggleClass("gbnt-hide");
-        $("#desc_box_" + arguments[0].data.projID + " #author").toggleClass("gbnt-hide");
-    });
-
-    var btnAuthor = $("<div/>", {
-        id: "btn-author",
-        class: "ui basic button gbnt-btn",
-        text: "Author"
-    }).appendTo(segment);
-
-    btnAuthor.on('click', {
-        projID: obj.id
-    }, function(event) {
-        console.log("cenaita");
-        $(this).toggleClass("basic");
-        $(this).toggleClass("black");
-        $("#desc_box_" + arguments[0].data.projID + " #btn-project").toggleClass("black");
-        $("#desc_box_" + arguments[0].data.projID + " #btn-project").toggleClass("basic");
-        $("#desc_box_" + arguments[0].data.projID + " #project").toggleClass("gbnt-hide");
-        $("#desc_box_" + arguments[0].data.projID + " #author").toggleClass("gbnt-hide");
-
-    });
-
-    var alink = $("<a/>", {
-        href: "#"
-    }).appendTo(segment);
-    alink.css("color", "black");
-
-    var close = $("<i/>", {
-        id: "close",
-        class: "remove icon big gbnt-close"
-    }).appendTo(alink);
-
-    // DIV para o projecto ==========================
-    var divProject = $("<div/>", {
-        id: "project",
-        class: "ui basic segment",
-    }).appendTo(hiddenDiv);
-
-    var pAno = $("<p/>", {
-        class: "gbnt-margin-0",
-        text: "year: " + obj.ano
-    }).appendTo(divProject);
-
-    var pHeader = $("<h1/>", {
-        class: "ui header gbnt-margin-0",
-        text: obj.titulo
-    }).appendTo(divProject);
-
-    var btnViewProj = $("<div/>", {
-        id: "btn-view-proj",
-        "data-gbnt-url": obj.www,
-        class: "ui basic button gbnt-btn-view-proj",
-        text: "View Project"
-    }).appendTo(divProject);
-
-    if (obj.id === "26" || obj.id === "6") {
-        btnViewProj.on('click', function(event) {
-            var slide = $('#gbnt-slide');
-            slide.empty();
-            window._currentSlide = 0;
-
-            var img = $("<img/>", {
-                class: "ui big rounded image centered",
-                src: "img/slides/" + window._slideArray[window._currentSlide].image
-            }).appendTo(slide);
-
-            //zrq
-
-            $('#gbnt-show-proj').dimmer('show');
-            //   $('.bxslider').bxSlider({
-            //     mode: 'fade',
-            //     captions: true
-            // });
-
-        });
-    } else {
-        btnViewProj.on('click', function(event) {
-            var url = $(this).attr('data-gbnt-url');
-            window.open(url, '_blank');
-        });
-    }
-
-    var pShare = $("<div/>", {
-        class: "gbnt-buttons"
-    }).appendTo(divProject);
-
-    pShare.append($("<div/>", {
-        text: "Share"
-    }));
-
-    //twitter icon
-    var pHrefIcon = $("<a/>", {
-        href: "#",
-        title: "twitter"
-    }).appendTo(pShare);
-
-    var pIcon = $("<i/>", {
-        class: "circular black twitter icon"
-    }).appendTo(pHrefIcon);
-
-    //email icon
-    pHrefIcon = $("<a/>", {
-        href: "#",
-        title: "email"
-    }).appendTo(pShare);
-
-    pIcon = $("<i/>", {
-        class: "circular black mail icon"
-    }).appendTo(pHrefIcon);
-
-    //facebook icon
-    pHrefIcon = $("<a/>", {
-        href: "#",
-        title: "facebook"
-    }).appendTo(pShare);
-
-    pIcon = $("<i/>", {
-        class: "circular black facebook icon"
-    }).appendTo(pHrefIcon);
-
-    //pinterest icon
-    pHrefIcon = $("<a/>", {
-        href: "#",
-        title: "pinterest"
-    }).appendTo(pShare);
-
-    pIcon = $("<i/>", {
-        class: "circular black pinterest icon"
-    }).appendTo(pHrefIcon);
-
-    var pText = $("<p/>", {
-        text: obj.descricao
-    }).appendTo(divProject);
-
-    // DIV para o autor ==========================
-    var divAuthor = $("<div/>", {
-        id: "author",
-        class: "ui basic segment gbnt-hide",
-    }).appendTo(hiddenDiv);
-
-    var aHeader = $("<h1/>", {
-        class: "ui header gbnt-margin-0",
-        text: obj.autor
-    }).appendTo(divAuthor);
-
-    var aText = $("<p/>", {
-        text: obj.autorBio
-    }).appendTo(divAuthor);
-
-    aText.css("margin-top", "20px");
-
-    return hiddenDiv;
-}
-
 
 function randomizeDIVs() {
     var cards = $(".gbnt-item");
@@ -322,9 +135,18 @@ function initializePackery() {
 
     $container.on('click', '[id^=box]', function(event) {
 
-        // if this was a button, then get out of here
-        var regEx = new RegExp("^btn");
-        if (regEx.test(event.target.id)) {
+        var selectedID = event.currentTarget.id.split("_")[1];
+
+        if (event.target.id === "btn-project" || event.target.id === "btn-author") {
+            $("#desc_box_" + selectedID + " #btn-project").toggleClass("btn-selected");
+            $("#desc_box_" + selectedID + " #btn-author").toggleClass("btn-selected");
+            $("#desc_box_" + selectedID + " #project").toggleClass("gbnt-hide");
+            $("#desc_box_" + selectedID + " #author").toggleClass("gbnt-hide");
+            return;
+        }
+
+        //if this was the view-project link event, then we get out of here
+        if (event.target.id !== "btn-close" && $(this).hasClass("gbnt-size-selected")) {
             return;
         }
 
@@ -339,7 +161,24 @@ function initializePackery() {
         }
 
         var $target = $(event.currentTarget);
-        var selectedID = event.currentTarget.id.split("_")[1];
+
+        //if the div checkbox is UNCHECKED (meaning the project has not been visited yet)
+        //then we have to change the background img        
+        if (!$("#checkbox_" + selectedID).attr("checked")) {
+            var arr = $(this).attr("style").split(";");
+            var newImg = $(this).attr("data-gbnt-img");
+            regEx = new RegExp("background: ", "i");
+            for (var i = 0; i < arr.length; i++) {
+                if (regEx.test(arr[i])) {
+                    arr[i] = "background: url(projectos/" + selectedID + "/" + newImg + ");";
+                }
+            }
+            $(this).attr("style", arr.join(";"));
+        }
+
+        //this is to guarantee that, once checked, the checkbox is always set to TRUE,
+        //thus marking this img has visited.
+        $("#checkbox_" + selectedID).attr("checked", true);
 
         var isGigante = $target.hasClass('gbnt-size-selected');
         $target.toggleClass('gbnt-size-selected');
@@ -365,11 +204,9 @@ function initializePackery() {
             $('html, body').animate({
                 scrollTop: $target.position().top - 10
             }, 500);
-            $container.packery({
-            }, 'fit', event.currentTarget, 0, 0);
+            $container.packery({}, 'fit', event.currentTarget, 0, 0);
         }
     });
-
 
     var container = document.querySelector('.packery');
     var pckry;
@@ -380,104 +217,3 @@ function initializePackery() {
         });
     });
 }
-
-
-// function singleDiv(cssClass, obj) {
-
-//     var divBox = $("<div/>", {
-//         id: "box_" + obj.id,
-//         class: "gbnt-item " + cssClass
-//     });
-
-//     var imgURL = "url(projectos/" + obj.id + "/" + obj.img + ")";
-//     divBox.css("background", imgURL);
-
-//     var disabled = $("<div/>", {
-//         class: "gbnt-disabled gbnt-hide"
-//     }).appendTo(divBox);
-
-//     var overlay = $("<div/>", {
-//         id: "overlay_" + obj.id,
-//         class: cssClass
-//     }).appendTo(divBox);
-
-//     var a = $("<a/>", {
-//         href: "#",
-//         class: "textbox"
-//     }).appendTo(overlay);
-
-//     var p1 = $("<p/>", {
-//         text: obj.titulo,
-//         class: "titulo"
-//     }).appendTo(a);
-
-//     var p2 = $("<p/>", {
-//         text: obj.autor,
-//         class: "autor"
-//     }).appendTo(a);
-
-//     var hiddenDivForProjDescription = createProjectDescriptionDiv(obj);
-//     divBox.append(hiddenDivForProjDescription);
-//     return divBox;
-// }
-
-// function createTheDivs() {
-//     var gbnt-container = $("#gbnt-container");
-
-//     var rnd = Math.floor((Math.random() * 100) + 1);
-//     var boxSize = "gbnt-size-normal";
-
-//     for (var i = 0; i < window._projectsList.length; i++) {
-//         if (window._projectsList[i]) {
-
-//             rnd = Math.floor((Math.random() * 100) + 1);
-
-//             if (rnd >= 0 && rnd < this._iv_normal) {
-//                 boxSize = "gbnt-size-normal";
-//             }
-
-//             if (rnd >= this._iv_normal && rnd < this._iv_normal + this._iv_wide) {
-//                 boxSize = "gbnt-size-wide";
-//             }
-
-//             if (rnd >= this._iv_normal + this._iv_wide && rnd <= this._iv_normal + this._iv_wide + this._iv_tall) {
-//                 boxSize = "gbnt-size-tall";
-//             }
-//             gbnt-container.append(singleDiv(boxSize, window._projectsList[i]));
-//         }
-//     }
-// }
-
-// 17-01-2015 16:41:49
-// O codigo para o ESCAPE nao esta a funcionar la muito bem. Tenho que rever isto
-// var youClick = $.proxy(function(e) {
-//     if (e.keyCode == 84) { //27
-
-//         if (window._currentOpenDiv) {
-//             var selectedID = window._currentOpenDiv;
-//             window._currentOpenDiv = null;
-//         } else {
-//             return;
-//         }
-
-//         $target.toggleClass('gbnt-size-selected');
-//         // faz enable/disable de todos os outros divs
-//         $('.gbnt-disabled').toggleClass('gbnt-hide');
-//         $('[id^=overlay]').toggleClass('gbnt-hide');
-
-//         // mas o nosso div tem que estar enabled
-//         $('#box_' + selectedID + ' .gbnt-disabled').toggleClass('gbnt-hide');
-//         $('#overlay_' + selectedID).toggleClass('gbnt-hide');
-
-//         // expande ou encolhe o div com a ficha do projecto        
-//         $('#box_' + selectedID).toggleClass('gbnt-no-bckgr-img');
-//         $('#overlay_' + selectedID).toggleClass('gbnt-hide');
-//         $('#desc_box_' + selectedID).toggleClass('gbnt-hide');
-
-
-//         $container.packery({
-//             gutter: 10
-//         });
-//     }
-// }, this);
-// $(document).keyup(youClick);

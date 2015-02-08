@@ -88,15 +88,30 @@ h1, h2, h3, h4, h5, h6 {
     top: 0px;
     z-index: 1;
 }
+#gbnt-header .col1 {
+    float: left;
+    text-align: left;
+    color: #fff;
+    width: 50%;
+}
+#gbnt-header .col1 p {
+    float: left;
+    margin-left: 15px;
+    margin-top: 30px;
+}
+#gbnt-header .col2 {
+    float: left;
+    text-align: right;
+    color: #fff;
+    width: 50%;
+    margin-top: 30px;
+}
+#gbnt-header a {
+    text-decoration: none;
+    font-weight: 900;
+}
 #gbnt-header .gbnt-link:hover {
     color: #ccc;
-}
-#gbnt-header .column .right {
-    margin-top: 25px;
-}
-#gbnt-header .column .right div {
-    display: inline;
-    margin-right: 20px;
 }
 .selected {
     color: #414141 !important;
@@ -117,9 +132,6 @@ h1, h2, h3, h4, h5, h6 {
 #gbnt-container {
     top: 90px;
 }
-.gbnt-btn {
-    /*z-index: -1;*/
-}
 .gbnt-disabled {
     background: rgba(0, 0, 0, .80);
     opacity: 1;
@@ -133,13 +145,7 @@ h1, h2, h3, h4, h5, h6 {
 .gbnt-hide {
     display: none;
 }
-.gbnt-margin-0 {
-    margin: 0px !important;
-    padding: 0px !important;
-}
 .gbnt-close {
-    /*z-index: -1;    */
-    
     float: right;
     color: black;
     margin-top: -5px;
@@ -179,19 +185,27 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: pointer;
     opacity: 1;
 }
+#project {
+    padding: 12px;
+}
+#author {
+    padding: 12px;
+}
 div[id^=desc_box] .header {
     width: 100%;
     border-bottom: 1px solid black;
     padding: 12px;
 }
 div[id^=overlay] {
-    background: rgba(0, 0, 0, .75);
+    /* background: url("../projectos/5/main.jpg");*/
+    
     opacity: 0;
     -webkit-transition: opacity.25s ease;
     -moz-transition: opacity.25s ease;
 }
 div[id^=overlay] .textbox {
     padding: 10px;
+    background: rgba(0, 0, 0, .75);
     display: block;
     height: 100%;
     width: 100%;
@@ -221,19 +235,20 @@ div[id^=overlay] .autor {
  ========= SMALL DEVICES (tablets, 768px and up) ============
 */
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
     html {
         /*font-size: 14px;*/
     }
-}
+    
 /* 
  ========= MEDIUM DEVICES (desktops, 992px and up) ============
 */
 
-@media (min-width: 992px) {
+@media (min-width: 769px max-width: 1199px) {
     html {
         /*font-size: 20px;*/
     }
+
 }
 /* 
  ========= LARGE DEVICES (large desktops, 1200px and up) ============
@@ -243,4 +258,49 @@ div[id^=overlay] .autor {
     html {
         /*font-size: 24px;*/
     }
+}
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Styles */
+}
+/* Smartphones (landscape) ----------- */
+
+@media only screen and (min-width: 321px) {
+    /* Styles */
+}
+/* Smartphones (portrait) ----------- */
+
+@media only screen and (max-width: 320px) {
+    /* Styles */
+}
+/* iPads (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+}
+/* iPads (landscape) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* Styles */
+}
+/* iPads (portrait) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /* Styles */
+}
+/* Desktops and laptops ----------- */
+
+@media only screen and (min-width: 1224px) {
+    /* Styles */
+}
+/* Large screens ----------- */
+
+@media only screen and (min-width: 1824px) {
+    /* Styles */
+}
+/* iPhone 4 ----------- */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+    /* Styles */
 }
