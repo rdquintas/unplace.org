@@ -15,10 +15,6 @@ body {
 html {
     padding: 0;
     margin: 0;
-    /*    font-size: 14px;
-    font-weight: 100;
-    line-height: 1.5;*/
-    
     font-family: "Ubuntu", sans-serif;
 }
 h1, h2, h3, h4, h5, h6, p, ul, ol {
@@ -75,11 +71,11 @@ h1, h2, h3, h4, h5, h6 {
     display: block;
     clear: both;
 }
-/*#preloader {
-    margin-top: 15%;
-    text-align: center;
-}*/
-
+.view-project {
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 #gbnt-header {
     height: 80px;
     width: 100%;
@@ -107,8 +103,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
 }
 #gbnt-header a {
+    color: #666 !important;
     text-decoration: none;
     font-weight: 900;
+}
+#gbnt-header a:hover {
+    color: #fff !important;
 }
 #gbnt-header .gbnt-link:hover {
     color: #ccc;
@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 10px;
 }
 #gbnt-container {
-    top: 90px;
+    top: 80px;
 }
 .gbnt-disabled {
     background: rgba(0, 0, 0, .80);
@@ -147,12 +147,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .gbnt-close {
     float: right;
-    color: black;
+    color: #ccc;
     margin-top: -5px;
     font-size: 25px;
 }
 .gbnt-close:hover {
-    color: #ccc;
+    color: black;
 }
 .gbnt-no-bckgr-img {
     background-image: none !important;
@@ -172,7 +172,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .gbnt-size-selected {
     width: 432px;
-    height: 432px;
+    height: 576px;
+    overflow: scroll;
 }
 .gbnt-item {
     float: left;
@@ -187,9 +188,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 #project {
     padding: 12px;
+    margin-top: 15px;
 }
 #author {
     padding: 12px;
+    margin-top: 15px;
+}
+#author p {
+    margin-top: 20px;
 }
 div[id^=desc_box] .header {
     width: 100%;
@@ -197,8 +203,6 @@ div[id^=desc_box] .header {
     padding: 12px;
 }
 div[id^=overlay] {
-    /* background: url("../projectos/5/main.jpg");*/
-    
     opacity: 0;
     -webkit-transition: opacity.25s ease;
     -moz-transition: opacity.25s ease;
@@ -216,10 +220,12 @@ div[id^=overlay] p {
 }
 div[id^=overlay] .titulo {
     color: #fff;
+    font-size: 14px;
 }
 div[id^=overlay] .autor {
     color: #fff;
     font-weight: 900;
+    font-size: 14px;
 }
 .gbnt-buttons {
     margin-top: 10px;
@@ -239,68 +245,66 @@ div[id^=overlay] .autor {
     html {
         /*font-size: 14px;*/
     }
-    
-/* 
+    /* 
  ========= MEDIUM DEVICES (desktops, 992px and up) ============
 */
-
-@media (min-width: 769px max-width: 1199px) {
-    html {
-        /*font-size: 20px;*/
+    
+    @media (min-width: 769px max-width: 1199px) {
+        html {
+            /*font-size: 20px;*/
+        }
     }
-
-}
-/* 
+    /* 
  ========= LARGE DEVICES (large desktops, 1200px and up) ============
 */
-
-@media (min-width: 1200px) {
-    html {
-        /*font-size: 24px;*/
+    
+    @media (min-width: 1200px) {
+        html {
+            /*font-size: 24px;*/
+        }
     }
-}
-/* Smartphones (portrait and landscape) ----------- */
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    /* Styles */
-}
-/* Smartphones (landscape) ----------- */
-
-@media only screen and (min-width: 321px) {
-    /* Styles */
-}
-/* Smartphones (portrait) ----------- */
-
-@media only screen and (max-width: 320px) {
-    /* Styles */
-}
-/* iPads (portrait and landscape) ----------- */
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    /* Styles */
-}
-/* iPads (landscape) ----------- */
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-    /* Styles */
-}
-/* iPads (portrait) ----------- */
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    /* Styles */
-}
-/* Desktops and laptops ----------- */
-
-@media only screen and (min-width: 1224px) {
-    /* Styles */
-}
-/* Large screens ----------- */
-
-@media only screen and (min-width: 1824px) {
-    /* Styles */
-}
-/* iPhone 4 ----------- */
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* Styles */
-}
+    /* Smartphones (portrait and landscape) ----------- */
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+        /* Styles */
+    }
+    /* Smartphones (landscape) ----------- */
+    
+    @media only screen and (min-width: 321px) {
+        /* Styles */
+    }
+    /* Smartphones (portrait) ----------- */
+    
+    @media only screen and (max-width: 320px) {
+        /* Styles */
+    }
+    /* iPads (portrait and landscape) ----------- */
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        /* Styles */
+    }
+    /* iPads (landscape) ----------- */
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+        /* Styles */
+    }
+    /* iPads (portrait) ----------- */
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+        /* Styles */
+    }
+    /* Desktops and laptops ----------- */
+    
+    @media only screen and (min-width: 1224px) {
+        /* Styles */
+    }
+    /* Large screens ----------- */
+    
+    @media only screen and (min-width: 1824px) {
+        /* Styles */
+    }
+    /* iPhone 4 ----------- */
+    
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+        /* Styles */
+    }
