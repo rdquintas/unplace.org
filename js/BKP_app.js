@@ -62,25 +62,8 @@ function checkAllDone(projID) {
         createHTML();
         randomizeDIVs();
         initializePackery();
-        doMbileFlashing();
     }
 
-}
-
-function doMbileFlashing() {
-    var screeSize = $(window).width();
-    if (screeSize <= 768) {
-        var arr = $("[id^=overlay]");
-        arr.each(function() {
-            var rnd = Math.floor((Math.random() * 35));
-            rnd = rnd + "s";
-            $(this).addClass("mobile-animation");
-            $(this).css("-webkit-animation-delay", rnd);
-            $(this).css("-moz-animation-delay", rnd);
-            $(this).css("-o-animation-delay", rnd);
-            $(this).css("animation-delay", rnd);
-        });
-    }
 }
 
 function createObject(projectID, coverID) {
@@ -125,7 +108,7 @@ function getSize() {
 }
 
 Handlebars.registerHelper('getCoverImage', function(img) {
-    var str = "background-image: url(" + img + ");";
+    var str = "background: url(" + img + ");";
     return str;
 });
 
@@ -186,10 +169,10 @@ function initializePackery() {
         if (!$("#checkbox_" + selectedID).attr("checked")) {
             var arr = $(this).attr("style").split(";");
             var newImg = $(this).attr("data-gbnt-img");
-            regEx = new RegExp("background-image: ", "i");
+            regEx = new RegExp("background: ", "i");
             for (var i = 0; i < arr.length; i++) {
                 if (regEx.test(arr[i])) {
-                    arr[i] = "background-image: url(projectos/" + selectedID + "/" + newImg + ");";
+                    arr[i] = "background: url(projectos/" + selectedID + "/" + newImg + ");";
                 }
             }
             $(this).attr("style", arr.join(";"));

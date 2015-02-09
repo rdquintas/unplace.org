@@ -103,7 +103,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
 }
 #gbnt-header a {
-    color: #666 !important;
+    color: #666;
     text-decoration: none;
     font-weight: 900;
 }
@@ -118,7 +118,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 #gbnt-header .gbnt-language {
     margin-right: 30px;
-    color: #fff;
 }
 #gbnt-header .gbnt-language:hover {
     color: #ccc;
@@ -234,6 +233,68 @@ div[id^=overlay] .autor {
 .gbnt-buttons i:hover {
     color: #ddd !important;
 }
+@-webkit-keyframes gbnt-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-moz-keyframes gbnt-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-o-keyframes gbnt-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes gbnt-animation {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.mobile-animation {
+    -webkit-animation-name: gbnt-animation;
+    -webkit-animation-duration: 8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -moz-animation-name: zrq-animation;
+    -moz-animation-duration: 8s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-direction: alternate;
+    -o-animation-name: zrq-animation;
+    -o-animation-duration: 8s;
+    -o-animation-iteration-count: infinite;
+    -o-animation-direction: alternate;
+    animation-name: zrq-animation;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
 /* =============================================================================
   MEDIA QUERIES
 ============================================================================= */
@@ -242,69 +303,87 @@ div[id^=overlay] .autor {
 */
 
 @media (max-width: 768px) {
-    html {
-        /*font-size: 14px;*/
+    .gbnt-size-normal {
+        width: 144px;
+        height: 144px;
     }
-    /* 
+    .gbnt-size-wide {
+        width: 288px;
+        height: 144px;
+    }
+    .gbnt-size-tall {
+        width: 144px;
+        height: 288px;
+    }
+    .gbnt-size-selected {
+        width: 288px;
+        height: 350px;
+        overflow: scroll;
+    }
+    #gbnt-header .col1 p {
+        display: none;
+    }
+}
+/* 
  ========= MEDIUM DEVICES (desktops, 992px and up) ============
 */
-    
-    @media (min-width: 769px max-width: 1199px) {
-        html {
-            /*font-size: 20px;*/
-        }
+
+@media (min-width: 769px max-width: 1199px) {
+    html {
+        /*font-size: 20px;*/
     }
-    /* 
+}
+/* 
  ========= LARGE DEVICES (large desktops, 1200px and up) ============
 */
-    
-    @media (min-width: 1200px) {
-        html {
-            /*font-size: 24px;*/
-        }
+
+@media (min-width: 1200px) {
+    html {
+        /*font-size: 24px;*/
     }
-    /* Smartphones (portrait and landscape) ----------- */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-        /* Styles */
-    }
-    /* Smartphones (landscape) ----------- */
-    
-    @media only screen and (min-width: 321px) {
-        /* Styles */
-    }
-    /* Smartphones (portrait) ----------- */
-    
-    @media only screen and (max-width: 320px) {
-        /* Styles */
-    }
-    /* iPads (portrait and landscape) ----------- */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-        /* Styles */
-    }
-    /* iPads (landscape) ----------- */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-        /* Styles */
-    }
-    /* iPads (portrait) ----------- */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-        /* Styles */
-    }
-    /* Desktops and laptops ----------- */
-    
-    @media only screen and (min-width: 1224px) {
-        /* Styles */
-    }
-    /* Large screens ----------- */
-    
-    @media only screen and (min-width: 1824px) {
-        /* Styles */
-    }
-    /* iPhone 4 ----------- */
-    
-    @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-        /* Styles */
-    }
+}
+/* Smartphones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Styles */
+}
+/* Smartphones (landscape) ----------- */
+
+@media only screen and (min-width: 321px) {
+    /* Styles */
+}
+/* Smartphones (portrait) ----------- */
+
+@media only screen and (max-width: 320px) {
+    /* Styles */
+}
+/* iPads (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Styles */
+}
+/* iPads (landscape) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+    /* Styles */
+}
+/* iPads (portrait) ----------- */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+    /* Styles */
+}
+/* Desktops and laptops ----------- */
+
+@media only screen and (min-width: 1224px) {
+    /* Styles */
+}
+/* Large screens ----------- */
+
+@media only screen and (min-width: 1824px) {
+    /* Styles */
+}
+/* iPhone 4 ----------- */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+    /* Styles */
+}
