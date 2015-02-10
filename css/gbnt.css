@@ -128,8 +128,34 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 5px;
     margin-left: 10px;
 }
+#gbnt-project {
+    top: 80px;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+}
+.slick-cena {
+    margin-top: 5%;
+}
+.slick-cena .label {
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+}
+.slick-cena span {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+.slick-cena img {
+    max-width: 100%;
+    margin-top: 5%;
+    margin: 0 auto;
+}
 #gbnt-container {
     top: 80px;
+}
+.body-color {
+    background-color: #474747;
 }
 .gbnt-disabled {
     background: rgba(0, 0, 0, .80);

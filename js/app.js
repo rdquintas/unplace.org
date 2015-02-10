@@ -88,6 +88,12 @@ function createObject(projectID, coverID) {
         singleProject.id = this.url.split("/")[1];
         singleProject.img = singleProject.imagens[Math.floor(Math.random() * singleProject.imagens.length)];
         singleProject.img_cover = "img/covers/" + coverID + ".jpg";
+        if (projectID === "1" || projectID === "2" || projectID === "3") {
+            singleProject.img_cover = "img/covers/x.jpg";
+            var data = JSON.stringify(singleProject);
+            var url = "show_proj.html?data=" + encodeURIComponent(data);
+            singleProject.www = url;
+        }
         singleProject.size_class = getSize();
         window._projectsList.push(singleProject);
         checkAllDone(singleProject.id);
@@ -160,6 +166,10 @@ function initializePackery() {
             $("#desc_box_" + selectedID + " #project").toggleClass("gbnt-hide");
             $("#desc_box_" + selectedID + " #author").toggleClass("gbnt-hide");
             event.preventDefault();
+            return;
+        }
+
+        if (event.target.id === "btn-www" && $(this).hasClass("gbnt-size-selected")) {
             return;
         }
 
