@@ -15,7 +15,9 @@ body {
 html {
     padding: 0;
     margin: 0;
-    font-family: "Ubuntu", sans-serif;
+    font-family: "Proxima Nova W01", sans-serif;
+    font-weight: 300;
+    font-style: normal
 }
 h1, h2, h3, h4, h5, h6, p, ul, ol {
     margin-top: 0;
@@ -25,6 +27,26 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 0.5rem;
     line-height: 1.1;
 }
+/*.font-regular {
+    font-family: 'Proxima Nova W01';
+    font-weight: 300;
+    font-style: normal;
+}
+.font-regular-i {
+    font-family: 'Proxima Nova W01';
+    font-weight: 300;
+    font-style: italic;
+}
+.font-bold {
+    font-family: 'Proxima Nova W01';
+    font-weight: 500;
+    font-style: normal;
+}
+.font-bold-i {
+    font-family: 'Proxima Nova W01';
+    font-weight: 500;
+    font-style: italic;
+}*/
 .preloader {
     z-index: 1;
     padding-top: 10%;
@@ -50,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-project:hover {
     color: #000;
-    font-weight: 900;
+    font-weight: 500;
 }
 .btn-author {
     width: 50px;
@@ -59,11 +81,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-author:hover {
     color: #000;
-    font-weight: 900;
+    font-weight: 500;
 }
 .btn-selected {
     color: #000;
-    font-weight: 900;
+    font-weight: 500;
     pointer-events: none;
 }
 .packery:after {
@@ -105,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
 #gbnt-header a {
     color: #666;
     text-decoration: none;
-    font-weight: 900;
+    font-weight: 500;
 }
 #gbnt-header a:hover {
     color: #fff !important;
@@ -150,7 +172,6 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
-
     max-width: 100%;
     margin-top: 5%;
     margin: 0 auto;
@@ -201,8 +222,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .gbnt-size-selected {
     width: 432px;
-    height: 576px;
-    overflow: scroll;
+    /*height: 576px;*/
+    height: 100%;
 }
 .gbnt-item {
     float: left;
@@ -253,7 +274,7 @@ div[id^=overlay] .titulo {
 }
 div[id^=overlay] .autor {
     color: #fff;
-    font-weight: 900;
+    font-weight: 500;
     font-size: 14px;
 }
 .gbnt-buttons {
@@ -347,73 +368,11 @@ div[id^=overlay] .autor {
     }
     .gbnt-size-selected {
         width: 288px;
-        height: 350px;
-        overflow: scroll;
+        height: 100%;
+        /*height: 350px;*/
+        /*overflow: scroll;*/
     }
     #gbnt-header .col1 p {
         display: none;
     }
-}
-/* 
- ========= MEDIUM DEVICES (desktops, 992px and up) ============
-*/
-
-@media (min-width: 769px max-width: 1199px) {
-    html {
-        /*font-size: 20px;*/
-    }
-}
-/* 
- ========= LARGE DEVICES (large desktops, 1200px and up) ============
-*/
-
-@media (min-width: 1200px) {
-    html {
-        /*font-size: 24px;*/
-    }
-}
-/* Smartphones (portrait and landscape) ----------- */
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    /* Styles */
-}
-/* Smartphones (landscape) ----------- */
-
-@media only screen and (min-width: 321px) {
-    /* Styles */
-}
-/* Smartphones (portrait) ----------- */
-
-@media only screen and (max-width: 320px) {
-    /* Styles */
-}
-/* iPads (portrait and landscape) ----------- */
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    /* Styles */
-}
-/* iPads (landscape) ----------- */
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-    /* Styles */
-}
-/* iPads (portrait) ----------- */
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    /* Styles */
-}
-/* Desktops and laptops ----------- */
-
-@media only screen and (min-width: 1224px) {
-    /* Styles */
-}
-/* Large screens ----------- */
-
-@media only screen and (min-width: 1824px) {
-    /* Styles */
-}
-/* iPhone 4 ----------- */
-
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    /* Styles */
 }

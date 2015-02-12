@@ -6,24 +6,12 @@ var _iv_wide = 10; // random percent for WIDE squares
 var _source = $("#gbnt-template").html();
 var _template = Handlebars.compile(_source);
 
-var _slideArray = [{
-    image: "slide01.jpg"
-}, {
-    image: "slide02.jpg"
-}, {
-    video: "123123132"
-}, {
-    image: "slide03.jpg"
-}, ];
-var _currentSlide = 0;
-var _projectsList = [];
+var _pckry;
+
 var _currentOpenDiv = null;
 
 $(document).ready(function() {
     prepareData();
-    // $('.gbnt-language').on("click", function() {
-    //     $('.ui.modal').modal('show');
-    // });
 });
 
 
@@ -149,6 +137,13 @@ function randomizeDIVs() {
     }
 }
 
+function centerMainContainer() {
+    console.log("window: " + $(window).width());
+    var calc = Math.abs(window._pckry.maxX - $(window).width());
+    calc = Math.floor(calc / 2);
+    $('#gbnt-container').css("margin-left", calc);
+}
+
 function initializePackery() {
 
     // Remove preloader
@@ -238,11 +233,15 @@ function initializePackery() {
     });
 
     var container = document.querySelector('.packery');
-    var pckry;
+
 
     imagesLoaded(container, function() {
-        pckry = new Packery(container, {
+        window._pckry = new Packery(container, {
             itemSelector: '.gbnt-item'
         });
+        window._pckry.on('layoutComplete', function(pckryInstance, laidOutItems) {
+            centerMainContainer();
+        });
+        centerMainContainer();
     });
 }
