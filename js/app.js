@@ -5,15 +5,80 @@ var _iv_wide = 10; // random percent for WIDE squares
 // Handlebar precompiling
 var _source = $("#gbnt-template").html();
 var _template = Handlebars.compile(_source);
-
 var _pckry;
-
 var _currentOpenDiv = null;
+
+var _isGuidedTour = false;
+var _arrTour;
 
 $(document).ready(function() {
     prepareData();
 });
 
+$("[id^=guided-tour]").on("click", function(e) {
+    e.preventDefault();
+    $(this).addClass('active');
+
+    if (this.id === "guided-tour-1") {
+        window._arrTour = [1, 10, 30, 7, 27];
+    }
+
+    if (this.id === "guided-tour-2") {
+        window._arrTour = [3, 6, 22, 5, 14, 13, 12, 8];
+    }
+
+    if (this.id === "guided-tour-3") {
+        window._arrTour = [2, 25, 26, 27, 28, 29];
+    }
+
+    doGuidedTour(true);
+});
+
+function doGuidedTour(firstTimeRunningThis) {
+    if (firstTimeRunningThis) {
+        // We are STARTING our guided tour
+        window._isGuidedTour = true;
+        var projs = $("label");
+
+        projs.each(function methodName() {
+            var currentID = parseInt(this.id.split("_")[1]);
+
+            if (currentID !== window._arrTour[0]) {
+                $(this).addClass('blocked-project');
+            } else {
+                var $target = $("#box_" + window._arrTour[0]);
+
+                console.log("anima: " + $target.offset().top);
+
+                $('html, body').animate({
+                    scrollTop: $target.position().top - 100
+                }, 500);
+            }
+        });
+
+        window._arrTour[0] = null;
+    } else {
+        // We are CONTINUING our guided tour
+        for (var i = 0; i < window._arrTour.length; i++) {
+            if (window._arrTour[i]) {
+
+                var nextProj = $("#box_" + window._arrTour[i]);
+
+                nextProj.removeClass("blocked-project");
+
+                console.log("anima 2: " + nextProj.offset().top);
+
+                $('html, body').animate({
+                    scrollTop: nextProj.position().top - 100
+                }, 500);
+
+                window._arrTour[i] = null;
+                break;
+            }
+
+        }
+    }
+}
 
 function prepareData() {
     $.get("projectos/lista_dos_projectos.txt", function(data) {
@@ -138,7 +203,6 @@ function randomizeDIVs() {
 }
 
 function centerMainContainer() {
-    console.log("window: " + $(window).width());
     var calc = Math.abs(window._pckry.maxX - $(window).width());
     calc = Math.floor(calc / 2);
     $('#gbnt-container').css("margin-left", calc);
@@ -148,6 +212,8 @@ function initializePackery() {
 
     // Remove preloader
     $('.preloader').addClass("gbnt-hide");
+
+    var projHeight;
 
     var $container = $('.packery').packery();
 
@@ -222,8 +288,11 @@ function initializePackery() {
 
         // faz o reflow do packery
         if (isGigante) {
-            // if shrinking, just layout
+            // then we are closing the box, so we just do layout reflow
             $container.packery();
+            if (window._isGuidedTour) {
+                doGuidedTour(false);
+            }
         } else {
             $('html, body').animate({
                 scrollTop: $target.position().top - 10

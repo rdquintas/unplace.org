@@ -2,7 +2,9 @@
   GLOBALS
 ============================================================================= */
 
-*, *:after, *:before {
+*,
+*:after,
+*:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -19,37 +21,30 @@ html {
     font-weight: 300;
     font-style: normal
 }
-h1, h2, h3, h4, h5, h6, p, ul, ol {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
     margin-top: 0;
     margin-bottom: 1rem;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin-bottom: 0.5rem;
     line-height: 1.1;
 }
-/*.font-regular {
-    font-family: 'Proxima Nova W01';
-    font-weight: 300;
-    font-style: normal;
-}
-.font-regular-i {
-    font-family: 'Proxima Nova W01';
-    font-weight: 300;
-    font-style: italic;
-}
-.font-bold {
-    font-family: 'Proxima Nova W01';
-    font-weight: 500;
-    font-style: normal;
-}
-.font-bold-i {
-    font-family: 'Proxima Nova W01';
-    font-weight: 500;
-    font-style: italic;
-}*/
 .preloader {
     z-index: 1;
-    padding-top: 10%;
+    padding-top: 20%;
     background-color: #fff;
     text-align: center;
     position: fixed;
@@ -63,8 +58,10 @@ h1, h2, h3, h4, h5, h6 {
     /*max-width: 1200px;*/
     /*margin: 0 auto;*/
 }
-/* clearfix */
-
+.blocked-project {
+    opacity: 0;
+    pointer-events: none;
+}
 .btn-project {
     margin-right: 15px;
     text-decoration: none;
@@ -144,6 +141,9 @@ h1, h2, h3, h4, h5, h6 {
 #gbnt-header .gbnt-language:hover {
     color: #ccc;
 }
+#gbnt-header .active {
+    color: #fff;
+}
 #gbnt-header img {
     float: left;
     height: 65px;
@@ -222,8 +222,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .gbnt-size-selected {
     width: 432px;
-    /*height: 576px;*/
-    height: 100%;
+    height: 576px;
 }
 .gbnt-item {
     float: left;
@@ -246,6 +245,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 #author p {
     margin-top: 20px;
+}
+#btn-close {
+    width: 18px;
+    margin-top: 0px;
+}
+#btn-close:hover {
+    opacity: 0.4;    
 }
 div[id^=desc_box] .header {
     width: 100%;
