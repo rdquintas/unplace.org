@@ -1,10 +1,10 @@
-# unplace.org - version 2.0
+# unplace.org - version 3.0
 Prototype for GBNT
-
+http://rdquintas.github.io/unplace.org/
 ----
-Features:
-- NO thumb-images for projects
-- we now use special "cover images" instead of project images
-- CSS is ok for mobile
-- No longer using semantic-ui
-- uses template engine Handlebars.js
+Update:
+- this is the final version
+- added feature for "guided tours"
+- fine-tunned css for mobile
+- added fluid width for grid (yet to confirm)
+- concluded admin console
