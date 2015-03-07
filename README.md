@@ -8,3 +8,4 @@ Update:
 - fine-tunned css for mobile
 - added fluid width for grid (yet to confirm)
 - concluded admin console
+- added "about" section
