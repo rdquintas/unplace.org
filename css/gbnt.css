@@ -208,21 +208,25 @@ h6 {
     background-image: none !important;
     border: 1px solid #ccc;
 }
-.gbnt-size-normal {
-    width: 144px;
-    height: 144px;
+.gbnt-size-normal { 
+    width: 11.1111%;
+    height: 152px;
+    /*width: 144px;
+    height: 144px;*/
 }
 .gbnt-size-wide {
-    width: 288px;
-    height: 144px;
+    width: 22.2222%;
+    /*width: 288px;*/
+    /*height: 144px;*/
 }
 .gbnt-size-tall {
-    width: 144px;
-    height: 288px;
+    width: 11.1111%;    
+    /*width: 144px;*/
+    /*height: 288px;*/
 }
 .gbnt-size-selected {
-    width: 432px;
-    height: 576px;
+    /*width: 432px;*/
+    /*height: 576px;*/
 }
 .gbnt-item {
     float: left;
