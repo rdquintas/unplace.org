@@ -4,33 +4,37 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://fast.fonts.net/jsapi/739bf436-1824-4067-a456-9bd34cfd8f44.js"></script>
+    <!-- <script type="text/javascript" src="http://fast.fonts.net/jsapi/739bf436-1824-4067-a456-9bd34cfd8f44.js"></script> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700)" />
+    <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/gbnt.css" />
     <link rel="stylesheet" href="css/font-awesome-4.3.0/css/font-awesome.min.css" />
     <title>unplace.org // GBNT v3.0</title>
 </head>
 
 <body>
-
-
     <script id="gbnt-template" type="text/x-handlebars-template">
         {{#each project}}
-
-        <input class="gbnt-hide" type="checkbox" id="{{getID 'checkbox_' id}}">
-
-        <label for="{{getID 'checkbox_' id}}" id="{{getID 'box_' id}}" class="gbnt-item {{size_class}}" data-gbnt-img="{{img}}" style="{{getCoverImage img_cover}}">
-
-            <div id="{{getID 'overlay_' id}}" class="{{size_class}}" style="background-image: url('projectos/{{id}}/{{img}}');">
-                <a href="#" class="textbox">
-                    <p class="titulo">{{titulo}}</p>
-                    <p class="autor">{{autor}}</p>
-                </a>
+        <div id="{{getID 'item_' id}}" class="gbnt-item {{size_class}}" data-gbnt-checked="false">
+            <div class="wrap">
+                <div class="proj-cover {{size_class}}">
+                    <img src="{{img_cover}}" >
+                </div>
+                <div class="proj-text {{size_class}}">
+                    <a href="#" class="textbox">
+                        <p class="titulo">{{titulo}}</p>
+                        <p class="autor">{{autor}}</p>
+                    </a>
+                </div>
+                <div class="proj-img {{size_class}}">
+                    <img src="projectos/{{id}}/{{img}}">
+                </div>
             </div>
-            <div id="{{getID 'desc_box_' id}}" class="gbnt-hide">
+            <div class="proj-profile hide-me">
                 <div class="header">
-                    <a href="#" id="btn-project" class="btn-project btn-selected">project description</a>
-                    <a href="#" id="btn-author" class="btn-author">author</a>
-                    <a href="#" id="btn-close" class="gbnt-close">
+                    <a href="#" class="btn-project btn-selected">project description</a>
+                    <a href="#" class="btn-author">author</a>
+                    <a href="#" class="btn-close">
                         <img src="img/cross.png" id="btn-close">
                     </a>
                 </div>
@@ -45,11 +49,8 @@
                     <h1>{{autor}}</h1>
                     <p>{{autorBio}}</p>
                 </div>
-
             </div>
-
-        </label>
-
+        </div>
         {{/each}}
     </script>
 

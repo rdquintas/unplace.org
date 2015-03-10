@@ -3,6 +3,7 @@ Prototype for GBNT
 http://rdquintas.github.io/unplace.org/
 ----
 Update:
+- removed Packery and ImagesLoaded libs
 - this is the final version
 - added feature for "guided tours"
 - fine-tunned css for mobile

@@ -2,45 +2,18 @@
   GLOBALS
 ============================================================================= */
 
-*,
-*:after,
-*:before {
+*, *:after, *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-body {
-    z-index: 0;
-    margin: 0;
-    padding: 0;
-}
 html {
+    overflow-y: scroll;
+    max-width: 1366px;
+    margin: 0 auto;
     padding: 0;
-    margin: 0;
-    font-family: "Proxima Nova W01", sans-serif;
-    font-weight: 300;
-    font-style: normal
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-bottom: 0.5rem;
-    line-height: 1.1;
+    font-family: "Lato", Arial, sans-serif;
+    /*font-family: "Proxima Nova W01", Arial, sans-serif;*/
 }
 .preloader {
     z-index: 1;
@@ -53,47 +26,11 @@ h6 {
     left: 0px;
     width: 100%;
 }
-.packery {
-    background: #fff;
-    /*max-width: 1200px;*/
-    /*margin: 0 auto;*/
+.hide-me {
+    display: none;
 }
-.blocked-project {
-    opacity: 0;
+.no-pointers {
     pointer-events: none;
-}
-.btn-project {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #666;
-}
-.btn-project:hover {
-    color: #000;
-    font-weight: 500;
-}
-.btn-author {
-    width: 50px;
-    text-decoration: none;
-    color: #666;
-}
-.btn-author:hover {
-    color: #000;
-    font-weight: 500;
-}
-.btn-selected {
-    color: #000;
-    font-weight: 500;
-    pointer-events: none;
-}
-.packery:after {
-    content: ' ';
-    display: block;
-    clear: both;
-}
-.view-project {
-    margin-right: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 /* =============================================================================
   GBNT-HEADER
@@ -102,10 +39,11 @@ h6 {
 #gbnt-header {
     height: 80px;
     width: 100%;
-    background-color: black;
+    background-color: #000;
     position: fixed;
     top: 0px;
-    z-index: 1;
+    left: 0px;
+    z-index: 100;
 }
 #gbnt-header .col1 {
     float: left;
@@ -136,7 +74,7 @@ h6 {
 #gbnt-header .gbnt-link:hover {
     color: #ccc;
 }
-.selected {
+#gbnt-header .selected {
     color: #414141 !important;
 }
 #gbnt-header .gbnt-language {
@@ -154,235 +92,107 @@ h6 {
     margin-top: 5px;
     margin-left: 10px;
 }
-#gbnt-project {
-    top: 80px;
-    position: relative;
-    width: 80%;
-    margin: 0 auto;
-}
-.slick-cena {
-    margin-top: 5%;
-}
-.slick-cena .label {
-    text-align: center;
-    color: #fff;
-    padding: 15px;
-}
-.slick-cena span {
-    margin-right: 15px;
-    margin-left: 15px;
-}
-.slick-cena img {
-    -webkit-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
-    max-width: 100%;
-    margin-top: 5%;
-    margin: 0 auto;
-}
+/* =============================================================================
+  GBNT-CONTAINER
+============================================================================= */
+
 #gbnt-container {
     top: 80px;
+    position: relative;
 }
-.body-color {
-    background-color: #474747;
-}
-.gbnt-disabled {
-    background: rgba(0, 0, 0, .80);
-    opacity: 1;
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
-}
-.gbnt-btn-view-proj {
-    margin: 10px 0 10px 0 !important;
-}
-.gbnt-hide {
-    display: none;
-}
-.gbnt-close {
-    float: right;
-    color: #ccc;
-    margin-top: -5px;
-    font-size: 25px;
-}
-.gbnt-close:hover {
-    color: black;
-}
-.gbnt-no-bckgr-img {
-    background-image: none !important;
-    border: 1px solid #ccc;
-}
-.gbnt-size-normal {
-    width: 144px;
-    height: 144px;
-}
-.gbnt-size-wide {
-    width: 288px;
-    height: 144px;
-}
-.gbnt-size-tall {
-    width: 144px;
-    height: 288px;
-}
-.gbnt-size-selected {
-    width: 432px;
-    height: 576px;
-}
-.gbnt-item {
+#gbnt-container .gbnt-item {
     float: left;
+    position: static;
+    cursor: pointer;
 }
-.gbnt-item img {
+#gbnt-container .wrap {
+    position: relative;
     width: 100%;
+}
+#gbnt-container .proj-cover img {
+    display: block;
+    width: 100%;
+}
+#gbnt-container .proj-cover {
+    position: absolute;
+    width: 100% !important;
+    float: left;
+    z-index: 30;
+}
+#gbnt-container .proj-text {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    float: left;
+    width: 100% !important;
+    z-index: 20;
+}
+#gbnt-container .proj-img img {
     display: block;
 }
-.gbnt-item:hover div[id^=overlay] {
-    pointer-events: pointer;
-    opacity: 1;
+#gbnt-container .proj-img {
+    position: absolute;
+    width: 100% !important;
+    z-index: 10;
 }
-#project {
-    padding: 12px;
-    margin-top: 15px;
-}
-#author {
-    padding: 12px;
-    margin-top: 15px;
-}
-#author p {
-    margin-top: 20px;
-}
-#btn-close {
-    width: 18px;
-    margin-top: 0px;
-}
-#btn-close:hover {
-    opacity: 0.4;
-}
-div[id^=desc_box] .header {
-    width: 100%;
-    border-bottom: 1px solid black;
-    padding: 12px;
-}
-div[id^=overlay] {
-    opacity: 0;
-    -webkit-transition: opacity.25s ease;
-    -moz-transition: opacity.25s ease;
-}
-div[id^=overlay] .textbox {
+#gbnt-container .textbox {
     padding: 10px;
-    background: rgba(0, 0, 0, .75);
     display: block;
     height: 100%;
     width: 100%;
     text-decoration: none;
 }
-div[id^=overlay] p {
+#gbnt-container .textbox .titulo {
+    color: #fff;
+    font-size: 14px;
+}
+#gbnt-container .textbox .autor {
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+#gbnt-container .textbox p {
     margin: 0;
 }
-div[id^=overlay] .titulo {
-    color: #fff;
-    font-size: 14px;
+#gbnt-container .gbnt-size-normal {
+    width: 12.5%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
-div[id^=overlay] .autor {
-    color: #fff;
-    font-weight: 500;
-    font-size: 14px;
+#gbnt-container .gbnt-size-wide {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
-.gbnt-buttons {
-    margin-top: 10px;
-    margin-bottom: 10px;
+#gbnt-container .gbnt-size-tall {
+    width: 12.5%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
-.gbnt-buttons i:hover {
-    color: #ddd !important;
+#gbnt-container .selected-project {
+    width: 37.5%;
 }
-@-webkit-keyframes gbnt-animation {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+#gbnt-container .proj-profile {
+    width: 100%;
 }
-@-moz-keyframes gbnt-animation {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+#gbnt-container .proj-profile a {
+    pointer-events: visible;
 }
-@-o-keyframes gbnt-animation {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+#gbnt-container .proj-profile .header {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 12px;
 }
-@keyframes gbnt-animation {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
-.mobile-animation {
-    -webkit-animation-name: gbnt-animation;
-    -webkit-animation-duration: 8s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -moz-animation-name: zrq-animation;
-    -moz-animation-duration: 8s;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-direction: alternate;
-    -o-animation-name: zrq-animation;
-    -o-animation-duration: 8s;
-    -o-animation-iteration-count: infinite;
-    -o-animation-direction: alternate;
-    animation-name: zrq-animation;
-    animation-duration: 8s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-/*
 /* =============================================================================
   MEDIA QUERIES
 ============================================================================= */
 /* 
- ========= SMALL DEVICES (tablets, 768px and up) ============
+ ========= SMALL DEVICES  ============
 */
 
 @media (max-width: 768px) {
-    .gbnt-size-normal {
-        width: 144px;
-        height: 144px;
-    }
-    .gbnt-size-wide {
-        width: 288px;
-        height: 144px;
-    }
-    .gbnt-size-tall {
-        width: 144px;
-        height: 288px;
-    }
-    .gbnt-size-selected {
-        width: 288px;
-        height: 100%;
-        /*height: 350px;*/
-        /*overflow: scroll;*/
-    }
     #gbnt-header .col1 p {
         display: none;
     }
