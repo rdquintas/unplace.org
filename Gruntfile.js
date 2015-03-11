@@ -2,6 +2,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        // Clean file leftover (only for prod)
+        clean: ['js/<%= pkg.name %>.js'],
+
         // JSHint
         jshint: {
             dev: {
@@ -16,21 +19,25 @@ module.exports = function(grunt) {
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
                     '<%= grunt.template.today("yyyy-mm-dd") %> */'
             },
-            js: {
+            js_libs: {
                 src: [
+                    'js/src/libs/739bf436-1824-4067-a456-9bd34cfd8f44.js',
                     'js/src/libs/jquery-1.11.2.min.js',
                     'js/src/libs/handlebars-v2.0.0.js',
                     'js/src/libs/imagesloaded.pkgd.min.js',
                     'js/src/libs/packery.pkgd.min.js',
-                    'js/src/libs/path.min.js',
-                    'js/src/libs/*.js',
+                    'js/src/libs/path.min.js'
+                ],
+                dest: 'js/<%= pkg.name %>.libs.js'
+            },
+            js_custom: {
+                src: [
                     'js/src/*.js'
                 ],
                 dest: 'js/<%= pkg.name %>.js'
             },
             css: {
                 src: [
-                    // 'css/src/<%= pkg.name %>.css',
                     'css/src/*.css'
                 ],
                 dest: 'css/<%= pkg.name %>.min.css'
@@ -94,15 +101,29 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
-
+    grunt.loadNpmTasks('grunt-contrib-clean');
     // Task: DEV
     // JS: jshint, concat
     // CSS: concat
-    grunt.registerTask('default', ['jshint:dev', 'concat:css', 'rename:css', 'concat:js', 'rename:js']);
+    grunt.registerTask('default', [
+        'jshint:dev',
+        'concat:css',
+        'rename:css',
+        'concat:js_libs',
+        'concat:js_custom',
+        'rename:js'
+    ]);
 
     // Task: PROD
     // JS: jshint, concat, minify
     // CSS: concat, minify
-    grunt.registerTask('prod', ['jshint:dev', 'concat:css', 'cssmin:target', 'concat:js', 'uglify:js']);
-
+    grunt.registerTask('prod', [
+        'jshint:dev',
+        'concat:css',
+        'cssmin:target',
+        'concat:js_libs',
+        'concat:js_custom',
+        'uglify:js',
+        'clean'
+    ]);
 };
