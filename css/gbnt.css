@@ -185,15 +185,122 @@ html {
     border-bottom: 1px solid black;
     padding: 12px;
 }
+#gbnt-container .proj-profile .btn-close img {
+    width: 18px;
+}
+#gbnt-container .proj-profile .btn-close {
+    float: right;
+    margin-top: 0px;
+}
+#gbnt-container .proj-profile .btn-close:hover {
+    opacity: 0.4;
+}
+#gbnt-container .proj-profile .btn-view-proj {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #666;
+}
+#gbnt-container .proj-profile .btn-view-proj:hover {
+    color: #000;
+}
+#gbnt-container .proj-profile .btn-project {
+    width: 50px;
+    text-decoration: none;
+    color: #666;
+    margin-right: 30px;
+}
+#gbnt-container .proj-profile .btn-project:hover {
+    color: #000;
+}
+#gbnt-container .proj-profile .btn-author {
+    width: 50px;
+    text-decoration: none;
+    color: #666;
+}
+#gbnt-container .proj-profile .btn-author:hover {
+    color: #000;
+}
+#gbnt-container .proj-profile .btn-selected {
+    color: #000;
+    font-weight: 500;
+    pointer-events: none;
+}
+#gbnt-container .proj-profile .tab-project {
+    padding: 12px;
+    margin-top: 15px;
+}
+#gbnt-container .proj-profile .tab-project i {
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#gbnt-container .proj-profile .tab-author {
+    padding: 12px;
+    margin-top: 15px;
+}
+#gbnt-container .proj-profile .tab-author p {
+    margin-top: 20px;
+}
 /* =============================================================================
   MEDIA QUERIES
 ============================================================================= */
 /* 
- ========= SMALL DEVICES  ============
+ ========= SMALL DEVICES (mobiles) ============
 */
 
-@media (max-width: 768px) {
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    html {
+        max-width: 100%;
+    }
     #gbnt-header .col1 p {
         display: none;
+    }
+    #gbnt-container .gbnt-size-normal {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-wide {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-tall {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .selected-project {
+        width: 100%;
+    }
+}
+/* 
+ ========= MEDIUM DEVICES (tablets) ============
+*/
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    #gbnt-container .gbnt-size-normal {
+        width: 12.5%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-wide {
+        width: 25%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-tall {
+        width: 12.5%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .selected-project {
+        width: 37.5%;
     }
 }

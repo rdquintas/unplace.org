@@ -8,29 +8,6 @@
     opacity: 0;
     pointer-events: none;
 }
-.btn-project {
-    margin-right: 15px;
-    text-decoration: none;
-    color: #666;
-}
-.btn-project:hover {
-    color: #000;
-    font-weight: 500;
-}
-.btn-author {
-    width: 50px;
-    text-decoration: none;
-    color: #666;
-}
-.btn-author:hover {
-    color: #000;
-    font-weight: 500;
-}
-.btn-selected {
-    color: #000;
-    font-weight: 500;
-    pointer-events: none;
-}
 .packery:after {
     content: ' ';
     display: block;
@@ -109,24 +86,6 @@
 .gbnt-item:hover div[id^=overlay] {
     pointer-events: pointer;
     opacity: 1;
-}
-#project {
-    padding: 12px;
-    margin-top: 15px;
-}
-#author {
-    padding: 12px;
-    margin-top: 15px;
-}
-#author p {
-    margin-top: 20px;
-}
-#btn-close {
-    width: 18px;
-    margin-top: 0px;
-}
-#btn-close:hover {
-    opacity: 0.4;
 }
 
 

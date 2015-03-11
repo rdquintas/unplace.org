@@ -5,37 +5,47 @@ var _iv_wide = 10; // random percent for WIDE squares
 // Handlebar precompiling
 var _source = $("#gbnt-template").html();
 var _template = Handlebars.compile(_source);
-var _pckry;
-var _currentOpenDiv = null;
 
-var _isGuidedTour = false;
-var _arrTour;
+// Packery global var
+var _packeryContainer = $('.packery');
+// var _pckry;
+
+var _routingProj = null;
+
+// var _currentOpenDiv = null;
+// var _isGuidedTour = false;
+// var _arrTour;
+
 
 $(document).ready(function() {
-    // window.history.pushState("string", "Title", "/novaURL"); //isto vai ser util para alterar a URL
+    initializeRouting();
     prepareProjectData();
 });
 
 
-//Adjust the layout if user resizes window
+// Adjust the layout (by refreshing the page) if user resizes window
 $(window).resize(function() {
-
     location.reload();
 });
-$(document).resize(function() {
-    alert("caralho");
-});
+
+function initializeRouting() {
+    Path.map("#project/:id").to(function() {
+        _routingProj = this.params['id'];
+    });
+
+    Path.listen();
+}
 
 function prepareProjectData() {
     $.get("projectos/lista_dos_projectos.txt", function(data) {
         _projectsList = data.split(",");
-        var counter = 0;
+        var coverImageCounter = 0;
         for (var i = 0; i < _projectsList.length; i++) {
-            counter += 1;
-            if (counter > 36) {
-                counter = 1;
+            coverImageCounter += 1;
+            if (coverImageCounter > 10) {
+                coverImageCounter = 1;
             }
-            createObject(_projectsList[i], counter);
+            createObject(_projectsList[i], coverImageCounter);
         }
     });
 }
@@ -65,7 +75,6 @@ function checkAllDone(projID) {
         createEventHandlers();
         // doMobileFlashing();
     }
-
 }
 
 function correctSizes() {
@@ -86,7 +95,7 @@ function correctSizes() {
 
 function createEventHandlers() {
 
-    //Mouse hover for Project Cover
+    // Mouse hover for fadein/fadeout Project Cover
     $(".proj-cover").hover(function getIn() {
         if ($(this).parents(".gbnt-item").attr("data-gbnt-checked") === "true") {
             return;
@@ -99,7 +108,7 @@ function createEventHandlers() {
         $(this).fadeTo(100, 1);
     });
 
-    //Mouse hover for Project Text
+    // Mouse hover for fadein/fadeout Project Text
     // this only happens if data-gbnt-checked = true, meaning, we have alredy visited this proj
     $(".proj-text").hover(function getIn() {
         $(this).fadeTo(100, 1);
@@ -107,67 +116,123 @@ function createEventHandlers() {
         $(this).fadeTo(100, 0);
     });
 
-    //Click event to OPEN Project
-    $(".gbnt-item").on("click", function() {
-
+    // Click event to OPEN Project
+    $(".gbnt-item").on("click", function(e) {
         //If event was triggered by a DIV other than gbnt-item, then get out of here
-        if (event.srcElement.id !== "") {
+        e.preventDefault();
+        if (event.srcElement.id !== "cover") {
             return;
         }
-
-        //Set the flag to CHECKED
-        $(this).attr("data-gbnt-checked", "true");
-
-        //Remove pointer events from all item DIVs
-        $(".gbnt-item").each(function() {
-            $(this).addClass("no-pointers");
-        });
-
-        //Hide DIV cover image
-        $(this).find(".proj-cover").hide();
-
-        //Hide DIV project text
-        $(this).find(".proj-text").hide();
-
-        //Hide DIV project image
-        $(this).find(".proj-img").hide();
-
         openProject(this);
     });
 
-    //Click event to CLOSE Project
-    $(".proj-profile .btn-close").on("click", function() {
-
+    // Click event to CLOSE Project
+    $(".proj-profile .btn-close").on("click", function(e) {
+        e.preventDefault();
         var gbntItemDiv = $(this).parents(".gbnt-item");
+        closeProject(gbntItemDiv);
+    });
 
-        //Set the flag to UNCHECKED
-        $(gbntItemDiv).attr("data-gbnt-checked", "false");
+    // Click event to open TAB author
+    $(".proj-profile .btn-author").on("click", function(e) {
+        e.preventDefault();
+        $(this).siblings(".btn-project").toggleClass("btn-selected");
+        $(this).toggleClass("btn-selected");
+        $(this).parent().siblings(".tab-project").toggle();
+        $(this).parent().siblings(".tab-author").toggle();
+    });
 
-        //Add pointer events back to ALL item DIVs
-        $(".gbnt-item").each(function() {
-            $(this).removeClass("no-pointers");
-        });
+    // Click event to open TAB project
+    $(".proj-profile .btn-project").on("click", function(e) {
+        e.preventDefault();
+        $(this).siblings(".btn-author").toggleClass("btn-selected");
+        $(this).toggleClass("btn-selected");
+        $(this).parent().siblings(".tab-project").toggle();
+        $(this).parent().siblings(".tab-author").toggle();
+    });
 
-        //Show DIV project text
-        $(gbntItemDiv).find(".proj-text").show();
+    // Close project if ESC key is pressed
+    $(document).keyup(function(e) {
+        if (e.keyCode === 27) {
+            $(".gbnt-item").each(function() {
+                if ($(this).attr("data-gbnt-checked") === "true") {
+                    closeProject(this);
+                    _packeryContainer.packery(); // do reflow
+                    return;
+                };
 
-        //Show DIV project image
-        $(gbntItemDiv).find(".proj-img").show();
-
-        //Hide DIV project profile
-        $(gbntItemDiv).find(".proj-profile").addClass("hide-me");
-
-        //Remove class selected-project, for expanded project
-        $(gbntItemDiv).removeClass("selected-project");
-
+            });
+        };
     });
 }
 
-function openProject(proj) {
-    var mainWidth = $(proj).width();
-    $(proj).addClass("selected-project");
-    $(proj).height(mainWidth * 4);
-    $(proj).find(".proj-profile").removeClass("hide-me");
+function openProject(gbntItem) {
+    var mainWidth = $(gbntItem).width();
+
+    // Set the flag to CHECKED
+    $(gbntItem).attr("data-gbnt-checked", "true");
+
+    // Remove pointer events from all item DIVs
+    $(".gbnt-item").each(function() {
+        $(this).addClass("no-pointers");
+    });
+
+    // Hide DIV cover image
+    $(gbntItem).find(".proj-cover").hide();
+
+    // Hide DIV project text
+    $(gbntItem).find(".proj-text").hide();
+
+    // Hide DIV project image
+    $(gbntItem).find(".proj-img").hide();
+
+    // Expand the project profile DIV
+    $(gbntItem).addClass("selected-project");
+    $(gbntItem).height(mainWidth * 4);
+    $(gbntItem).find(".proj-profile").removeClass("hide-me");
+
+    // Scroll to the open project    
+    if ($(document).width() < 768) {
+        // For mobile scenarios
+        _packeryContainer.packery('fit', gbntItem, 0, 0);
+        $("html, body").animate({
+            scrollTop: 0
+        }, "slow");
+    } else {
+        // For desktop scenarios
+        _packeryContainer.packery();
+        $('html, body').animate({
+            scrollTop: $(gbntItem).position().top - 10
+        }, 500);
+    }
+
+    // Update the URL with the project ID
+    window.history.pushState("string", null, "#project/" + $(gbntItem).attr("id").split("_")[1]);
+}
+
+function closeProject(gbntItem) {
+    // Set the flag to UNCHECKED
+    $(gbntItem).attr("data-gbnt-checked", "false");
+
+    // Show DIV project text
+    $(gbntItem).find(".proj-text").show();
+
+    // Show DIV project image
+    $(gbntItem).find(".proj-img").show();
+
+    // Hide DIV project profile
+    $(gbntItem).find(".proj-profile").addClass("hide-me");
+
+    // Remove class selected-project, for expanded project
+    $(gbntItem).removeClass("selected-project");
+
+    // Add pointer events back to ALL item DIVs
+    $(".gbnt-item").each(function() {
+        $(this).removeClass("no-pointers");
+    });
+
+    // Update the URL, by removing the project ID
+    window.history.pushState("string", null, "#");
 }
 
 function doMobileFlashing() {
@@ -190,13 +255,13 @@ function createObject(projectID, coverID) {
     $.get("projectos/" + projectID + "/sumario.json", function(singleProject) {
         singleProject.id = this.url.split("/")[1];
         singleProject.img = singleProject.imagens[Math.floor(Math.random() * singleProject.imagens.length)];
-        singleProject.img_cover = "img/covers/" + coverID + ".jpg";
-        if (projectID === "1" || projectID === "2" || projectID === "3") {
-            singleProject.img_cover = "img/covers/x.jpg";
-            var data = JSON.stringify(singleProject);
-            var url = "show_proj.html?data=" + encodeURIComponent(data);
-            singleProject.www = url;
-        }
+        singleProject.img_cover = coverID + ".jpg";
+        // if (projectID === "1" || projectID === "2" || projectID === "3") {
+        //     singleProject.img_cover = "img/covers/x.jpg";
+        //     var data = JSON.stringify(singleProject);
+        //     var url = "show_proj.html?data=" + encodeURIComponent(data);
+        //     singleProject.www = url;
+        // }
         singleProject.size_class = getSize();
         window._projectsList.push(singleProject);
         checkAllDone(singleProject.id);
@@ -212,7 +277,6 @@ function createHTML() {
     };
     $('#gbnt-container').append(window._template(data));
 }
-
 
 function getSize() {
     var rnd = Math.floor((Math.random() * 100) + 1);
@@ -230,7 +294,7 @@ function getSize() {
         boxSize = "gbnt-size-tall";
     }
 
-    boxSize = "gbnt-size-normal";
+    // boxSize = "gbnt-size-normal";
     return boxSize;
 }
 
@@ -238,6 +302,23 @@ Handlebars.registerHelper('getID', function(str, projectID) {
     var val = str + projectID;
     return val;
 });
+
+Handlebars.registerHelper('getCoverImageURL', function(pictureID, sizeClass) {
+    var url = "img/covers/";
+    switch (sizeClass) {
+        case "gbnt-size-wide":
+            url += "wide/" + pictureID;
+            break;
+        case "gbnt-size-tall":
+            url += "tall/" + pictureID;
+            break;
+        default:
+            url += "normal/" + pictureID;
+            break;
+    }
+    return url;
+});
+
 
 function randomizeDIVs() {
     var cards = $(".gbnt-item");
@@ -249,103 +330,32 @@ function randomizeDIVs() {
 }
 
 function initializePackery() {
-
     // Remove preloader
     $('.preloader').addClass("hide-me");
 
-    var projHeight;
+    _packeryContainer.packery();
 
-    var $container = $('.packery').packery();
-
-    $container.on('click', '[id^=item]', function(event) {
-
-        var selectedID = event.currentTarget.id.split("_")[1];
-
-        if (event.target.id === "btn-project" || event.target.id === "btn-author") {
-            $("#desc_box_" + selectedID + " #btn-project").toggleClass("btn-selected");
-            $("#desc_box_" + selectedID + " #btn-author").toggleClass("btn-selected");
-            $("#desc_box_" + selectedID + " #project").toggleClass("gbnt-hide");
-            $("#desc_box_" + selectedID + " #author").toggleClass("gbnt-hide");
-            event.preventDefault();
-            return;
-        }
-
-        if (event.target.id === "btn-www" && $(this).hasClass("gbnt-size-selected")) {
-            return;
-        }
-
-        //if this was the view-project link event, then we get out of here
-        if (event.target.id !== "btn-close" && $(this).hasClass("gbnt-size-selected")) {
-            event.preventDefault();
-            return;
-        }
-
-        if (window._currentOpenDiv) {
-            if (window._currentOpenDiv === event.currentTarget.id) {
-                window._currentOpenDiv = null;
-            } else {
+    if (_routingProj) {
+        $(".gbnt-item").each(function() {
+            var theId = $(this).attr("id").split("_")[1];
+            if (_routingProj === theId) {
+                _routingProj = null;
+                openProject(this);
                 return;
-            }
-        } else {
-            window._currentOpenDiv = event.currentTarget.id;
-        }
-
-        var $target = $(event.currentTarget);
-
-        //if the div checkbox is UNCHECKED (meaning the project has not been visited yet)
-        //then we have to change the background img        
-        if (!$("#checkbox_" + selectedID).attr("checked")) {
-            var arr = $(this).attr("style").split(";");
-            var newImg = $(this).attr("data-gbnt-img");
-            regEx = new RegExp("background-image: ", "i");
-            for (var i = 0; i < arr.length; i++) {
-                if (regEx.test(arr[i])) {
-                    arr[i] = "background-image: url(projectos/" + selectedID + "/" + newImg + ");";
-                }
-            }
-            $(this).attr("style", arr.join(";"));
-        }
-
-        //this is to guarantee that, once checked, the checkbox is always set to TRUE,
-        //thus marking this img has visited.
-        $("#checkbox_" + selectedID).attr("checked", true);
-
-        var isGigante = $target.hasClass('gbnt-size-selected');
-        $target.toggleClass('gbnt-size-selected');
-
-        // faz enable/disable de todos os outros divs
-        $('.gbnt-disabled').toggleClass('gbnt-hide');
-        $('[id^=overlay]').toggleClass('gbnt-hide');
-
-        // mas o nosso div tem que estar enabled
-        $('#box_' + selectedID + ' .gbnt-disabled').toggleClass('gbnt-hide');
-        $('#overlay_' + selectedID).toggleClass('gbnt-hide');
-
-        // expande ou encolhe o div com a ficha do projecto        
-        $('#box_' + selectedID).toggleClass('gbnt-no-bckgr-img');
-        $('#overlay_' + selectedID).toggleClass('gbnt-hide');
-        $('#desc_box_' + selectedID).toggleClass('gbnt-hide');
-
-        // faz o reflow do packery
-        if (isGigante) {
-            // then we are closing the box, so we just do layout reflow
-            $container.packery();
-            if (window._isGuidedTour) {
-                doGuidedTour(false);
-            }
-        } else {
-            $('html, body').animate({
-                scrollTop: $target.position().top - 10
-            }, 500);
-            $container.packery({}, 'fit', event.currentTarget, 0, 0);
-        }
-    });
-
-    var container = document.querySelector('.packery');
-
-    imagesLoaded(container, function() {
-        window._pckry = new Packery(container, {
-            itemSelector: '.gbnt-item'
+            };
         });
+    };
+
+    // Reflow packery when clicked
+    _packeryContainer.on('click', '[id^=item]', function(event) {
+        _packeryContainer.packery();
     });
+
+    // var container = document.querySelector('.packery');
+
+    // imagesLoaded(_packeryContainer, function() {
+    //     window._pckry = new Packery(_packeryContainer, {
+    //         itemSelector: '.gbnt-item'
+    //     });
+    // });
 }
