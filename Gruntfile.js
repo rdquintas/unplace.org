@@ -92,6 +92,29 @@ module.exports = function(grunt) {
                         // ext: '<%= pkg.name %>.min.css'
                 }]
             }
+        },
+
+        // make a zipfile
+        compress: {
+            main: {
+                options: {
+                    mode: "zip",
+                    archive: '<%= pkg.name %>_v<%= pkg.version %>.zip'
+                },
+                files: [{
+                    expand: true,
+                    src: [
+                        '**/**',
+                        '!.git/**',
+                        '!node_modules/**',
+                        '!.gitignore',
+                        '!Gruntfile.js',
+                        '!package.json',
+                        '!README.md'
+                    ],
+                    dest: '<%= pkg.name %>_v<%= pkg.version %>/'
+                }]
+            }
         }
     });
 
@@ -102,6 +125,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-compress');
+
+
     // Task: DEV
     // JS: jshint, concat
     // CSS: concat

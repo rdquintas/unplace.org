@@ -16,7 +16,6 @@ var _routingProj = null;
 // var _isGuidedTour = false;
 // var _arrTour;
 
-
 $(document).ready(function() {
     initializeRouting();
     prepareProjectData();
@@ -199,7 +198,7 @@ function openProject(gbntItem) {
         }, "slow");
     } else {
         // For desktop scenarios
-        _packeryContainer.packery();
+        _packeryContainer.packery('fit', gbntItem);
         $('html, body').animate({
             scrollTop: $(gbntItem).position().top - 10
         }, 500);
