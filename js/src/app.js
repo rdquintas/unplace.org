@@ -30,7 +30,7 @@ $(window).resize(function() {
 
 function initializeRouting() {
     Path.map("#project/:id").to(function() {
-        _routingProj = this.params['id'];
+        _routingProj = this.params.id;
     });
 
     Path.listen();
@@ -159,10 +159,9 @@ function createEventHandlers() {
                     closeProject(this);
                     _packeryContainer.packery(); // do reflow
                     return;
-                };
-
+                }
             });
-        };
+        }
     });
 }
 
@@ -342,9 +341,9 @@ function initializePackery() {
                 _routingProj = null;
                 openProject(this);
                 return;
-            };
+            }
         });
-    };
+    }
 
     // Reflow packery when clicked
     _packeryContainer.on('click', '[id^=item]', function(event) {
