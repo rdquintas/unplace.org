@@ -83,6 +83,12 @@ html {
 #gbnt-header .gbnt-language:hover {
     color: #ccc;
 }
+#gbnt-header .gbnt-tour {
+    margin-right: 30px;
+}
+#gbnt-header .gbnt-tour:hover {
+    color: #ccc;
+}
 #gbnt-header .active {
     color: #fff;
 }
