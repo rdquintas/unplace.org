@@ -36,7 +36,7 @@ function initializeRouting() {
 }
 
 function prepareProjectData() {
-    $.get("projectos/lista_dos_projectos.txt", function(data) {
+    $.get("docs/projectos/lista_dos_projectos.txt", function(data) {
         _projectsList = data.split(",");
         var coverImageCounter = 0;
         for (var i = 0; i < _projectsList.length; i++) {
@@ -250,8 +250,8 @@ function doMobileFlashing() {
 }
 
 function createObject(projectID, coverID) {
-    $.get("projectos/" + projectID + "/sumario.json", function(singleProject) {
-        singleProject.id = this.url.split("/")[1];
+    $.get("docs/projectos/" + projectID + "/sumario.json", function(singleProject) {
+        singleProject.id = this.url.split("/")[2];
         singleProject.img = singleProject.imagens[Math.floor(Math.random() * singleProject.imagens.length)];
         singleProject.img_cover = coverID + ".jpg";
         // if (projectID === "1" || projectID === "2" || projectID === "3") {
