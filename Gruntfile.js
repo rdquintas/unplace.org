@@ -2,17 +2,25 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        // Clean file leftover (only for prod)
+        // ================================
+        // clean: Deletes files
+        // ================================          
         clean: ['js/<%= pkg.name %>.js'],
 
-        // JSHint
+
+        // ================================
+        // jshint: JS Hint
+        // ================================          
         jshint: {
             dev: {
                 src: ['js/src/*.js']
             }
         },
 
-        // Concatenation
+
+        // ================================
+        // concat: Concatenation
+        // ================================          
         concat: {
             options: {
                 stripBanners: true,
@@ -44,19 +52,10 @@ module.exports = function(grunt) {
             }
         },
 
-        // Watch me now
-        watch: {
-            scripts: {
-                files: ['css/src/*.css', 'js/src/*.js'],
-                tasks: ['default'],
-                options: {
-                    event: ['all'],
-                    interrupt: true
-                }
-            }
-        },
 
-        // Rename
+        // ================================
+        // rename: Rename files
+        // ================================          
         rename: {
             js: {
                 files: [{
@@ -72,7 +71,10 @@ module.exports = function(grunt) {
             }
         },
 
-        // JS minify
+
+        // ================================
+        // uglify: JS minify
+        // ================================  
         uglify: {
             js: {
                 src: 'js/<%= pkg.name %>.js',
@@ -81,7 +83,9 @@ module.exports = function(grunt) {
         },
 
 
-        // CSS minify
+        // ================================
+        // cssmin: CSS minify
+        // ================================        
         cssmin: {
             target: {
                 files: [{
@@ -94,7 +98,10 @@ module.exports = function(grunt) {
             }
         },
 
-        // make a zipfile
+
+        // ================================
+        // compress: ZIP files
+        // ================================
         compress: {
             main: {
                 options: {
@@ -115,6 +122,34 @@ module.exports = function(grunt) {
                     dest: '<%= pkg.name %>_v<%= pkg.version %>/'
                 }]
             }
+        },
+
+
+        // ================================
+        // watch: WATCH me now
+        // ================================          
+        watch: {
+            scripts: {
+                files: ['css/src/*.css', 'js/src/*.js'],
+                tasks: ['dev'],
+                options: {
+                    event: ['all'],
+                    interrupt: true
+                }
+            }
+        },
+
+
+        // ================================
+        // connect: HTTP server
+        // ================================
+        connect: {
+            server: {
+                options: {
+                    port: 8080,
+                    keepalive: true
+                }
+            }
         }
     });
 
@@ -125,13 +160,32 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-compress');
 
 
-    // Task: DEV
-    // JS: jshint, concat
-    // CSS: concat
+    // ================================
+    // Task: 	default
+    // ================================
     grunt.registerTask('default', [
+        'watch'
+    ]);
+
+
+    // ================================
+    // Task: 	http
+    // ================================
+    grunt.registerTask('http', [
+        'connect'
+    ]);
+
+
+    // ================================
+    // Task: 	dev
+    // JS: 		jshint, concat
+    // CSS: 	concat
+    // ================================
+    grunt.registerTask('dev', [
         'jshint:dev',
         'concat:css',
         'rename:css',
@@ -140,9 +194,12 @@ module.exports = function(grunt) {
         'rename:js'
     ]);
 
-    // Task: PROD
-    // JS: jshint, concat, minify
-    // CSS: concat, minify
+
+    // ================================
+    // Task: 	prod
+    // JS: 		jshint, concat, minify
+    // CSS: 	concat, minify
+    // ================================    
     grunt.registerTask('prod', [
         'jshint:dev',
         'concat:css',
