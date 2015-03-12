@@ -16,3 +16,4 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
 * added "about" section
 * added proper cover images for wide and tall formats
 * added GRUNT task workflow
+* added translation logic (EN and PT only)
