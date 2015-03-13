@@ -2,7 +2,9 @@
   GLOBALS
 ============================================================================= */
 
-*, *:after, *:before {
+*,
+*:after,
+*:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -45,23 +47,23 @@ html {
     left: 0px;
     z-index: 100;
 }
-#gbnt-header .col1 {
+#gbnt-header .logo {
     float: left;
-    text-align: left;
-    color: #fff;
-    width: 50%;
+    width: 20%;
 }
-#gbnt-header .col1 p {
-    float: left;
-    margin-left: 15px;
-    margin-top: 30px;
+#gbnt-header .logo a img {
+    height: 65px;
+    margin-top: 5px;
+    margin-left: 15%;
 }
-#gbnt-header .col2 {
+#gbnt-header .nav {
     float: left;
-    text-align: right;
-    color: #fff;
-    width: 50%;
     margin-top: 30px;
+    width: 80%;
+}
+#gbnt-header .nav .gbnt-language {
+    float: right;
+    margin-right: 10%;
 }
 #gbnt-header a {
     color: #666;
@@ -71,32 +73,29 @@ html {
 #gbnt-header a:hover {
     color: #fff !important;
 }
+#gbnt-header .about-text {
+    color: #fff;
+    text-align: left;
+}
 #gbnt-header .gbnt-link:hover {
     color: #ccc;
 }
 #gbnt-header .selected {
     color: #414141 !important;
 }
-#gbnt-header .gbnt-language {
+#gbnt-header ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    float: left;
+}
+#gbnt-header ul li {
+    display: inline;
     margin-right: 30px;
-}
-#gbnt-header .gbnt-language:hover {
-    color: #ccc;
-}
-#gbnt-header .gbnt-tour {
-    margin-right: 30px;
-}
-#gbnt-header .gbnt-tour:hover {
-    color: #ccc;
 }
 #gbnt-header .active {
     color: #fff;
-}
-#gbnt-header img {
-    float: left;
-    height: 65px;
-    margin-top: 5px;
-    margin-left: 10px;
 }
 /* =============================================================================
   GBNT-CONTAINER
@@ -257,9 +256,6 @@ html {
 @media screen and (min-width: 0px) and (max-width: 767px) {
     html {
         max-width: 100%;
-    }
-    #gbnt-header .col1 p {
-        display: none;
     }
     #gbnt-container .gbnt-size-normal {
         width: 50%;

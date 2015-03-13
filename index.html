@@ -31,16 +31,16 @@
             </div>
             <div class="proj-profile hide-me">
                 <div class="header">
-                    <a href="#" class="btn-project btn-selected">project description</a>
-                    <a href="#" class="btn-author">author</a>
+                    <a href="#" class="btn-project btn-selected">{{translateThis 'project_description'}}</a>
+                    <a href="#" class="btn-author">{{translateThis 'author'}}</a>
                     <a href="#" class="btn-close">
                         <img src="img/cross.png">
                     </a>
                 </div>
                 <div class="tab-project">
                     <h1>{{titulo}}</h1>
-                    <p>year: {{ano}}</p>
-                    <a href="{{www}}" target="_blank" class="btn-view-proj"><i class="fa fa-eye"></i>view project</a>
+                    <p>{{translateThis 'year'}}: {{ano}}</p>
+                    <a href="{{www}}" target="_blank" class="btn-view-proj"><i class="fa fa-eye"></i>{{translateThis 'view_project'}}</a>
                     <p style="margin-top:10px">{{descricao}}</p>
                 </div>
                 <div class="tab-author hide-me">
@@ -57,17 +57,22 @@
     </div>
 
     <section id="gbnt-header">
-        <div class="col1">
-            <a href="index.html">
+        <div class="logo">
+            <a href="http://www.unplace.org">
                 <img src="img/logo.jpg">
             </a>
-            <p>exibithion</p>
         </div>
 
-        <div class="col2">
-            <a href="#" id="guided-tour-1" class="gbnt-tour">visita guiada</a>
-            <!-- <a href="#" id="guided-tour-1" class="gbnt-tour en hide-me">guided tour</a> -->
-            <!-- <a href="/" class="gbnt-language pt hide-me">pt</a> -->
+        <div class="nav">
+            <ul>
+                <li><a href="/" class="gbnt-exibithion">exibi&ccedil;&atilde;o</a>
+                </li>
+                <li><a href="#" class="gbnt-tour">visita tem&aacute;tica</a>
+                </li>
+                <li><a href="#" class="gbnt-about">about</a>
+                    <p class="about-text hide-me">PT</p>
+                </li>
+            </ul>
             <a href="?lang=en" class="gbnt-language">en</a>
         </div>
     </section>

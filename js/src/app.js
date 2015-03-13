@@ -1,25 +1,3 @@
-var translations = {
-    language: [
-        "pt", "en"
-    ],
-    tour: [
-        "visita guiada", "guided tour"
-    ],
-    author: [
-        "autor", "author"
-    ],
-    project_description: [
-        "descri&ccedil;&atilde;o  do projecto", "project description"
-    ],
-    view_project: [
-        "ver projecto", "view project"
-    ],
-    year: [
-        "ano", "year"
-    ]
-};
-
-
 var _iv_normal = 80; // random percent for NORMAL squares
 var _iv_tall = 10; // random percent for TALL squares
 var _iv_wide = 10; // random percent for WIDE squares
@@ -43,17 +21,16 @@ var _language = 'pt';
 // var _arrTour;
 
 $(document).ready(function() {
+    // first thing we have to do, is to determine the language
     var urlLang = getUrlParameter('lang');
-
     if (urlLang) {
         _language = urlLang;
     }
-    
+
     initializeRouting();
     prepareProjectData();
     applyTranslations();
 });
-
 
 // Adjust the layout (by refreshing the page) if user resizes window
 $(window).resize(function() {
@@ -61,22 +38,18 @@ $(window).resize(function() {
 });
 
 function applyTranslations() {
-    if (_language === "en") {
-        // language link
-        $(".gbnt-language.en").addClass("hide-me");
-        $(".gbnt-language.pt").removeClass("hide-me");
+    $(".gbnt-exibithion").text(doTranslation("exibithion"));
+    $(".gbnt-tour").text(doTranslation("tour"));
+    $(".gbnt-about").text(doTranslation("about"));
+    $(".gbnt-language").text(doTranslation("language"));
+    $(".about-text").text(doTranslation("about_text"));
 
-        // guided tour link
-        $(".gbnt-tour.pt").addClass("hide-me");
-        $(".gbnt-tour.en").removeClass("hide-me");
+    if (_language === "pt") {
+        $(".gbnt-language").attr("href", "?lang=en");
+        $(".gbnt-exibithion").attr("href", "?lang=pt");
     } else {
-        // language link
-        $(".gbnt-language.pt").addClass("hide-me");
-        $(".gbnt-language.en").removeClass("hide-me");
-
-        // guided tour link
-        $(".gbnt-tour.en").addClass("hide-me");
-        $(".gbnt-tour.pt").removeClass("hide-me");
+        $(".gbnt-language").attr("href", "?lang=pt");
+        $(".gbnt-exibithion").attr("href", "?lang=en");
     }
 }
 
@@ -193,6 +166,30 @@ function createEventHandlers() {
         $(this).parent().siblings(".tab-project").toggle();
         $(this).parent().siblings(".tab-author").toggle();
     });
+
+    // Click event to open TAB author
+    $("#gbnt-header .gbnt-about").on("click", function(e) {
+        e.preventDefault();
+
+        $(".about-text").toggleClass("hide-me");
+
+        $('#gbnt-header').animate({
+            height: "300px"
+        }, {
+            duration: 2000,
+            easing: "easeOutElastic"
+        });
+
+        $('#gbnt-container').animate({
+            "margin-top": "220px"
+        }, {
+            duration: 2000,
+            easing: "easeOutElastic"
+        });
+
+    });
+
+
 
     // Click event to open TAB project
     $(".proj-profile .btn-project").on("click", function(e) {

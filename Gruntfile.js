@@ -34,13 +34,15 @@ module.exports = function(grunt) {
                     'js/src/libs/handlebars-v2.0.0.js',
                     'js/src/libs/imagesloaded.pkgd.min.js',
                     'js/src/libs/packery.pkgd.min.js',
+                    'js/src/libs/jquery.easing.1.3.js',
                     'js/src/libs/path.min.js'
                 ],
                 dest: 'js/<%= pkg.name %>.libs.js'
             },
             js_custom: {
                 src: [
-                    'js/src/*.js'
+                    'js/src/translations.js',
+                    'js/src/app.js'
                 ],
                 dest: 'js/<%= pkg.name %>.js'
             },
@@ -168,7 +170,7 @@ module.exports = function(grunt) {
     // Task: 	default
     // ================================
     grunt.registerTask('default', [
-        'watch'
+        'dev'
     ]);
 
 
