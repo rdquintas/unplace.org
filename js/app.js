@@ -20,7 +20,9 @@ function initializePackery() {
             return;
         }
         openProject(this);
-        _packeryContainer.packery();
+        _packeryContainer.packery({
+            "isResizeBound": true
+        });
     });
 
     // Close square
