@@ -231,6 +231,9 @@ function openProject(gbntItem) {
     // Set the flag to CHECKED
     $(gbntItem).attr("data-gbnt-checked", "true");
 
+    // Store the original height (will be used when shrinking the project DIV)
+    $(gbntItem).attr("data-gbnt-previous-height", $(gbntItem).height());
+
     // Remove pointer events from all item DIVs
     $(".gbnt-item").each(function() {
         $(this).addClass("no-pointers");
@@ -272,6 +275,9 @@ function openProject(gbntItem) {
 function closeProject(gbntItem) {
     // Set the flag to UNCHECKED
     $(gbntItem).attr("data-gbnt-checked", "false");
+
+    // Restores the original height
+    $(gbntItem).height($(gbntItem).attr("data-gbnt-previous-height"));
 
     // Show DIV project text
     $(gbntItem).find(".proj-text").show();

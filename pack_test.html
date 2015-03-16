@@ -476,6 +476,8 @@
         // Set the flag to CHECKED
         $(gbntItem).attr("data-gbnt-checked", "true");
 
+        $(gbntItem).attr("data-previous-height", $(gbntItem).height());
+
         // Remove pointer events from all item DIVs
         $(".gbnt-item").each(function() {
             if (this !== gbntItem) {
@@ -497,6 +499,7 @@
 
         // Remove class selected-project, for expanded project
         $(gbntItem).removeClass("expanded-project");
+        $(gbntItem).height($(gbntItem).attr("data-previous-height"));
 
         // Add pointer events back to ALL item DIVs
         $(".gbnt-item").each(function() {
