@@ -2,9 +2,7 @@
   GLOBALS
 ============================================================================= */
 
-*,
-*:after,
-*:before {
+*, *:after, *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -34,8 +32,10 @@ html {
 .hide-me {
     display: none;
 }
-.no-pointers {
+.no-pointers, .no-pointers:hover, .no-pointers:visited, .no-pointers:active, .no-pointers:focus {
     pointer-events: none;
+    cursor: default;
+    text-decoration: none;
 }
 /* =============================================================================
   GBNT-HEADER
@@ -49,6 +49,7 @@ html {
     top: 0px;
     left: 0px;
     z-index: 100;
+    overflow: hidden;
 }
 #gbnt-header .logo {
     float: left;
@@ -78,27 +79,50 @@ html {
 }
 #gbnt-header .about-text {
     color: #fff;
+    width: 75%;
+    margin-top: 80px;
     text-align: left;
 }
-#gbnt-header .gbnt-link:hover {
-    color: #ccc;
+#gbnt-header .tours {
+    color: #fff;
+    width: 75%;
+    margin-top: 10px;
+    margin-left: 105px;
+    text-align: left;
+    float: left;
 }
-#gbnt-header .selected {
-    color: #414141 !important;
+#gbnt-header .nav .tours ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: left;
 }
-#gbnt-header ul {
+#gbnt-header .nav .tours ul li {
+    display: block;
+    margin-top: 20px;
+}
+#gbnt-header .nav ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
     text-align: center;
     float: left;
 }
-#gbnt-header ul li {
+#gbnt-header .nav ul li {
     display: inline;
     margin-right: 30px;
 }
-#gbnt-header .active {
+#gbnt-header .close-header {
+    width: 100%;
+    font-size: 30px;
+    color: #666;
+    text-align: center;
+}
+#gbnt-header .close-header a:hover {
     color: #fff;
+}
+#gbnt-header .close-header i {
+    margin-top: 50px;
 }
 /* =============================================================================
   GBNT-CONTAINER
@@ -112,6 +136,18 @@ html {
     float: left;
     position: static;
     cursor: pointer;
+}
+#gbnt-container .gbnt-item.tour {
+    background-color: #000;
+}
+#gbnt-container .tour .btn-selected {
+    color: #fff !important;
+}
+#gbnt-container .tour p {
+    color: #fff !important;
+}
+#gbnt-container .tour .proj-profile .header {
+    border-color: #fff;
 }
 #gbnt-container .wrap {
     position: relative;
