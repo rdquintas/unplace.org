@@ -1,0 +1,344 @@
+/* =============================================================================
+  GLOBALS
+============================================================================= */
+
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html {
+    overflow-y: scroll;
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0;
+    font-family: "Lato", Arial, sans-serif;
+    /*font-family: "Proxima Nova W01", Arial, sans-serif;*/
+}
+.preloader {
+    z-index: 1;
+    padding-top: 20%;
+    background-color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+.hide-me {
+    display: none;
+}
+.no-pointers, .no-pointers:hover, .no-pointers:visited, .no-pointers:active, .no-pointers:focus {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+}
+/* =============================================================================
+  GBNT-HEADER
+============================================================================= */
+
+#gbnt-header {
+    height: 80px;
+    width: 100%;
+    background-color: #000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    overflow: hidden;
+}
+#gbnt-header .logo {
+    float: left;
+    width: 20%;
+}
+#gbnt-header .logo a img {
+    height: 65px;
+    margin-top: 5px;
+    margin-left: 15%;
+}
+#gbnt-header .nav {
+    float: left;
+    margin-top: 30px;
+    width: 80%;
+}
+#gbnt-header .nav .gbnt-language {
+    float: right;
+    margin-right: 10%;
+}
+#gbnt-header a {
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+}
+#gbnt-header a:hover {
+    color: #fff !important;
+}
+#gbnt-header .about-text {
+    color: #fff;
+    width: 75%;
+    margin-top: 80px;
+    text-align: left;
+}
+#gbnt-header .tours {
+    color: #fff;
+    width: 75%;
+    margin-top: 10px;
+    margin-left: 105px;
+    text-align: left;
+    float: left;
+}
+#gbnt-header .nav .tours ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: left;
+}
+#gbnt-header .nav .tours ul li {
+    display: block;
+    margin-top: 20px;
+}
+#gbnt-header .nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    float: left;
+}
+#gbnt-header .nav ul li {
+    display: inline;
+    margin-right: 30px;
+}
+#gbnt-header .close-header {
+    width: 100%;
+    font-size: 30px;
+    color: #666;
+    text-align: center;
+}
+#gbnt-header .close-header a:hover {
+    color: #fff;
+}
+#gbnt-header .close-header i {
+    margin-top: 50px;
+}
+/* =============================================================================
+  GBNT-CONTAINER
+============================================================================= */
+
+#gbnt-container {
+    top: 80px;
+    position: relative;
+}
+#gbnt-container .gbnt-item {
+    float: left;
+    position: static;
+    cursor: pointer;
+}
+#gbnt-container .gbnt-item.tour {
+    background-color: #000;
+}
+#gbnt-container .tour .btn-selected {
+    color: #fff !important;
+}
+#gbnt-container .tour p {
+    color: #fff !important;
+}
+#gbnt-container .tour .proj-profile .header {
+    border-color: #fff;
+}
+#gbnt-container .wrap {
+    position: relative;
+    width: 100%;
+}
+#gbnt-container .proj-cover img {
+    display: block;
+    width: 100%;
+}
+#gbnt-container .proj-cover {
+    position: absolute;
+    width: 100% !important;
+    float: left;
+    z-index: 30;
+}
+#gbnt-container .proj-text {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    float: left;
+    width: 100% !important;
+    z-index: 20;
+}
+#gbnt-container .proj-img img {
+    display: block;
+}
+#gbnt-container .proj-img {
+    position: absolute;
+    width: 100% !important;
+    z-index: 10;
+}
+#gbnt-container .textbox {
+    padding: 10px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
+#gbnt-container .textbox .titulo {
+    color: #fff;
+    font-size: 14px;
+}
+#gbnt-container .textbox .autor {
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+}
+#gbnt-container .textbox p {
+    margin: 0;
+}
+#gbnt-container .gbnt-size-normal {
+    width: 12.5%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#gbnt-container .gbnt-size-wide {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#gbnt-container .gbnt-size-tall {
+    width: 12.5%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#gbnt-container .selected-project {
+    width: 37.5%;
+}
+#gbnt-container .proj-profile {
+    width: 100%;
+}
+#gbnt-container .proj-profile a {
+    pointer-events: visible;
+}
+#gbnt-container .proj-profile .header {
+    width: 100%;
+    border-bottom: 1px solid black;
+    padding: 12px;
+}
+#gbnt-container .proj-profile .btn-close img {
+    width: 18px;
+}
+#gbnt-container .proj-profile .btn-close {
+    float: right;
+    margin-top: 0px;
+}
+#gbnt-container .proj-profile .btn-close:hover {
+    opacity: 0.4;
+}
+#gbnt-container .proj-profile .btn-view-proj {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #666;
+}
+#gbnt-container .proj-profile .btn-view-proj:hover {
+    color: #000;
+}
+#gbnt-container .proj-profile .btn-project {
+    width: 50px;
+    text-decoration: none;
+    color: #666;
+    margin-right: 30px;
+}
+#gbnt-container .proj-profile .btn-project:hover {
+    color: #000;
+}
+#gbnt-container .proj-profile .btn-author {
+    width: 50px;
+    text-decoration: none;
+    color: #666;
+}
+#gbnt-container .proj-profile .btn-author:hover {
+    color: #000;
+}
+#gbnt-container .proj-profile .btn-selected {
+    color: #000;
+    font-weight: 500;
+    pointer-events: none;
+}
+#gbnt-container .proj-profile .tab-project {
+    padding: 12px;
+    margin-top: 15px;
+}
+#gbnt-container .proj-profile .tab-project i {
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#gbnt-container .proj-profile .tab-author {
+    padding: 12px;
+    margin-top: 15px;
+}
+#gbnt-container .proj-profile .tab-author p {
+    margin-top: 20px;
+}
+/* =============================================================================
+  MEDIA QUERIES
+============================================================================= */
+/* 
+ ========= SMALL DEVICES (mobiles) ============
+*/
+
+@media screen and (min-width: 0px) and (max-width: 767px) {
+    html {
+        max-width: 100%;
+    }
+    #gbnt-container .gbnt-size-normal {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-wide {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-tall {
+        width: 50%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .selected-project {
+        width: 100%;
+    }
+}
+/* 
+ ========= MEDIUM DEVICES (tablets) ============
+*/
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    #gbnt-container .gbnt-size-normal {
+        width: 12.5%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-wide {
+        width: 25%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .gbnt-size-tall {
+        width: 12.5%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    #gbnt-container .selected-project {
+        width: 37.5%;
+    }
+}
