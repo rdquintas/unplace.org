@@ -19,6 +19,7 @@ var _language = 'pt';
 var tour1 = "1,4,8,12,16,20,24,28,32,36";
 var tour2 = "6,13,17,25,29,33,37";
 var tour3 = "26,30,34,38";
+var _tourInformation = null;
 // << dummy TOUR data
 
 $(document).ready(function() {
@@ -71,16 +72,27 @@ function prepareProjectData() {
         _projectsList = data.split(",");
 
         if (_routingTour === "1") {
-            // _projectsList = nul
             _projectsList = tour1.split(",");
+            _tourInformation = [{
+                tour_title: "tour_title1",
+                tour_description: "tour_description1"
+            }];
         }
 
         if (_routingTour === "2") {
             _projectsList = tour2.split(",");
+            _tourInformation = [{
+                tour_title: "tour_title2",
+                tour_description: "tour_description2"
+            }];
         }
 
         if (_routingTour === "3") {
             _projectsList = tour3.split(",");
+            _tourInformation = [{
+                tour_title: "tour_title3",
+                tour_description: "tour_description3"
+            }];
         }
 
         var coverImageCounter = 0;
@@ -116,6 +128,13 @@ function checkAllDone(projID) {
         correctSizes();
         randomizeDIVs();
         initializePackery();
+
+        // If we are entering a tour, then open item_x
+        if (_routingTour) {
+            openProject($("#item_x"));
+            _packeryContainer.packery();
+        }
+
         createEventHandlers();
         // doMobileFlashing();
     }
@@ -156,8 +175,14 @@ function createEventHandlers() {
     // Mouse hover for fadein/fadeout Project Text
     // this only happens if data-gbnt-checked = true, meaning, we have alredy visited this proj
     $(".proj-text").hover(function getIn() {
+        if ($(this).parents("#item_x")) {
+            return;
+        }
         $(this).fadeTo(100, 1);
     }, function getOut() {
+        if ($(this).parents("#item_x")) {
+            return;
+        }
         $(this).fadeTo(100, 0);
     });
 
@@ -450,6 +475,7 @@ function createObject(projectID, coverID) {
 
 function createHTML() {
     var data = {
+        tour: _tourInformation,
         project: window._projectsList
     };
     $('#gbnt-container').append(window._template(data));
@@ -515,6 +541,8 @@ function randomizeDIVs() {
         var target2 = Math.floor(Math.random() * cards.length - 1) + 1;
         cards.eq(target).before(cards.eq(target2));
     }
+
+    $("#item_x").prependTo("#gbnt-container");
 }
 
 function initializePackery() {

@@ -13,29 +13,30 @@
 
 <body>
     <script id="gbnt-template" type="text/x-handlebars-template">
-        <div id="item_x" class=" gbnt-item gbnt-size-normal" data-gbnt-checked="true">
+        {{#each tour}}
+        <div id="item_x" class="gbnt-item gbnt-size-normal tour" data-gbnt-checked="true">
             <div class="wrap">
                 <div class="proj-text gbnt-size-normal">
                     <a href="#" id="cover" class="textbox">
-                        <p id="cover" class="titulo">{{titulo}}</p>
-                        <p id="cover" class="autor">{{autor}}</p>
+                        <p id="cover" class="titulo">{{translateThis 'tour'}}</p>
+                        <p id="cover" class="autor">{{translateThis tour_title}}</p>
                     </a>
                 </div>
             </div>
             <div class="proj-profile hide-me">
                 <div class="header">
-                    <a href="#" class="btn-project btn-selected">{{translateThis 'project_description'}}</a>
+                    <a href="#" class="btn-project btn-selected">{{translateThis tour_title}}</a>
                     <a href="#" class="btn-close">
                         <img src="img/cross.png">
                     </a>
                 </div>
-                <div class="tab-project hide-me">
-                    <h1>{{titulo}}</h1>
-                    <p style="margin-top:10px">{{descricao}}</p>
+                <div class="tab-project">
+                    <h1>{{translateThis tour_title}}</h1>
+                    <p style="margin-top:10px">{{translateThis tour_description}}</p>
                 </div>
             </div>
         </div>
-        {{#each project}}
+        {{/each}} {{#each project}}
         <div id="{{getID 'item_' id}}" class="gbnt-item {{size_class}}" data-gbnt-checked="false">
             <div class="wrap">
                 <div class="proj-cover {{size_class}}">
