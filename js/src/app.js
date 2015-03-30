@@ -193,6 +193,9 @@ function createEventHandlers() {
 
     // Click event to OPEN Project
     $(".gbnt-item").on("click", function(e) {
+        if (e.target.className === "btn-view-proj") {
+            return;
+        }
         //If event was triggered by a DIV other than gbnt-item, then get out of here
         e.preventDefault();
         if ($(this).hasClass('no-pointers')) {
@@ -221,6 +224,17 @@ function createEventHandlers() {
         $(this).parent().siblings(".tab-author").toggle();
     });
 
+
+    // Click event to open TAB project
+    $(".proj-profile .btn-project").on("click", function(e) {
+        e.preventDefault();
+        $(this).siblings(".btn-author").toggleClass("btn-selected");
+        $(this).toggleClass("btn-selected");
+        $(this).parent().siblings(".tab-project").toggle();
+        $(this).parent().siblings(".tab-author").toggle();
+    });
+
+
     // Click event for ABOUT link
     $("#gbnt-header .gbnt-about").on("click", function(e) {
         e.preventDefault();
@@ -239,11 +253,11 @@ function createEventHandlers() {
             if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
                 $("#gbnt-header").attr("data-gbnt-open", "true");
                 $(".about-text").toggleClass("hide-me");
-                openHeader("gbnt-about");
+                openHeader("gbnt-about", false);
             } else {
                 $("#gbnt-header").attr("data-gbnt-open", "false");
                 $(".about-text").toggleClass("hide-me");
-                closeHeader("gbnt-about");
+                closeHeader("gbnt-about", false);
             }
         }
     });
@@ -267,13 +281,48 @@ function createEventHandlers() {
             if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
                 $("#gbnt-header").attr("data-gbnt-open", "true");
                 $(".tours").toggleClass("hide-me");
-                openHeader("gbnt-tour");
+                openHeader("gbnt-tour", false);
             } else {
                 $("#gbnt-header").attr("data-gbnt-open", "false");
                 $(".tours").toggleClass("hide-me");
-                closeHeader("gbnt-tour");
+                closeHeader("gbnt-tour", false);
             }
         }
+    });
+
+
+    // Click event for BURGER icon
+    $("#gbnt-header .toggle-menu").on("click", function(e) {
+        e.preventDefault();
+        if ($("#gbnt-header .toggle-menu i").hasClass('fa-bars')) {
+            $("#gbnt-header .toggle-menu i").removeClass('fa-bars').addClass('fa-times');
+            openHeader("gbnt-tour", true);
+        } else {
+            $("#gbnt-header .toggle-menu i").removeClass('fa-times').addClass('fa-bars');
+            closeHeader("gbnt-tour", true);
+        }
+
+        // If the header is expaneded and we coming from a different menu 
+        // then do this
+        // if ($("#gbnt-header").attr("data-gbnt-open") === "true" &&
+        //     $(".about-text").hasClass("hide-me") === false) {
+        //     $(".about-text").toggleClass("hide-me");
+        //     $(".tours").toggleClass("hide-me");
+        // } else {
+        //     // otherwise expand/close menu normaly
+        //     $(".gbnt-tour").addClass("no-pointers");
+        //     $(".close-header").toggleClass("hide-me");
+
+        //     if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
+        //         $("#gbnt-header").attr("data-gbnt-open", "true");
+        //         $(".tours").toggleClass("hide-me");
+        //         openHeader("gbnt-tour", false);
+        //     } else {
+        //         $("#gbnt-header").attr("data-gbnt-open", "false");
+        //         $(".tours").toggleClass("hide-me");
+        //         closeHeader("gbnt-tour", false);
+        //     }
+        // }
     });
 
     // Click event for CLOSE header link
@@ -285,18 +334,10 @@ function createEventHandlers() {
         $(".about-text").addClass("hide-me");
         $(".close-header").addClass("hide-me");
 
-        closeHeader("gbnt-tour");
+        closeHeader("gbnt-tour", false);
     });
 
 
-    // Click event to open TAB project
-    $(".proj-profile .btn-project").on("click", function(e) {
-        e.preventDefault();
-        $(this).siblings(".btn-author").toggleClass("btn-selected");
-        $(this).toggleClass("btn-selected");
-        $(this).parent().siblings(".tab-project").toggle();
-        $(this).parent().siblings(".tab-author").toggle();
-    });
 
     // Close project if ESC key is pressed
     $(document).keyup(function(e) {
@@ -312,43 +353,65 @@ function createEventHandlers() {
     });
 }
 
-function openHeader(selectedMenuClass) {
+function openHeader(selectedMenuClass, isMobile) {
+    var size = "400px";
+    var ease = "easeOutElastic";
+    var dur = 1200;
+
+    if (isMobile) {
+        size = "400px";
+        ease = "swing";
+        dur = 200;
+    }
+
     $('#gbnt-header').animate({
-        height: "400px"
+        height: size
     }, {
-        duration: 1200,
-        easing: "easeOutElastic",
+        duration: dur,
+        easing: ease,
         complete: function() {
             $("." + selectedMenuClass).removeClass("no-pointers");
         }
     });
 
-    $('#gbnt-container').animate({
-        "margin-top": "320px"
-    }, {
-        duration: 1200,
-        easing: "easeOutElastic"
-    });
+    if (!isMobile) {
+        $('#gbnt-container').animate({
+            "margin-top": "320px"
+        }, {
+            duration: dur,
+            easing: ease
+        });
+    }
 }
 
 
-function closeHeader(selectedMenuClass) {
+function closeHeader(selectedMenuClass, isMobile) {
+    var ease = "easeOutElastic";
+    var dur = 1200;
+
+    if (isMobile) {
+        ease = "swing";
+        dur = 200;
+    }
+
     $('#gbnt-header').animate({
         height: "80px"
     }, {
-        duration: 1200,
-        easing: "easeOutElastic",
+        duration: dur,
+        easing: ease,
         complete: function() {
             $("." + selectedMenuClass).removeClass("no-pointers");
         }
     });
 
-    $('#gbnt-container').animate({
-        "margin-top": "0px"
-    }, {
-        duration: 1200,
-        easing: "easeOutElastic"
-    });
+    if (!isMobile) {
+        $('#gbnt-container').animate({
+            "margin-top": "0px"
+        }, {
+            duration: dur,
+            easing: ease
+        });
+    }
 }
 
 function getUrlParameter(sParam) {
