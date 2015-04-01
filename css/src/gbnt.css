@@ -105,6 +105,7 @@ html {
     margin-left: 105px;
     text-align: left;
     float: left;
+    position: absolute;
 }
 
 #gbnt-header .nav .tours ul {
@@ -363,6 +364,40 @@ html {
     }
     #gbnt-header .nav {
         display: none;
+        padding: 0;
+        margin-top: 70px;
+        margin-left: 20px;
+        width: 100%;
+    }
+    #gbnt-header .nav ul {
+        text-align: left;
+    }
+    #gbnt-header .gbnt-language {
+        position: absolute;
+        top: 100px;
+        left: 20px;
+    }
+    #gbnt-header .tours {
+        position: static;
+        margin-left: 30px;
+        width: 100%;
+    }
+    #gbnt-header .tours.hide-me {
+        display: block;
+    }
+    #gbnt-header .about-text.hide-me {
+        display: block;
+        width: 100%;
+        position: absolute;
+        top: 410px;
+        margin: 0px;
+        padding-right: 30px;
+        padding-left: 20px;
+        left: 0;
+    }
+    #gbnt-header .nav ul li {
+        display: block;
+        margin-bottom: 30px;
     }
     #gbnt-header .toggle-menu {
         display: block;

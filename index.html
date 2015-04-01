@@ -12,6 +12,42 @@
 </head>
 
 <body>
+    <div class="preloader">
+        <img src="img/preloader.gif">
+    </div>
+    <section id="gbnt-header" data-gbnt-open="false">
+        <div class="logo">
+            <a href="http://www.unplace.org">
+                <img src="img/logo.jpg">
+            </a>
+        </div>
+        <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>
+        <div class="nav">
+            <ul>
+                <li><a href="/" class="gbnt-exibithion">exibi&ccedil;&atilde;o</a>
+                </li>
+                <li><a href="#" class="gbnt-tour">visitas tem&aacute;ticas</a>
+                    <div class="tours hide-me">
+                        <ul>
+                            <li><a href="#tour/1">Geografias do espaço público</a>
+                            </li>
+                            <li><a href="#tour/2">Poder e controlo</a>
+                            </li>
+                            <li><a href="#tour/3">Indentidade(s) em processo</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#" class="gbnt-about">about</a>
+                </li>
+            </ul>
+            <a href="?lang=en" class="gbnt-language">en</a>
+            <div class="about-text hide-me">
+                <p>PT</p>
+                <a href="docs/about.pdf" class="">pdf download</a>
+            </div>        
+        </div>
+    </section>
     <script id="gbnt-template" type="text/x-handlebars-template">
         {{#each tour}}
         <div id="item_x" class="gbnt-item gbnt-size-normal tour" data-gbnt-checked="true">
@@ -77,45 +113,6 @@
         </div>
         {{/each}}
     </script>
-    <div class="preloader">
-        <img src="img/preloader.gif">
-    </div>
-    <section id="gbnt-header" data-gbnt-open="false">
-        <div class="logo">
-            <a href="http://www.unplace.org">
-                <img src="img/logo.jpg">
-            </a>
-        </div>
-        <div class="nav">
-            <ul>
-                <li><a href="/" class="gbnt-exibithion">exibi&ccedil;&atilde;o</a>
-                </li>
-                <li><a href="#" class="gbnt-tour">visitas tem&aacute;ticas</a>
-                </li>
-                <li><a href="#" class="gbnt-about">about</a>
-                </li>
-            </ul>
-            <a href="?lang=en" class="gbnt-language">en</a>
-            <div class="about-text hide-me">
-                <p>PT</p>
-                <a href="docs/about.pdf" class="">pdf download</a>
-            </div>
-            <div class="tours hide-me">
-                <ul>
-                    <li><a href="#tour/1">Geografias do espaço público</a>
-                    </li>
-                    <li><a href="#tour/2">Poder e controlo</a>
-                    </li>
-                    <li><a href="#tour/3">Indentidade(s) em processo</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>
-        <!--        <div class="close-header hide-me">
-            <a href=""><i class="fa fa-chevron-up"></i></a>
-        </div> -->
-    </section>
     <section id="gbnt-container" class="packery">
     </section>
     <script type="text/javascript" src="js/gbnt.libs.js"></script>

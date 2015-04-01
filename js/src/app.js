@@ -295,11 +295,17 @@ function createEventHandlers() {
     $("#gbnt-header .toggle-menu").on("click", function(e) {
         e.preventDefault();
         if ($("#gbnt-header .toggle-menu i").hasClass('fa-bars')) {
-            $("#gbnt-header .toggle-menu i").removeClass('fa-bars').addClass('fa-times');
-            openHeader("gbnt-tour", true);
+            $("#gbnt-header .toggle-menu i").removeClass('fa-bars').addClass('fa-times');            
+            $("#gbnt-header .gbnt-tour").addClass('no-pointers');
+            $("#gbnt-header .gbnt-about").addClass('no-pointers');
+            openHeader(null, true);            
+            $("#gbnt-header .nav").show();
         } else {
             $("#gbnt-header .toggle-menu i").removeClass('fa-times').addClass('fa-bars');
-            closeHeader("gbnt-tour", true);
+            $("#gbnt-header .gbnt-tour").removeClass('no-pointers');
+            $("#gbnt-header .gbnt-about").removeClass('no-pointers');
+            $("#gbnt-header .nav").hide();
+            closeHeader(null, true);
         }
 
         // If the header is expaneded and we coming from a different menu 
@@ -338,7 +344,6 @@ function createEventHandlers() {
     });
 
 
-
     // Close project if ESC key is pressed
     $(document).keyup(function(e) {
         if (e.keyCode === 27) {
@@ -359,7 +364,7 @@ function openHeader(selectedMenuClass, isMobile) {
     var dur = 1200;
 
     if (isMobile) {
-        size = "400px";
+        size = "950px";
         ease = "swing";
         dur = 200;
     }
