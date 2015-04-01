@@ -5,5 +5,6 @@
     "ano": "2010",
     "descricao": "For the Unplace exhibition, LiMac proposes “Solo Show”, an interactive museum room to be accessed on the internet. The visitor encounters itself within a 3 to 5 minutes guided visit but, because of the number of persons in the museums, he cannot see any of the art works. While the description of the guide accompanies the visitor, the room and its spectators become the center of attention.",
     "www": "http://www.mintarts.com/projects/BeEaten.html",
-    "imagens": ["main.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"]
+    "imagens": ["main.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"],
+    "ficha_tecnica": "ficha_tecnica.pdf"
 }

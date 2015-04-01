@@ -5,5 +5,6 @@
     "ano": "2011",
     "descricao": "Tiempo de Papayas es una plataforma de investigación, re-significación y difusión de diferentes manifestaciones poéticas en un determinado tiempo/espacio. Durante este año el proyecto fue creciendo al compartir la experiencia con varios artistas que se sumaron a la plataforma ( poetas, músicos, bailarines, artistas plásticos, performers) con el objetivo de rescatar la “voz”, la “esencia”, el “tono” del contexto en cada uno de los espacios visitados del proyecto, generando nuestros propios “paisajes” dentro de esos paisajes que percibimos (geografías, geometrías, los acentos, hábitos y costumbres, circulaciones y dinámicas de cada región).",
     "www": "http://www.unplace.org",
-    "imagens": ["main.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"]
+    "imagens": ["main.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"],
+    "ficha_tecnica": "ficha_tecnica.pdf"
 }

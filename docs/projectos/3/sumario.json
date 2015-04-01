@@ -5,5 +5,6 @@
     "ano": "2014",
     "descricao": "Observation and Draw from (0,0,0) is an online interactive abstract drawing and cartography tool. It's basis and leitmotif of the piantadelmondo series of artworks by André Sier which create and map imaginary cities. Moving around and clicking with the mouse one operates and discovers new evanescent uncharted paths inscribed on the surface of a sphere, watching them unfold from the zero center point of the planetoid.",
     "www": "http://andre-sier.com",
-    "imagens": ["main1.jpg", "main2.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"]
+    "imagens": ["main1.jpg", "main2.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"],
+    "ficha_tecnica": "ficha_tecnica.pdf"
 }
