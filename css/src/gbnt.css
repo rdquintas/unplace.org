@@ -15,8 +15,8 @@ html {
     max-width: 1366px;
     margin: 0 auto;
     padding: 0;
-    font-family: "Lato", Arial, sans-serif;
-    /*font-family: "Proxima Nova W01", Arial, sans-serif;*/
+    /*font-family: "Lato", Arial, sans-serif;*/
+    font-family: "Proxima Nova W01", Arial, sans-serif;
 }
 
 .preloader {
