@@ -22,11 +22,6 @@ var tour3 = "26,30,34,38";
 var _tourInformation = null;
 // << dummy TOUR data
 
-
-window.onload = function() {
-    $('.preloader').addClass("hide-me");
-};
-
 $(document).ready(function() {
     // first thing we have to do, is to determine the language
     var urlLang = getUrlParameter('lang');
@@ -37,6 +32,17 @@ $(document).ready(function() {
     initializeRouting();
     prepareProjectData();
     applyTranslations();
+
+    // $(window).load(function() {
+    //     $('.preloader').addClass("hide-me");
+    // });
+
+    // window.onload = function() {
+    //     $('.preloader').addClass("hide-me");
+    // };
+
+
+
 });
 
 // Adjust the layout (by refreshing the page) if user resizes window
@@ -141,8 +147,28 @@ function checkAllDone(projID) {
         }
 
         createEventHandlers();
+        checkAllImagesAreLoaded();
         // doMobileFlashing();
     }
+}
+
+function checkAllImagesAreLoaded() {
+
+    var $img = $('img'),
+        totalImg = $img.length - 2;
+
+    var waitImgDone = function() {
+        totalImg--;
+        console.log("counter: " + totalImg);
+        if (!totalImg) $('.preloader').addClass("hide-me");
+    };
+
+    $('img').each(function() {
+        $(this)
+            .load(waitImgDone)
+            .error(waitImgDone);
+    });
+
 }
 
 function correctSizes() {
