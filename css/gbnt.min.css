@@ -16,11 +16,11 @@ html {
 }
 
 .preloader {
-    z-index: 1;
+    z-index: 999;
     padding-top: 20%;
     background-color: #fff;
     text-align: center;
-    position: fixed;
+    position: absolute;
     top: 0px;
     bottom: 0px;
     left: 0px;
