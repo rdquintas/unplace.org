@@ -22,6 +22,11 @@ var tour3 = "26,30,34,38";
 var _tourInformation = null;
 // << dummy TOUR data
 
+
+window.onload = function() {
+    $('.preloader').addClass("hide-me");
+};
+
 $(document).ready(function() {
     // first thing we have to do, is to determine the language
     var urlLang = getUrlParameter('lang');
@@ -295,10 +300,10 @@ function createEventHandlers() {
     $("#gbnt-header .toggle-menu").on("click", function(e) {
         e.preventDefault();
         if ($("#gbnt-header .toggle-menu i").hasClass('fa-bars')) {
-            $("#gbnt-header .toggle-menu i").removeClass('fa-bars').addClass('fa-times');            
+            $("#gbnt-header .toggle-menu i").removeClass('fa-bars').addClass('fa-times');
             $("#gbnt-header .gbnt-tour").addClass('no-pointers');
             $("#gbnt-header .gbnt-about").addClass('no-pointers');
-            openHeader(null, true);            
+            openHeader(null, true);
             $("#gbnt-header .nav").show();
         } else {
             $("#gbnt-header .toggle-menu i").removeClass('fa-times').addClass('fa-bars');
@@ -615,7 +620,7 @@ function randomizeDIVs() {
 
 function initializePackery() {
     // Remove preloader
-    $('.preloader').addClass("hide-me");
+    // $('.preloader').addClass("hide-me");
 
     _packeryContainer.packery();
 
