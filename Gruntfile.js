@@ -32,6 +32,7 @@ module.exports = function(grunt) {
                     'js/src/libs/739bf436-1824-4067-a456-9bd34cfd8f44.js',
                     'js/src/libs/jquery-1.11.2.min.js',
                     'js/src/libs/handlebars-v2.0.0.js',
+                    // 'js/src/libs/jquery.history.js',                    
                     // 'js/src/libs/imagesloaded.pkgd.min.js',
                     'js/src/libs/packery.pkgd.min.js',
                     // 'js/src/libs/jquery.easing.1.3.js',

@@ -22,6 +22,10 @@ var tour3 = "26,30,34,38";
 var _tourInformation = null;
 // << dummy TOUR data
 
+// History.Adapter.bind(window, 'statechange', function() { // Note: We are using statechange instead of popstate
+//     var State = History.getState(); // Note: We are using History.getState() instead of event.state
+// });
+
 $(document).ready(function() {
     // first thing we have to do, is to determine the language
     var urlLang = getUrlParameter('lang');
@@ -52,11 +56,13 @@ function applyTranslations() {
 
     if (_language === "pt") {
         window.history.pushState("string", null, "?lang=pt");
+        // History.pushState(null, null, "?lang=pt");
         newstr = str.replace(/lang=pt/i, 'lang=en');
         $(".gbnt-language").attr("href", newstr);
         $(".gbnt-exibithion").attr("href", "?lang=pt");
     } else {
         window.history.pushState("string", null, "?lang=en");
+        // History.pushState(null, null, "?lang=en");
         newstr = str.replace(/lang=en/i, 'lang=pt');
         $(".gbnt-language").attr("href", newstr);
         $(".gbnt-exibithion").attr("href", "?lang=en");
@@ -517,6 +523,7 @@ function openProject(gbntItem) {
 
     // Update the URL with the project ID
     window.history.pushState("string", null, "#project/" + $(gbntItem).attr("id").split("_")[1]);
+    // History.pushState(null, null, "#project/" + $(gbntItem).attr("id").split("_")[1]);
 }
 
 function closeProject(gbntItem) {
@@ -545,6 +552,8 @@ function closeProject(gbntItem) {
 
     // Update the URL, by removing the project ID
     window.history.pushState("string", null, "#");
+    // History.pushState(null, null, "#");
+
 }
 
 function doMobileFlashing() {
