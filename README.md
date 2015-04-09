@@ -3,24 +3,15 @@
 Project | unplace.org - Prototype for GBNT
 --- | ---
 Info | Prototype for unplace.org
-Version | 3.0
+Version | 3.1
 URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplace.org)
 
-<<<<<<< HEAD
-# Update #
-* this is the final version
-* added feature for "guided tours"
-* added ROUTING for projects using pathjs
-* fine-tunned css for mobile
-* added fluid width for grid items. it is now % based.
-* when pressing "ESC" key, project closes
-* concluded admin console
-* added "about" section
-* added proper cover images for wide and tall formats
-* added GRUNT task workflow
-* added translation logic (EN and PT only)
-=======
 # Changelog (Branches)
+### v3.1-url-fix
+- attempt to fix pushState issue. Doesn't work well in Safari
+- removing PATH.js
+- attempting just using URL params with # instead
+
 ### v3-final
 - this is the final version
 - added feature for "guided tours"
@@ -47,4 +38,3 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
 - uses semantic-ui
 
 
->>>>>>> v3-final
