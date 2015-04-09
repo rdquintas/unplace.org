@@ -6,20 +6,6 @@ Info | Prototype for unplace.org
 Version | 3.0
 URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplace.org)
 
-<<<<<<< HEAD
-# Update #
-* this is the final version
-* added feature for "guided tours"
-* added ROUTING for projects using pathjs
-* fine-tunned css for mobile
-* added fluid width for grid items. it is now % based.
-* when pressing "ESC" key, project closes
-* concluded admin console
-* added "about" section
-* added proper cover images for wide and tall formats
-* added GRUNT task workflow
-* added translation logic (EN and PT only)
-=======
 # Changelog (Branches)
 ### v3-final
 - this is the final version
@@ -46,5 +32,3 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
 - CSS to be improved for mobile
 - uses semantic-ui
 
-
->>>>>>> v3-final
