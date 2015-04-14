@@ -1,59 +1,3 @@
-/*! gbnt - v3.0.0 - 2015-04-13 */// =============================
-// JSON tranlation format is this:
-// { key: [portuguese, english] }
-// =============================
-var translations = {
-    exibithion: [
-        "exibição", "exibithion"
-    ],
-    language: [
-        "en", "pt"
-    ],
-    tour: [
-        "visitas temáticas", "thematic tours"
-    ],
-    tour_title1: [
-        "Geografias do espaço público", "EN Geografias do espaço público"
-    ],
-    tour_description1: [
-        "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
-    ],
-    tour_title2: [
-        "Poder e controlo", "EN Poder e controlo"
-    ],
-    tour_description2: [
-        "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
-    ],
-    tour_title3: [
-        "Indentidade(s) em processo", "EN Indentidade(s) em processo"
-    ],
-    tour_description3: [
-        "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
-    ],
-    about: [
-        "about", "about"
-    ],
-    about_text: [
-        "ABOUT PT - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio nulla fugit minus officia adipisci numquam! Minus, quam voluptates eos dolorum eius cupiditate saepe temporibus nihil repudiandae, at consectetur quae in itaque, eum voluptas officiis, numquam deleniti error. Consequuntur sunt commodi, temporibus suscipit. Earum voluptatem, nesciunt ipsam dolore perferendis eligendi! Ipsum explicabo adipisci ab quam iure voluptate, nam illum quia suscipit atque blanditiis quod, sint aliquam autem possimus reprehenderit fugiat voluptatibus delectus officiis! Blanditiis ea cupiditate provident et quisquam, iste quibusdam beatae! Impedit!",
-        "ABOUT EN - Perspiciatis veniam cum esse nisi dolorum rerum repellendus. Debitis obcaecati enim at magnam quisquam impedit recusandae iusto, itaque autem quos. Suscipit tenetur deserunt atque unde expedita delectus amet nihil facilis, magnam, voluptate perferendis? Iure asperiores, hic rem consequatur harum, maiores sit expedita saepe odio perferendis corporis minima laboriosam reiciendis sunt! Doloribus impedit quasi minima, id pariatur ipsam, quam culpa dignissimos, necessitatibus dolor officia labore placeat rerum. Dignissimos esse dolore, quaerat ullam enim assumenda ut provident, sunt, vero temporibus accusamus dolorem fugiat ipsa harum perferendis maxime maiores. A voluptatem in consectetur error quidem, corporis totam voluptates quaerat possimus officiis cupiditate quam alias"
-    ],
-    author: [
-        "autor", "author"
-    ],
-    project_description: [
-        "descrição  do projecto", "project description"
-    ],
-    view_project: [
-        "ver projecto", "view project"
-    ],
-    year: [
-        "ano", "year"
-    ],
-    ficha_tecnica: [
-        "ficha técnica", "technical spec"
-    ]
-};
-
 var _iv_normal = 80; // random percent for NORMAL squares
 var _iv_tall = 10; // random percent for TALL squares
 var _iv_wide = 10; // random percent for WIDE squares
@@ -65,11 +9,13 @@ var _template = Handlebars.compile(_source);
 // Packery global var
 var _packeryContainer = $('.packery');
 
-// If we are calling a project/tour directly through URL
-var _routingProj = null;
-var _routingTour = null;
+// This object will be parsed inside the URL
+var _mainObject = {
+    language: "pt",
+    project_id: null,
+    tour_id: null
+};
 
-var _language = 'pt';
 
 // >> dummy TOUR data
 var tour1 = "1,4,8,12,16,20,24,28,32,36";
@@ -78,26 +24,15 @@ var tour3 = "26,30,34,38";
 var _tourInformation = null;
 // << dummy TOUR data
 
-// History.Adapter.bind(window, 'statechange', function() { // Note: We are using statechange instead of popstate
-//     var State = History.getState(); // Note: We are using History.getState() instead of event.state
-// });
-
 $(document).ready(function() {
-    // // first thing we have to do, is to determine the language
-    // var urlLang = getUrlParameter('lang');
-    // if (urlLang) {
-    //   _language = urlLang;
-    // }
-
-    readURLhashParams();
+    parseURLobject();
     prepareProjectData();
     applyTranslations();
-
 });
 
 // Adjust the layout (by refreshing the page) if user resizes window
 $(window).resize(function() {
-    location.reload();
+    // location.reload();
 });
 
 function applyTranslations() {
@@ -107,49 +42,30 @@ function applyTranslations() {
     $(".gbnt-language").text(doTranslation("language"));
     $(".about-text p").text(doTranslation("about_text"));
 
-    var str = window.location.href;
-    var newstr = "";
-
-    if (_language === "pt") {
-        window.history.pushState("string", null, "?lang=pt");
-        // History.pushState(null, null, "?lang=pt");
-        newstr = str.replace(/lang=pt/i, 'lang=en');
-        $(".gbnt-language").attr("href", newstr);
-        $(".gbnt-exibithion").attr("href", "?lang=pt");
+    if (_mainObject.language === "pt") {
+        $(".gbnt-language").html("en");
     } else {
-        window.history.pushState("string", null, "?lang=en");
-        // History.pushState(null, null, "?lang=en");
-        newstr = str.replace(/lang=en/i, 'lang=pt');
-        $(".gbnt-language").attr("href", newstr);
-        $(".gbnt-exibithion").attr("href", "?lang=en");
+        $(".gbnt-language").html("pt");
     }
 }
 
-function readURLhashParams() {
-    _language = "pt";
-
-    var arr = location.hash.split("#")[1].split(",");
-
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i].substring(0, 2) === "p_") {}
+function parseURLobject() {
+    try {
+        var url_obj = location.hash.split("#")[1];
+        if (url_obj) {
+            url_obj = decodeURIComponent(url_obj);
+            _mainObject = JSON.parse(url_obj);
+        };
+    } catch (e) {
+        console.log("url is clean");
     }
-    // // _language = urlLang;
-    // Path.map("#project/:id").to(function() {
-    //   _routingProj = this.params.id;
-    // });
-
-    // Path.map("#tour/:id").to(function() {
-    //   _routingTour = this.params.id;
-    // });
-
-    // Path.listen();
 }
 
 function prepareProjectData() {
     $.get("docs/projectos/lista_dos_projectos.txt", function(data) {
         _projectsList = data.split(",");
 
-        if (_routingTour === "1") {
+        if (_mainObject.tour_id === "1") {
             _projectsList = tour1.split(",");
             _tourInformation = [{
                 tour_title: "tour_title1",
@@ -157,7 +73,7 @@ function prepareProjectData() {
             }];
         }
 
-        if (_routingTour === "2") {
+        if (_mainObject.tour_id === "2") {
             _projectsList = tour2.split(",");
             _tourInformation = [{
                 tour_title: "tour_title2",
@@ -165,7 +81,7 @@ function prepareProjectData() {
             }];
         }
 
-        if (_routingTour === "3") {
+        if (_mainObject.tour_id === "3") {
             _projectsList = tour3.split(",");
             _tourInformation = [{
                 tour_title: "tour_title3",
@@ -208,7 +124,7 @@ function checkAllDone(projID) {
         initializePackery();
 
         // If we are entering a tour, then open item_x
-        if (_routingTour) {
+        if (_mainObject.tour_id) {
             openProject($("#item_x"));
             _packeryContainer.packery();
         }
@@ -269,6 +185,7 @@ function createEventHandlers() {
         $(this).fadeTo(100, 1);
     });
 
+
     // Mouse hover for fadein/fadeout Project Text
     // this only happens if data-gbnt-checked = true, meaning, we have alredy visited this proj
     $(".proj-text").hover(function getIn() {
@@ -283,10 +200,19 @@ function createEventHandlers() {
         $(this).fadeTo(100, 0);
     });
 
+
     // Click event for TOUR clicked
     $(".tours a").on("click", function(e) {
+        e.preventDefault();
+
+        // Update the URL object 
+        _mainObject.tour_id = $(this).attr("href");
+        var str = JSON.stringify(_mainObject);
+        location.hash = encodeURIComponent(str);
+
         location.reload();
     });
+
 
     // Click event to OPEN Project
     $(".gbnt-item").on("click", function(e) {
@@ -302,14 +228,8 @@ function createEventHandlers() {
             return;
         }
         openProject(this);
-
-        if (_language === "pt") {
-            $(".gbnt-language").attr("href", "?lang=en" + "#project/" + $(this).attr("id").split("_")[1]);
-        } else {
-            $(".gbnt-language").attr("href", "?lang=pt" + "#project/" + $(this).attr("id").split("_")[1]);
-        }
-
     });
+
 
     // Click event to CLOSE Project
     $(".proj-profile .btn-close").on("click", function(e) {
@@ -317,13 +237,33 @@ function createEventHandlers() {
         var gbntItemDiv = $(this).parents(".gbnt-item");
         closeProject(gbntItemDiv);
         _packeryContainer.packery(); // do reflow
-
-        if (_language === "pt") {
-            $(".gbnt-language").attr("href", "?lang=en");
-        } else {
-            $(".gbnt-language").attr("href", "?lang=pt");
-        }
     });
+
+
+    // Click event for LANGUAGE
+    $(".gbnt-language").on("click", function(e) {
+        e.preventDefault();
+
+        // Update the URL object 
+        _mainObject.language = $(".gbnt-language").html();
+        var str = JSON.stringify(_mainObject);
+        location.hash = encodeURIComponent(str);
+
+        location.reload();
+    });
+
+    // Click event for EXIBITHION
+    $(".gbnt-exibithion").on("click", function(e) {
+        e.preventDefault();
+
+        // Update the URL object 
+        _mainObject.project_id = null;
+        _mainObject.project_id = null;
+        var str = JSON.stringify(_mainObject);
+        location.hash = encodeURIComponent(str);
+        location.reload();
+    });
+
 
     // Click event to open TAB author
     $(".proj-profile .btn-author").on("click", function(e) {
@@ -416,29 +356,7 @@ function createEventHandlers() {
             $("#gbnt-header .gbnt-about").removeClass('no-pointers');
             $("#gbnt-header .nav").hide();
             closeHeader(null, true);
-        }
-
-        // If the header is expaneded and we coming from a different menu
-        // then do this
-        // if ($("#gbnt-header").attr("data-gbnt-open") === "true" &&
-        //     $(".about-text").hasClass("hide-me") === false) {
-        //     $(".about-text").toggleClass("hide-me");
-        //     $(".tours").toggleClass("hide-me");
-        // } else {
-        //     // otherwise expand/close menu normaly
-        //     $(".gbnt-tour").addClass("no-pointers");
-        //     $(".close-header").toggleClass("hide-me");
-
-        //     if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
-        //         $("#gbnt-header").attr("data-gbnt-open", "true");
-        //         $(".tours").toggleClass("hide-me");
-        //         openHeader("gbnt-tour", false);
-        //     } else {
-        //         $("#gbnt-header").attr("data-gbnt-open", "false");
-        //         $(".tours").toggleClass("hide-me");
-        //         closeHeader("gbnt-tour", false);
-        //     }
-        // }
+        }    
     });
 
     // Click event for CLOSE header link
@@ -585,9 +503,10 @@ function openProject(gbntItem) {
         }, 500);
     }
 
-    // Update the URL with the project ID
-    window.history.pushState("string", null, "#project/" + $(gbntItem).attr("id").split("_")[1]);
-    // History.pushState(null, null, "#project/" + $(gbntItem).attr("id").split("_")[1]);
+    // Update the URL object with the project ID
+    _mainObject.project_id = parseInt($(gbntItem).attr("id").split("_")[1]);
+    var str = JSON.stringify(_mainObject);
+    location.hash = encodeURIComponent(str);
 }
 
 function closeProject(gbntItem) {
@@ -614,9 +533,10 @@ function closeProject(gbntItem) {
         $(this).removeClass("no-pointers");
     });
 
-    // Update the URL, by removing the project ID
-    window.history.pushState("string", null, "#");
-    // History.pushState(null, null, "#");
+    // Update the URL object, by removing the project ID
+    _mainObject.project_id = null;
+    var str = JSON.stringify(_mainObject);
+    location.hash = encodeURIComponent(str);
 
 }
 
@@ -710,7 +630,7 @@ Handlebars.registerHelper('translateThis', function(id) {
 });
 
 function doTranslation(id) {
-    if (_language === "pt") {
+    if (_mainObject.language === "pt") {
         return translations[id][0];
     } else {
         return translations[id][1];
@@ -731,27 +651,13 @@ function randomizeDIVs() {
 function initializePackery() {
     _packeryContainer.packery();
 
-    if (_routingProj) {
+    if (_mainObject.project_id) {
         $(".gbnt-item").each(function() {
             var theId = $(this).attr("id").split("_")[1];
-            if (_routingProj === theId) {
-                _routingProj = null;
+            if (_mainObject.project_id === parseInt(theId)) {
                 openProject(this);
                 return;
             }
         });
     }
-
-    // // Reflow packery when clicked
-    // _packeryContainer.on('click', '[id^=item]', function(event) {
-    //     _packeryContainer.packery();
-    // });
-
-    // var container = document.querySelector('.packery');
-
-    // imagesLoaded(_packeryContainer, function() {
-    //     window._pckry = new Packery(_packeryContainer, {
-    //         itemSelector: '.gbnt-item'
-    //     });
-    // });
 }

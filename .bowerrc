@@ -1,0 +1,6 @@
+{
+  "directory": "bower_components",
+  "registry": "http://bower.herokuapp.com",
+  "proxy":"http://rdquintas:Aasdasd6%21@proxy.capita.zone:80/",
+  "https-proxy":"http://rdquintas:Aasdasd6%21@proxy.capita.zone:80/"
+}
