@@ -55,7 +55,7 @@
          if (url_obj) {
              url_obj = decodeURIComponent(url_obj);
              _mainObject = JSON.parse(url_obj);
-         };
+         }
      } catch (e) {
          console.log("url is clean");
      }

@@ -11,8 +11,8 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
 - attempt to fix pushState issue. Doesn't work well in Safari
 - removing PATH.js
 - using URL hash (#) instead. I'm parsing JSON object into the URL this time
-- no longer using GRUNT (will use a standalone programa like Prepros.io instead)
 - added BOWER
+- improved GRUNT workflow process
 
 ### v3-final
 - this is the final version
