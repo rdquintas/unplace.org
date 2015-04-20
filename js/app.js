@@ -258,7 +258,8 @@
 
          // Update the URL object 
          _mainObject.project_id = null;
-         _mainObject.project_id = null;
+         _mainObject.tour_id = null;
+
          var str = JSON.stringify(_mainObject);
          location.hash = encodeURIComponent(str);
          location.reload();
