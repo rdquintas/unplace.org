@@ -39,10 +39,10 @@ module.exports = function(grunt) {
         // concat: Concatenation
         // ================================          
         concat: {
-            options: {
-                stripBanners: true,
-                banner: '/*! Build Date: ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
-            },
+            // options: {
+            //     stripBanners: true,
+            //     banner: '/*! Build Date: ' + '<%= grunt.template.today("yyyy-mm-dd") %> */'
+            // },
             js_libs: {
                 src: _js_libs,
                 dest: 'js/libs.dist.js'
@@ -80,44 +80,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // cssmin: {
-        //   options: {
-        //     shorthandCompacting: false,
-        //     roundingPrecision: -1
-        //   },
-        //   target: {
-        //     files: {
-        //       'output.css': ['foo.css', 'bar.css']
-        //     }
-        //   }
-        // }
-
-
-        // ================================
-        // compress: ZIP files
-        // ================================
-        compress: {
-            main: {
-                options: {
-                    mode: "zip",
-                    archive: '<%= pkg.name %>_v<%= pkg.version %>.zip'
-                },
-                files: [{
-                    expand: true,
-                    src: [
-                        '**/**',
-                        '!.git/**',
-                        '!node_modules/**',
-                        '!.gitignore',
-                        '!Gruntfile.js',
-                        '!package.json',
-                        '!README.md'
-                    ],
-                    dest: '<%= pkg.name %>_v<%= pkg.version %>/'
-                }]
-            }
-        },
-
 
         // ================================
         // libsass: SASS compilation
@@ -138,9 +100,7 @@ module.exports = function(grunt) {
                 files: _js_custom,
                 tasks: [
                     'jshint:js_custom',
-                    'concat:js_custom',
-                    'uglify:js_custom'
-                ],
+                    'concat:js_custom'                ],
                 options: {
                     event: ['all'],
                     interrupt: true
@@ -160,36 +120,36 @@ module.exports = function(grunt) {
         },
 
 
-        // ================================
-        // clean: Deletes files
-        // ================================          
-        clean: ['js/<%= pkg.name %>.js'],
+        // // ================================
+        // // clean: Deletes files
+        // // ================================          
+        // clean: ['js/<%= pkg.name %>.js'],
 
 
-        // ================================
-        // rename: Rename files
-        // ================================          
-        rename: {
-            // css: {
-            //     files: [{
-            //         src: 'css/teste.css',
-            //         dest: 'css/teste.min.css'
-            //     }]
-            // }
-        },
+        // // ================================
+        // // rename: Rename files
+        // // ================================          
+        // rename: {
+        //     // css: {
+        //     //     files: [{
+        //     //         src: 'css/teste.css',
+        //     //         dest: 'css/teste.min.css'
+        //     //     }]
+        //     // }
+        // },
 
 
-        // ================================
-        // connect: HTTP server
-        // ================================
-        connect: {
-            server: {
-                options: {
-                    port: 8080,
-                    keepalive: true
-                }
-            }
-        }
+        // // ================================
+        // // connect: HTTP server
+        // // ================================
+        // connect: {
+        //     server: {
+        //         options: {
+        //             port: 8080,
+        //             keepalive: true
+        //         }
+        //     }
+        // }
     });
 
 
@@ -214,23 +174,22 @@ module.exports = function(grunt) {
         'uglify:js_libs',
         'jshint:js_custom',
         'concat:js_custom',
+        // 'uglify:js_custom',
+        'libsass:css_custom',
+        // 'cssmin:css_custom'
+    ]);
+
+    // ================================
+    // Task: 	prod
+    // ================================    
+    grunt.registerTask('prod', [
+        'concat:js_libs',
+        'uglify:js_libs',
+        'jshint:js_custom',
+        'concat:js_custom',
         'uglify:js_custom',
         'libsass:css_custom',
         'cssmin:css_custom'
     ]);
 
-    // ================================
-    // Task: 	prod
-    // JS: 		jshint, concat, minify
-    // CSS: 	concat, minify
-    // ================================    
-    // grunt.registerTask('prod', [
-    //     'jshint:dev',
-    //     'concat:css',
-    //     'cssmin:target',
-    //     'concat:js_libs',
-    //     'concat:js_custom',
-    //     'uglify:js',
-    //     'clean'
-    // ]);
 };
