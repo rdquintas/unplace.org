@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/slick/slick.css" />
+    <link rel="stylesheet" href="css/slick/slick-theme.css" />
+    <link rel="stylesheet" href="css/app.dist.css" />
+    <title>unplace.org // GBNT v3.0</title>
+    <style type="text/css">
+    #gbnt-project {
+        background-color: #ddd;
+        top: 80px;
+        position: relative;
+        /*width: 80%;*/
+        
+        height: 100%;
+        text-align: center;
+        /*border: 1px solid black;*/
+    }
+    
+    .slick-cena {
+        margin: 0 auto;
+        /*border: 1px solid red;*/
+        
+        width: 40%;
+        /*margin-top: 5%;*/
+    }
+    
+    .slick-cena .label {
+        text-align: center;
+        color: #fff;
+        padding: 15px;
+    }
+    
+    .slick-cena span {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    
+    .slick-cena img {
+        /*        -webkit-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
+        box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);*/
+        
+        max-width: 100%;
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    .slick-cena iframe {
+        /*        width: 100%;
+        height: auto;*/
+    }
+    
+    @media (max-width: 768px) {
+        #gbnt-project {
+            width: 100%;
+        }
+        .slick-cena {
+            width: 100%;
+        }
+        .slick-cena img {
+            width: 100%;
+        }
+         .slick-cena iframe {
+            width: 100%;
+            height: 300px;
+        }
+    }
+    </style>
+</head>
+
+<body class="body-color">
+    <script id="gbnt-template" type="text/x-handlebars-template">
+        <div class="slick-cena">
+            {{#each images}}
+            <div>
+                <div class="label"><span>{{author}}</span>-<span>{{title}}</span>-<span>{{year}}</span> <span>{{index}}/{{total}}</span>
+                </div>
+                <img src="{{img}}" />
+            </div>
+            {{/each}}
+        </div>
+    </script>
+    <section id="gbnt-project">
+        <div class="slick-cena">
+            <div>
+                <div class="label"><span>autor</span>-<span>title</span>-<span>year</span> <span>1/5</span>
+                </div>
+                <img src="docs/projectos/1/01.jpg" />
+            </div>
+            <div>
+                <div class="label"><span>autor</span>-<span>title</span>-<span>year</span> <span>2/5</span>
+                </div>
+                <!-- <img src="docs/projectos/2/01.png" /> -->
+                <iframe width="427" height="255" src="https://www.youtube.com/embed/jc4VxIWXX4w" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div>
+                <div class="label"><span>autor</span>-<span>title</span>-<span>year</span> <span>3/5</span>
+                </div>
+                <img src="docs/projectos/3/01.png" />
+            </div>
+            <div>
+                <div class="label"><span>autor</span>-<span>title</span>-<span>year</span> <span>4/5</span>
+                </div>
+                <img src="docs/projectos/4/01.png" />
+            </div>
+            <div>
+                <div class="label"><span>autor</span>-<span>title</span>-<span>year</span> <span>5/5</span>
+                </div>
+                <img src="docs/projectos/5/01.png" />
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript" src="js/libs.dist.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.slick-cena').slick();
+    });
+    </script>
+    <!-- <script type="text/javascript" src="js/app.dist.js"></script> -->
+</body>
+
+</html>

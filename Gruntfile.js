@@ -3,7 +3,8 @@ module.exports = function(grunt) {
         'js/739bf436-1824-4067-a456-9bd34cfd8f44.js',
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/handlebars/handlebars.min.js',
-        'bower_components/packery/dist/packery.pkgd.min.js'
+        'bower_components/packery/dist/packery.pkgd.min.js',
+        'bower_components/slick-carousel/slick/slick.min.js'
         // 'js/src/libs/jquery.history.js',                    
         // 'js/src/libs/imagesloaded.pkgd.min.js',
         // 'js/src/libs/jquery.easing.1.3.js',
@@ -139,17 +140,18 @@ module.exports = function(grunt) {
         // },
 
 
-        // // ================================
-        // // connect: HTTP server
-        // // ================================
-        // connect: {
-        //     server: {
-        //         options: {
-        //             port: 8080,
-        //             keepalive: true
-        //         }
-        //     }
-        // }
+        // ================================
+    // connect: HTTP server
+    // ================================
+    connect: {
+        server: {
+            options: {
+                port: 8080,
+                keepalive: true
+            }
+        }
+    }
+
     });
 
 

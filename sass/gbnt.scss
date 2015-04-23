@@ -349,6 +349,82 @@ body {
     margin-top: 20px;
 }
 /**********************************************************************
+ * SLIDE SHOW 
+ **********************************************************************/
+
+#gbnt-project {
+    background-color: #474747;
+    top: 80px;
+    position: relative;
+    /*width: 80%;*/
+    
+    height: 100%;
+    text-align: center;
+    /*border: 1px solid black;*/
+}
+
+.body-color {
+    background-color: #474747;
+}
+
+.slick-content {
+    margin: 0 auto;
+    /*border: 1px solid red;*/
+    
+    width: 40%;
+    /*margin-top: 5%;*/
+}
+
+.slick-content .label {
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+}
+
+.slick-content span {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.slick-content img {
+    /*        -webkit-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
+        box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);*/
+    
+    max-width: 100%;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.slick-content iframe {
+    /*        width: 100%;
+        height: auto;*/
+}
+
+@media (max-width: 768px) {
+    #gbnt-project {
+        width: 100%;
+        top: 0;
+    }
+    .slick-content {
+        width: 100%;
+    }
+    .slick-content img {
+        width: 100%;
+    }
+    .slick-content iframe {
+        width: 100%;
+        height: 300px;
+    }
+    .slick-content span {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+    // <div class="label"><span class="auth">{{author}}</span>-<span class="title">{{title}}</span>-<span class="year">{{year}}</span> <span class="index">{{index}}/{{total}}</span>
+    //            </div>
+}
+/**********************************************************************
  * MEDIA QUERIES
  **********************************************************************/
 /* 

@@ -25,6 +25,7 @@
  // << dummy TOUR data
 
  $(document).ready(function() {
+     $('.slick-cena').slick();
      parseURLobject();
      prepareProjectData();
      applyTranslations();
@@ -486,8 +487,24 @@
 
      // Expand the project profile DIV
      $(gbntItem).addClass("selected-project");
-     $(gbntItem).height(mainWidth * 4);
+
      $(gbntItem).find(".proj-profile").removeClass("hide-me");
+
+     // we need to have the tab-author temporarly visible, to get its height
+     $(gbntItem).find(".tab-author").removeClass("hide-me");
+
+     // Get the text box height, and enlarge the div depending on the amount of text
+     var h;
+
+     if ($(gbntItem).find(".tab-author").height() > $(gbntItem).find(".tab-project").height()) {
+         h = $(gbntItem).find(".tab-author").height();
+     } else {
+         h = $(gbntItem).find(".tab-project").height();
+     }
+     $(gbntItem).height(h + 150);
+
+     // now we can hide tab-author again
+     $(gbntItem).find(".tab-author").addClass("hide-me");
 
      // Scroll to the open project
      if ($(document).width() < 768) {
