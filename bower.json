@@ -13,6 +13,7 @@
     "packery": "latest",
     "handlebars": "latest",
     "slick-carousel": "~1.5.0",
-    "normalize-scss": "~3.0.3"
+    "normalize-scss": "~3.0.3",
+    "pure": "~0.6.0"
   }
 }

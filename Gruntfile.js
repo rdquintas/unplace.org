@@ -101,7 +101,8 @@ module.exports = function(grunt) {
                 files: _js_custom,
                 tasks: [
                     'jshint:js_custom',
-                    'concat:js_custom'                ],
+                    'concat:js_custom'
+                ],
                 options: {
                     event: ['all'],
                     interrupt: true
@@ -120,7 +121,15 @@ module.exports = function(grunt) {
             }
         },
 
-
+        // // ================================
+        // // copy: Copy files
+        // // ================================  
+        copy: {
+            purecss: {
+                src: 'bower_components/pure/pure-min.css',
+                dest: 'css/pure-min.css'
+            },
+        },
         // // ================================
         // // clean: Deletes files
         // // ================================          
@@ -141,16 +150,16 @@ module.exports = function(grunt) {
 
 
         // ================================
-    // connect: HTTP server
-    // ================================
-    connect: {
-        server: {
-            options: {
-                port: 8080,
-                keepalive: true
+        // connect: HTTP server
+        // ================================
+        connect: {
+            server: {
+                options: {
+                    port: 8080,
+                    keepalive: true
+                }
             }
         }
-    }
 
     });
 
@@ -165,11 +174,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-libsass');
 
 
     // ================================
-    // Task: 	default
+    // Task:    default
     // ================================
     grunt.registerTask('default', [
         'concat:js_libs',
@@ -178,11 +188,12 @@ module.exports = function(grunt) {
         'concat:js_custom',
         // 'uglify:js_custom',
         'libsass:css_custom',
+        'copy:purecss',
         // 'cssmin:css_custom'
     ]);
 
     // ================================
-    // Task: 	prod
+    // Task:    prod
     // ================================    
     grunt.registerTask('prod', [
         'concat:js_libs',
@@ -191,6 +202,7 @@ module.exports = function(grunt) {
         'concat:js_custom',
         'uglify:js_custom',
         'libsass:css_custom',
+        'copy:purecss',
         'cssmin:css_custom'
     ]);
 

@@ -4,102 +4,148 @@
 
 <head>
     <title>ADMIN unplace.org // GBNT</title>
-    <script src="js/jquery-1.11.2.min.js"></script>
-    <script src="js/semantic.min.js"></script>
-</head>
-
-<body>
-
-    <section id="gbnt-form">
-        <form class="ui form">
-            <div>
-                <input type="file" id="gbnt-input" multiple="multiple" name="file[]" style="visibility:hidden;">
-            </div>
-            <div class="ui stackable two column grid">
-                <!-- ============================= PROJECTO -->
-
-                <div class="column">
-                    <h2 class="ui dividing header">Informação do Projecto</h2>
-                    <div class="field  wide required">
-                        <label>Nome do Projecto</label>
-                        <div class="field">
-                            <input id="titulo" type="text" name="first-name">
-                        </div>
-                    </div>
-
-                    <div class="field"></div>
-
-                    <div class="field  wide required">
-                        <label>Descrição do Projecto</label>
-                        <textarea id="descricao"></textarea>
-                    </div>
-
-                    <div class="field  wide">
-                        <label>URL do Projecto</label>
-                        <div class="field">
-                            <input id="www" type="text" name="first-name" placeholder="http://...">
-                        </div>
-                    </div>
-
-                    <div class="field two wide required">
-                        <label>Ano do Projecto</label>
-                        <div class="field">
-                            <input id="ano" type="text" name="first-name">
-                        </div>
-                    </div>
-
-                    <div id="gbnt-btn-upload" class="ui tiny submit button ">Escolher imagens</div>
-                    <div id="imagens" style="margin-top:15px"></div>
-
-
-                </div>
-
-                <!-- ============================= AUTOR -->
-                <div class="column">
-                    <h2 class="ui dividing header">Informação do Autor</h2>
-                    <div class="field  wide required">
-                        <label>Nome do Autor</label>
-                        <div class="field">
-                            <input id="autor" type="text" name="first-name">
-                        </div>
-                    </div>
-
-                    <div class="field"></div>
-
-                    <div class="field  wide required">
-                        <label>Bio do Autor</label>
-                        <textarea id="autorBio"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="field"></div>
-            <hr>
-            <div id="gbnt-btn-criar" class="ui submit blue button left floated">Criar Ficheiro</div>
-        </form>
-    </section>
-    <link rel=stylesheet href="css/semantic.min.css">
+    <link rel="stylesheet" href="css/pure-min.css" />
     <style type="text/css">
     * {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
+    
     body {
-        max-width: 100%;
-        overflow-y: scroll;
-        margin: 0 auto;
+        margin: 50px;
         background-color: #fff;
     }
-    #gbnt-form {
-        margin: 5%;
+    
+    .button-warning {
+        background: rgb(223, 117, 20);
+        color: white;
+        border-radius: 4px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hidden-input {
+        display: none !important;
+    }
+    
+    .box-images {
+        margin-top: 10px;
+        padding: 10px;
+        display: none;
+        background-color: #ddd
+    }
+    
+    .box-images h5 {
+        margin: 0px;
+    }
+    
+    .box-images .images p {
+        margin: 8px;
+        font-size: 12px;
+        color: red;
     }
     </style>
+</head>
 
+<body>
+    <a class="button-warning pure-button" href="admin-visitas.html">Gerir Visitas</a>
+    <hr>
+    <form class="pure-form  pure-form-aligned">
+        <div class="pure-control-group">
+            <label for="idioma">Escolher idioma</label>
+            <select id="idioma">
+                <option value="pt">PT</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+                <h2>Informação do Projecto</h2>
+                <div class="pure-control-group">
+                    <label for="titulo">Nome do Projecto</label>
+                    <input id="titulo" type="text">
+                </div>
+                <div class="pure-control-group">
+                    <label for="descricao">Descrição do Projecto</label>
+                    <textarea id="descricao"></textarea>
+                </div>
+                <div class="pure-control-group">
+                    <label for="www">URL do Projecto</label>
+                    <input id="www" type="text" placeholder="http://...">
+                </div>
+                <div class="pure-control-group">
+                    <label for="ano">Ano do Projecto</label>
+                    <input id="ano" type="text">
+                </div>
+                <div class="pure-control-group">
+                    <input class="hidden-input ficha-tecnica" type="file" name="file">
+                    <label for="fichaTecnica">Ficha Técnica</label>
+                    <input id="fichaTecnica" type="text">
+                    <button id="btnFichaTecnica" type="submit" class="pure-button">Escolher</button>
+                </div>
+                <div class="pure-control-group">
+                    <input class="hidden-input capa" type="file" name="file">
+                    <label for="capa">Escolher capa</label>
+                    <input id="capa" type="text">
+                    <button id="btnCapa" class="pure-button">Escolher</button>
+                </div>
+                <div class="pure-control-group">
+                    <input class="hidden-input imagens" multiple="multiple" type="file" name="file[]">
+                    <label for="btnImagens">Escolher imagens</label>
+                    <button id="btnImagens" class="pure-button">Escolher</button>
+                    <button id="btnImagensClear" class="pure-button">Limpar</button>
+                </div>
+                <div class="box-images">
+                    <h5>Imagens Escolhidas</h5>
+                    <div class="images">
+                    </div>
+                </div>
+            </div>
+            <div class="pure-u-1-2">
+                <h2>Informação do Autor</h2>
+                <div class="pure-control-group">
+                    <label for="autor">Nome do Autor</label>
+                    <input id="autor" type="text">
+                </div>
+                <div class="pure-control-group">
+                    <label for="autorBio">Bio do Autor</label>
+                    <textarea id="autorBio"></textarea>
+                </div>
+            </div>
+        </div>
+        </div>
+        <br>
+        <br>
+        <div class="pure-control-group">
+            <div id="gbnt-btn-criar" class="pure-button pure-button-primary">Gravar dados</div>
+        </div>
+        <div class="pure-control-group">
+            <div id="gbnt-btn-criar" class="pure-button">Fazer upload dum ficheiro existente</div>
+        </div>
+        <hr>
+    </form>
+    <script src="js/libs.dist.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+        this.obj_pt = initializeObj("pt");
+        this.obj_en = initializeObj("en");
+
+        setFormData(this.obj_pt);
+
+        /**********************
+         * LANGUAGE TOGGLE
+         **********************/
+        $('#idioma').on("change", $.proxy(function() {
+            if ($("#idioma").val() === "pt") {
+                storePrevious(this.obj_en);
+                setFormData(this.obj_pt);
+            } else {
+                storePrevious(this.obj_pt);
+                setFormData(this.obj_en);
+            }
+        }, this));
 
         $('#gbnt-btn-criar').click(function() {
-
             var file = criarFile();
             var pom = document.createElement('a');
             pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
@@ -107,26 +153,143 @@
             pom.click();
         });
 
+        //even handling for JSON file upload
         $('#gbnt-btn-upload').click(function() {
             $("#gbnt-input").click();
             return false;
         });
 
-        $('input[type=file]').change(function() {
-            var imagens = $('#gbnt-input')[0].files;
-            var listDiv = $("#imagens");
 
-            listDiv.empty();
-
-            for (var i = 0; i < imagens.length; i++) {
-                listDiv.append("<p style='margin:0; padding:0; font-size: 12px; color: red'>" + imagens[i].name + "</p>");
-            }
+        /**********************
+         * FICHA TECNICA
+         **********************/
+        // ficha tecnica: btn clicked
+        $('#btnFichaTecnica').click(function(e) {
+            $(".hidden-input.ficha-tecnica").click();
+            e.preventDefault();
+            return false;
+        });
+        // ficha tecnica: trigger input field
+        $('.hidden-input.ficha-tecnica').change(function(ee) {
+            $("#fichaTecnica").val(this.files[0].name);
         });
 
+
+        /**********************
+         * CAPA
+         **********************/
+        // capa: btn clicked
+        $('#btnCapa').click(function(e) {
+            $(".hidden-input.capa").click();
+            e.preventDefault();
+            return false;
+        });
+        // capa: trigger input field
+        $('.hidden-input.capa').change(function(ee) {
+            $("#capa").val(this.files[0].name);
+        });
+
+
+        /**********************
+         * IMAGES UPLOAD
+         **********************/
+        // imagens_upload: btn UPLOAD clicked
+        $('#btnImagens').click(function(e) {
+            $(".hidden-input.imagens").click();
+            e.preventDefault();
+            return false;
+        });
+        // imagens_upload: trigger input field
+        $('.hidden-input.imagens').change(function(ee) {
+            var imagens = this.files;
+            obj_pt.imagens = null;
+            obj_en.imagens = null;
+            $(".images").empty();
+            for (var i = 0; i < imagens.length; i++) {
+                $(".images").append("<p>" + imagens[i].name + "</p>");
+                this.obj_pt.imagens.push(imagens[i].name);
+                this.obj_en.imagens.push(imagens[i].name);
+            }
+            $(".box-images").show();
+        });
+        // imagens_upload: btn CLEAR clicked
+        $('#btnImagensClear').click(function(e) {
+            $(".images").empty();
+            $(".box-images").hide();
+            this.obj_pt.imagens = null;
+            this.obj_en.imagens = null;
+            e.preventDefault();
+            return false;
+        });
     });
 
-    function criarFile() {
+    function storePrevious(obj) {
+        var imgDiv = $(".box-images .images");
+
+        obj.titulo = $("#titulo").val();
+        obj.autor = $("#autor").val();
+        obj.ano = $("#ano").val();
+        obj.autorBio = $("#autorBio").val();
+        obj.descricao = $("#descricao").val();
+        obj.www = $("#www").val();
+        obj.fichaTecnica = $("#fichaTecnica").val();
+        obj.capa = $("#capa").val();
+        obj.imagens = [];
+
+        $.each(imgDiv[0].childNodes, function(key, value) {
+            obj.imagens.push(value.innerHTML);
+        });
+
+    }
+
+    function setFormData(obj) {
+
+        if (obj.language === "pt") {
+            $("#idioma").val("pt");
+        } else {
+            $("#idioma").val("en");
+        }
+
+        $("#titulo").val(obj.titulo);
+        $("#autor").val(obj.autor);
+        $("#ano").val(obj.ano);
+        $("#autorBio").val(obj.autorBio);
+        $("#descricao").val(obj.descricao);
+        $("#www").val(obj.www);
+        $("#fichaTecnica").val(obj.fichaTecnica);
+        $("#capa").val(obj.capa);
+
+        if (obj.imagens.length > 0) {
+            $(".images").empty();
+            for (var i = 0; i < obj.imagens.length; i++) {
+                $(".images").append("<p>" + obj.imagens[i] + "</p>");
+            }
+            $(".box-images").show();
+        } else {
+            $(".images").empty();
+            $(".box-images").hide();
+        }
+
+    }
+
+    function initializeObj(language) {
         var obj = {};
+        obj.language = language;
+        obj.capa = "";
+        obj.titulo = "";
+        obj.autor = "";
+        obj.ano = "";
+        obj.fichaTecnica = null;
+        obj.autorBio = "";
+        obj.descricao = "";
+        obj.www = null;
+        obj.imagens = [];
+
+        return obj;
+    }
+
+    function criarFile() {
+        var obj = [];
 
         obj.titulo = $("#titulo").val();
         obj.autor = $("#autor").val();
