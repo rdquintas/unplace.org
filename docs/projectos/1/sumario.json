@@ -1,10 +1,1 @@
-{
-    "titulo": "The Other Side",
-    "autor": "Amanda Holiday",
-    "autorBio": "Artist / filmmaker Amanda Holiday was born in Sierra Leone and came to live in the UK at the age of 5.  She completed a degree in Fine Art at Wimbledon School of Art and exhibited in landmark black art shows across the UK. Holiday moved into film and scriptwriting – directing a number of short experimental films for the Arts Council, BFI and Channel 4. Between 2001 and 2010 she lived in Cape Town where she wrote and directed several educational TV series. She is currently developing domestic art for Art Funk as well as continuing to develop film projects.",
-    "ano": "2010",
-    "descricao": "For the Unplace exhibition, LiMac proposes “Solo Show”, an interactive museum room to be accessed on the internet. The visitor encounters itself within a 3 to 5 minutes guided visit but, because of the number of persons in the museums, he cannot see any of the art works. While the description of the guide accompanies the visitor, the room and its spectators become the center of attention.",
-    "www": "http://www.mintarts.com/projects/BeEaten.html",
-    "imagens": ["main.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"],
-    "ficha_tecnica": "ficha_tecnica.pdf"
-}
+[{"language":"pt","capa":"capa1.jpg","titulo":"Nome Projecto PT","autor":"Nome do Autor PT","ano":"1974","fichaTecnica":"ficha_tecnica.pdf","autorBio":"Bio do Autor PT","descricao":"Descrição Projecto PT","www":"http://trololololololololololo.com/","imagens":["01.jpg","img1.jpg","img2.jpg"],"videos":["http://trololololololololololo.com/"],"tipo_capa":"N"},{"language":"en","capa":"capa1.jpg","titulo":"Project Name EN","autor":"Author Name en","ano":"1974","fichaTecnica":"ficha_tecnica_en.pdf","autorBio":"Bio autor en","descricao":"Project Description EN","www":"https://news.google.pt/nwshp?hl=pt-PT&tab=wn","imagens":["01.jpg","img1.jpg","img2.jpg"],"videos":["http://trololololololololololo.com/"],"tipo_capa":"N"}]
