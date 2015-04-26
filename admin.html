@@ -232,6 +232,17 @@
                 window.obj_current = obj_pt;
                 $("#idioma").val("pt");
                 setFormData(window.obj_current);
+                if ($("#tipo_capa").val() === "N") {
+                    $(".tipo-capa-group span").html("alt 144 x larg 144");
+                }
+
+                if ($("#tipo_capa").val() === "W") {
+                    $(".tipo-capa-group span").html("alt 144 x larg 288");
+                }
+
+                if ($("#tipo_capa").val() === "T") {
+                    $(".tipo-capa-group span").html("alt 288 x larg 144");
+                }
             };
             reader.onerror = function(event) {
                 alert("Erro com o upload desse ficheiro!");
