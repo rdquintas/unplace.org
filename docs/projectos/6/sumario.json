@@ -1,9 +1,1 @@
-{
-    "titulo": "Radio Nouspace",
-    "autor": "John F. Barber",
-    "autorBio": "John F. Barber teaches in the Creative Media & Digital Culture Program at Washington State University Vancouver. His sound art work has been jury selected for broadcast as part of RadiaLX (2014 and 2012, both in Lisbon, Portugal), and Echoes 1-4 (2013-2014, Lisbon, Portugal).",
-    "ano": "2014",
-    "descricao": "Radio Nouspace is a web-based radio station that archives and curates sound(s) of digital narrative and storytelling.",
-    "www": "http://www.radionouspace.net",
-    "imagens": ["main.gif"]
-}
+[{"language":"pt","capa":"capa1.jpg","titulo":"Nome Projecto PT","autor":"Nome do Autor PT","ano":"1974","fichaTecnica":"ficha_tecnica.pdf","autorBio":"Bio do Autor PT","descricao":"Descrição Projecto PT","www":"http://trololololololololololo.com/","imagens":["img2.jpg"],"videos":[],"tipo_capa":"N"},{"language":"en","capa":"capa1.jpg","titulo":"Project Name EN","autor":"Author Name en","ano":"1974","fichaTecnica":"ficha_tecnica_en.pdf","autorBio":"Bio autor en","descricao":"Project Description EN","www":"https://www.youtube.com/watch?v=0wHYHMpHmSg","imagens":["img2.jpg"],"videos":[],"tipo_capa":"N"}]

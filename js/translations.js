@@ -49,7 +49,7 @@ var translations = {
     year: [
         "ano", "year"
     ],
-    ficha_tecnica: [
+    fichaTecnica: [
         "ficha técnica", "technical spec"
     ]
 };

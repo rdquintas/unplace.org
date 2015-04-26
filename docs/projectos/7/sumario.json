@@ -1,10 +1,1 @@
-{
-    "titulo": "Standing by Hubbub",
-    "autor": "Alper Cugun",
-    "autorBio": "Hubbub is a playful design studio based in Utrecht and Berlin. Hubbub makes things with which people can have fun, express themselves and gain a better understanding of the world.",
-    "ano": "2014",
-    "descricao": "Standing is an app for playful activism. With Standing, you can stand still for a cause of your choosing in whatever place you feel is suitable. The app records how long and where you are standing and shares it live on the accompanying website. Once you have finished, your act is turned into a lasting record, which you can share as proof of your commitment to the cause!",
-    "www": "http://www.getstanding.com",
-    "imagens": ["main1.png","main2.jpg"]
-}
-
+[{"language":"pt","capa":"capa1.jpg","titulo":"Nome Projecto PT","autor":"Nome do Autor PT","ano":"1974","fichaTecnica":"ficha_tecnica.pdf","autorBio":"Bio do Autor PT","descricao":"Descrição Projecto PT","www":"http://trololololololololololo.com/","imagens":["img2.jpg"],"videos":[],"tipo_capa":"N"},{"language":"en","capa":"capa1.jpg","titulo":"Project Name EN","autor":"Author Name en","ano":"1974","fichaTecnica":"ficha_tecnica_en.pdf","autorBio":"Bio autor en","descricao":"Project Description EN","www":"https://www.youtube.com/watch?v=0wHYHMpHmSg","imagens":["img2.jpg"],"videos":[],"tipo_capa":"N"}]

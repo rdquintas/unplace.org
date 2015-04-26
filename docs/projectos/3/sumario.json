@@ -1,10 +1,27 @@
-{
-    "titulo": "Observation and Draw from (0,0,0)",
-    "autor": "André Sier",
-    "autorBio": "André Sier works as artist-programmer at s373.net/x. Highlights the series 'struct', '747', 'space race', 'k.', 'uunniivveerrssee', 'piantadelmondo', immersive works in abstract spaces, often using site-specifc data from microphones and cameras, or synthesizing experiences with generative and chaotic maths.",
-    "ano": "2014",
-    "descricao": "Observation and Draw from (0,0,0) is an online interactive abstract drawing and cartography tool. It's basis and leitmotif of the piantadelmondo series of artworks by André Sier which create and map imaginary cities. Moving around and clicking with the mouse one operates and discovers new evanescent uncharted paths inscribed on the surface of a sphere, watching them unfold from the zero center point of the planetoid.",
-    "www": "http://andre-sier.com",
-    "imagens": ["main1.jpg", "main2.jpg", "img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg"],
-    "ficha_tecnica": "ficha_tecnica.pdf"
-}
+[{
+    "language": "pt",
+    "capa": "capa3.jpg",
+    "titulo": "Nome Projecto PT",
+    "autor": "Nome do Autor PT",
+    "ano": "1974",
+    "fichaTecnica": "ficha_tecnica.pdf",
+    "autorBio": "Bio do Autor PT",
+    "descricao": "Descrição Projecto PT",
+    "www": "http://trololololololololololo.com/",
+    "imagens": ["img2.jpg"],
+    "videos": [],
+    "tipo_capa": "W"
+}, {
+    "language": "en",
+    "capa": "capa3.jpg",
+    "titulo": "Project Name EN",
+    "autor": "Author Name en",
+    "ano": "1974",
+    "fichaTecnica": "ficha_tecnica_en.pdf",
+    "autorBio": "Bio autor en",
+    "descricao": "Project Description EN",
+    "www": "https://www.youtube.com/watch?v=0wHYHMpHmSg",
+    "imagens": ["img2.jpg"],
+    "videos": [],
+    "tipo_capa": "W"
+}]

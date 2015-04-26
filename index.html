@@ -73,7 +73,7 @@
         <div id="{{getID 'item_' id}}" class="gbnt-item {{size_class}}" data-gbnt-checked="false">
             <div class="wrap">
                 <div class="proj-cover {{size_class}}">
-                    <img id="cover" src="{{getCoverImageURL img_cover size_class}}">
+                    <img id="cover" src="{{getCoverImageURL id tipo_capa capa}}">
                 </div>
                 <div class="proj-text {{size_class}}">
                     <a href="#" id="cover" class="textbox">
@@ -82,7 +82,7 @@
                     </a>
                 </div>
                 <div class="proj-img {{size_class}}">
-                    <img src="docs/projectos/{{id}}/{{img}}">
+                    <img src="{{getProjectImageURL id img}}">
                 </div>
             </div>
             <div class="proj-profile hide-me">
@@ -96,9 +96,10 @@
                 <div class="tab-project">
                     <h1>{{titulo}}</h1>
                     <p>{{translateThis 'year'}}: {{ano}}</p>
-                    <a href="{{www}}" target="_blank" class="btn-view-proj"><i class="fa fa-eye"></i>{{translateThis 'view_project'}}</a> {{#if ficha_tecnica}}
-                    <a href="docs/projectos/{{id}}/{{ficha_tecnica}}" target="_blank" class="btn-view-proj">
-                        <i class="fa fa-file"></i>{{translateThis 'ficha_tecnica'}}</a>
+                    {{#if www}}
+                    <a href="{{www}}" target="_blank" class="btn-view-proj"><i class="fa fa-eye"></i>{{translateThis 'view_project'}}</a> {{/if}} {{#if fichaTecnica}}
+                    <a href="docs/projectos/{{id}}/{{fichaTecnica}}" target="_blank" class="btn-view-proj">
+                        <i class="fa fa-file"></i>{{translateThis 'fichaTecnica'}}</a>
                     {{/if}}
                     <p style="margin-top:10px">{{descricao}}</p>
                 </div>
