@@ -25,7 +25,6 @@
  // << dummy TOUR data
 
  $(document).ready(function() {
-     $('.slick-cena').slick();
      parseURLobject();
      prepareProjectData();
      applyTranslations();
