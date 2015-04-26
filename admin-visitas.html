@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ADMIN unplace.org // GBNT</title>
+    <link rel="stylesheet" href="css/pure-min.css" />
+    <style type="text/css">
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 50px;
+        background-color: #fff;
+    }
+    
+    .button-warning {
+        background: rgb(223, 117, 20);
+        color: white;
+        border-radius: 4px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hidden-input {
+        display: none !important;
+    }
+    
+    .tipo-capa-group p {
+        display: inline;
+        margin-left: 10px;
+        font-size: 12px;
+        color: red;
+    }
+    
+    .box-images {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        display: none;
+        background-color: #ddd
+    }
+    
+    .box-images h5 {
+        margin: 0px;
+    }
+    
+    .box-images .images p {
+        margin: 8px;
+        font-size: 12px;
+        color: red;
+    }
+    
+    .box-videos {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+        display: none;
+        background-color: #ddd
+    }
+    
+    .box-videos h5 {
+        margin: 0px;
+    }
+    
+    .box-videos .videos p {
+        margin: 8px;
+        font-size: 12px;
+        color: red;
+    }
+    </style>
+</head>
+
+<body>
+    <a class="button-warning pure-button" href="admin.html">Gerir Projectos</a>
+    <hr>
+    <form class="pure-form  pure-form-aligned">
+        <div class="pure-control-group">
+            <label for="idioma">Escolher idioma</label>
+            <select id="idioma">
+                <option value="pt">PT</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+        <h2>Informação da Visita 1</h2>
+        <div class="pure-control-group">
+            <label for="nome_visita_1">Nome Visita</label>
+            <input id="nome_visita_1" type="text">
+        </div>
+        <div class="pure-control-group">
+            <label for="descricao_visita_1">Descrição Visita</label>
+            <textarea id="descricao_visita_1"></textarea>
+        </div>
+        <div class="pure-control-group">
+            <label for="projectos_1">Projectos da visita</label>
+            <input id="projectos_1" type="text" placeholder="ex: 1,2,3,4">
+        </div>
+        <br>
+        <h2>Informação da Visita 2</h2>
+        <div class="pure-control-group">
+            <label for="nome_visita_2">Nome Visita</label>
+            <input id="nome_visita_2" type="text">
+        </div>
+        <div class="pure-control-group">
+            <label for="descricao_visita_2">Descrição Visita</label>
+            <textarea id="descricao_visita_2"></textarea>
+        </div>
+        <div class="pure-control-group">
+            <label for="projectos_2">Projectos da visita</label>
+            <input id="projectos_2" type="text" placeholder="ex: 1,2,3,4">
+        </div>
+        <br>
+        <h2>Informação da Visita 3</h2>
+        <div class="pure-control-group">
+            <label for="nome_visita_3">Nome Visita</label>
+            <input id="nome_visita_3" type="text">
+        </div>
+        <div class="pure-control-group">
+            <label for="descricao_visita_3">Descrição Visita</label>
+            <textarea id="descricao_visita_3"></textarea>
+        </div>
+        <div class="pure-control-group">
+            <label for="projectos_3">Projectos da visita</label>
+            <input id="projectos_3" type="text" placeholder="ex: 1,2,3,4">
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="pure-control-group">
+            <div id="gbnt-btn-criar" class="pure-button pure-button-primary">Gravar dados</div>
+        </div>
+        <div class="pure-control-group">
+            <input class="hidden-input upload" accept=".json" type="file" name="file">
+            <div id="gbnt-btn-upload" class="pure-button">Fazer upload dum ficheiro existente</div>
+        </div>
+        <hr>
+    </form>
+    <script src="js/libs.dist.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        window.obj_pt = initializeObj("pt");
+        window.obj_en = initializeObj("en");
+        window.obj_current = obj_pt;
+
+        setFormData(window.obj_current);
+
+        /**********************
+         * LANGUAGE TOGGLE
+         **********************/
+        $('#idioma').on("change", $.proxy(function() {
+            window.obj_pt.projectos_1 = $("#projectos_1").val();
+            window.obj_en.projectos_1 = $("#projectos_1").val();
+            window.obj_pt.projectos_2 = $("#projectos_2").val();
+            window.obj_en.projectos_2 = $("#projectos_2").val();
+            window.obj_pt.projectos_3 = $("#projectos_3").val();
+            window.obj_en.projectos_3 = $("#projectos_3").val();
+
+            if ($("#idioma").val() === "pt") {
+                storeCurrentData();
+                window.obj_current = window.obj_pt;
+                setFormData();
+            } else {
+                storeCurrentData();
+                window.obj_current = window.obj_en;
+                setFormData();
+            }
+        }, this));
+
+        /**********************
+         * SAVE JSON FILE
+         **********************/
+        $('#gbnt-btn-criar').click(function() {
+            var file = criarFile();
+            var pom = document.createElement('a');
+            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
+            pom.setAttribute('download', "visitas.json");
+            pom.click();
+        });
+
+        /**********************
+         * UPLOAD JSON FILE
+         **********************/
+        // upload json: btn clicked
+        $('#gbnt-btn-upload').click(function(e) {
+            $(".hidden-input.upload").click();
+            e.preventDefault();
+            return false;
+        });
+        // upload json: trigger input field
+        $('.hidden-input.upload').change(function(ee) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var obj = JSON.parse(event.target.result);
+                window.obj_pt = obj[0];
+                window.obj_en = obj[1];
+                window.obj_current = obj_pt;
+                $("#idioma").val("pt");
+                setFormData(window.obj_current);
+            };
+            reader.onerror = function(event) {
+                alert("Erro com o upload desse ficheiro!");
+            };
+            reader.readAsText(this.files[0]);
+            return false;
+        });
+
+    });
+
+    function storeCurrentData() {
+
+        window.obj_current.nome_visita_1 = $("#nome_visita_1").val();
+        window.obj_current.descricao_visita_1 = $("#descricao_visita_1").val();
+        window.obj_current.projectos_1 = $("#projectos_1").val();
+
+        window.obj_current.nome_visita_2 = $("#nome_visita_2").val();
+        window.obj_current.descricao_visita_2 = $("#descricao_visita_2").val();
+        window.obj_current.projectos_2 = $("#projectos_2").val();
+
+        window.obj_current.nome_visita_3 = $("#nome_visita_3").val();
+        window.obj_current.descricao_visita_3 = $("#descricao_visita_3").val();
+        window.obj_current.projectos_3 = $("#projectos_3").val();
+
+    }
+
+    function setFormData() {
+
+        if (window.obj_current.language === "pt") {
+            $("#idioma").val("pt");
+        } else {
+            $("#idioma").val("en");
+        }
+
+        $("#nome_visita_1").val(window.obj_current.nome_visita_1);
+        $("#descricao_visita_1").val(window.obj_current.descricao_visita_1);
+        $("#projectos_1").val(window.obj_current.projectos_1);
+
+        $("#nome_visita_2").val(window.obj_current.nome_visita_2);
+        $("#descricao_visita_2").val(window.obj_current.descricao_visita_2);
+        $("#projectos_2").val(window.obj_current.projectos_2);
+
+        $("#nome_visita_3").val(window.obj_current.nome_visita_3);
+        $("#descricao_visita_3").val(window.obj_current.descricao_visita_3);
+        $("#projectos_3").val(window.obj_current.projectos_3);
+    }
+
+    function initializeObj(language) {
+        var obj = {};
+
+        obj.language = language;
+
+        obj.nome_visita_1 = "";
+        obj.descricao_visita_1 = "";
+        obj.projectos_1 = "";
+
+        obj.nome_visita_2 = "";
+        obj.descricao_visita_2 = "";
+        obj.projectos_2 = "";
+
+        obj.nome_visita_3 = "";
+        obj.descricao_visita_3 = "";
+        obj.projectos_3 = "";
+
+        return obj;
+    }
+
+    function criarFile() {
+
+        storeCurrentData();
+
+        var obj = [];
+        obj.push(window.obj_pt);
+        obj.push(window.obj_en);
+
+        return obj;
+    }
+    </script>
+</body>
+
+</html>
