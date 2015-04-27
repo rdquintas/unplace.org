@@ -4,7 +4,7 @@
 // =============================
 var translations = {
     exibithion: [
-        "exibição", "exibithion"
+        "exposição", "exibithion"
     ],
     language: [
         "en", "pt"
@@ -13,13 +13,13 @@ var translations = {
         "visitas temáticas", "thematic tours"
     ],
     tour_title1: [
-        "Geografias do espaço público", "EN Geografias do espaço público"
+        "Redes, Poder e Controlo", "EN Redes, Poder e Controlo"
     ],
     tour_description1: [
         "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
     ],
     tour_title2: [
-        "Poder e controlo", "EN Poder e controlo"
+        "Identidade(s) em Processo", "EN Identidade(s) em Processo"
     ],
     tour_description2: [
         "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
@@ -31,7 +31,7 @@ var translations = {
         "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
     ],
     about: [
-        "about", "about"
+        "sobre", "about"
     ],
     about_text: [
         "ABOUT PT - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio nulla fugit minus officia adipisci numquam! Minus, quam voluptates eos dolorum eius cupiditate saepe temporibus nihil repudiandae, at consectetur quae in itaque, eum voluptas officiis, numquam deleniti error. Consequuntur sunt commodi, temporibus suscipit. Earum voluptatem, nesciunt ipsam dolore perferendis eligendi! Ipsum explicabo adipisci ab quam iure voluptate, nam illum quia suscipit atque blanditiis quod, sint aliquam autem possimus reprehenderit fugiat voluptatibus delectus officiis! Blanditiis ea cupiditate provident et quisquam, iste quibusdam beatae! Impedit!",
