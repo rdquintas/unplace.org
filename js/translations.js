@@ -15,20 +15,11 @@ var translations = {
     tour_title1: [
         "Redes, Poder e Controlo", "EN Redes, Poder e Controlo"
     ],
-    tour_description1: [
-        "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
-    ],
     tour_title2: [
         "Identidade(s) em Processo", "EN Identidade(s) em Processo"
     ],
-    tour_description2: [
-        "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
-    ],
     tour_title3: [
         "Indentidade(s) em processo", "EN Indentidade(s) em processo"
-    ],
-    tour_description3: [
-        "PT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio", "EN Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maiores asperiores vero eius, quasi magnam, iusto ab quo, magni, reiciendis dignissimos culpa pariatur optio dolor nesciunt distinctio"
     ],
     about: [
         "sobre", "about"

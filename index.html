@@ -26,11 +26,11 @@
                 <li><a href="#" class="gbnt-tour">visitas tem&aacute;ticas</a>
                     <div class="tours hide-me">
                         <ul>
-                            <li><a href="1">Redes, Poder e Controlo</a>
+                            <li><a class="tour1" href="1">tour 1</a>
                             </li>
-                            <li><a href="2">Identidade(s) em Processo</a>
+                            <li><a class="tour2" href="2">tour 2</a>
                             </li>
-                      <!--       <li><a href="3">Indentidade(s) em processo</a>
+                      <!--       <li><a class="tour3" href="3">Indentidade(s) em processo</a>
                             </li> -->
                         </ul>
                     </div>
@@ -52,24 +52,25 @@
                 <div class="proj-text gbnt-size-normal">
                     <a href="#" id="cover" class="textbox">
                         <p id="cover" class="titulo">{{translateThis 'tour'}}</p>
-                        <p id="cover" class="autor">{{translateThis tour_title}}</p>
+                        <p id="cover" class="autor">{{tour_title}}</p>
                     </a>
                 </div>
             </div>
             <div class="proj-profile hide-me">
                 <div class="header">
-                    <a href="#" class="btn-project btn-selected">{{translateThis tour_title}}</a>
+                    <a href="#" class="btn-project btn-selected">{{tour_title}}</a>
                     <a href="#" class="btn-close">
                         <img src="img/cross.png">
                     </a>
                 </div>
                 <div class="tab-project">
-                    <h1>{{translateThis tour_title}}</h1>
-                    <p style="margin-top:10px">{{translateThis tour_description}}</p>
+                    <h1>{{tour_title}}</h1>
+                    <p style="margin-top:10px">{{tour_description}}</p>
                 </div>
             </div>
         </div>
-        {{/each}} {{#each project}}
+        {{/each}} 
+        {{#each project}}
         <div id="{{getID 'item_' id}}" class="gbnt-item {{size_class}}" data-gbnt-checked="false">
             <div class="wrap">
                 <div class="proj-cover {{size_class}}">

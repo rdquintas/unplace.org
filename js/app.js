@@ -12,15 +12,14 @@ var _mainObject = {
     tour_id: null
 };
 
-// >> dummy TOUR data
-var tour1 = "1,4,8,12,16,20,24,28,32,36";
-var tour2 = "6,13,17,25,29,33,37";
-var tour3 = "26,30,34,38";
+// tour vars
+var _tours = [];
 var _tourInformation = null;
-// << dummy TOUR data
+
 
 $(document).ready(function() {
     parseURLobject();
+    prepareTours();
     prepareProjectData();
     applyTranslations();
 });
@@ -39,8 +38,10 @@ function applyTranslations() {
 
     if (_mainObject.language === "pt") {
         $(".gbnt-language").html("en");
+        $(".about-text a").attr("href", "docs/about.pdf");
     } else {
         $(".gbnt-language").html("pt");
+        $(".about-text a").attr("href", "docs/about_en.pdf");
     }
 }
 
@@ -58,33 +59,59 @@ function parseURLobject() {
 
 function prepareProjectData() {
     $.get("docs/projectos/lista_dos_projectos.txt", function(data) {
+        var tourTitle = "";
+        var tourDesc = "";
+
         _projectsList = data.split(",");
 
-        if (_mainObject.tour_id === "1") {
-            _projectsList = tour1.split(",");
+        // here we detect if we are processing a guided tour
+        if (_mainObject.tour_id) {
+            if (_mainObject.language === "pt") {
+                if (_mainObject.tour_id === "1") {
+                    tourTitle = _tours[0][0].title;
+                    tourDesc = _tours[0][0].desc;
+                    _projectsList = _tours[0][0].projects.split(",");
+                }
+
+                if (_mainObject.tour_id === "2") {
+                    tourTitle = _tours[1][0].title;
+                    tourDesc = _tours[1][0].desc;
+                    _projectsList = _tours[1][0].projects.split(",");
+                }
+
+                if (_mainObject.tour_id === "3") {
+                    tourTitle = _tours[2][0].title;
+                    tourDesc = _tours[2][0].desc;
+                    _projectsList = _tours[2][0].projects.split(",");
+                }
+            } else {
+                if (_mainObject.tour_id === "1") {
+                    tourTitle = _tours[0][1].title;
+                    tourDesc = _tours[0][1].desc;
+                    _projectsList = _tours[0][1].projects.split(",");
+                }
+
+                if (_mainObject.tour_id === "2") {
+                    tourTitle = _tours[1][1].title;
+                    tourDesc = _tours[1][1].desc;
+                    _projectsList = _tours[1][1].projects.split(",");
+                }
+
+                if (_mainObject.tour_id === "3") {
+                    tourTitle = _tours[2][1].title;
+                    tourDesc = _tours[2][1].desc;
+                    _projectsList = _tours[2][1].projects.split(",");
+                }
+            }
+
             _tourInformation = [{
-                tour_title: "tour_title1",
-                tour_description: "tour_description1"
+                tour_title: tourTitle,
+                tour_description: tourDesc
             }];
+
         }
 
-        if (_mainObject.tour_id === "2") {
-            _projectsList = tour2.split(",");
-            _tourInformation = [{
-                tour_title: "tour_title2",
-                tour_description: "tour_description2"
-            }];
-        }
-
-        if (_mainObject.tour_id === "3") {
-            _projectsList = tour3.split(",");
-            _tourInformation = [{
-                tour_title: "tour_title3",
-                tour_description: "tour_description3"
-            }];
-        }
-
-        // Loop all the projects
+        // Loop to all the projects
         for (var i = 0; i < _projectsList.length; i++) {
             createObject(_projectsList[i]);
         }
@@ -568,6 +595,50 @@ function doMobileFlashing() {
             $(this).css("animation-delay", rnd);
         });
     }
+}
+
+function createTourObj(pTitle, pDesc, pProjects) {
+    var obj = {};
+
+    obj.title = pTitle;
+    obj.desc = pDesc;
+    obj.projects = pProjects;
+
+    return obj;
+}
+
+function prepareTours() {
+    $.get("docs/visitas.json", function(fileData) {
+
+        var tour1 = [];
+        var tour2 = [];
+        var tour3 = [];
+
+        tour1.push(createTourObj(fileData[0].nome_visita_1, fileData[0].descricao_visita_1, fileData[0].projectos_1));
+        tour1.push(createTourObj(fileData[1].nome_visita_1, fileData[1].descricao_visita_1, fileData[0].projectos_1));
+
+        tour2.push(createTourObj(fileData[0].nome_visita_2, fileData[0].descricao_visita_2, fileData[0].projectos_2));
+        tour2.push(createTourObj(fileData[1].nome_visita_2, fileData[1].descricao_visita_2, fileData[0].projectos_2));
+
+        tour3.push(createTourObj(fileData[0].nome_visita_3, fileData[0].descricao_visita_3, fileData[0].projectos_3));
+        tour3.push(createTourObj(fileData[1].nome_visita_3, fileData[1].descricao_visita_3, fileData[0].projectos_3));
+
+        _tours.push(tour1);
+        _tours.push(tour2);
+        // _tours.push(tour3);
+
+        if (_mainObject.language === "pt") {
+            $(".tours a.tour1").html(tour1[0].title);
+            $(".tours a.tour2").html(tour2[0].title);
+            $(".tours a.tour3").html(tour3[0].title);
+        } else {
+            $(".tours a.tour1").html(tour1[1].title);
+            $(".tours a.tour2").html(tour2[1].title);
+            $(".tours a.tour3").html(tour3[1].title);
+        }
+    }).fail(function() {
+        console.error("There was an error loading visitas.json");
+    });
 }
 
 function createObject(projectID) {
