@@ -59,10 +59,10 @@ module.exports = function(grunt) {
         // uglify: JS minify
         // ================================  
         uglify: {
-            js_libs: {
-                src: 'js/libs.dist.js',
-                dest: 'js/libs.dist.js'
-            },
+            // js_libs: {
+            //     src: 'js/libs.dist.js',
+            //     dest: 'js/libs.dist.js'
+            // },
             js_custom: {
                 src: 'js/app.dist.js',
                 dest: 'js/app.dist.js'
@@ -183,7 +183,7 @@ module.exports = function(grunt) {
     // ================================
     grunt.registerTask('default', [
         'concat:js_libs',
-        'uglify:js_libs',
+        // 'uglify:js_libs',
         'jshint:js_custom',
         'concat:js_custom',
         // 'uglify:js_custom',
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
     // ================================    
     grunt.registerTask('prod', [
         'concat:js_libs',
-        'uglify:js_libs',
+        // 'uglify:js_libs',
         'jshint:js_custom',
         'concat:js_custom',
         'uglify:js_custom',

@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+<!-- 
+   Hi, you're looking at a web page built with love by:
+
+   Ricardo
+
+  /$$$$$$            /$$             /$$                        
+ /$$__  $$          |__/            | $$                        
+| $$  \ $$ /$$   /$$ /$$ /$$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$$
+| $$  | $$| $$  | $$| $$| $$__  $$|_  $$_/   |____  $$ /$$_____/
+| $$  | $$| $$  | $$| $$| $$  \ $$  | $$      /$$$$$$$|  $$$$$$ 
+| $$/$$ $$| $$  | $$| $$| $$  | $$  | $$ /$$ /$$__  $$ \____  $$
+|  $$$$$$/|  $$$$$$/| $$| $$  | $$  |  $$$$/|  $$$$$$$ /$$$$$$$/
+ \____ $$$ \______/ |__/|__/  |__/   \___/   \_______/|_______/ 
+      \__/                                                                      
+
+   ricardoquintas.com   
+   January/2015 
+-->
 <html>
 
 <head>
@@ -7,19 +25,35 @@
     <link rel="stylesheet" href="css/slick/slick.css" />
     <link rel="stylesheet" href="css/slick/slick-theme.css" />
     <link rel="stylesheet" href="css/app.dist.css" />
-    <title>unplace.org // GBNT v3.0</title>
+    <title>unplace.org</title>
 </head>
 
 <body class="body-color">
+    <!--[if lt IE 9]>
+    <div class="browserupdate">
+        You are using an obsolete browser which can harm your experience and cause security troubles.
+        <br> Please <a href="http://browsehappy.com/" target="_blank">update your browser!</a>
+    </div>
+  <![endif]-->
+    <noscript>
+        <div class="browserupdate">
+            Oh, no! You don't have JavaScript enabled on your browser!
+            <br> This website only works with JavaScript. Sorry.
+        </div>
+    </noscript>
     <script id="gbnt-template" type="text/x-handlebars-template">
         <div class="slick-content">
-            {{#each images}}
+            {{#each project}} {{#if img}}
             <div>
                 <div class="label"><span class="auth">{{author}}</span>-<span class="title">{{title}}</span>-<span class="year">{{year}}</span> <span class="index">{{index}}/{{total}}</span>
                 </div>
                 <img src="{{img}}" />
             </div>
-            {{/each}}
+            {{/if}} {{#if video}}
+            <div>
+                <iframe width="640" height="400" src="{{video}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            {{/if}} {{/each}}
         </div>
     </script>
     <section id="gbnt-header" data-gbnt-open="false">
@@ -41,25 +75,61 @@
         url_data = decodeURIComponent(url_data);
         var project = JSON.parse(url_data);
         var projs = [];
+        var obj;
 
         for (var i = 0; i < project.imagens.length; i++) {
-            var obj = {};
+            obj = {};
             obj.index = i + 1;
             obj.img = "docs/projectos/" + project.id + "/" + project.imagens[i];
+            obj.video = null;
             obj.author = project.autor;
             obj.title = project.titulo;
             obj.year = project.ano;
-            obj.total = project.imagens.length;
+            obj.total = project.imagens.length + project.videos.length;
+            projs.push(obj);
+        }
+
+        for (var i = 0; i < project.videos.length; i++) {
+            obj = {};
+            obj.index = project.imagens.length + i + 1;
+            obj.img = null;
+            obj.video = project.videos[i];
+            obj.author = project.autor;
+            obj.title = project.titulo;
+            obj.year = project.ano;
+            obj.total = project.imagens.length + project.videos.length;
             projs.push(obj);
         }
 
         var data = {
-            images: projs
+            project: projs
         };
 
         $('#gbnt-project').append(window._template(data));
         $('.slick-content').slick();
+
+        $("button.slick-prev").on("click", function() {
+            // toggleVideo();
+        });
+
+        $("button.slick-next").on("click", function() {
+            // toggleVideo();
+        });
     });
+
+    function toggleVideo(state) {
+        var iframes = $("iframe");
+
+        for (var i = 0; i < iframes.length; i++) {
+            // var iframe = iframes[i].contentWindow;
+            var src = iframes[i].innerHtml;
+            iframes[i].innerHtml = ("");
+            iframes[i].innerHtml = src;
+            // func = state == 'hide' ? 'pauseVideo' : 'playVideo';
+            // iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+
+    }
 
 
     function getParameterByName(name) {

@@ -1,8 +1,26 @@
 <!DOCTYPE html>
+<!-- 
+   Hi, you're looking at a web page built with love by:
+
+   Ricardo
+
+  /$$$$$$            /$$             /$$                        
+ /$$__  $$          |__/            | $$                        
+| $$  \ $$ /$$   /$$ /$$ /$$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$$
+| $$  | $$| $$  | $$| $$| $$__  $$|_  $$_/   |____  $$ /$$_____/
+| $$  | $$| $$  | $$| $$| $$  \ $$  | $$      /$$$$$$$|  $$$$$$ 
+| $$/$$ $$| $$  | $$| $$| $$  | $$  | $$ /$$ /$$__  $$ \____  $$
+|  $$$$$$/|  $$$$$$/| $$| $$  | $$  |  $$$$/|  $$$$$$$ /$$$$$$$/
+ \____ $$$ \______/ |__/|__/  |__/   \___/   \_______/|_______/ 
+      \__/                                                                      
+
+   ricardoquintas.com   
+   January/2015 
+-->
 <html>
 
 <head>
-    <title>ADMIN unplace.org // GBNT</title>
+    <title>ADMIN unplace.org</title>
     <link rel="stylesheet" href="css/pure-min.css" />
     <style type="text/css">
     * {
@@ -69,10 +87,40 @@
         font-size: 12px;
         color: red;
     }
+    
+    .browserupdate {
+        display: block;
+        margin-bottom: 3em;
+        padding: 2em;
+        color: #fff;
+        text-align: center;
+        background-color: red;
+    }
+    
+    .browserupdate a {
+        color: #fff;
+        text-decoration: underline;
+    }
+    
+    .browserupdate a:hover {
+        color: #ddd;
+    }
     </style>
 </head>
 
 <body>
+    <!--[if lt IE 9]>
+    <div class="browserupdate">
+        You are using an obsolete browser which can harm your experience and cause security troubles.
+        <br> Please <a href="http://browsehappy.com/" target="_blank">update your browser!</a>
+    </div>
+  <![endif]-->
+    <noscript>
+        <div class="browserupdate">
+            Oh, no! You don't have JavaScript enabled on your browser!
+            <br> This website only works with JavaScript. Sorry.
+        </div>
+    </noscript>
     <a class="button-warning pure-button" href="admin.html">Gerir Obras</a>
     <hr>
     <form class="pure-form  pure-form-aligned">

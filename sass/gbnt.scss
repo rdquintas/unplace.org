@@ -2,9 +2,7 @@
  * GLOBALS
  **********************************************************************/
 
-*,
-*:after,
-*:before {
+*, *:after, *:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -38,14 +36,28 @@ body {
     display: none;
 }
 
-.no-pointers,
-.no-pointers:hover,
-.no-pointers:visited,
-.no-pointers:active,
-.no-pointers:focus {
+.no-pointers, .no-pointers:hover, .no-pointers:visited, .no-pointers:active, .no-pointers:focus {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
+}
+
+.browserupdate {
+    display: block;
+    margin-bottom: 3em;
+    padding: 2em;
+    color: #fff;
+    text-align: center;
+    background-color: red;
+}
+
+.browserupdate a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.browserupdate a:hover {
+    color: #ddd;
 }
 /**********************************************************************
  * GBNT-HEADER
@@ -397,8 +409,9 @@ body {
 }
 
 .slick-content iframe {
-    /*        width: 100%;
-        height: auto;*/
+    margin-top: 10%;
+    width: 100%;
+    height: 520px;
 }
 
 @media (max-width: 768px) {

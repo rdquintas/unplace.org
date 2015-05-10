@@ -8,6 +8,7 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
 # Changelog (Branches)
 ### v4
 - fixed video carroussel 
+- added noscript e <IE9 validation
 
 ### v3.1-url-fix
 - attempt to fix pushState issue. Doesn't work well in Safari
