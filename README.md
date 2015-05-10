@@ -3,10 +3,12 @@
 Project | unplace.org - Prototype for GBNT
 --- | ---
 Info | Prototype for unplace.org
-Version | 3.1
 URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplace.org)
 
 # Changelog (Branches)
+### v4
+- fixed video carroussel 
+
 ### v3.1-url-fix
 - attempt to fix pushState issue. Doesn't work well in Safari
 - removing PATH.js
