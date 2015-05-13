@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
     var _js_libs = [
-        'js/739bf436-1824-4067-a456-9bd34cfd8f44.js',
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/handlebars/handlebars.min.js',
         'bower_components/packery/dist/packery.pkgd.min.js',
