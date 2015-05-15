@@ -5,6 +5,16 @@ Project | unplace.org - Prototype for GBNT
 Info | Prototype for unplace.org
 URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplace.org)
 
+
+# Features
+- js: **jquery**
+- js: [**packery**](http://packery.metafizzy.co/) Packery makes your crazy & clever layout a real thing.
+- js: [**handlebars**](http://handlebarsjs.com/) Minimal Templating on Steroids
+- js: [**slick**](http://kenwheeler.github.io/slick/) slick is a responsive carousel jQuery plugin
+- css: **normalize**
+- css: **fontawesome**
+
+        
 # Changelog (Branches)
 ### v4
 - fixed video carroussel 
