@@ -28,30 +28,25 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    
     body {
         margin: 50px;
         background-color: #fff;
     }
-    
     .button-warning {
         background: rgb(223, 117, 20);
         color: white;
         border-radius: 4px;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     }
-    
     .hidden-input {
         display: none !important;
     }
-    
     .tipo-capa-group p {
         display: inline;
         margin-left: 10px;
         font-size: 12px;
         color: red;
     }
-    
     .box-images {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -59,17 +54,14 @@
         display: none;
         background-color: #ddd
     }
-    
     .box-images h5 {
         margin: 0px;
     }
-    
     .box-images .images p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
-    
     .box-videos {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -77,17 +69,14 @@
         display: none;
         background-color: #ddd
     }
-    
     .box-videos h5 {
         margin: 0px;
     }
-    
     .box-videos .videos p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
-    
     .browserupdate {
         display: block;
         margin-bottom: 3em;
@@ -96,12 +85,10 @@
         text-align: center;
         background-color: red;
     }
-    
     .browserupdate a {
         color: #fff;
         text-decoration: underline;
     }
-    
     .browserupdate a:hover {
         color: #ddd;
     }
@@ -134,13 +121,13 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1-2">
-                <h2>Informação da obra</h2>
+                <h2>Informa&ccedil;&atilde;o da obra</h2>
                 <div class="pure-control-group">
-                    <label for="titulo">Título da obra</label>
+                    <label for="titulo">T&iacute;tulo da obra</label>
                     <input id="titulo" type="text">
                 </div>
                 <div class="pure-control-group">
-                    <label for="descricao">Descrição da obra</label>
+                    <label for="descricao">Descri&ccedil;&atilde;o da obra</label>
                     <textarea id="descricao"></textarea>
                 </div>
                 <div class="pure-control-group">
@@ -149,11 +136,11 @@
                 </div>
                 <div class="pure-control-group">
                     <label for="ano">Ano da obra</label>
-                    <input maxlength="4" id="ano" type="text">
+                    <input maxlength="15" id="ano" type="text">
                 </div>
                 <div class="pure-control-group">
                     <input class="hidden-input ficha-tecnica" accept=".pdf" type="file" name="file">
-                    <label for="fichaTecnica">Ficha Técnica (PDF)</label>
+                    <label for="fichaTecnica">Ficha T&eacute;cnica (PDF)</label>
                     <input readonly id="fichaTecnica" type="text">
                     <button id="btnFichaTecnica" type="submit" class="pure-button">Escolher</button>
                 </div>
@@ -164,7 +151,8 @@
                         <option value="T">Alta</option>
                         <option value="W">Comprida</option>
                     </select>
-                    <p>Dimensão da capa (em pixels): <span>alt 144 x larg 144</span></p>
+                    <p>Dimens&atilde;o da capa (em pixels): <span>alt 144 x larg 144</span>
+                    </p>
                 </div>
                 <div class="pure-control-group">
                     <input class="hidden-input capa" accept="image/*" type="file" name="file">
@@ -196,7 +184,7 @@
                 </div>
             </div>
             <div class="pure-u-1-2">
-                <h2>Informação do Autor</h2>
+                <h2>Informa&ccedil;&atilde;o do Autor</h2>
                 <div class="pure-control-group">
                     <label for="autor">Nome do Autor</label>
                     <input id="autor" type="text">
@@ -255,10 +243,12 @@
          **********************/
         $('#gbnt-btn-criar').click(function() {
             var file = criarFile();
-            var pom = document.createElement('a');
-            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
-            pom.setAttribute('download', "sumario.json");
-            pom.click();
+            var encodedFile = encodeURIComponent(JSON.stringify(file));
+            window.location.href = 'downloadJSON.php?filename=sumario.json&data=' + encodedFile;
+            // var pom = document.createElement('a');
+            // pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
+            // pom.setAttribute('download', "sumario.json");
+            // pom.click();
         });
 
         /**********************

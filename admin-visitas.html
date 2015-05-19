@@ -28,30 +28,25 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    
     body {
         margin: 50px;
         background-color: #fff;
     }
-    
     .button-warning {
         background: rgb(223, 117, 20);
         color: white;
         border-radius: 4px;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     }
-    
     .hidden-input {
         display: none !important;
     }
-    
     .tipo-capa-group p {
         display: inline;
         margin-left: 10px;
         font-size: 12px;
         color: red;
     }
-    
     .box-images {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -59,17 +54,14 @@
         display: none;
         background-color: #ddd
     }
-    
     .box-images h5 {
         margin: 0px;
     }
-    
     .box-images .images p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
-    
     .box-videos {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -77,17 +69,14 @@
         display: none;
         background-color: #ddd
     }
-    
     .box-videos h5 {
         margin: 0px;
     }
-    
     .box-videos .videos p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
-    
     .browserupdate {
         display: block;
         margin-bottom: 3em;
@@ -96,12 +85,10 @@
         text-align: center;
         background-color: red;
     }
-    
     .browserupdate a {
         color: #fff;
         text-decoration: underline;
     }
-    
     .browserupdate a:hover {
         color: #ddd;
     }
@@ -132,13 +119,13 @@
                 <option value="en">EN</option>
             </select>
         </div>
-        <h2>Informação da Visita 1</h2>
+        <h2>Informa&ccedil;&atilde;o da Visita 1</h2>
         <div class="pure-control-group">
             <label for="nome_visita_1">Nome Visita</label>
             <input id="nome_visita_1" type="text">
         </div>
         <div class="pure-control-group">
-            <label for="descricao_visita_1">Descrição Visita</label>
+            <label for="descricao_visita_1">Descri&ccedil;&atilde;o Visita</label>
             <textarea id="descricao_visita_1"></textarea>
         </div>
         <div class="pure-control-group">
@@ -146,13 +133,13 @@
             <input id="projectos_1" type="text" placeholder="ex: 1,2,3,4">
         </div>
         <br>
-        <h2>Informação da Visita 2</h2>
+        <h2>Informa&ccedil;&atilde;o da Visita 2</h2>
         <div class="pure-control-group">
             <label for="nome_visita_2">Nome Visita</label>
             <input id="nome_visita_2" type="text">
         </div>
         <div class="pure-control-group">
-            <label for="descricao_visita_2">Descrição Visita</label>
+            <label for="descricao_visita_2">Descri&ccedil;&atilde;o Visita</label>
             <textarea id="descricao_visita_2"></textarea>
         </div>
         <div class="pure-control-group">
@@ -160,13 +147,13 @@
             <input id="projectos_2" type="text" placeholder="ex: 1,2,3,4">
         </div>
         <br>
-        <h2>Informação da Visita 3</h2>
+        <h2>Informa&ccedil;&atilde;o da Visita 3</h2>
         <div class="pure-control-group">
             <label for="nome_visita_3">Nome Visita</label>
             <input id="nome_visita_3" type="text">
         </div>
         <div class="pure-control-group">
-            <label for="descricao_visita_3">Descrição Visita</label>
+            <label for="descricao_visita_3">Descri&ccedil;&atilde;o Visita</label>
             <textarea id="descricao_visita_3"></textarea>
         </div>
         <div class="pure-control-group">
@@ -221,10 +208,13 @@
          **********************/
         $('#gbnt-btn-criar').click(function() {
             var file = criarFile();
-            var pom = document.createElement('a');
-            pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
-            pom.setAttribute('download', "visitas.json");
-            pom.click();
+            var encodedFile = encodeURIComponent(JSON.stringify(file));
+            window.location.href = 'downloadJSON.php?filename=visitas.json&data=' + encodedFile;
+            // var file = criarFile();
+            // var pom = document.createElement('a');
+            // pom.setAttribute('href','data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
+            // pom.setAttribute('download', "visitas.json");
+            // pom.click();
         });
 
         /**********************
