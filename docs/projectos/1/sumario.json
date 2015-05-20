@@ -6,7 +6,7 @@
     "ano": "1974",
     "fichaTecnica": "ficha_tecnica.pdf",
     "autorBio": "Bio do Autor PT",
-    "descricao": "Descrição Projecto PT",
+    "descricao": "Descrição Projecto PT <br><a href='http://www.google.com' target='_blank'>Teste</a>",
     "www": "",
     "imagens": ["img4.jpg", "img1.jpg", "img3.jpg", "img2.jpg"],
     "videos": ["https://www.youtube.com/embed/0wHYHMpHmSg", "https://www.youtube.com/embed/i1EG-MKy4so"],
