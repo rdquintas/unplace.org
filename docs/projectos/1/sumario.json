@@ -1,1 +1,27 @@
-[{"language":"pt","capa":"capa1.jpg","titulo":"Nome Projecto PT","autor":"Nome do Autor PT","ano":"1974","fichaTecnica":"ficha_tecnica.pdf","autorBio":"Bio do Autor PT","descricao":"linha1<div>linha2</div><div>linha3</div><div><br></div><div>Isto é um <a href=\"http://www.google.com\">link</a></div>","www":"","imagens":["img4.jpg","img1.jpg","img3.jpg","img2.jpg"],"videos":["https://www.youtube.com/embed/0wHYHMpHmSg","https://www.youtube.com/embed/i1EG-MKy4so"],"tipo_capa":"N"},{"language":"en","capa":"capa1.jpg","titulo":"Project Name EN","autor":"Author Name en","ano":"1974","fichaTecnica":"ficha_tecnica_en.pdf","autorBio":"Bio autor en","descricao":"Project Description EN","www":"","imagens":["img4.jpg","img1.jpg","img3.jpg","img2.jpg"],"videos":["https://www.youtube.com/embed/0wHYHMpHmSg","https://www.youtube.com/embed/i1EG-MKy4so"],"tipo_capa":"N"}]
+[{
+    "language": "pt",
+    "capa": "capa1.jpg",
+    "titulo": "Nome Projecto PT",
+    "autor": "Nome do Autor PT",
+    "ano": "1974",
+    "fichaTecnica": "ficha_tecnica.pdf",
+    "autorBio": "Bio do Autor PT",
+    "descricao": "linha1<div><span style=\"font-weight: bold; background-color: rgb(255, 255, 0);\">linha2</span></div><div style=\"font-weight: normal;\">linha3</div><div style=\"font-weight: normal;\"><br></div><div style=\"font-weight: normal;\">Isto é um <a href=\"http://www.google.com\">link</a></div>",
+    "www": "/docs/projectos/1/file.zip",
+    "imagens": ["img4.jpg", "img1.jpg", "img3.jpg", "img2.jpg"],
+    "videos": ["https://www.youtube.com/embed/0wHYHMpHmSg", "https://www.youtube.com/embed/i1EG-MKy4so"],
+    "tipo_capa": "N"
+}, {
+    "language": "en",
+    "capa": "capa1.jpg",
+    "titulo": "Project Name EN",
+    "autor": "Author Name en",
+    "ano": "1974",
+    "fichaTecnica": "ficha_tecnica_en.pdf",
+    "autorBio": "Bio autor en",
+    "descricao": "Project Description EN",
+    "www": "",
+    "imagens": ["img4.jpg", "img1.jpg", "img3.jpg", "img2.jpg"],
+    "videos": ["https://www.youtube.com/embed/0wHYHMpHmSg", "https://www.youtube.com/embed/i1EG-MKy4so"],
+    "tipo_capa": "N"
+}]
