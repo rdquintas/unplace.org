@@ -23,6 +23,7 @@
     <meta charset="utf-8" />
     <title>ADMIN unplace.org</title>
     <link rel="stylesheet" href="css/pure-min.css" />
+    <link rel="stylesheet" href="css/jquery.cleditor.css" />
     <style type="text/css">
     * {
         -webkit-box-sizing: border-box;
@@ -106,6 +107,11 @@
     .browserupdate a:hover {
         color: #ddd;
     }
+    
+    .cleditorMain {
+        margin-left: 180px;
+        margin-top: -20px;
+    }
     </style>
     <script type="text/javascript" src="http://fast.fonts.net/jsapi/739bf436-1824-4067-a456-9bd34cfd8f44.js"></script>
 </head>
@@ -124,7 +130,7 @@
         </div>
     </noscript>
     <a class="button-warning pure-button" href="admin-visitas.html">Gerir
-		Visitas</a>
+        Visitas</a>
     <hr>
     <form class="pure-form  pure-form-aligned">
         <div class="pure-control-group">
@@ -168,7 +174,7 @@
                     </select>
                     <p>
                         Dimens&atilde;o da capa (em pixels): <span>alt 144 x larg
-							144</span>
+                            144</span>
                     </p>
                 </div>
                 <div class="pure-control-group">
@@ -225,244 +231,237 @@
         <hr>
     </form>
     <script src="js/libs.dist.js"></script>
+    <script src="js/jquery.cleditor.min.js"></script>
     <script type="text/javascript">
-    $(document)
-        .ready(
-            function() {
-                window.obj_pt = initializeObj("pt");
-                window.obj_en = initializeObj("en");
+    $(document).ready(function() {
+
+
+        // adds the WYSIWYG editor to field
+        $("#descricao").cleditor({
+            width: 300,
+            controls: "bold italic | " +
+                "color highlight removeformat | " +
+                "link unlink"
+        });
+
+        // adds the WYSIWYG editor to field
+        $("#autorBio").cleditor({
+            width: 300,
+            controls: "bold italic | " +
+                "color highlight removeformat | " +
+                "link unlink"
+        });
+
+        window.obj_pt = initializeObj("pt");
+        window.obj_en = initializeObj("en");
+        window.obj_current = obj_pt;
+
+        setFormData(window.obj_current);
+
+        /**********************
+         * LANGUAGE TOGGLE
+         **********************/
+        $('#idioma').on("change", $.proxy(function() {
+            window.obj_pt.ano = $("#ano").val();
+            window.obj_en.ano = $("#ano").val();
+            window.obj_pt.capa = $("#capa").val();
+            window.obj_en.capa = $("#capa").val();
+            window.obj_pt.tipo_capa = $(
+                "#tipo_capa").val();
+            window.obj_en.tipo_capa = $(
+                "#tipo_capa").val();
+
+            if ($("#idioma").val() === "pt") {
+                storeCurrentData();
+                window.obj_current = window.obj_pt;
+                setFormData();
+            } else {
+                storeCurrentData();
+                window.obj_current = window.obj_en;
+                setFormData();
+            }
+        }, this));
+
+        /**********************
+         * SAVE JSON FILE
+         **********************/
+        $('#gbnt-btn-criar').click(function() {
+            var file = criarFile();
+            var encodedFile = encodeURIComponent(JSON
+                .stringify(file));
+            window.location.href = 'downloadJSON.php?filename=sumario.json&data=' + encodedFile;
+            // var pom = document.createElement('a');
+            // pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
+            // pom.setAttribute('download', "sumario.json");
+            // pom.click();
+        });
+
+        /**********************
+         * UPLOAD JSON FILE
+         **********************/
+        // upload json: btn clicked
+        $('#gbnt-btn-upload').click(function(e) {
+            $(".hidden-input.upload").click();
+            e.preventDefault();
+            return false;
+        });
+
+        // upload json: trigger input field
+        $('.hidden-input.upload').change(function(ee) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var obj = JSON.parse(event.target.result);
+                window.obj_pt = obj[0];
+                window.obj_en = obj[1];
                 window.obj_current = obj_pt;
-
+                $("#idioma").val("pt");
                 setFormData(window.obj_current);
+                if ($("#tipo_capa").val() === "N") {
+                    $(".tipo-capa-group span").html("alt 144 x larg 144");
+                }
 
-                /**********************
-                 * LANGUAGE TOGGLE
-                 **********************/
-                $('#idioma').on(
-                    "change",
-                    $.proxy(function() {
-                        window.obj_pt.ano = $("#ano").val();
-                        window.obj_en.ano = $("#ano").val();
-                        window.obj_pt.capa = $("#capa").val();
-                        window.obj_en.capa = $("#capa").val();
-                        window.obj_pt.tipo_capa = $(
-                            "#tipo_capa").val();
-                        window.obj_en.tipo_capa = $(
-                            "#tipo_capa").val();
+                if ($("#tipo_capa").val() === "W") {
+                    $(".tipo-capa-group span").html("alt 144 x larg 288");
+                }
 
-                        if ($("#idioma").val() === "pt") {
-                            storeCurrentData();
-                            window.obj_current = window.obj_pt;
-                            setFormData();
-                        } else {
-                            storeCurrentData();
-                            window.obj_current = window.obj_en;
-                            setFormData();
-                        }
-                    }, this));
+                if ($("#tipo_capa").val() === "T") {
+                    $(".tipo-capa-group span").html("alt 288 x larg 144");
+                }
+            };
+            reader.onerror = function(event) {
+                alert("Erro com o upload desse ficheiro!");
+            };
+            reader.readAsText(this.files[0]);
+            return false;
+        });
 
-                /**********************
-                 * SAVE JSON FILE
-                 **********************/
-                $('#gbnt-btn-criar')
-                    .click(
-                        function() {
-                            var file = criarFile();
-                            var encodedFile = encodeURIComponent(JSON
-                                .stringify(file));
-                            window.location.href = 'downloadJSON.php?filename=sumario.json&data=' + encodedFile;
-                            // var pom = document.createElement('a');
-                            // pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
-                            // pom.setAttribute('download', "sumario.json");
-                            // pom.click();
-                        });
-
-                /**********************
-                 * UPLOAD JSON FILE
-                 **********************/
-                // upload json: btn clicked
-                $('#gbnt-btn-upload').click(function(e) {
-                    $(".hidden-input.upload").click();
-                    e.preventDefault();
-                    return false;
-                });
-                // upload json: trigger input field
-                $('.hidden-input.upload')
-                    .change(
-                        function(ee) {
-                            var reader = new FileReader();
-                            reader.onload = function(event) {
-                                var obj = JSON
-                                    .parse(event.target.result);
-                                window.obj_pt = obj[0];
-                                window.obj_en = obj[1];
-                                window.obj_current = obj_pt;
-                                $("#idioma").val("pt");
-                                setFormData(window.obj_current);
-                                if ($("#tipo_capa").val() === "N") {
-                                    $(
-                                            ".tipo-capa-group span")
-                                        .html(
-                                            "alt 144 x larg 144");
-                                }
-
-                                if ($("#tipo_capa").val() === "W") {
-                                    $(
-                                            ".tipo-capa-group span")
-                                        .html(
-                                            "alt 144 x larg 288");
-                                }
-
-                                if ($("#tipo_capa").val() === "T") {
-                                    $(
-                                            ".tipo-capa-group span")
-                                        .html(
-                                            "alt 288 x larg 144");
-                                }
-                            };
-                            reader.onerror = function(event) {
-                                alert("Erro com o upload desse ficheiro!");
-                            };
-                            reader
-                                .readAsText(this.files[0]);
-                            return false;
-                        });
-
-                /**********************
-                 * FICHA TECNICA
-                 **********************/
-                // ficha tecnica: btn clicked
-                $('#btnFichaTecnica').click(function(e) {
-                    $(".hidden-input.ficha-tecnica").click();
-                    e.preventDefault();
-                    return false;
-                });
-                // ficha tecnica: trigger input field
-                $('.hidden-input.ficha-tecnica').change(
-                    function(ee) {
-                        $("#fichaTecnica").val(
-                            this.files[0].name);
-                    });
-
-                /**********************
-                 * CAPA
-                 **********************/
-                // capa: btn clicked
-                $('#btnCapa').click(function(e) {
-                    $(".hidden-input.capa").click();
-                    e.preventDefault();
-                    return false;
-                });
-                // capa: trigger input field
-                $('.hidden-input.capa').change(function(ee) {
-                    $("#capa").val(this.files[0].name);
-                });
-
-                /**********************
-                 * TIPO DE CAPA
-                 **********************/
-                $('#tipo_capa').on(
-                    "change",
-                    function() {
-                        window.obj_pt.tipo_capa = $(
-                            "#tipo_capa").val();
-                        window.obj_en.tipo_capa = $(
-                            "#tipo_capa").val();
-
-                        if ($("#tipo_capa").val() === "N") {
-                            $(".tipo-capa-group span").html(
-                                "alt 144 x larg 144");
-                        }
-
-                        if ($("#tipo_capa").val() === "W") {
-                            $(".tipo-capa-group span").html(
-                                "alt 144 x larg 288");
-                        }
-
-                        if ($("#tipo_capa").val() === "T") {
-                            $(".tipo-capa-group span").html(
-                                "alt 288 x larg 144");
-                        }
-                    });
-
-                /**********************
-                 * IMAGES UPLOAD
-                 **********************/
-                // imagens_upload: btn UPLOAD clicked
-                $('#btnImagens').click(function(e) {
-                    $(".hidden-input.imagens").click();
-                    e.preventDefault();
-                    return false;
-                });
-                // imagens_upload: trigger input field
-                $('.hidden-input.imagens')
-                    .change(
-                        function(ee) {
-                            var imagens = this.files;
-
-                            for (var i = 0; i < imagens.length; i++) {
-                                for (var ii = 0; ii < window.obj_pt.imagens.length; ii++) {
-                                    if (imagens[i].name === window.obj_pt.imagens[ii]) {
-                                        return; //if the image is already there, get out of here
-                                    }
-                                }
-                                $(".images")
-                                    .append(
-                                        "<p>" + imagens[i].name + "</p>");
-                                window.obj_pt.imagens
-                                    .push(imagens[i].name);
-                                window.obj_en.imagens
-                                    .push(imagens[i].name);
-                            }
-                            $(".box-images").show();
-                        });
-                // imagens_upload: btn CLEAR clicked
-                $('#btnImagensClear').click(function(e) {
-                    $(".images").empty();
-                    $(".box-images").hide();
-                    window.obj_pt.imagens = [];
-                    window.obj_en.imagens = [];
-                    e.preventDefault();
-                    return false;
-                });
-
-                /**********************
-                 * VIDEOS UPLOAD
-                 **********************/
-                // videos_upload: btn UPLOAD clicked
-                $('#btnVideos')
-                    .click(
-                        function(e) {
-                            e.preventDefault();
-                            var video = $("#videos").val();
-
-                            if (!video) {
-                                return;
-                            }
-
-                            for (var ii = 0; ii < window.obj_pt.videos.length; ii++) {
-                                if (video === window.obj_pt.videos[ii]) {
-                                    return; //if the video is already there, get out of here
-                                }
-                            }
-                            $(".videos").append(
-                                "<p>" + video + "</p>");
-                            window.obj_pt.videos
-                                .push(video);
-                            window.obj_en.videos
-                                .push(video);
-                            $(".box-videos").show();
-                        });
-                // videos_upload: btn CLEAR clicked
-                $('#btnVideosClear').click(function(e) {
-                    $(".videos").empty();
-                    $(".box-videos").hide();
-                    window.obj_pt.videos = [];
-                    window.obj_en.videos = [];
-                    e.preventDefault();
-                    return false;
-                });
+        /**********************
+         * FICHA TECNICA
+         **********************/
+        // ficha tecnica: btn clicked
+        $('#btnFichaTecnica').click(function(e) {
+            $(".hidden-input.ficha-tecnica").click();
+            e.preventDefault();
+            return false;
+        });
+        // ficha tecnica: trigger input field
+        $('.hidden-input.ficha-tecnica').change(
+            function(ee) {
+                $("#fichaTecnica").val(
+                    this.files[0].name);
             });
+
+        /**********************
+         * CAPA
+         **********************/
+        // capa: btn clicked
+        $('#btnCapa').click(function(e) {
+            $(".hidden-input.capa").click();
+            e.preventDefault();
+            return false;
+        });
+        // capa: trigger input field
+        $('.hidden-input.capa').change(function(ee) {
+            $("#capa").val(this.files[0].name);
+        });
+
+        /**********************
+         * TIPO DE CAPA
+         **********************/
+        $('#tipo_capa').on("change", function() {
+            window.obj_pt.tipo_capa = $("#tipo_capa").val();
+            window.obj_en.tipo_capa = $("#tipo_capa").val();
+
+            if ($("#tipo_capa").val() === "N") {
+                $(".tipo-capa-group span").html("alt 144 x larg 144");
+            }
+
+            if ($("#tipo_capa").val() === "W") {
+                $(".tipo-capa-group span").html("alt 144 x larg 288");
+            }
+
+            if ($("#tipo_capa").val() === "T") {
+                $(".tipo-capa-group span").html("alt 288 x larg 144");
+            }
+        });
+
+        /**********************
+         * IMAGES UPLOAD
+         **********************/
+        // imagens_upload: btn UPLOAD clicked
+        $('#btnImagens').click(function(e) {
+            $(".hidden-input.imagens").click();
+            e.preventDefault();
+            return false;
+        });
+        // imagens_upload: trigger input field
+        $('.hidden-input.imagens').change(function(ee) {
+            var imagens = this.files;
+
+            for (var i = 0; i < imagens.length; i++) {
+                for (var ii = 0; ii < window.obj_pt.imagens.length; ii++) {
+                    if (imagens[i].name === window.obj_pt.imagens[ii]) {
+                        return; //if the image is already there, get out of here
+                    }
+                }
+                $(".images").append("<p>" + imagens[i].name + "</p>");
+                window.obj_pt.imagens.push(imagens[i].name);
+                window.obj_en.imagens.push(imagens[i].name);
+            }
+            $(".box-images").show();
+        });
+        // imagens_upload: btn CLEAR clicked
+        $('#btnImagensClear').click(function(e) {
+            $(".images").empty();
+            $(".box-images").hide();
+            window.obj_pt.imagens = [];
+            window.obj_en.imagens = [];
+            e.preventDefault();
+            return false;
+        });
+
+        /**********************
+         * VIDEOS UPLOAD
+         **********************/
+        // videos_upload: btn UPLOAD clicked
+        $('#btnVideos')
+            .click(
+                function(e) {
+                    e.preventDefault();
+                    var video = $("#videos").val();
+
+                    if (!video) {
+                        return;
+                    }
+
+                    for (var ii = 0; ii < window.obj_pt.videos.length; ii++) {
+                        if (video === window.obj_pt.videos[ii]) {
+                            return; //if the video is already there, get out of here
+                        }
+                    }
+                    $(".videos").append(
+                        "<p>" + video + "</p>");
+                    window.obj_pt.videos
+                        .push(video);
+                    window.obj_en.videos
+                        .push(video);
+                    $(".box-videos").show();
+                });
+        // videos_upload: btn CLEAR clicked
+        $('#btnVideosClear').click(function(e) {
+            $(".videos").empty();
+            $(".box-videos").hide();
+            window.obj_pt.videos = [];
+            window.obj_en.videos = [];
+            e.preventDefault();
+            return false;
+        });
+    });
+
+    function updateWYSIWYGeditor() {
+        $("#descricao").cleditor()[0].updateFrame();
+        $("#autorBio").cleditor()[0].updateFrame();
+    }
 
     function storeCurrentData() {
         var imgDiv = $(".box-images .images");
@@ -532,6 +531,7 @@
             $(".box-videos").hide();
         }
 
+        updateWYSIWYGeditor();
     }
 
     function initializeObj(language) {

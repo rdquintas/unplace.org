@@ -23,6 +23,7 @@
     <meta charset="utf-8" />
     <title>ADMIN unplace.org</title>
     <link rel="stylesheet" href="css/pure-min.css" />
+    <link rel="stylesheet" href="css/jquery.cleditor.css" />
     <style type="text/css">
     * {
         -webkit-box-sizing: border-box;
@@ -106,6 +107,11 @@
     .browserupdate a:hover {
         color: #ddd;
     }
+    
+    .cleditorMain {
+        margin-left: 180px;
+        margin-top: -20px;
+    }
     </style>
     <script type="text/javascript" src="http://fast.fonts.net/jsapi/739bf436-1824-4067-a456-9bd34cfd8f44.js"></script>
 </head>
@@ -187,8 +193,32 @@
         <hr>
     </form>
     <script src="js/libs.dist.js"></script>
+    <script src="js/jquery.cleditor.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
+
+        // adds the WYSIWYG editor to field
+        $("#descricao_visita_1").cleditor({
+            width: 300,
+            controls: "bold italic | " +
+                "color highlight removeformat | " +
+                "link unlink"
+        });
+
+        $("#descricao_visita_2").cleditor({
+            width: 300,
+            controls: "bold italic | " +
+                "color highlight removeformat | " +
+                "link unlink"
+        });
+
+        $("#descricao_visita_3").cleditor({
+            width: 300,
+            controls: "bold italic | " +
+                "color highlight removeformat | " +
+                "link unlink"
+        });
+
         window.obj_pt = initializeObj("pt");
         window.obj_en = initializeObj("en");
         window.obj_current = obj_pt;
@@ -295,6 +325,9 @@
         $("#nome_visita_3").val(window.obj_current.nome_visita_3);
         $("#descricao_visita_3").val(window.obj_current.descricao_visita_3);
         $("#projectos_3").val(window.obj_current.projectos_3);
+
+        updateWYSIWYGeditor();
+
     }
 
     function initializeObj(language) {
@@ -315,6 +348,12 @@
         obj.projectos_3 = "";
 
         return obj;
+    }
+
+    function updateWYSIWYGeditor() {
+        $("#descricao_visita_1").cleditor()[0].updateFrame();
+        $("#descricao_visita_2").cleditor()[0].updateFrame();
+        $("#descricao_visita_3").cleditor()[0].updateFrame();
     }
 
     function criarFile() {

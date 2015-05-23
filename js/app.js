@@ -243,6 +243,12 @@ function createEventHandlers() {
         if (e.target.className === "btn-view-proj") {
             return;
         }
+
+        // this is the case when we click a link inside the project text
+        if (e.target.tagName === "A" && e.target.classList.length === 0) {
+            return;
+        }
+
         //If event was triggered by a DIV other than gbnt-item, then get out of here
         e.preventDefault();
         if ($(this).hasClass('no-pointers')) {

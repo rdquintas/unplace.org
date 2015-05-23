@@ -11,6 +11,7 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
 - js: [**packery**](http://packery.metafizzy.co/) Packery makes your crazy & clever layout a real thing.
 - js: [**handlebars**](http://handlebarsjs.com/) Minimal Templating on Steroids
 - js: [**slick**](http://kenwheeler.github.io/slick/) is a responsive carousel jQuery plugin
+- js: [**cleditor**](http://premiumsoftware.net/cleditor/) WYSIWYG HTML editor - jQuery
 - css: **normalize**
 - css: **fontawesome**
 - css: [**purecss**](http://purecss.io/) A set of small, responsive CSS modules that you can use in every web project.
@@ -18,6 +19,7 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
         
 # Changelog (Branches)
 ### v4
+- added cleditor for admin pages
 - added download JSON file via PHP file, for admin console
 - fixed video carroussel 
 - added noscript e <IE9 validation
