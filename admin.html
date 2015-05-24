@@ -132,7 +132,9 @@
     <a class="button-warning pure-button" href="admin-visitas.html">Gerir
         Visitas</a>
     <hr>
-    <form class="pure-form  pure-form-aligned">
+    <form id="myForm" action="downloadJSON.php" method="post" class="pure-form  pure-form-aligned">
+        <input type="hidden" name="data" id="data">
+        <input type="hidden" name="filename" id="filename">
         <div class="pure-control-group">
             <label for="idioma">Escolher idioma</label>
             <select id="idioma">
@@ -282,14 +284,20 @@
             }
         }, this));
 
+
         /**********************
          * SAVE JSON FILE
          **********************/
         $('#gbnt-btn-criar').click(function() {
             var file = criarFile();
-            var encodedFile = encodeURIComponent(JSON
-                .stringify(file));
-            window.location.href = 'downloadJSON.php?filename=sumario.json&data=' + encodedFile;
+            console.log("file: " + file);
+            console.log("stringify: " + JSON.stringify(file));
+            var encodedFile = encodeURIComponent(JSON.stringify(file));
+            console.log("encodedFile: " + encodedFile);
+            $("#data").val(encodedFile);
+            $("#filename").val("sumario.json");
+            $("#myForm").submit();
+
             // var pom = document.createElement('a');
             // pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
             // pom.setAttribute('download', "sumario.json");

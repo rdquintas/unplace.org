@@ -131,7 +131,9 @@
     </noscript>
     <a class="button-warning pure-button" href="admin.html">Gerir Obras</a>
     <hr>
-    <form class="pure-form  pure-form-aligned">
+    <form id="myForm" action="downloadJSON.php" method="post" class="pure-form  pure-form-aligned">
+        <input type="hidden" name="data" id="data">
+        <input type="hidden" name="filename" id="filename">
         <div class="pure-control-group">
             <label for="idioma">Escolher idioma</label>
             <select id="idioma">
@@ -197,7 +199,7 @@
     <script type="text/javascript">
     $(document).ready(function() {
 
-        // adds the WYSIWYG editor to field
+        // // adds the WYSIWYG editor to field
         $("#descricao_visita_1").cleditor({
             width: 300,
             controls: "bold italic | " +
@@ -252,8 +254,14 @@
          **********************/
         $('#gbnt-btn-criar').click(function() {
             var file = criarFile();
+            console.log("file: " + file);
+            console.log("stringify: " + JSON.stringify(file));
             var encodedFile = encodeURIComponent(JSON.stringify(file));
-            window.location.href = 'downloadJSON.php?filename=visitas.json&data=' + encodedFile;
+            console.log("encodedFile: " + encodedFile);
+            $("#data").val(encodedFile);
+            $("#filename").val("visitas.json");
+            $("#myForm").submit();
+            // window.location.href = 'downloadJSON.php?filename=visitas.json&data=' + encodedFile;
             // var file = criarFile();
             // var pom = document.createElement('a');
             // pom.setAttribute('href','data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));

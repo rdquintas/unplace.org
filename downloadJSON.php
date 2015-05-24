@@ -1,10 +1,10 @@
 <?php
-if (isset($_GET['data'])) {
-	$json = $_GET['data'];
-	$filename = $_GET['filename'];
+if (isset($_POST['data'])) {
+	$json = $_POST['data'];
+	$filename = $_POST['filename'];
 	header("Content-disposition: attachment; filename='$filename'");
 	header('Content-type: application/json');
-	echo $json;
+	echo urldecode($json);
 } else {
 	echo "Erro na criacao do ficheiro";
 }
