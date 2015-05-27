@@ -142,84 +142,85 @@
                 <option value="en">EN</option>
             </select>
         </div>
-        <div class="pure-g">
-            <div class="pure-u-1-2">
-                <h2>Informa&ccedil;&atilde;o da obra</h2>
-                <div class="pure-control-group">
-                    <label for="titulo">T&iacute;tulo da obra</label>
-                    <input id="titulo" type="text">
-                </div>
-                <div class="pure-control-group">
-                    <label for="descricao">Descri&ccedil;&atilde;o da obra</label>
-                    <textarea id="descricao"></textarea>
-                </div>
-                <div class="pure-control-group">
-                    <label for="www">URL da obra</label>
-                    <input id="www" type="url" placeholder="http://...">
-                </div>
-                <div class="pure-control-group">
-                    <label for="ano">Ano da obra</label>
-                    <input maxlength="15" id="ano" type="text">
-                </div>
-                <div class="pure-control-group">
-                    <input class="hidden-input ficha-tecnica" accept=".pdf" type="file" name="file">
-                    <label for="fichaTecnica">Ficha T&eacute;cnica (PDF)</label>
-                    <input readonly id="fichaTecnica" type="text">
-                    <button id="btnFichaTecnica" type="submit" class="pure-button">Escolher</button>
-                </div>
-                <div class="pure-control-group tipo-capa-group">
-                    <label for="tipo_capa">Escolher tipo de capa</label>
-                    <select id="tipo_capa">
-                        <option value="N">Normal</option>
-                        <option value="T">Alta</option>
-                        <option value="W">Comprida</option>
-                    </select>
-                    <p>
-                        Dimens&atilde;o da capa (em pixels): <span>alt 144 x larg
+        <!-- <div class="pure-g"> -->
+        <!-- <div class="pure-u-1-2"> -->
+        <h2>Informa&ccedil;&atilde;o da obra</h2>
+        <div class="pure-control-group pure-input-1">
+            <label for="titulo">T&iacute;tulo da obra</label>
+            <input id="titulo" type="text">
+        </div>
+        <div class="pure-control-group">
+            <label for="descricao">Descri&ccedil;&atilde;o da obra</label>
+            <textarea id="descricao"></textarea>
+        </div>
+        <div class="pure-control-group">
+            <label for="www">URL da obra</label>
+            <input id="www" type="url" placeholder="http://...">
+        </div>
+        <div class="pure-control-group">
+            <label for="ano">Ano da obra</label>
+            <input maxlength="15" id="ano" type="text">
+        </div>
+        <div class="pure-control-group">
+            <input class="hidden-input ficha-tecnica" accept=".pdf" type="file" name="file">
+            <label for="fichaTecnica">Ficha T&eacute;cnica (PDF)</label>
+            <input readonly id="fichaTecnica" type="text">
+            <button id="btnFichaTecnica" type="submit" class="pure-button">Escolher</button>
+        </div>
+        <div class="pure-control-group tipo-capa-group">
+            <label for="tipo_capa">Escolher tipo de capa</label>
+            <select id="tipo_capa">
+                <option value="N">Normal</option>
+                <option value="T">Alta</option>
+                <option value="W">Comprida</option>
+            </select>
+            <p>
+                Dimens&atilde;o da capa (em pixels): <span>alt 144 x larg
                             144</span>
-                    </p>
-                </div>
-                <div class="pure-control-group">
-                    <input class="hidden-input capa" accept="image/*" type="file" name="file">
-                    <label for="capa">Escolher capa</label>
-                    <input readonly id="capa" type="text">
-                    <button id="btnCapa" class="pure-button">Escolher</button>
-                </div>
-                <div class="pure-control-group">
-                    <input class="hidden-input imagens" accept="image/*" multiple="multiple" type="file" name="file[]">
-                    <label for="btnImagens">Escolher imagens</label>
-                    <button id="btnImagens" class="pure-button">Adicionar</button>
-                    <button id="btnImagensClear" class="pure-button">Limpar</button>
-                </div>
-                <div class="box-images">
-                    <h5>Imagens Escolhidas</h5>
-                    <div class="images"></div>
-                </div>
-                <div class="pure-control-group">
-                    <label for="videos">Adicionar Videos</label>
-                    <input id="videos" type="url" placeholder="http://...">
-                    <button id="btnVideos" class="pure-button">Adicionar</button>
-                    <button id="btnVideosClear" class="pure-button">Limpar tudo
-                    </button>
-                </div>
-                <div class="box-videos">
-                    <h5>Videos Escolhidos</h5>
-                    <div class="videos"></div>
-                </div>
-            </div>
-            <div class="pure-u-1-2">
-                <h2>Informa&ccedil;&atilde;o do Autor</h2>
-                <div class="pure-control-group">
-                    <label for="autor">Nome do Autor</label>
-                    <input id="autor" type="text">
-                </div>
-                <div class="pure-control-group">
-                    <label for="autorBio">Bio do Autor</label>
-                    <textarea id="autorBio"></textarea>
-                </div>
-            </div>
+            </p>
         </div>
+        <div class="pure-control-group">
+            <input class="hidden-input capa" accept="image/*" type="file" name="file">
+            <label for="capa">Escolher capa</label>
+            <input readonly id="capa" type="text">
+            <button id="btnCapa" class="pure-button">Escolher</button>
         </div>
+        <div class="pure-control-group">
+            <input class="hidden-input imagens" accept="image/*" multiple="multiple" type="file" name="file[]">
+            <label for="btnImagens">Escolher imagens</label>
+            <button id="btnImagens" class="pure-button">Adicionar</button>
+            <button id="btnImagensClear" class="pure-button">Limpar</button>
+        </div>
+        <div class="box-images">
+            <h5>Imagens Escolhidas</h5>
+            <div class="images"></div>
+        </div>
+        <div class="pure-control-group">
+            <label for="videos">Adicionar Videos</label>
+            <input id="videos" type="url" placeholder="http://...">
+            <button id="btnVideos" class="pure-button">Adicionar</button>
+            <button id="btnVideosClear" class="pure-button">Limpar tudo
+            </button>
+        </div>
+        <div class="box-videos">
+            <h5>Videos Escolhidos</h5>
+            <div class="videos"></div>
+        </div>
+        <br>
+        <br>
+        <!-- </div> -->
+        <!-- <div class="pure-u-1-2"> -->
+        <h2>Informa&ccedil;&atilde;o do Autor</h2>
+        <div class="pure-control-group">
+            <label for="autor">Nome do Autor</label>
+            <input id="autor" type="text">
+        </div>
+        <div class="pure-control-group">
+            <label for="autorBio">Bio do Autor</label>
+            <textarea id="autorBio"></textarea>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
         <br>
         <br>
         <div class="pure-control-group">
@@ -240,7 +241,7 @@
 
         // adds the WYSIWYG editor to field
         $("#descricao").cleditor({
-            width: 300,
+            width: 750,
             controls: "bold italic | " +
                 "color highlight removeformat | " +
                 "link unlink"
@@ -248,7 +249,7 @@
 
         // adds the WYSIWYG editor to field
         $("#autorBio").cleditor({
-            width: 300,
+            width: 750,
             controls: "bold italic | " +
                 "color highlight removeformat | " +
                 "link unlink"

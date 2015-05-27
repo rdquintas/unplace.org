@@ -20,7 +20,7 @@ var _tourInformation = null;
 $(document).ready(function() {
     parseURLobject();
     prepareTours();
-    prepareProjectData();
+    // prepareProjectData();
     applyTranslations();
 });
 
@@ -642,6 +642,8 @@ function prepareTours() {
             $(".tours a.tour2").html(tour2[1].title);
             $(".tours a.tour3").html(tour3[1].title);
         }
+
+        prepareProjectData();
     }).fail(function() {
         console.error("There was an error loading visitas.json");
     });
