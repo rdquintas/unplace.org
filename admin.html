@@ -30,30 +30,25 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    
     body {
         margin: 50px;
         background-color: #fff;
     }
-    
     .button-warning {
         background: rgb(223, 117, 20);
         color: white;
         border-radius: 4px;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     }
-    
     .hidden-input {
         display: none !important;
     }
-    
     .tipo-capa-group p {
         display: inline;
         margin-left: 10px;
         font-size: 12px;
         color: red;
     }
-    
     .box-images {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -61,17 +56,14 @@
         display: none;
         background-color: #ddd
     }
-    
     .box-images h5 {
         margin: 0px;
     }
-    
     .box-images .images p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
-    
     .box-videos {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -79,17 +71,14 @@
         display: none;
         background-color: #ddd
     }
-    
     .box-videos h5 {
         margin: 0px;
     }
-    
     .box-videos .videos p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
-    
     .browserupdate {
         display: block;
         margin-bottom: 3em;
@@ -98,16 +87,13 @@
         text-align: center;
         background-color: red;
     }
-    
     .browserupdate a {
         color: #fff;
         text-decoration: underline;
     }
-    
     .browserupdate a:hover {
         color: #ddd;
     }
-    
     .cleditorMain {
         margin-left: 180px;
         margin-top: -20px;
@@ -234,26 +220,26 @@
         <hr>
     </form>
     <script src="js/libs.dist.js"></script>
-    <script src="js/jquery.cleditor.min.js"></script>
+    <!-- <script src="js/jquery.cleditor.min.js"></script> -->
     <script type="text/javascript">
     $(document).ready(function() {
 
 
-        // adds the WYSIWYG editor to field
-        $("#descricao").cleditor({
-            width: 750,
-            controls: "bold italic | " +
-                "color highlight removeformat | " +
-                "link unlink"
-        });
+        // // adds the WYSIWYG editor to field
+        // $("#descricao").cleditor({
+        //     width: 750,
+        //     controls: "bold italic | " +
+        //         "color highlight removeformat | " +
+        //         "link unlink"
+        // });
 
-        // adds the WYSIWYG editor to field
-        $("#autorBio").cleditor({
-            width: 750,
-            controls: "bold italic | " +
-                "color highlight removeformat | " +
-                "link unlink"
-        });
+        // // adds the WYSIWYG editor to field
+        // $("#autorBio").cleditor({
+        //     width: 750,
+        //     controls: "bold italic | " +
+        //         "color highlight removeformat | " +
+        //         "link unlink"
+        // });
 
         window.obj_pt = initializeObj("pt");
         window.obj_en = initializeObj("en");
@@ -291,6 +277,10 @@
          **********************/
         $('#gbnt-btn-criar').click(function() {
             var file = criarFile();
+            var aaa = file[0].descricao;
+            // aaa = aaa.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            aaa = aaa.replace(/<br>/g, "\n");
+
             console.log("file: " + file);
             console.log("stringify: " + JSON.stringify(file));
             var encodedFile = encodeURIComponent(JSON.stringify(file));
@@ -322,6 +312,7 @@
                 var obj = JSON.parse(event.target.result);
                 window.obj_pt = obj[0];
                 window.obj_en = obj[1];
+                convertLineBreaks(false);
                 window.obj_current = obj_pt;
                 $("#idioma").val("pt");
                 setFormData(window.obj_current);
@@ -467,10 +458,10 @@
         });
     });
 
-    function updateWYSIWYGeditor() {
-        $("#descricao").cleditor()[0].updateFrame();
-        $("#autorBio").cleditor()[0].updateFrame();
-    }
+    // function updateWYSIWYGeditor() {
+    //     $("#descricao").cleditor()[0].updateFrame();
+    //     $("#autorBio").cleditor()[0].updateFrame();
+    // }
 
     function storeCurrentData() {
         var imgDiv = $(".box-images .images");
@@ -540,7 +531,7 @@
             $(".box-videos").hide();
         }
 
-        updateWYSIWYGeditor();
+        // updateWYSIWYGeditor();
     }
 
     function initializeObj(language) {
@@ -566,10 +557,27 @@
         storeCurrentData();
 
         var obj = [];
+
+        convertLineBreaks(true);
+
         obj.push(window.obj_pt);
         obj.push(window.obj_en);
 
         return obj;
+    }
+
+    function convertLineBreaks(convertToBR) {
+        if (convertToBR) {
+            window.obj_pt.descricao = obj_pt.descricao.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            window.obj_pt.autorBio = obj_pt.autorBio.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            window.obj_en.descricao = obj_en.descricao.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            window.obj_en.autorBio = obj_en.autorBio.replace(/(?:\r\n|\r|\n)/g, '<br>');
+        } else {
+            window.obj_pt.descricao = obj_pt.descricao.replace(/<br>/g, "\n");
+            window.obj_pt.autorBio = obj_pt.autorBio.replace(/<br>/g, "\n");
+            window.obj_en.descricao = obj_en.descricao.replace(/<br>/g, "\n");
+            window.obj_en.autorBio = obj_en.autorBio.replace(/<br>/g, "\n");
+        }
     }
     </script>
 </body>
