@@ -30,25 +30,30 @@
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
+    
     body {
         margin: 50px;
         background-color: #fff;
     }
+    
     .button-warning {
         background: rgb(223, 117, 20);
         color: white;
         border-radius: 4px;
         text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     }
+    
     .hidden-input {
         display: none !important;
     }
+    
     .tipo-capa-group p {
         display: inline;
         margin-left: 10px;
         font-size: 12px;
         color: red;
     }
+    
     .box-images {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -56,14 +61,17 @@
         display: none;
         background-color: #ddd
     }
+    
     .box-images h5 {
         margin: 0px;
     }
+    
     .box-images .images p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
+    
     .box-videos {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -71,14 +79,17 @@
         display: none;
         background-color: #ddd
     }
+    
     .box-videos h5 {
         margin: 0px;
     }
+    
     .box-videos .videos p {
         margin: 8px;
         font-size: 12px;
         color: red;
     }
+    
     .browserupdate {
         display: block;
         margin-bottom: 3em;
@@ -87,13 +98,16 @@
         text-align: center;
         background-color: red;
     }
+    
     .browserupdate a {
         color: #fff;
         text-decoration: underline;
     }
+    
     .browserupdate a:hover {
         color: #ddd;
     }
+    
     .cleditorMain {
         margin-left: 180px;
         margin-top: -20px;
@@ -277,10 +291,6 @@
          **********************/
         $('#gbnt-btn-criar').click(function() {
             var file = criarFile();
-            var aaa = file[0].descricao;
-            // aaa = aaa.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            aaa = aaa.replace(/<br>/g, "\n");
-
             console.log("file: " + file);
             console.log("stringify: " + JSON.stringify(file));
             var encodedFile = encodeURIComponent(JSON.stringify(file));
@@ -557,13 +567,27 @@
         storeCurrentData();
 
         var obj = [];
-
+        convertSingleQuotes();
         convertLineBreaks(true);
 
         obj.push(window.obj_pt);
         obj.push(window.obj_en);
 
         return obj;
+    }
+
+    function convertSingleQuotes() {
+        window.obj_pt.descricao = obj_pt.descricao.replace(/'/g, "´");
+        window.obj_pt.titulo = obj_pt.titulo.replace(/'/g, "´");
+        window.obj_pt.autor = obj_pt.autor.replace(/'/g, "´");
+        window.obj_pt.ano = obj_pt.ano.replace(/'/g, "´");
+        window.obj_pt.autorBio = obj_pt.autorBio.replace(/'/g, "´");
+
+        window.obj_en.descricao = obj_en.descricao.replace(/'/g, "´");
+        window.obj_en.titulo = obj_en.titulo.replace(/'/g, "´");
+        window.obj_en.autor = obj_en.autor.replace(/'/g, "´");
+        window.obj_en.ano = obj_en.ano.replace(/'/g, "´");
+        window.obj_en.autorBio = obj_en.autorBio.replace(/'/g, "´");
     }
 
     function convertLineBreaks(convertToBR) {

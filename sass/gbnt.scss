@@ -2,7 +2,9 @@
  * GLOBALS
  **********************************************************************/
 
-*, *:after, *:before {
+*,
+*:after,
+*:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -36,7 +38,11 @@ body {
     display: none;
 }
 
-.no-pointers, .no-pointers:hover, .no-pointers:visited, .no-pointers:active, .no-pointers:focus {
+.no-pointers,
+.no-pointers:hover,
+.no-pointers:visited,
+.no-pointers:active,
+.no-pointers:focus {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
@@ -241,6 +247,7 @@ body {
 
 #gbnt-container .textbox .titulo {
     color: #fff;
+    font-weight: bold;
     font-size: 14px;
 }
 
@@ -282,6 +289,11 @@ body {
     width: 100%;
 }
 
+#gbnt-container .proj-profile p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+}
+
 #gbnt-container .proj-profile a {
     pointer-events: visible;
 }
@@ -309,6 +321,7 @@ body {
     margin-right: 15px;
     text-decoration: none;
     color: #666;
+    font-size: 1.2em;
 }
 
 #gbnt-container .proj-profile .btn-view-proj:hover {
@@ -319,6 +332,7 @@ body {
     width: 50px;
     text-decoration: none;
     color: #666;
+    font-size: 1.2em;
     margin-right: 30px;
 }
 
@@ -330,6 +344,7 @@ body {
     width: 50px;
     text-decoration: none;
     color: #666;
+    font-size: 1.2em;
 }
 
 #gbnt-container .proj-profile .btn-author:hover {
@@ -434,8 +449,6 @@ body {
         margin: 0;
         display: block;
     }
-    // <div class="label"><span class="auth">{{author}}</span>-<span class="title">{{title}}</span>-<span class="year">{{year}}</span> <span class="index">{{index}}/{{total}}</span>
-    //            </div>
 }
 /**********************************************************************
  * MEDIA QUERIES
