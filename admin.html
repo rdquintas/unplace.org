@@ -248,9 +248,9 @@
         </div>
         <div class="pure-control-group">
             <label for="fichaTecnica_en">PDF Ficha T&eacute;cnica (EN) </label>
-            <input class="hidden-input ficha-tecnica" accept=".pdf" type="file" name="file">
+            <input class="hidden-input ficha-tecnica_en" accept=".pdf" type="file" name="file">
             <input class="pure-input-1-2" readonly id="fichaTecnica_en" type="text">
-            <button id="btnFichaTecnica" type="submit" class="pure-button"><i class="fa fa-file-pdf-o"></i>Escolher</button>
+            <button id="btnFichaTecnica_en" type="submit" class="pure-button"><i class="fa fa-file-pdf-o"></i>Escolher</button>
         </div>
         <div class="pure-control-group">
             <label for="autor_en">Nome do Autor (EN)</label>
@@ -389,11 +389,23 @@
             return false;
         });
         // ficha tecnica: trigger input field
-        $('.hidden-input.ficha-tecnica').change(
-            function(ee) {
-                $("#fichaTecnica").val(
-                    this.files[0].name);
-            });
+        $('.hidden-input.ficha-tecnica').change(function(ee) {
+            $("#fichaTecnica").val(
+                this.files[0].name);
+        });
+
+        // ficha tecnica: btn clicked
+        $('#btnFichaTecnica_en').click(function(e) {
+            $(".hidden-input.ficha-tecnica_en").click();
+            e.preventDefault();
+            return false;
+        });
+        // ficha tecnica: trigger input field
+        $('.hidden-input.ficha-tecnica_en').change(function(ee) {
+            $("#fichaTecnica_en").val(
+                this.files[0].name);
+        });
+
 
         /**********************
          * CAPA
