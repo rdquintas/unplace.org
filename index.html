@@ -45,14 +45,16 @@
     </div>
     <section id="gbnt-header" data-gbnt-open="false">
         <div class="logo">
-            <a href="http://www.unplace.org">
+            <a class="logo-unplace" href="http://www.unplace.org">
                 <img src="img/logo.jpg">
             </a>
+            <p class="logo-text">exposição arte em rede: lugares-entre-lugares</p>
+            <a href="#" class="gbnt-language">en</a>
+            <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>
         </div>
-        <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>
         <div class="nav">
             <ul>
-                <li><a href="#" class="gbnt-exibithion">exibi&ccedil;&atilde;o</a>
+                <li><a href="#" class="gbnt-exibithion selected">exibi&ccedil;&atilde;o</a>
                 </li>
                 <li><a href="#" class="gbnt-tour">visitas tem&aacute;ticas</a>
                     <div class="tours hide-me">
@@ -69,7 +71,6 @@
                 <li><a href="#" class="gbnt-about">about</a>
                 </li>
             </ul>
-            <a href="#" class="gbnt-language">en</a>
             <div class="about-text hide-me">
                 <p>PT</p>
                 <a href="docs/about.pdf" class="">pdf download</a>
@@ -126,7 +127,7 @@
                 </div>
                 <div class="tab-project">
                     <h1>{{titulo}}</h1>
-                    <p>{{translateThis 'year'}}: {{ano}}</p>
+                    <p class="ano">{{translateThis 'year'}}: {{ano}}</p>
                     {{#if www}}
                     <a href="{{www}}" target="_blank" class="btn-view-proj"><i class="fa fa-eye"></i>{{translateThis 'view_project'}}</a> {{/if}} {{#if fichaTecnica}}
                     <a href="docs/projectos/{{id}}/{{fichaTecnica}}" target="_blank" class="btn-view-proj">

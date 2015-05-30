@@ -23,7 +23,7 @@
     <meta charset="utf-8" />
     <title>ADMIN unplace.org</title>
     <link rel="stylesheet" href="css/pure-min.css" />
-    <link rel="stylesheet" href="css/jquery.cleditor.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <style type="text/css">
     * {
         -webkit-box-sizing: border-box;
@@ -40,9 +40,13 @@
         font-size: 3em;
     }
     
+    i {
+        margin-right: 5px;
+    }
+    
     .header {
         z-index: 10;
-        height: 135px;
+        height: 95px;
         padding-left: 50px;
         top: 0;
         position: fixed;
@@ -51,9 +55,20 @@
         left: 0;
     }
     
+    .header .buttons {
+        float: right;
+        margin-top: 30px;
+        margin-right: 25px;
+    }
+    
+    .header .buttons div {
+        float: right;
+        margin-left: 20px;
+    }
+    
     form {
         position: relative;
-        margin-top: 170px;
+        margin-top: 100px;
     }
     
     .button-warning {
@@ -136,6 +151,23 @@
     div.pure-control-group {
         margin-top: 25px;
     }
+    
+    .logo {
+        float: left;
+        width: 50%;
+        margin-left: -10px;
+    }
+    
+    .logo .logo-unplace {
+        float: left;
+    }
+    
+    .logo p {
+        color: #fff;
+        display: inline;
+        float: left;
+        margin-top: 43px;
+    }
     </style>
     <script type="text/javascript" src="http://fast.fonts.net/jsapi/739bf436-1824-4067-a456-9bd34cfd8f44.js"></script>
 </head>
@@ -154,15 +186,20 @@
         </div>
     </noscript>
     <section class="header">
-        <div class="pure-control-group">
-            <a class="button-warning pure-button" href="admin-visitas.html">Gerir
-        Visitas</a>
+        <div class="logo">
+            <a class="logo-unplace" href="http://www.unplace.org">
+                <img src="img/logo.jpg">
+            </a>
+            <p class="logo-text">exposição arte em rede: lugares-entre-lugares</p>
         </div>
-        <br>
-        <div id="gbnt-btn-criar" class="pure-button pure-button-primary">Gravar dados
+        <div class="buttons">
+            <div>
+                <a class="button-warning pure-button" href="admin-visitas.html">Gerir Visitas</a>
+            </div>
+            <div id="gbnt-btn-criar" class="pure-button pure-button-primary"><i class="fa fa-floppy-o"></i>Gravar dados</div>
+            <input class="hidden-input upload" accept=".json" type="file" name="file">
+            <div id="gbnt-btn-upload" class="pure-button"><i class="fa fa-arrow-up"></i>Fazer upload dum ficheiro existente</div>
         </div>
-        <input class="hidden-input upload" accept=".json" type="file" name="file">
-        <div id="gbnt-btn-upload" class="pure-button">Fazer upload dum ficheiro existente</div>
     </section>
     <form id="myForm" action="downloadJSON.php" method="post" class="pure-form pure-form-stacked">
         <input type="hidden" name="data" id="data">
@@ -185,7 +222,7 @@
             <label for="fichaTecnica">PDF Ficha T&eacute;cnica (PT) </label>
             <input class="hidden-input ficha-tecnica" accept=".pdf" type="file" name="file">
             <input class="pure-input-1-2" readonly id="fichaTecnica" type="text">
-            <button id="btnFichaTecnica" type="submit" class="pure-button">Escolher</button>
+            <button id="btnFichaTecnica" type="submit" class="pure-button"><i class="fa fa-file-pdf-o"></i>Escolher</button>
         </div>
         <div class="pure-control-group">
             <label for="autor">Nome do Autor (PT)</label>
@@ -213,7 +250,7 @@
             <label for="fichaTecnica_en">PDF Ficha T&eacute;cnica (EN) </label>
             <input class="hidden-input ficha-tecnica" accept=".pdf" type="file" name="file">
             <input class="pure-input-1-2" readonly id="fichaTecnica_en" type="text">
-            <button id="btnFichaTecnica" type="submit" class="pure-button">Escolher</button>
+            <button id="btnFichaTecnica" type="submit" class="pure-button"><i class="fa fa-file-pdf-o"></i>Escolher</button>
         </div>
         <div class="pure-control-group">
             <label for="autor_en">Nome do Autor (EN)</label>
@@ -245,13 +282,13 @@
             <input class="hidden-input capa" accept="image/*" type="file" name="file">
             <label for="capa">Escolher capa</label>
             <input class="pure-input-1-2" readonly id="capa" type="text">
-            <button id="btnCapa" class="pure-button">Escolher</button>
+            <button id="btnCapa" class="pure-button"><i class="fa fa-th"></i>Escolher</button>
         </div>
         <div class="pure-control-group">
             <input class="hidden-input imagens" accept="image/*" multiple="multiple" type="file" name="file[]">
             <label for="btnImagens">Escolher imagens</label>
-            <button id="btnImagens" class="pure-button">Adicionar</button>
-            <button id="btnImagensClear" class="pure-button">Limpar</button>
+            <button id="btnImagens" class="pure-button"><i class="fa fa-file-image-o"></i>Adicionar</button>
+            <button id="btnImagensClear" class="pure-button">Limpar tudo</button>
         </div>
         <div class="box-images">
             <h5>Imagens Escolhidas</h5>
@@ -260,7 +297,7 @@
         <div class="pure-control-group">
             <label for="videos">Adicionar Videos</label>
             <input class="pure-input-1-2" id="videos" type="url" placeholder="http://...">
-            <button id="btnVideos" class="pure-button">Adicionar</button>
+            <button id="btnVideos" class="pure-button"><i class="fa fa-youtube"></i>Adicionar</button>
             <button id="btnVideosClear" class="pure-button">Limpar tudo
             </button>
         </div>
@@ -576,7 +613,7 @@
 
         getCurrentData();
         sanitizeData();
-        
+
         var obj = [];
         obj.push(window.obj_pt);
         obj.push(window.obj_en);

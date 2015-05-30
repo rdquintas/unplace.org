@@ -3,6 +3,9 @@
 // { key: [portuguese, english] }
 // =============================
 var translations = {
+    logo_text: [
+        "exposição arte em rede: lugares-entre-lugares", "EN exposição arte em rede: lugares-entre-lugares"
+    ],
     exibithion: [
         "exposição", "exibithion"
     ],
@@ -77,6 +80,7 @@ $(window).resize(function() {
 });
 
 function applyTranslations() {
+    $(".logo-text").text(doTranslation("logo_text"));
     $(".gbnt-exibithion").text(doTranslation("exibithion"));
     $(".gbnt-tour").text(doTranslation("tour"));
     $(".gbnt-about").text(doTranslation("about"));
@@ -113,6 +117,11 @@ function prepareProjectData() {
 
         // here we detect if we are processing a guided tour
         if (_mainObject.tour_id) {
+
+            $(".gbnt-exibithion").removeClass("selected");
+            $(".gbnt-tour").addClass("selected");
+            $(".gbnt-about").removeClass("selected");
+
             if (_mainObject.language === "pt") {
                 if (_mainObject.tour_id === "1") {
                     tourTitle = _tours[0][0].title;
@@ -333,6 +342,10 @@ function createEventHandlers() {
     $(".gbnt-exibithion").on("click", function(e) {
         e.preventDefault();
 
+        $(".gbnt-exibithion").addClass("selected");
+        $(".gbnt-tour").removeClass("selected");
+        $(".gbnt-about").removeClass("selected");
+
         // Update the URL object 
         _mainObject.project_id = null;
         _mainObject.tour_id = null;
@@ -340,6 +353,14 @@ function createEventHandlers() {
         var str = JSON.stringify(_mainObject);
         location.hash = encodeURIComponent(str);
         location.reload();
+    });
+
+    // Click event for TOUR
+    $(".gbnt-tour").on("click", function(e) {
+        e.preventDefault();
+        $(".gbnt-exibithion").removeClass("selected");
+        $(".gbnt-tour").addClass("selected");
+        $(".gbnt-about").removeClass("selected");
     });
 
 
@@ -366,6 +387,10 @@ function createEventHandlers() {
     // Click event for ABOUT link
     $("#gbnt-header .gbnt-about").on("click", function(e) {
         e.preventDefault();
+
+        $(".gbnt-exibithion").removeClass("selected");
+        $(".gbnt-tour").removeClass("selected");
+        $(".gbnt-about").addClass("selected");
 
         // If the header is expaneded and we coming from a different menu
         // then do this
@@ -508,7 +533,7 @@ function closeHeader(selectedMenuClass, isMobile) {
     }
 
     $('#gbnt-header').animate({
-        height: "80px"
+        height: "120px"
     }, {
         duration: dur,
         easing: ease,
@@ -557,6 +582,9 @@ function openProject(gbntItem) {
 
     // Hide DIV project text
     $(gbntItem).find(".proj-text").hide();
+    if ($(gbntItem).attr("id") !== "item_x") {
+        $(gbntItem).find(".proj-text").css("opacity", "0");
+    }
 
     // Hide DIV project image
     $(gbntItem).find(".proj-img").hide();
@@ -611,7 +639,7 @@ function closeProject(gbntItem) {
     $(gbntItem).height($(gbntItem).attr("data-gbnt-previous-height"));
 
     // Show DIV project text
-    // $(gbntItem).find(".proj-text").show();
+    $(gbntItem).find(".proj-text").show();
 
     // Show DIV project image
     $(gbntItem).find(".proj-img").show();
@@ -665,7 +693,7 @@ function prepareTours() {
 
         var tour1 = [];
         var tour2 = [];
-        var tour3 = [];
+        // var tour3 = [];
 
         tour1.push(createTourObj(fileData[0].nome_visita_1, fileData[0].descricao_visita_1, fileData[0].projectos_1));
         tour1.push(createTourObj(fileData[1].nome_visita_1, fileData[1].descricao_visita_1, fileData[0].projectos_1));
@@ -673,8 +701,8 @@ function prepareTours() {
         tour2.push(createTourObj(fileData[0].nome_visita_2, fileData[0].descricao_visita_2, fileData[0].projectos_2));
         tour2.push(createTourObj(fileData[1].nome_visita_2, fileData[1].descricao_visita_2, fileData[0].projectos_2));
 
-        tour3.push(createTourObj(fileData[0].nome_visita_3, fileData[0].descricao_visita_3, fileData[0].projectos_3));
-        tour3.push(createTourObj(fileData[1].nome_visita_3, fileData[1].descricao_visita_3, fileData[0].projectos_3));
+        // tour3.push(createTourObj(fileData[0].nome_visita_3, fileData[0].descricao_visita_3, fileData[0].projectos_3));
+        // tour3.push(createTourObj(fileData[1].nome_visita_3, fileData[1].descricao_visita_3, fileData[0].projectos_3));
 
         _tours.push(tour1);
         _tours.push(tour2);
@@ -683,11 +711,11 @@ function prepareTours() {
         if (_mainObject.language === "pt") {
             $(".tours a.tour1").html(tour1[0].title);
             $(".tours a.tour2").html(tour2[0].title);
-            $(".tours a.tour3").html(tour3[0].title);
+            // $(".tours a.tour3").html(tour3[0].title);
         } else {
             $(".tours a.tour1").html(tour1[1].title);
             $(".tours a.tour2").html(tour2[1].title);
-            $(".tours a.tour3").html(tour3[1].title);
+            // $(".tours a.tour3").html(tour3[1].title);
         }
 
         prepareProjectData();
