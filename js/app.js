@@ -564,7 +564,7 @@ function closeProject(gbntItem) {
     $(gbntItem).height($(gbntItem).attr("data-gbnt-previous-height"));
 
     // Show DIV project text
-    $(gbntItem).find(".proj-text").show();
+    // $(gbntItem).find(".proj-text").show();
 
     // Show DIV project image
     $(gbntItem).find(".proj-img").show();

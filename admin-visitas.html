@@ -32,8 +32,28 @@
     }
     
     body {
-        margin: 50px;
+        margin: 0 50px 0 50px;
         background-color: #fff;
+    }
+    
+    .header {
+        z-index: 10;
+        height: 135px;
+        padding-left: 50px;
+        top: 0;
+        position: fixed;
+        background-color: #000;
+        width: 100%;
+        left: 0;
+    }
+    
+    form {
+        position: relative;
+        margin-top: 170px;
+    }
+    
+    h1.title {
+        font-size: 3em;
     }
     
     .button-warning {
@@ -112,6 +132,10 @@
         margin-left: 180px;
         margin-top: -20px;
     }
+    
+    div.pure-control-group {
+        margin-top: 25px;
+    }
     </style>
     <script type="text/javascript" src="http://fast.fonts.net/jsapi/739bf436-1824-4067-a456-9bd34cfd8f44.js"></script>
 </head>
@@ -129,125 +153,86 @@
             <br> This website only works with JavaScript. Sorry.
         </div>
     </noscript>
-    <a class="button-warning pure-button" href="admin.html">Gerir Obras</a>
-    <hr>
-    <form id="myForm" action="downloadJSON.php" method="post" class="pure-form  pure-form-aligned">
+    <section class="header">
+        <div class="pure-control-group">
+            <a class="button-warning pure-button" href="admin.html">Gerir Obras</a>
+        </div>
+        <br>
+        <div id="gbnt-btn-criar" class="pure-button pure-button-primary">Gravar dados
+        </div>
+        <input class="hidden-input upload" accept=".json" type="file" name="file">
+        <div id="gbnt-btn-upload" class="pure-button">Fazer upload dum ficheiro existente</div>
+    </section>
+    <form id="myForm" action="downloadJSON.php" method="post" class="pure-form  pure-form-stacked">
         <input type="hidden" name="data" id="data">
         <input type="hidden" name="filename" id="filename">
+        <h1 class="title">Gerir Visitas</h1>
+        <h1>IDIOMA: PT</h1>
         <div class="pure-control-group">
-            <label for="idioma">Escolher idioma</label>
-            <select id="idioma">
-                <option value="pt">PT</option>
-                <option value="en">EN</option>
-            </select>
-        </div>
-        <h2>Informa&ccedil;&atilde;o da Visita 1</h2>
-        <div class="pure-control-group">
-            <label for="nome_visita_1">Nome Visita</label>
-            <input id="nome_visita_1" type="text">
+            <label for="nome_visita_1">Nome Visita 1 (PT)</label>
+            <input class="pure-input-1" id="nome_visita_1" type="text">
         </div>
         <div class="pure-control-group">
-            <label for="descricao_visita_1">Descri&ccedil;&atilde;o Visita</label>
+            <label for="descricao_visita_1">Descri&ccedil;&atilde;o Visita 1 (PT)</label>
             <textarea id="descricao_visita_1"></textarea>
         </div>
         <div class="pure-control-group">
-            <label for="projectos_1">Projectos da visita</label>
-            <input id="projectos_1" type="text" placeholder="ex: 1,2,3,4">
-        </div>
-        <br>
-        <h2>Informa&ccedil;&atilde;o da Visita 2</h2>
-        <div class="pure-control-group">
-            <label for="nome_visita_2">Nome Visita</label>
-            <input id="nome_visita_2" type="text">
+            <label for="nome_visita_2">Nome Visita 2 (PT)</label>
+            <input class="pure-input-1" id="nome_visita_2" type="text">
         </div>
         <div class="pure-control-group">
-            <label for="descricao_visita_2">Descri&ccedil;&atilde;o Visita</label>
+            <label for="descricao_visita_2">Descri&ccedil;&atilde;o Visita 2 (PT)</label>
             <textarea id="descricao_visita_2"></textarea>
         </div>
+        <br>
+        <h1>IDIOMA: EN</h1>
         <div class="pure-control-group">
-            <label for="projectos_2">Projectos da visita</label>
-            <input id="projectos_2" type="text" placeholder="ex: 1,2,3,4">
+            <label for="nome_visita_1_en">Nome Visita 1 (EN)</label>
+            <input class="pure-input-1" id="nome_visita_1_en" type="text">
+        </div>
+        <div class="pure-control-group">
+            <label for="descricao_visita_1_en">Descri&ccedil;&atilde;o Visita 1 (EN)</label>
+            <textarea id="descricao_visita_1_en"></textarea>
+        </div>
+        <div class="pure-control-group">
+            <label for="nome_visita_2_en">Nome Visita 2 (EN)</label>
+            <input class="pure-input-1" id="nome_visita_2_en" type="text">
+        </div>
+        <div class="pure-control-group">
+            <label for="descricao_visita_2_en">Descri&ccedil;&atilde;o Visita 2 (EN)</label>
+            <textarea id="descricao_visita_2_en"></textarea>
         </div>
         <br>
-        <h2>Informa&ccedil;&atilde;o da Visita 3</h2>
+        <h1>CAMPOS COMUNS</h1>
         <div class="pure-control-group">
-            <label for="nome_visita_3">Nome Visita</label>
-            <input id="nome_visita_3" type="text">
+            <label for="projectos_1">Projectos da visita 1</label>
+            <input class="pure-input-1" id="projectos_1" type="text" placeholder="ex: 1,2,3,4">
         </div>
         <div class="pure-control-group">
-            <label for="descricao_visita_3">Descri&ccedil;&atilde;o Visita</label>
-            <textarea id="descricao_visita_3"></textarea>
-        </div>
-        <div class="pure-control-group">
-            <label for="projectos_3">Projectos da visita</label>
-            <input id="projectos_3" type="text" placeholder="ex: 1,2,3,4">
-        </div>
-        <br>
-        <br>
-        <br>
-        <div class="pure-control-group">
-            <div id="gbnt-btn-criar" class="pure-button pure-button-primary">Gravar dados</div>
-        </div>
-        <div class="pure-control-group">
-            <input class="hidden-input upload" accept=".json" type="file" name="file">
-            <div id="gbnt-btn-upload" class="pure-button">Fazer upload dum ficheiro existente</div>
+            <label for="projectos_2">Projectos da visita 2</label>
+            <input class="pure-input-1" id="projectos_2" type="text" placeholder="ex: 1,2,3,4">
         </div>
         <hr>
     </form>
     <script src="js/libs.dist.js"></script>
-    <!-- <script src="js/jquery.cleditor.min.js"></script> -->
+    <script src="js/tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
 
-        // // // adds the WYSIWYG editor to field
-        // $("#descricao_visita_1").cleditor({
-        //     width: 750,
-        //     controls: "bold italic | " +
-        //         "color highlight removeformat | " +
-        //         "link unlink"
-        // });
-
-        // $("#descricao_visita_2").cleditor({
-        //     width: 750,
-        //     controls: "bold italic | " +
-        //         "color highlight removeformat | " +
-        //         "link unlink"
-        // });
-
-        // $("#descricao_visita_3").cleditor({
-        //     width: 750,
-        //     controls: "bold italic | " +
-        //         "color highlight removeformat | " +
-        //         "link unlink"
-        // });
+        tinymce.init({
+            plugins: ["link", "paste"],
+            paste_as_text: true,
+            target_list: false,
+            menubar: false,
+            toolbar: "bold italic underline link unlink removeformat ",
+            selector: "textarea"
+        });
 
         window.obj_pt = initializeObj("pt");
         window.obj_en = initializeObj("en");
-        window.obj_current = obj_pt;
 
-        setFormData(window.obj_current);
+        setFormData(false);
 
-        /**********************
-         * LANGUAGE TOGGLE
-         **********************/
-        $('#idioma').on("change", $.proxy(function() {
-            window.obj_pt.projectos_1 = $("#projectos_1").val();
-            window.obj_en.projectos_1 = $("#projectos_1").val();
-            window.obj_pt.projectos_2 = $("#projectos_2").val();
-            window.obj_en.projectos_2 = $("#projectos_2").val();
-            window.obj_pt.projectos_3 = $("#projectos_3").val();
-            window.obj_en.projectos_3 = $("#projectos_3").val();
-
-            if ($("#idioma").val() === "pt") {
-                storeCurrentData();
-                window.obj_current = window.obj_pt;
-                setFormData();
-            } else {
-                storeCurrentData();
-                window.obj_current = window.obj_en;
-                setFormData();
-            }
-        }, this));
 
         /**********************
          * SAVE JSON FILE
@@ -261,12 +246,6 @@
             $("#data").val(encodedFile);
             $("#filename").val("visitas.json");
             $("#myForm").submit();
-            // window.location.href = 'downloadJSON.php?filename=visitas.json&data=' + encodedFile;
-            // var file = criarFile();
-            // var pom = document.createElement('a');
-            // pom.setAttribute('href','data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(file)));
-            // pom.setAttribute('download', "visitas.json");
-            // pom.click();
         });
 
         /**********************
@@ -278,6 +257,7 @@
             e.preventDefault();
             return false;
         });
+
         // upload json: trigger input field
         $('.hidden-input.upload').change(function(ee) {
             var reader = new FileReader();
@@ -285,10 +265,7 @@
                 var obj = JSON.parse(event.target.result);
                 window.obj_pt = obj[0];
                 window.obj_en = obj[1];
-                convertLineBreaks(false);
-                window.obj_current = obj_pt;
-                $("#idioma").val("pt");
-                setFormData(window.obj_current);
+                setFormData(true);
             };
             reader.onerror = function(event) {
                 alert("Erro com o upload desse ficheiro!");
@@ -299,44 +276,41 @@
 
     });
 
-    function storeCurrentData() {
+    function getCurrentData() {
+        window.obj_pt.nome_visita_1 = $("#nome_visita_1").val();
+        window.obj_pt.descricao_visita_1 = tinyMCE.get('descricao_visita_1').getContent();
+        window.obj_pt.projectos_1 = $("#projectos_1").val();
+        window.obj_pt.nome_visita_2 = $("#nome_visita_2").val();
+        window.obj_pt.descricao_visita_2 = tinyMCE.get('descricao_visita_2').getContent();
+        window.obj_pt.projectos_2 = $("#projectos_2").val();
 
-        window.obj_current.nome_visita_1 = $("#nome_visita_1").val();
-        window.obj_current.descricao_visita_1 = $("#descricao_visita_1").val();
-        window.obj_current.projectos_1 = $("#projectos_1").val();
-
-        window.obj_current.nome_visita_2 = $("#nome_visita_2").val();
-        window.obj_current.descricao_visita_2 = $("#descricao_visita_2").val();
-        window.obj_current.projectos_2 = $("#projectos_2").val();
-
-        window.obj_current.nome_visita_3 = $("#nome_visita_3").val();
-        window.obj_current.descricao_visita_3 = $("#descricao_visita_3").val();
-        window.obj_current.projectos_3 = $("#projectos_3").val();
-
+        window.obj_en.nome_visita_1 = $("#nome_visita_1_en").val();
+        window.obj_en.descricao_visita_1 = tinyMCE.get('descricao_visita_1_en').getContent();
+        window.obj_en.projectos_1 = $("#projectos_1").val();
+        window.obj_en.nome_visita_2 = $("#nome_visita_2_en").val();
+        window.obj_en.descricao_visita_2 = tinyMCE.get('descricao_visita_2_en').getContent();
+        window.obj_en.projectos_2 = $("#projectos_2").val();
     }
 
-    function setFormData() {
+    function setFormData(fromJSON) {
+        $("#nome_visita_1").val(window.obj_pt.nome_visita_1);
+        $("#descricao_visita_1").val(window.obj_pt.descricao_visita_1);
+        $("#projectos_1").val(window.obj_pt.projectos_1);
+        $("#nome_visita_2").val(window.obj_pt.nome_visita_2);
+        $("#descricao_visita_2").val(window.obj_pt.descricao_visita_2);
+        $("#projectos_2").val(window.obj_pt.projectos_2);
 
-        if (window.obj_current.language === "pt") {
-            $("#idioma").val("pt");
-        } else {
-            $("#idioma").val("en");
+        $("#nome_visita_1_en").val(window.obj_en.nome_visita_1);
+        $("#descricao_visita_1_en").val(window.obj_en.descricao_visita_1);
+        $("#nome_visita_2_en").val(window.obj_en.nome_visita_2);
+        $("#descricao_visita_2_en").val(window.obj_en.descricao_visita_2);
+
+        if (fromJSON) {
+            tinyMCE.get('descricao_visita_1').setContent(window.obj_pt.descricao_visita_1);
+            tinyMCE.get('descricao_visita_2').setContent(window.obj_pt.descricao_visita_2);
+            tinyMCE.get('descricao_visita_1_en').setContent(window.obj_en.descricao_visita_1);
+            tinyMCE.get('descricao_visita_2_en').setContent(window.obj_en.descricao_visita_2);
         }
-
-        $("#nome_visita_1").val(window.obj_current.nome_visita_1);
-        $("#descricao_visita_1").val(window.obj_current.descricao_visita_1);
-        $("#projectos_1").val(window.obj_current.projectos_1);
-
-        $("#nome_visita_2").val(window.obj_current.nome_visita_2);
-        $("#descricao_visita_2").val(window.obj_current.descricao_visita_2);
-        $("#projectos_2").val(window.obj_current.projectos_2);
-
-        $("#nome_visita_3").val(window.obj_current.nome_visita_3);
-        $("#descricao_visita_3").val(window.obj_current.descricao_visita_3);
-        $("#projectos_3").val(window.obj_current.projectos_3);
-
-        // updateWYSIWYGeditor();
-
     }
 
     function initializeObj(language) {
@@ -352,74 +326,40 @@
         obj.descricao_visita_2 = "";
         obj.projectos_2 = "";
 
-        obj.nome_visita_3 = "";
-        obj.descricao_visita_3 = "";
-        obj.projectos_3 = "";
-
         return obj;
     }
 
-    // function updateWYSIWYGeditor() {
-    //     $("#descricao_visita_1").cleditor()[0].updateFrame();
-    //     $("#descricao_visita_2").cleditor()[0].updateFrame();
-    //     $("#descricao_visita_3").cleditor()[0].updateFrame();
-    // }
 
     function criarFile() {
 
-        storeCurrentData();
-
-        window.obj_pt.projectos_1 = $("#projectos_1").val();
-        window.obj_en.projectos_1 = $("#projectos_1").val();
-        window.obj_pt.projectos_2 = $("#projectos_2").val();
-        window.obj_en.projectos_2 = $("#projectos_2").val();
-        window.obj_pt.projectos_3 = $("#projectos_3").val();
-        window.obj_en.projectos_3 = $("#projectos_3").val();
+        getCurrentData();
+        sanitizeData();
 
         var obj = [];
-        convertSingleQuotes();
-        convertLineBreaks(true);
-
         obj.push(window.obj_pt);
         obj.push(window.obj_en);
 
         return obj;
     }
 
-    function convertSingleQuotes() {
+    function sanitizeData() {
+        // replace special quote ' 
         window.obj_pt.nome_visita_1 = obj_pt.nome_visita_1.replace(/'/g, "´");
         window.obj_pt.descricao_visita_1 = obj_pt.descricao_visita_1.replace(/'/g, "´");
         window.obj_pt.nome_visita_2 = obj_pt.nome_visita_2.replace(/'/g, "´");
         window.obj_pt.descricao_visita_2 = obj_pt.descricao_visita_2.replace(/'/g, "´");
-        window.obj_pt.nome_visita_3 = obj_pt.nome_visita_3.replace(/'/g, "´");
-        window.obj_pt.descricao_visita_3 = obj_pt.descricao_visita_3.replace(/'/g, "´");
-
         window.obj_en.nome_visita_1 = obj_en.nome_visita_1.replace(/'/g, "´");
         window.obj_en.descricao_visita_1 = obj_en.descricao_visita_1.replace(/'/g, "´");
         window.obj_en.nome_visita_2 = obj_en.nome_visita_2.replace(/'/g, "´");
         window.obj_en.descricao_visita_2 = obj_en.descricao_visita_2.replace(/'/g, "´");
-        window.obj_en.nome_visita_3 = obj_en.nome_visita_3.replace(/'/g, "´");
-        window.obj_en.descricao_visita_3 = obj_en.descricao_visita_3.replace(/'/g, "´");
+
+        // remove line-feeds
+        window.obj_pt.descricao_visita_1 = obj_pt.descricao_visita_1.replace(/(?:\r\n|\r|\n)/g, '');
+        window.obj_pt.descricao_visita_2 = obj_pt.descricao_visita_2.replace(/(?:\r\n|\r|\n)/g, '');
+        window.obj_en.descricao_visita_1 = obj_en.descricao_visita_1.replace(/(?:\r\n|\r|\n)/g, '');
+        window.obj_en.descricao_visita_2 = obj_en.descricao_visita_2.replace(/(?:\r\n|\r|\n)/g, '');
     }
 
-
-    function convertLineBreaks(convertToBR) {
-        if (convertToBR) {
-            window.obj_pt.descricao_visita_1 = obj_pt.descricao_visita_1.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            window.obj_pt.descricao_visita_2 = obj_pt.descricao_visita_2.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            window.obj_pt.descricao_visita_3 = obj_pt.descricao_visita_3.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            window.obj_en.descricao_visita_1 = obj_en.descricao_visita_1.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            window.obj_en.descricao_visita_2 = obj_en.descricao_visita_2.replace(/(?:\r\n|\r|\n)/g, '<br>');
-            window.obj_en.descricao_visita_3 = obj_en.descricao_visita_3.replace(/(?:\r\n|\r|\n)/g, '<br>');
-        } else {
-            window.obj_pt.descricao_visita_1 = obj_pt.descricao_visita_1.replace(/<br>/g, "\n");
-            window.obj_pt.descricao_visita_2 = obj_pt.descricao_visita_2.replace(/<br>/g, "\n");
-            window.obj_pt.descricao_visita_3 = obj_pt.descricao_visita_3.replace(/<br>/g, "\n");
-            window.obj_en.descricao_visita_1 = obj_en.descricao_visita_1.replace(/<br>/g, "\n");
-            window.obj_en.descricao_visita_2 = obj_en.descricao_visita_2.replace(/<br>/g, "\n");
-            window.obj_en.descricao_visita_3 = obj_en.descricao_visita_3.replace(/<br>/g, "\n");
-        }
-    }
     </script>
 </body>
 

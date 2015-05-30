@@ -11,6 +11,7 @@
 }
 
 html {
+    background-color: #000;
     overflow-y: scroll;
     max-width: 1366px;
     margin: 0 auto;
@@ -178,6 +179,7 @@ body {
 #gbnt-container {
     top: 80px;
     position: relative;
+    background-color: #000;
 }
 
 #gbnt-container .gbnt-item {
@@ -288,6 +290,7 @@ body {
 
 #gbnt-container .proj-profile {
     width: 100%;
+    background-color: #fff;
 }
 
 #gbnt-container .proj-profile p {
