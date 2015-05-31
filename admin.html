@@ -313,7 +313,9 @@
     <script type="text/javascript">
     $(document).ready(function() {
         tinymce.init({
+            forced_root_block: false,
             plugins: ["link", "paste"],
+            height: 300,
             paste_as_text: true,
             height: 300,
             target_list: false,
