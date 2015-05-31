@@ -258,7 +258,9 @@
     $(document).ready(function() {
 
         tinymce.init({
+            forced_root_block: false,            
             plugins: ["link", "paste"],
+            height: 300,
             paste_as_text: true,
             target_list: false,
             menubar: false,
