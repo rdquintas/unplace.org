@@ -260,8 +260,10 @@
         tinymce.init({
             plugins: ["link", "paste"],
             paste_as_text: true,
+            height: 300,
             target_list: false,
             menubar: false,
+            forced_root_block: false,
             toolbar: "bold italic underline link unlink removeformat ",
             selector: "textarea"
         });
