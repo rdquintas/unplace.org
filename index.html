@@ -79,7 +79,7 @@
     </section>
     <script id="gbnt-template" type="text/x-handlebars-template">
         {{#each tour}}
-        <div id="item_x" class="gbnt-item gbnt-size-normal tour" data-gbnt-checked="true">
+        <div id="item_x" class="cursor-pointer gbnt-item gbnt-size-normal tour" data-gbnt-checked="true">
             <div class="wrap">
                 <div class="proj-text gbnt-size-normal">
                     <a href="#" id="cover" class="textbox">
@@ -88,7 +88,7 @@
                     </a>
                 </div>
             </div>
-            <div class="proj-profile hide-me">
+            <div class="cursor-default proj-profile hide-me ">
                 <div class="header">
                     <a href="#" class="btn-project btn-selected">{{tour_title}}</a>
                     <a href="#" class="btn-close">
@@ -102,7 +102,7 @@
             </div>
         </div>
         {{/each}} {{#each project}}
-        <div id="{{getID 'item_' id}}" class="gbnt-item {{size_class}}" data-gbnt-checked="false">
+        <div id="{{getID 'item_' id}}" class="cursor-pointer gbnt-item {{size_class}}" data-gbnt-checked="false">
             <div class="wrap">
                 <div class="proj-cover {{size_class}}">
                     <img id="cover" src="{{getCoverImageURL id tipo_capa capa}}">
@@ -117,7 +117,7 @@
                     <img src="{{getProjectImageURL id img}}">
                 </div>
             </div>
-            <div class="proj-profile hide-me">
+            <div class="cursor-default proj-profile hide-me">
                 <div class="header">
                     <a href="#" class="btn-project btn-selected">{{translateThis 'project_description'}}</a>
                     <a href="#" class="btn-author">{{translateThis 'author'}}</a>

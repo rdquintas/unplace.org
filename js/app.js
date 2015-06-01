@@ -524,7 +524,9 @@ function openProject(gbntItem) {
 
     // Remove pointer events from all item DIVs
     $(".gbnt-item").each(function() {
-        $(this).addClass("no-pointers");
+        if (this !== gbntItem) {
+            $(this).addClass("no-pointers");
+        }
     });
 
     // Hide DIV cover image

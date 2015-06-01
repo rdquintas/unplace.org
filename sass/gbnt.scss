@@ -39,6 +39,14 @@ body {
     display: none;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
 .no-pointers,
 .no-pointers:hover,
 .no-pointers:visited,
@@ -213,7 +221,7 @@ body {
 #gbnt-container .gbnt-item {
     float: left;
     position: static;
-    cursor: pointer;
+    // cursor: pointer;
 }
 
 #gbnt-container .gbnt-item.tour {
