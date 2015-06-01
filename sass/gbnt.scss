@@ -80,11 +80,12 @@ body {
 
 #gbnt-header {
     height: 120px;
-    width: 100%;
+    // width: 100%;
+    width: 1366;
     background-color: #000;
     position: fixed;
     top: 0px;
-    left: 0px;
+    // left: 0px;
     z-index: 100;
     overflow: hidden;
 }
@@ -425,14 +426,8 @@ body {
     margin-top: 20px;
 }
 
-#item_x .proj-profile .header {
-    // background-color: #fff;
-    // color: #000 !important;
-}
-
-#item_x .proj-profile h1 {
-    // color: #000;
-    // margin-bottom: 1.25em !important;
+#item_x .proj-profile .btn-project {
+    display: none;
 }
 /**********************************************************************
  * SLIDE SHOW 
