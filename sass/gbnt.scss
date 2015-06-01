@@ -229,11 +229,11 @@ body {
 }
 
 #gbnt-container .tour .btn-selected {
-    color: #fff !important;
+    // color: #fff !important;
 }
 
 #gbnt-container .tour p {
-    color: #fff !important;
+    // color: #fff !important;
 }
 
 #gbnt-container .tour .proj-profile .header {
@@ -425,13 +425,14 @@ body {
     margin-top: 20px;
 }
 
-#item_x .proj-profile {
-    background-color: #000;
+#item_x .proj-profile .header {
+    // background-color: #fff;
+    // color: #000 !important;
 }
 
 #item_x .proj-profile h1 {
-    color: #fff;
-    margin-bottom: 1.25em !important;
+    // color: #000;
+    // margin-bottom: 1.25em !important;
 }
 /**********************************************************************
  * SLIDE SHOW 
