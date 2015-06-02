@@ -201,6 +201,14 @@ function correctSizes() {
 
 function createEventHandlers() {
 
+    // Mouse hover for logo
+    $(".logo-unplace img").hover(function getIn() {
+        $(this).attr("src", "img/unplace_logo_blue.png");
+    }, function getOut() {
+        $(this).attr("src", "img/unplace_logo.png");
+    });
+
+
     // Mouse hover for fadein/fadeout Project Cover
     $(".proj-cover").hover(function getIn() {
         if ($(this).parents(".gbnt-item").attr("data-gbnt-checked") === "true" ||
@@ -369,6 +377,12 @@ function createEventHandlers() {
     // Click event for TOURS link
     $("#gbnt-header .gbnt-tour").on("click", function(e) {
         e.preventDefault();
+
+
+        //Check if we have to close any open item
+        $(".selected-project").each(function(item) {
+            closeProject(item);
+        });
 
         // If the header is expaneded and we coming from a different menu
         // then do this
