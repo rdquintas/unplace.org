@@ -26,7 +26,10 @@ html {
 }
 body {
     font-size: $font-body-size;
-    font-weight: 100;
+    font-weight: 300;
+}
+h1{
+    font-weight: 500;
 }
 .preloader {
     z-index: 999;
