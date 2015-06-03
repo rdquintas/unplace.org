@@ -7,6 +7,7 @@ $font-body-size: 18px;
 $font-logo-size: 30px;
 $link-selected: #84BAE0;
 $link-hover: #84BAE0;
+$link-color: #fff;
 /**********************************************************************
  * GLOBALS
  **********************************************************************/
@@ -101,6 +102,7 @@ h1{
     color: #fff;
     display: inline;
     float: left;
+    font-weight: 400;
     font-size: $font-logo-size;
     margin-top: 20px;
 }
@@ -116,7 +118,8 @@ h1{
     margin-top: -13px;
 }
 #gbnt-header a {
-    color: #666;
+    /*color: #666;*/
+    color: $link-color;
     text-decoration: none;
 }
 #gbnt-header a:hover {
@@ -252,7 +255,7 @@ h1{
 }
 #gbnt-container .textbox .titulo {
     color: #fff;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 14px;
 }
 #gbnt-container .textbox .autor {
