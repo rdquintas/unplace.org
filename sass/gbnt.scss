@@ -29,7 +29,7 @@ body {
     font-size: $font-body-size;
     font-weight: 300;
 }
-h1{
+h1 {
     font-weight: 500;
 }
 .preloader {
@@ -118,14 +118,9 @@ h1{
     margin-top: 35px;
     margin-right: 35px;
 }
-#gbnt-header .nav {
-    float: left;
-    width: 100%;
-    margin-left: 154px;
-    margin-top: -13px;
-}
 #gbnt-header a {
     /*color: #666;*/
+    
     color: $link-color;
     text-decoration: none;
 }
@@ -153,10 +148,17 @@ h1{
     color: #fff;
     width: 75%;
     margin-top: 10px;
-    margin-left: 115px;
+    /*margin-left: 115px;*/
+    
     text-align: left;
     float: left;
     position: absolute;
+}
+#gbnt-header .nav {
+    float: left;
+    width: 100%;
+    margin-left: 168px;
+    margin-top: -13px;
 }
 #gbnt-header .nav .tours ul {
     margin: 0;
@@ -166,6 +168,7 @@ h1{
 }
 #gbnt-header .nav .tours ul li {
     display: block;
+    float: none;
     margin-top: 5px;
 }
 #gbnt-header .nav ul {
@@ -176,7 +179,7 @@ h1{
     float: left;
 }
 #gbnt-header .nav ul li {
-    display: inline;
+    float: left;
     margin-right: 30px;
 }
 #gbnt-header .toggle-menu {
@@ -502,7 +505,7 @@ h1{
     }
     #gbnt-header .logo p.logo-text {
         display: block;
-        width: 147px;
+        width: 151px;
         font-size: $font-body-size;
         margin-top: 0;
         margin-left: 9px;
@@ -516,6 +519,10 @@ h1{
     }
     #gbnt-header .nav ul {
         text-align: left;
+    }
+    #gbnt-header .nav ul li {
+        float: none;
+        display: block;
     }
     #gbnt-header a.gbnt-language {
         position: absolute;
@@ -537,7 +544,7 @@ h1{
         display: block;
         width: 100%;
         position: absolute;
-        top: 410px;
+        top: 455px;
         margin: 0px;
         padding-right: 30px;
         padding-left: 20px;
