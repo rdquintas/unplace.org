@@ -35,7 +35,7 @@ function applyTranslations() {
     $(".gbnt-tour").text(doTranslation("tour"));
     $(".gbnt-about").text(doTranslation("about"));
     $(".gbnt-language").text(doTranslation("language"));
-    $(".about-text p").text(doTranslation("about_text"));
+    $(".about-text p").html(doTranslation("about_text"));
 
     if (_mainObject.language === "pt") {
         $(".gbnt-language").html("en");

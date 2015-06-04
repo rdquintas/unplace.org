@@ -132,10 +132,12 @@ h1 {
     text-align: left;
 }
 #gbnt-header .about-text p {
-    /*font-size: 1em;*/
-    
+    margin-left: -15px;
     font-size: $font-body-size;
     line-height: 1.25em;
+}
+#gbnt-header .about-text a.pdf-download {
+    margin-left: -15px;
 }
 #gbnt-header .tours {
     color: #fff;
