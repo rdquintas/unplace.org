@@ -454,13 +454,13 @@ function createEventHandlers() {
 }
 
 function openHeader(selectedMenuClass, isMobile) {
-    var size = "400px";
+    var size = "500px";
     // var ease = "easeOutElastic";
     var ease = "swing";
     var dur = 200;
 
     if (isMobile) {
-        size = "950px";
+        size = "1100px";
         ease = "swing";
         dur = 200;
     }
