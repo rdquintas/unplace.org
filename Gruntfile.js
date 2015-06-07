@@ -148,6 +148,33 @@ module.exports = function(grunt) {
         // },
 
 
+
+        imagemin: { // Task
+            // static: { // Target
+            //     options: { // Target options
+            //         optimizationLevel: 3,
+            //         svgoPlugins: [{
+            //             removeViewBox: false
+            //         }],
+            //         use: [mozjpeg()]
+            //     },
+            //     files: { // Dictionary of files
+            //         'dist/img.png': 'src/img.png', // 'destination': 'source'
+            //         'dist/img.jpg': 'src/img.jpg',
+            //         'dist/img.gif': 'src/img.gif'
+            //     }
+            // },
+            dynamic: { // Another target
+                files: [{
+                    expand: true, // Enable dynamic expansion
+                    cwd: 'docs/projectos', // Src matches are relative to this path
+                    src: ['**/*.{png,jpg,gif}'], // Actual patterns to match
+                    dest: 'dist/' // Destination path prefix
+                }]
+            }
+        },
+
+
         // ================================
         // connect: HTTP server
         // ================================
@@ -168,6 +195,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-rename');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -176,7 +204,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-libsass');
 
-
+    // ================================
+    // Task:    default
+    // ================================
+    grunt.registerTask('images', [
+        'imagemin:dynamic'
+    ]);
     // ================================
     // Task:    default
     // ================================
