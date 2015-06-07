@@ -12,11 +12,14 @@ $link-color: #fff;
  * GLOBALS
  **********************************************************************/
 
-*, *:after, *:before {
+*,
+*:after,
+*:before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 html {
     background-color: #000;
     overflow-y: scroll;
@@ -25,14 +28,19 @@ html {
     padding: 0;
     font-family: "Proxima Nova W01", Arial, sans-serif;
 }
+
 body {
     font-size: $font-body-size;
     font-weight: 300;
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 h1{
 =======
+=======
+
+>>>>>>> master
 h1 {
 >>>>>>> master
 =======
@@ -40,6 +48,7 @@ h1 {
 >>>>>>> 7484870369d8865decb417ab6f6d54fdaba61b05
     font-weight: 500;
 }
+
 .preloader {
     z-index: 999;
     padding-top: 20%;
@@ -51,20 +60,29 @@ h1 {
     left: 0px;
     width: 100%;
 }
+
 .hide-me {
     display: none;
 }
+
 .cursor-pointer {
     cursor: pointer;
 }
+
 .cursor-default {
     cursor: default;
 }
-.no-pointers, .no-pointers:hover, .no-pointers:visited, .no-pointers:active, .no-pointers:focus {
+
+.no-pointers,
+.no-pointers:hover,
+.no-pointers:visited,
+.no-pointers:active,
+.no-pointers:focus {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
 }
+
 .browserupdate {
     display: block;
     margin-bottom: 3em;
@@ -73,10 +91,12 @@ h1 {
     text-align: center;
     background-color: red;
 }
+
 .browserupdate a {
     color: #fff;
     text-decoration: underline;
 }
+
 .browserupdate a:hover {
     color: #ddd;
 }
@@ -101,18 +121,22 @@ h1 {
     z-index: 100;
     overflow: hidden;
 }
+
 #gbnt-header .logo {
     float: left;
     width: 90%;
 }
+
 #gbnt-header .logo a.logo-unplace {
     float: left;
     width: 168px;
 }
+
 #gbnt-header .logo a img {
     margin-top: 10px;
     margin-left: 15%;
 }
+
 #gbnt-header .logo .logo-text {
     color: #fff;
     display: inline;
@@ -121,23 +145,28 @@ h1 {
     font-size: $font-logo-size;
     margin-top: 20px;
 }
+
 #gbnt-header a.gbnt-language {
     float: right;
     margin-top: 35px;
     margin-right: 35px;
 }
+
 #gbnt-header a {
     /*color: #666;*/
     
     color: $link-color;
     text-decoration: none;
 }
+
 #gbnt-header a:hover {
     color: $link-hover !important;
 }
+
 #gbnt-header a.selected {
     color: $link-selected !important;
 }
+
 #gbnt-header .about-text {
     color: #fff;
     width: 75%;
@@ -146,12 +175,14 @@ h1 {
     margin-top: 42px;
     text-align: left;
 }
+
 #gbnt-header .about-text p {
     /*font-size: 1em;*/
     
     font-size: $font-body-size;
     line-height: 1.25em;
 }
+
 #gbnt-header .tours {
     color: #fff;
     width: 75%;
@@ -162,23 +193,27 @@ h1 {
     float: left;
     position: absolute;
 }
+
 #gbnt-header .nav {
     float: left;
     width: 100%;
     margin-left: 168px;
     margin-top: -13px;
 }
+
 #gbnt-header .nav .tours ul {
     margin: 0;
     padding: 0;
     list-style-type: none;
     text-align: left;
 }
+
 #gbnt-header .nav .tours ul li {
     display: block;
     float: none;
     margin-top: 5px;
 }
+
 #gbnt-header .nav ul {
     margin: 0;
     padding: 0;
@@ -186,22 +221,27 @@ h1 {
     text-align: center;
     float: left;
 }
+
 #gbnt-header .nav ul li {
     float: left;
     margin-right: 30px;
 }
+
 #gbnt-header .toggle-menu {
     display: none;
 }
+
 #gbnt-header .close-header {
     width: 100%;
     font-size: 30px;
     color: #666;
     text-align: center;
 }
+
 #gbnt-header .close-header a:hover {
     color: $link-hover;
 }
+
 #gbnt-header .close-header i {
     margin-top: 50px;
 }
@@ -214,40 +254,50 @@ h1 {
     position: relative;
     background-color: #000;
 }
+
 #gbnt-container h1 {
     font-size: 1.25em
 }
+
 #gbnt-container .gbnt-item {
     float: left;
     position: static;
     /* cursor: pointer;*/
 }
+
 #gbnt-container .gbnt-item.tour {
     background-color: #000;
 }
+
 #gbnt-container .tour .btn-selected {
     /*color: #fff !important;*/
 }
+
 #gbnt-container .tour p {
     /*color: #fff !important;*/
 }
+
 #gbnt-container .tour .proj-profile .header {
     border-color: #fff;
 }
+
 #gbnt-container .wrap {
     position: relative;
     width: 100%;
 }
+
 #gbnt-container .proj-cover img {
     display: block;
     width: 100%;
 }
+
 #gbnt-container .proj-cover {
     position: absolute;
     width: 100% !important;
     float: left;
     z-index: 30;
 }
+
 #gbnt-container .proj-text {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.7);
@@ -255,15 +305,18 @@ h1 {
     width: 100% !important;
     z-index: 20;
 }
+
 #gbnt-container .proj-img img {
     display: block;
     width: 100%;
 }
+
 #gbnt-container .proj-img {
     position: absolute;
     width: 100% !important;
     z-index: 10;
 }
+
 #gbnt-container .textbox {
     padding: 10px;
     display: block;
@@ -271,67 +324,86 @@ h1 {
     width: 100%;
     text-decoration: none;
 }
+
 #gbnt-container .textbox .titulo {
     color: #fff;
     font-weight: 500;
     font-size: 14px;
 }
+
 #gbnt-container .textbox .autor {
     color: #fff;
     font-size: 14px;
 }
+
 #gbnt-container .textbox p {
     margin: 0;
 }
+
 #gbnt-container .gbnt-size-normal {
     width: 12.5%;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
+
 #gbnt-container .gbnt-size-wide {
     width: 25%;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
+
 #gbnt-container .gbnt-size-tall {
     width: 12.5%;
     margin: 0;
     padding: 0;
     overflow: hidden;
 }
+
 #gbnt-container .selected-project {
     width: 37.5%;
 }
+
 #gbnt-container .proj-profile {
     width: 100%;
     background-color: #fff;
 }
+
+#gbnt-container .proj-profile strong {
+    font-weight: 500;
+}
+
 #gbnt-container .proj-profile p {
     /*font-size: 1em;*/
     
     font-size: $font-body-size;
     line-height: 1.25em;
 }
+
 #gbnt-container .proj-profile a {
     pointer-events: visible;
 }
+
 #gbnt-container .proj-profile .header {
     width: 100%;
     border-bottom: 1px solid black;
     padding: 19px;
 }
+
 #gbnt-container .proj-profile .btn-close img {
     width: 18px;
 }
+
 #gbnt-container .proj-profile .btn-close {
     float: right;
     margin-top: 0px;
 }
+
 #gbnt-container .proj-profile .btn-close:hover {
     opacity: 0.4;
 }
+
 #gbnt-container .proj-profile .btn-view-proj {
     margin-right: 15px;
     text-decoration: none;
@@ -340,11 +412,13 @@ h1 {
     
     font-size: $font-body-size;
 }
+
 #gbnt-container .proj-profile .btn-view-proj:hover {
     /*color: #000;*/
     
     color: $link-hover;
 }
+
 #gbnt-container .proj-profile .btn-project {
     width: 50px;
     text-decoration: none;
@@ -353,57 +427,70 @@ h1 {
     
     margin-right: 30px;
 }
+
 #gbnt-container .proj-profile .btn-project:hover {
     /*color: #000;*/
     
     color: $link-hover;
 }
+
 #gbnt-container .proj-profile .btn-author {
     width: 50px;
     text-decoration: none;
     color: #666;
     /*font-size: 1.3em;*/
 }
+
 #gbnt-container .proj-profile .btn-author:hover {
     /*color: #000;*/
     
     color: $link-hover;
 }
+
 #gbnt-container .proj-profile .btn-selected {
     color: #000;
     color: $link-selected;
     pointer-events: none;
 }
+
 #gbnt-container .proj-profile .tab-project {
     padding: 18px;
     margin-top: -5px;
 }
+
 #gbnt-container .proj-profile .tab-project .descricao a {
     text-decoration: underline;
     color: #000;
 }
+
 #gbnt-container .proj-profile .tab-project .descricao a:hover {
     color: $link-hover;
 }
+
 #gbnt-container .proj-profile .tab-project h1 {
     margin-bottom: 0;
 }
+
 #gbnt-container .proj-profile .tab-project p.ano {
     margin-top: 0;
     margin-bottom: 0;
 }
+
 #gbnt-container .proj-profile .tab-project i {
     margin-right: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 #gbnt-container .proj-profile .tab-author {
     padding: 18px;
     margin-top: -5px;
 }
+
 #gbnt-container .proj-profile .tab-author p {
     margin-top: 20px;
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #item_x .proj-profile .btn-project {
@@ -415,6 +502,9 @@ h1 {
     // color: #000;
     // margin-bottom: 1.25em !important;
 =======
+=======
+
+>>>>>>> master
 #item_x .proj-profile .btn-project {
     display: none;
 >>>>>>> master
@@ -433,9 +523,11 @@ h1 {
     text-align: center;
     /*border: 1px solid black;*/
 }
+
 .body-color {
     background-color: #474747;
 }
+
 .slick-content {
     margin: 0 auto;
     /*border: 1px solid red;*/
@@ -443,15 +535,18 @@ h1 {
     width: 40%;
     /*margin-top: 5%;*/
 }
+
 .slick-content .label {
     text-align: center;
     color: #fff;
     padding: 15px;
 }
+
 .slick-content span {
     margin-right: 15px;
     margin-left: 15px;
 }
+
 .slick-content img {
     /*        -webkit-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 10px 10px 32px -4px rgba(0, 0, 0, 0.75);
@@ -461,11 +556,13 @@ h1 {
     width: 50%;
     margin: 0 auto;
 }
+
 .slick-content iframe {
     margin-top: 10%;
     width: 100%;
     height: 520px;
 }
+
 @media (max-width: 768px) {
     #gbnt-project {
         width: 100%;
