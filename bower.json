@@ -1,0 +1,19 @@
+{
+  "name": "zrq",
+  "version": "1.0.0",
+  "authors": [
+    "Ricardo Quintas <rqcenter-web@yahoo.com>"
+  ],
+  "description": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "latest",
+    "fontawesome": "latest",
+    "packery": "latest",
+    "handlebars": "latest",
+    "slick-carousel": "~1.5.0",
+    "normalize-scss": "~3.0.3",
+    "pure": "~0.6.0"
+  }
+}
