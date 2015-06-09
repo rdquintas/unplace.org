@@ -4,7 +4,7 @@
 // =============================
 var translations = {
     logo_text: [
-        "arte em rede: lugares-entre-lugares", "EN arte em rede: lugares-entre-lugares"
+        "arte em rede: lugares-entre-lugares", "arte em rede: lugares-entre-lugares"
     ],
     exibithion: [
         "exposição", "exibithion"
@@ -44,7 +44,7 @@ var translations = {
         "ano", "year"
     ],
     fichaTecnica: [
-        "ficha técnica", "technical spec"
+        "ficha técnica", "credits"
     ]
 };
 
@@ -510,7 +510,7 @@ function openHeader(selectedMenuClass, isMobile) {
     var dur = 200;
 
     if (isMobile) {
-        size = "1100px";
+        size = "1200px";
         ease = "swing";
         dur = 200;
     }

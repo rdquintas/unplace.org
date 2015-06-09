@@ -4,7 +4,7 @@
 // =============================
 var translations = {
     logo_text: [
-        "arte em rede: lugares-entre-lugares", "EN arte em rede: lugares-entre-lugares"
+        "arte em rede: lugares-entre-lugares", "arte em rede: lugares-entre-lugares"
     ],
     exibithion: [
         "exposição", "exibithion"
@@ -44,6 +44,6 @@ var translations = {
         "ano", "year"
     ],
     fichaTecnica: [
-        "ficha técnica", "technical spec"
+        "ficha técnica", "credits"
     ]
 };

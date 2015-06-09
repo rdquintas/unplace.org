@@ -476,6 +476,20 @@ h1 {
 #item_x .proj-profile .btn-project {
     display: none;
 }
+
+#gbnt-container .proj-profile .tab-author .autor-bio a {
+  color: #000;
+}
+#gbnt-container .proj-profile .tab-author .autor-bio a:hover {   
+    color: $link-hover;
+}
+#gbnt-container .proj-profile .tab-author .autor-bio a {
+   text-decoration: underline;
+    color: #000;
+}
+#gbnt-container .proj-profile .tab-author .autor-bio a:hover {   
+    color: $link-hover;
+}
 /**********************************************************************
  * SLIDE SHOW 
  **********************************************************************/

@@ -460,7 +460,7 @@ function openHeader(selectedMenuClass, isMobile) {
     var dur = 200;
 
     if (isMobile) {
-        size = "1100px";
+        size = "1200px";
         ease = "swing";
         dur = 200;
     }
