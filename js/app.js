@@ -349,28 +349,18 @@ function createEventHandlers() {
         $(".gbnt-exibithion").removeClass("selected");
         $(".gbnt-tour").removeClass("selected");
         $(".gbnt-about").addClass("selected");
-
-        // If the header is expaneded and we coming from a different menu
-        // then do this
-        if ($("#gbnt-header").attr("data-gbnt-open") === "true" &&
-            $(".tours").hasClass("hide-me") === false) {
-            $(".about-text").toggleClass("hide-me");
-            $(".tours").toggleClass("hide-me");
+     
+        $(".tours").addClass("hide-me");
+        if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
+            $("#gbnt-header").attr("data-gbnt-open", "true");
+            $(".about-text").removeClass("hide-me");
+            openHeader("gbnt-about", false);
         } else {
-            // otherwise expand/close menu normaly
-            $(".gbnt-about").addClass("no-pointers");
-            $(".close-header").toggleClass("hide-me");
-
-            if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
-                $("#gbnt-header").attr("data-gbnt-open", "true");
-                $(".about-text").toggleClass("hide-me");
-                openHeader("gbnt-about", false);
-            } else {
-                $("#gbnt-header").attr("data-gbnt-open", "false");
-                $(".about-text").toggleClass("hide-me");
-                closeHeader("gbnt-about", false);
-            }
+            $("#gbnt-header").attr("data-gbnt-open", "false");
+            $(".about-text").addClass("hide-me");
+            closeHeader("gbnt-about", false);
         }
+     
     });
 
 
@@ -384,27 +374,17 @@ function createEventHandlers() {
             closeProject(item);
         });
 
-        // If the header is expaneded and we coming from a different menu
-        // then do this
-        if ($("#gbnt-header").attr("data-gbnt-open") === "true" &&
-            $(".about-text").hasClass("hide-me") === false) {
-            $(".about-text").toggleClass("hide-me");
-            $(".tours").toggleClass("hide-me");
+        $(".about-text").addClass("hide-me");
+        if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
+            $("#gbnt-header").attr("data-gbnt-open", "true");
+            $(".tours").removeClass("hide-me");
+            openHeader("gbnt-tour", false);
         } else {
-            // otherwise expand/close menu normaly
-            $(".gbnt-tour").addClass("no-pointers");
-            $(".close-header").toggleClass("hide-me");
-
-            if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
-                $("#gbnt-header").attr("data-gbnt-open", "true");
-                $(".tours").toggleClass("hide-me");
-                openHeader("gbnt-tour", false);
-            } else {
-                $("#gbnt-header").attr("data-gbnt-open", "false");
-                $(".tours").toggleClass("hide-me");
-                closeHeader("gbnt-tour", false);
-            }
+            $("#gbnt-header").attr("data-gbnt-open", "false");
+            $(".tours").addClass("hide-me");
+            closeHeader("gbnt-tour", false);
         }
+      
     });
 
 
@@ -455,6 +435,13 @@ function createEventHandlers() {
 
 function openHeader(selectedMenuClass, isMobile) {
     var size = "500px";
+    var marginTop = "320px";
+
+    if (selectedMenuClass === "gbnt-tour") {
+        size = "170px";
+        marginTop = "50px";
+    }
+
     // var ease = "easeOutElastic";
     var ease = "swing";
     var dur = 200;
@@ -477,7 +464,7 @@ function openHeader(selectedMenuClass, isMobile) {
 
     if (!isMobile) {
         $('#gbnt-container').animate({
-            "margin-top": "320px"
+            "margin-top": marginTop
         }, {
             duration: dur,
             easing: ease
