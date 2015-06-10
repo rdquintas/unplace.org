@@ -15,10 +15,11 @@ module.exports = function(grunt) {
         'js/app.js'
     ];
 
-    var _css_custom = [
-        'sass/start_here.scss',
-        'sass/gbnt.scss'
-    ];
+    // var _css_custom = [
+    //    'less/start_here.less'
+    //     // 'sass/start_here.scss',
+    //     // 'sass/gbnt.scss'
+    // ];
 
 
     grunt.initConfig({
@@ -80,6 +81,17 @@ module.exports = function(grunt) {
             }
         },
 
+        // ================================
+        // less: LESS compilation
+        // ================================  
+        less: {
+            css_custom: {
+                files: {
+                    'css/app.dist.css': 'less/start_here.less'
+                }
+            }
+        },
+
 
         // ================================
         // libsass: SASS compilation
@@ -108,10 +120,11 @@ module.exports = function(grunt) {
                 }
             },
             css_custom: {
-                files: _css_custom,
+                files: "less/*.less",
                 tasks: [
-                    'libsass:css_custom',
-                    'cssmin:css_custom'
+                 	'less:css_custom'
+                    // 'libsass:css_custom',
+                    // 'cssmin:css_custom'
                 ],
                 options: {
                     event: ['all'],
@@ -127,7 +140,7 @@ module.exports = function(grunt) {
             purecss: {
                 src: 'bower_components/pure/pure-min.css',
                 dest: 'css/pure-min.css'
-            },
+            }
         },
         // // ================================
         // // clean: Deletes files
@@ -204,6 +217,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-libsass');
 
+
+    // // ================================
+    // // Task:    less
+    // // ================================
+    // grunt.registerTask('less', [
+    //     'less:css_custom'
+    // ]);
+
     // ================================
     // Task:    default
     // ================================
@@ -220,7 +241,7 @@ module.exports = function(grunt) {
         'concat:js_custom',
         // 'uglify:js_custom',
         'libsass:css_custom',
-        'copy:purecss',
+        'copy:purecss'
         // 'cssmin:css_custom'
     ]);
 

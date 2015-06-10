@@ -1,0 +1,346 @@
+/**********************************************************************
+ * GBNT-HEADER
+ **********************************************************************/
+
+#gbnt-header {
+    height: 120px;
+    width: 100%;
+    max-width: @max-size;
+    background-color: #000;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    overflow: hidden;
+    a {
+        color: @link-color;
+        text-decoration: none;
+        &.gbnt-language {
+            float: right;
+            margin-top: 35px;
+            margin-right: 35px;
+        }
+        &:hover {
+            color: @link-hover !important;
+        }
+        &.selected {
+            color: @link-selected !important;
+        }
+    }
+    .logo {
+        float: left;
+        width: 90%;
+        a {
+            img {
+                margin-top: 10px;
+                margin-left: 15%;
+            }
+            &.logo-unplace {
+                float: left;
+                width: 168px;
+            }
+        }
+        .logo-text {
+            color: #fff;
+            display: inline;
+            float: left;
+            font-weight: 400;
+            font-size: @font-logo-size;
+            margin-top: 20px;
+        }
+    }
+    .about-text {
+        color: #fff;
+        width: 75%;
+        max-width: 650px;
+        margin-top: 42px;
+        text-align: left;
+        p {
+            font-size: @font-body-size;
+            line-height: 1.25em;
+        }
+    }
+    .tours {
+        color: #fff;
+        width: 75%;
+        margin-top: 10px;
+        /*margin-left: 115px;*/
+        
+        text-align: left;
+        float: left;
+        position: absolute;
+    }
+    .nav {
+        float: left;
+        width: 100%;
+        margin-left: 168px;
+        margin-top: -13px;
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-align: center;
+            float: left;
+            li {
+                float: left;
+                margin-right: 30px;
+            }
+        }
+        .tours ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            text-align: left;
+            li {
+                display: block;
+                float: none;
+                margin-top: 5px;
+            }
+        }
+    } // nav
+    .toggle-menu {
+        display: none;
+    }
+    .close-header {
+        width: 100%;
+        font-size: 30px;
+        color: #666;
+        text-align: center;
+        a:hover {
+            color: @link-hover;
+        }
+        i {
+            margin-top: 50px;
+        }
+    }
+}
+/**********************************************************************
+ * GBNT-CONTAINER
+ **********************************************************************/
+
+#gbnt-container {
+    top: 120px;
+    position: relative;
+    background-color: #000;
+    h1 {
+        font-size: 1.25em
+    }
+    .gbnt-item {
+        float: left;
+        position: static;
+        /* cursor: pointer;*/
+        
+        &.tour {
+            background-color: #000;
+            .proj-profile {
+                .header {
+                    border-color: #fff;
+                }
+            }
+        }
+        .wrap {
+            position: relative;
+            width: 100%;
+            .textbox {
+                padding: 10px;
+                display: block;
+                height: 100%;
+                width: 100%;
+                text-decoration: none;
+                .titulo {
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 14px;
+                }
+                .autor {
+                    color: #fff;
+                    font-size: 14px;
+                }
+                p {
+                    margin: 0;
+                }
+            } // textbox
+            .proj-cover {
+                position: absolute;
+                width: 100% !important;
+                float: left;
+                z-index: 30;
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+            .proj-text {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.7);
+                float: left;
+                width: 100% !important;
+                z-index: 20;
+            }
+            .proj-img {
+                position: absolute;
+                width: 100% !important;
+                z-index: 10;
+                img {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        } //wrap
+    } // gbnt-item
+    .gbnt-size-normal {
+        width: 12.5%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .gbnt-size-wide {
+        width: 25%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .gbnt-size-tall {
+        width: 12.5%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .selected-project {
+        width: 37.5%;
+    }
+    .proj-profile {
+        width: 100%;
+        background-color: #fff;
+        strong {
+            font-weight: 500;
+        }
+        p {
+            /*font-size: 1em;*/
+            
+            font-size: @font-body-size;
+            line-height: 1.25em;
+        }
+        a {
+            pointer-events: visible;
+        }
+        .header {
+            width: 100%;
+            border-bottom: 1px solid black;
+            padding: 19px;
+        }
+        .btn-close {
+            float: right;
+            margin-top: 0px;
+            &:hover {
+                opacity: 0.4;
+            }
+            img {
+                width: 18px;
+            }
+        }
+        .btn-view-proj {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #666;
+            font-size: @font-body-size;
+            &:hover {
+                color: @link-hover;
+            }
+        }
+        .btn-project {
+            width: 50px;
+            text-decoration: none;
+            color: #666;
+            margin-right: 30px;
+            &:hover {
+                color: @link-hover;
+            }
+        }
+        .btn-author {
+            width: 50px;
+            text-decoration: none;
+            color: #666;
+            &:hover {
+                color: @link-hover;
+            }
+        }
+        .btn-selected {
+            color: #000;
+            color: @link-selected;
+            pointer-events: none;
+        }
+        .tab-project {
+            padding: 18px;
+            margin-top: -5px;
+            .descricao a {
+                text-decoration: underline;
+                color: #000;
+                &:hover {
+                    color: @link-hover;
+                }
+            }
+            h1 {
+                margin-bottom: 0;
+            }
+            p.ano {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            i {
+                margin-right: 10px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+        } // tab-project
+        .tab-author {
+            padding: 18px;
+            margin-top: -5px;
+            p {
+                margin-top: 20px;
+            }
+            .autor-bio a {
+                color: #000;
+                text-decoration: underline;
+                &:hover {
+                    color: @link-hover;
+                }
+            }
+        } // tab-author
+    } // proj-profile
+} // gbnt-container
+/**********************************************************************
+ * SLIDE SHOW 
+ **********************************************************************/
+#gbnt-project {
+    background-color: #474747;
+    top: 80px;
+    position: relative;
+    height: 100%;
+    text-align: center;
+}
+.body-color {
+    background-color: #474747;
+}
+.slick-content {
+    margin: 0 auto;
+    width: 40%;
+    .label {
+        text-align: center;
+        color: #fff;
+        padding: 15px;
+    }
+    span {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    img {
+        max-width: 100%;
+        width: 50%;
+        margin: 0 auto;
+    }
+    iframe {
+        margin-top: 10%;
+        width: 100%;
+        height: 520px;
+    }
+} // slick-content
