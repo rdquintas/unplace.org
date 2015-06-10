@@ -18,6 +18,12 @@ var _tourInformation = null;
 
 
 $(document).ready(function() {
+    var tmpLang = getUrlParameter("language");
+    
+    if (tmpLang) {
+        _mainObject.language = tmpLang;
+    }
+
     parseURLobject();
     prepareTours();
     // prepareProjectData();
@@ -512,6 +518,8 @@ function getUrlParameter(sParam) {
             return sParameterName[1];
         }
     }
+
+    return false;
 }
 
 function openProject(gbntItem) {
