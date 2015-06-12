@@ -4,7 +4,7 @@
 // =============================
 var translations = {
     logo_text: [
-        "arte em rede: lugares-entre-lugares", "arte em rede: lugares-entre-lugares"
+        "arte em rede: lugares-entre-lugares", "networked art: places-between-places"
     ],
     exibithion: [
         "exposição", "exibithion"
@@ -28,8 +28,8 @@ var translations = {
         "sobre", "about"
     ],
     about_text: [
-        "<em>O lugar é em lado nenhum e em toda a parte. </em><br>Se a natureza destas obras de arte as adequa a museus sem lugar próprio, a ausência de um lugar fixo, de residência ou de acervo, não limita os espaços de visitação artística. Pelo contrário, uma das mais abertas questões relacionadas com estas novas tipologias artísticas resulta exactamente do seu estado de tráfego permanente. Uma vez libertadas pelos seus criadores nestes incontroláveis ecossistemas, permanecem em trânsito constante, metamorfoseando-se indefinidamente em formas que escapam aos desígnios iniciais dos seus autores, e delineando territórios que estão continuamente entre uma coisa e outra – entre estados, pessoas, espaços e temporalidades. Perante esta crescente desmaterialização das práticas artísticas em zonas de contínua transição, sobrevivência e incompletude, a criação da obra de arte pode não ser muito mais que um perpétuo ponto de partida. <br>Curadoria de António Pinto Ribeiro e Rita Xavier Monteiro, com a colaboração de Helena Barranha, Susana S. Martins e Raquel Pereira.",
-        "<em>The place is nowhere at all and yet everywhere. </em><br>While the nature of these works makes them suitable for museums without their own fixed place, without their own residence or their own collection, it does not limit the spaces available for artistic visits. On the contrary, one of the most open questions related with these new artistic typologies results precisely from their permanent traffic. Once they have been released by their creators into these uncontrollable ecosystems, the art works remain in constant movement, metamorphosing indeterminably into forms that deviate from the initial intentions of their authors, and marking out territories that are continually between one thing and another – between states, people, spaces and temporalities. Faced with this growing dematerialisation of artistic practices in zones of constant transition, survival and incompleteness, the creation of the art work cannot be much more than a perpetual starting point. <br>Curated by António Pinto Ribeiro and Rita Xavier Monteiro, with the collaboration of Helena Barranha, Susana S, Martins and Raquel Pereira."
+        "<strong>O lugar é em lado nenhum e em toda a parte. </strong><br><br>Se a natureza destas obras de arte as adequa a museus sem lugar próprio, a ausência de um lugar fixo, de residência ou de acervo, não limita os espaços de visitação artística. Pelo contrário, uma das mais abertas questões relacionadas com estas novas tipologias artísticas resulta exactamente do seu estado de tráfego permanente. Uma vez libertadas pelos seus criadores nestes incontroláveis ecossistemas, permanecem em trânsito constante, metamorfoseando-se indefinidamente em formas que escapam aos desígnios iniciais dos seus autores, e delineando territórios que estão continuamente entre uma coisa e outra – entre estados, pessoas, espaços e temporalidades. Perante esta crescente desmaterialização das práticas artísticas em zonas de contínua transição, sobrevivência e incompletude, a criação da obra de arte pode não ser muito mais que um perpétuo ponto de partida. <br>Curadoria de António Pinto Ribeiro e Rita Xavier Monteiro, com a colaboração de Helena Barranha, Susana S. Martins e Raquel Pereira.",
+        "<strong>The place is nowhere at all and yet everywhere. </strong><br><br>While the nature of these works makes them suitable for museums without their own fixed place, without their own residence or their own collection, it does not limit the spaces available for artistic visits. On the contrary, one of the most open questions related with these new artistic typologies results precisely from their permanent traffic. Once they have been released by their creators into these uncontrollable ecosystems, the art works remain in constant movement, metamorphosing indeterminably into forms that deviate from the initial intentions of their authors, and marking out territories that are continually between one thing and another – between states, people, spaces and temporalities. Faced with this growing dematerialisation of artistic practices in zones of constant transition, survival and incompleteness, the creation of the art work cannot be much more than a perpetual starting point. <br>Curated by António Pinto Ribeiro and Rita Xavier Monteiro, with the collaboration of Helena Barranha, Susana S, Martins and Raquel Pereira."
     ],
     author: [
         "autor", "author"
@@ -45,6 +45,9 @@ var translations = {
     ],
     fichaTecnica: [
         "ficha técnica", "credits"
+    ],
+    pdfDownload: [
+        "Catálogo", "Catalogue"
     ]
 };
 
@@ -69,7 +72,7 @@ var _tourInformation = null;
 
 $(document).ready(function() {
     var tmpLang = getUrlParameter("language");
-    
+
     if (tmpLang) {
         _mainObject.language = tmpLang;
     }
@@ -91,6 +94,7 @@ function applyTranslations() {
     $(".gbnt-tour").text(doTranslation("tour"));
     $(".gbnt-about").text(doTranslation("about"));
     $(".gbnt-language").text(doTranslation("language"));
+    $(".pdf-download").text(doTranslation("pdfDownload"));
     $(".about-text p").html(doTranslation("about_text"));
 
     if (_mainObject.language === "pt") {
@@ -324,7 +328,7 @@ function createEventHandlers() {
         if ($(this).hasClass('no-pointers')) {
             return;
         }
-        if (event.srcElement.id !== "cover") {
+        if (e.target.id !== "cover") {
             return;
         }
         openProject(this);
@@ -405,7 +409,7 @@ function createEventHandlers() {
         $(".gbnt-exibithion").removeClass("selected");
         $(".gbnt-tour").removeClass("selected");
         $(".gbnt-about").addClass("selected");
-     
+
         $(".tours").addClass("hide-me");
         if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
             $("#gbnt-header").attr("data-gbnt-open", "true");
@@ -416,7 +420,7 @@ function createEventHandlers() {
             $(".about-text").addClass("hide-me");
             closeHeader("gbnt-about", false);
         }
-     
+
     });
 
 
@@ -440,7 +444,7 @@ function createEventHandlers() {
             $(".tours").addClass("hide-me");
             closeHeader("gbnt-tour", false);
         }
-      
+
     });
 
 
@@ -812,8 +816,8 @@ Handlebars.registerHelper('getCoverImageURL', function(id, tipoCapa, capaID) {
             url = "img/covers/wide.jpg";
         }
     }
-
-    return url;
+    return new Handlebars.SafeString(url);
+    // return url;
 });
 
 Handlebars.registerHelper('getProjectImageURL', function(id, imgID) {
@@ -823,7 +827,8 @@ Handlebars.registerHelper('getProjectImageURL', function(id, imgID) {
         url = "docs/projectos/" + id + "/" + imgID;
     }
 
-    return url;
+    return new Handlebars.SafeString(url);
+    // return url;
 });
 
 Handlebars.registerHelper('translateThis', function(id) {

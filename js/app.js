@@ -19,7 +19,7 @@ var _tourInformation = null;
 
 $(document).ready(function() {
     var tmpLang = getUrlParameter("language");
-    
+
     if (tmpLang) {
         _mainObject.language = tmpLang;
     }
@@ -41,6 +41,7 @@ function applyTranslations() {
     $(".gbnt-tour").text(doTranslation("tour"));
     $(".gbnt-about").text(doTranslation("about"));
     $(".gbnt-language").text(doTranslation("language"));
+    $(".pdf-download").text(doTranslation("pdfDownload"));
     $(".about-text p").html(doTranslation("about_text"));
 
     if (_mainObject.language === "pt") {
@@ -274,7 +275,7 @@ function createEventHandlers() {
         if ($(this).hasClass('no-pointers')) {
             return;
         }
-        if (event.srcElement.id !== "cover") {
+        if (e.target.id !== "cover") {
             return;
         }
         openProject(this);
@@ -355,7 +356,7 @@ function createEventHandlers() {
         $(".gbnt-exibithion").removeClass("selected");
         $(".gbnt-tour").removeClass("selected");
         $(".gbnt-about").addClass("selected");
-     
+
         $(".tours").addClass("hide-me");
         if ($("#gbnt-header").attr("data-gbnt-open") === "false") {
             $("#gbnt-header").attr("data-gbnt-open", "true");
@@ -366,7 +367,7 @@ function createEventHandlers() {
             $(".about-text").addClass("hide-me");
             closeHeader("gbnt-about", false);
         }
-     
+
     });
 
 
@@ -390,7 +391,7 @@ function createEventHandlers() {
             $(".tours").addClass("hide-me");
             closeHeader("gbnt-tour", false);
         }
-      
+
     });
 
 
@@ -762,8 +763,8 @@ Handlebars.registerHelper('getCoverImageURL', function(id, tipoCapa, capaID) {
             url = "img/covers/wide.jpg";
         }
     }
-
-    return url;
+    return new Handlebars.SafeString(url);
+    // return url;
 });
 
 Handlebars.registerHelper('getProjectImageURL', function(id, imgID) {
@@ -773,7 +774,8 @@ Handlebars.registerHelper('getProjectImageURL', function(id, imgID) {
         url = "docs/projectos/" + id + "/" + imgID;
     }
 
-    return url;
+    return new Handlebars.SafeString(url);
+    // return url;
 });
 
 Handlebars.registerHelper('translateThis', function(id) {
