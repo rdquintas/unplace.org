@@ -554,6 +554,9 @@ h1 {
   margin-top: 42px;
   text-align: left;
 }
+#gbnt-header .about-text strong {
+  font-weight: 500;
+}
 #gbnt-header .about-text p {
   font-size: 18px;
   line-height: 1.25em;
