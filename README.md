@@ -1,8 +1,8 @@
 # Overview
 
-Project | unplace.org - Prototype for GBNT
+Project | unplace.org
 --- | ---
-Info | Prototype for unplace.org
+Info | Project for GBNT
 URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplace.org)
 
 
