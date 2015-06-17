@@ -7,7 +7,7 @@ var translations = {
         "arte em rede: lugares-entre-lugares", "networked art: places-between-places"
     ],
     exibithion: [
-        "exposição", "exibithion"
+        "exposição", "exhibition"
     ],
     language: [
         "en", "pt"
@@ -47,7 +47,7 @@ var translations = {
         "ficha técnica", "credits"
     ],
     pdfDownload: [
-        "Catálogo", "Catalogue"
+        "Ler mais sobre a Exposição", "Read more about the Exhibition"
     ]
 };
 
