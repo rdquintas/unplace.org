@@ -444,7 +444,7 @@ function createEventHandlers() {
 }
 
 function openHeader(selectedMenuClass, isMobile) {
-    var size = "500px";
+    var size = "550px";
     var marginTop = "320px";
 
     if (selectedMenuClass === "gbnt-tour") {
@@ -457,7 +457,7 @@ function openHeader(selectedMenuClass, isMobile) {
     var dur = 200;
 
     if (isMobile) {
-        size = "1400px";
+        size = "1000px";
         ease = "swing";
         dur = 200;
     }
