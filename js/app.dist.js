@@ -104,11 +104,11 @@ function applyTranslations() {
     if (_mainObject.language === "pt") {
         $(".gbnt-language").html("en");
         $(".about-text a..pdf-download").attr("href", "docs/exposicao_unplace.pdf");
-        $(".about-text a.pdf2-download").attr("href", "docs/ficha_tecnica.pdf");
+        $(".about-text a.pdf2-download").attr("href", "docs/unplace_ficha_tecnica.pdf");
     } else {
         $(".gbnt-language").html("pt");
         $(".about-text a.pdf-download").attr("href", "docs/unplace_exhibition.pdf");
-        $(".about-text a.pdf2-download").attr("href", "docs/credits.pdf");
+        $(".about-text a.pdf2-download").attr("href", "docs/unplace_credits.pdf");
     }
 }
 
