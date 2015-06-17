@@ -99,10 +99,10 @@ function applyTranslations() {
 
     if (_mainObject.language === "pt") {
         $(".gbnt-language").html("en");
-        $(".about-text a").attr("href", "docs/about.pdf");
+        $(".about-text a").attr("href", "docs/exposicao_unplace.pdf");
     } else {
         $(".gbnt-language").html("pt");
-        $(".about-text a").attr("href", "docs/about_en.pdf");
+        $(".about-text a").attr("href", "docs/unplace_exhibition.pdf");
     }
 }
 
