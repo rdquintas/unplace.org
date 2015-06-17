@@ -561,6 +561,9 @@ h1 {
   font-size: 18px;
   line-height: 1.25em;
 }
+#gbnt-header .about-text .pdf2-download {
+  margin-left: 40px;
+}
 #gbnt-header .tours {
   color: #fff;
   width: 75%;

@@ -42,14 +42,17 @@ function applyTranslations() {
     $(".gbnt-about").text(doTranslation("about"));
     $(".gbnt-language").text(doTranslation("language"));
     $(".pdf-download").text(doTranslation("pdfDownload"));
+    $(".pdf2-download").text(doTranslation("pdfDownload2"));
     $(".about-text p").html(doTranslation("about_text"));
 
     if (_mainObject.language === "pt") {
         $(".gbnt-language").html("en");
-        $(".about-text a").attr("href", "docs/exposicao_unplace.pdf");
+        $(".about-text a..pdf-download").attr("href", "docs/exposicao_unplace.pdf");
+        $(".about-text a.pdf2-download").attr("href", "docs/PT_xxxxxx.pdf");
     } else {
         $(".gbnt-language").html("pt");
-        $(".about-text a").attr("href", "docs/unplace_exhibition.pdf");
+        $(".about-text a.pdf-download").attr("href", "docs/unplace_exhibition.pdf");
+        $(".about-text a.pdf2-download").attr("href", "docs/EN_xxxxxx.pdf");
     }
 }
 

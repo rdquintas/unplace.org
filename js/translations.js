@@ -48,5 +48,8 @@ var translations = {
     ],
     pdfDownload: [
         "Ler mais sobre a Exposição", "Read more about the Exhibition"
+    ],
+    pdfDownload2: [
+        "Ficha técnica", "Credits"
     ]
 };
