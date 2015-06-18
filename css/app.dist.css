@@ -719,7 +719,7 @@ h1 {
 }
 #gbnt-container .proj-profile a {
   pointer-events: visible;
-  color: #666;
+  color: #000;
 }
 #gbnt-container .proj-profile a:hover {
   color: #84bae0;
