@@ -873,6 +873,11 @@ h1 {
 /* 
  ========= SMALL DEVICES (mobiles) ============
 */
+@media screen and (min-width: 0px) and (max-width: 390px) {
+  #gbnt-header .logo a.logo-unplace {
+    width: 150px !important;
+  }
+}
 @media screen and (min-width: 0px) and (max-width: 767px) {
   html {
     max-width: 100%;
