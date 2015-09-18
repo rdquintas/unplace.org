@@ -15,12 +15,6 @@ module.exports = function(grunt) {
         'js/app.js'
     ];
 
-    // var _css_custom = [
-    //    'less/start_here.less'
-    //     // 'sass/start_here.scss',
-    //     // 'sass/gbnt.scss'
-    // ];
-
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -34,7 +28,6 @@ module.exports = function(grunt) {
                 src: _js_custom
             }
         },
-
 
         // ================================
         // concat: Concatenation
@@ -70,17 +63,7 @@ module.exports = function(grunt) {
         },
 
 
-        // ================================
-        // cssmin: CSS minify
-        // ================================        
-        cssmin: {
-            css_custom: {
-                files: {
-                    'css/app.dist.css': ['css/app.dist.css']
-                }
-            }
-        },
-
+ 
         // ================================
         // less: LESS compilation
         // ================================  
@@ -122,7 +105,7 @@ module.exports = function(grunt) {
             css_custom: {
                 files: "less/*.less",
                 tasks: [
-                 	'less:css_custom'
+                    'less:css_custom'
                     // 'libsass:css_custom',
                     // 'cssmin:css_custom'
                 ],
@@ -142,96 +125,17 @@ module.exports = function(grunt) {
                 dest: 'css/pure-min.css'
             }
         },
-        // // ================================
-        // // clean: Deletes files
-        // // ================================          
-        // clean: ['js/<%= pkg.name %>.js'],
-
-
-        // // ================================
-        // // rename: Rename files
-        // // ================================          
-        // rename: {
-        //     // css: {
-        //     //     files: [{
-        //     //         src: 'css/teste.css',
-        //     //         dest: 'css/teste.min.css'
-        //     //     }]
-        //     // }
-        // },
-
-
-
-        imagemin: { // Task
-            // static: { // Target
-            //     options: { // Target options
-            //         optimizationLevel: 3,
-            //         svgoPlugins: [{
-            //             removeViewBox: false
-            //         }],
-            //         use: [mozjpeg()]
-            //     },
-            //     files: { // Dictionary of files
-            //         'dist/img.png': 'src/img.png', // 'destination': 'source'
-            //         'dist/img.jpg': 'src/img.jpg',
-            //         'dist/img.gif': 'src/img.gif'
-            //     }
-            // },
-            dynamic: { // Another target
-                files: [{
-                    expand: true, // Enable dynamic expansion
-                    cwd: 'docs/projectos', // Src matches are relative to this path
-                    src: ['**/*.{png,jpg,gif}'], // Actual patterns to match
-                    dest: 'dist/' // Destination path prefix
-                }]
-            }
-        },
-
-
-        // ================================
-        // connect: HTTP server
-        // ================================
-        connect: {
-            server: {
-                options: {
-                    port: 8080,
-                    keepalive: true
-                }
-            }
-        }
-
     });
 
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-rename');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-connect');
-    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-libsass');
 
 
-    // // ================================
-    // // Task:    less
-    // // ================================
-    // grunt.registerTask('less', [
-    //     'less:css_custom'
-    // ]);
-
-    // ================================
-    // Task:    default
-    // ================================
-    grunt.registerTask('images', [
-        'imagemin:dynamic'
-    ]);
-    // ================================
+     // ================================
     // Task:    default
     // ================================
     grunt.registerTask('default', [
@@ -240,23 +144,23 @@ module.exports = function(grunt) {
         'jshint:js_custom',
         'concat:js_custom',
         // 'uglify:js_custom',
-        'libsass:css_custom',
+        'less:css_custom',
         'copy:purecss'
         // 'cssmin:css_custom'
     ]);
 
-    // ================================
-    // Task:    prod
-    // ================================    
-    grunt.registerTask('prod', [
-        'concat:js_libs',
-        // 'uglify:js_libs',
-        'jshint:js_custom',
-        'concat:js_custom',
-        'uglify:js_custom',
-        'libsass:css_custom',
-        'copy:purecss',
-        'cssmin:css_custom'
-    ]);
+    // // ================================
+    // // Task:    prod
+    // // ================================    
+    // grunt.registerTask('prod', [
+    //     'concat:js_libs',
+    //     // 'uglify:js_libs',
+    //     'jshint:js_custom',
+    //     'concat:js_custom',
+    //     'uglify:js_custom',
+    //     // 'libsass:css_custom',
+    //     'copy:purecss',
+    //     'cssmin:css_custom'
+    // ]);
 
 };
