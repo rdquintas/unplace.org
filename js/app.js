@@ -178,7 +178,7 @@ function checkAllDone(projID) {
 function checkAllImagesAreLoaded() {
 
     var $img = $('img'),
-        totalImg = $img.length - 2;
+        totalImg = $img.length - 3;
 
     var waitImgDone = function() {
         totalImg--;
