@@ -56,6 +56,3 @@ URL | [http://rdquintas.github.io/unplace.org](http://rdquintas.github.io/unplac
 - thumb-images for projects
 - CSS to be improved for mobile
 - uses semantic-ui
-
-
-//
