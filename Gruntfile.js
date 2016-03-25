@@ -1,5 +1,5 @@
 
-//1234567
+//123456
 
 module.exports = function(grunt) {
     var _js_libs = [
