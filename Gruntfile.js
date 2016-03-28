@@ -1,4 +1,4 @@
-//123456
+//12345
 module.exports = function(grunt) {
     var _js_libs = [
         'bower_components/jquery/dist/jquery.min.js',
