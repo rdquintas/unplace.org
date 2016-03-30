@@ -1,5 +1,3 @@
-//1
-
 // Handlebar precompiling
 var _source = $("#gbnt-template").html();
 var _template = Handlebars.compile(_source);
