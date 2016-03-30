@@ -1,4 +1,4 @@
-//123456
+//12345
 
 // Handlebar precompiling
 var _source = $("#gbnt-template").html();
