@@ -1,5 +1,3 @@
-//
-
 # Overview
 
 Project | unplace.org
